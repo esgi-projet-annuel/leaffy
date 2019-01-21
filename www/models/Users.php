@@ -2,13 +2,13 @@
 
 class Users extends BaseSQL {
 
-    public $id = null;
-    public $profile;
-    public $firstname;
-    public $lastname;
-    public $login;
-    public $email;
-    public $password;
+    private $id = null;
+    private $profile;
+    private $firstname;
+    private $lastname;
+    private $login;
+    private $email;
+    private $password;
 
     public function __construct(){
         parent::__construct();
