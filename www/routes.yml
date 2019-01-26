@@ -1,0 +1,67 @@
+#ADMIN
+"/admin":
+  controller: Admin
+  action: showHomeAdmin
+
+#AUTHENTIFICATE
+"/admin/login":
+  controller: Authentication
+  action: loginAdmin
+
+"/admin/logAdmin":
+  controller: Authentication
+  action: authenticateAdmin
+
+"/login":
+  controller: Authentication
+  action: authenticateUser
+
+#SETTINGS
+"/admin/settings":
+  controller: Settings
+  action: default
+
+#MENU
+"/admin/menu":
+  controller: Menu
+  action: default
+
+#ARTICLES
+"/admin/articles":
+  controller: Article
+  action: showAll
+
+"/admin/article":
+  controller: Article
+  action: showOne
+
+#PAGES
+"/admin/pages":
+  controller: Page
+  action: showAll
+
+"/admin/page":
+  controller: Page
+  action: showOne
+
+#USER
+"/createUser":
+  controller: User
+  action: createUser
+
+#STATIC
+"/":
+  controller: Static
+  action: showHomePage
+
+"/about":
+  controller: Static
+  action: showAboutPage
+
+"/contact":
+  controller: Static
+  action: showContactPage
+
+"/blog":
+  controller: Static
+  action: showBlogPage

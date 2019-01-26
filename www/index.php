@@ -43,5 +43,3 @@ if( file_exists($controllerPath) ){
 }else{
     die("Le fichier controller ".$controller." n'existe pas");
 }
-
-print "Coucou projet de l'enfer";
