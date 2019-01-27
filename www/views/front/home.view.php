@@ -6,16 +6,6 @@
 <!--<a href="--><?php //echo Routing::getSlug("Authentication","authenticateUser");?><!--">Login</a>-->
 <!--<a href="--><?php //echo Routing::getSlug("User","createUser");?><!--">Create account</a>-->
 
-<!DOCTYPE html>
-<html lang="fr" dir="ltr">
-<head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1" name="viewport" />
-    <link rel="stylesheet" href="../../public/css/style.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-    <title></title>
-</head>
-<body>
 <div id="header" class="header-front-page">
     <div class="top-header">
         <div class="container">
@@ -272,6 +262,3 @@
         </div>
     </div>
 </footer>
-
-</body>
-</html>
