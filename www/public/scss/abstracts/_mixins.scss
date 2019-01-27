@@ -1,0 +1,47 @@
+@mixin background-cover{
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+@mixin background-contain{
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+
+@mixin desktop {
+  @media (min-width: #{$large}) {
+    @content;
+  }
+}
+@mixin max-desktop {
+  @media (max-width: #{$large}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$medium}) {
+    @content;
+  }
+}
+
+@mixin max-tablet {
+  @media (max-width: #{$medium}) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (min-width: #{$small}) {
+    @content;
+  }
+}
+
+@mixin max-mobile {
+  @media (max-width: #{$small}) {
+    @content;
+  }
+}

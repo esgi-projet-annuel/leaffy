@@ -1,0 +1,35 @@
+.image-banner{
+  width: 100%;
+  padding-top: 42%;
+  @include background-cover;
+}
+.image-banner--text{
+  position: relative;
+  display: flex;
+  &::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+  & h1{
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: $white;
+    width: 100%;
+    height: 100%;
+    font-size: rem(50);
+    z-index: 1;
+    margin: 0;
+    display: flex;
+    & strong{
+      margin: auto;
+      max-width: 80%;
+      text-align: center;
+    }
+  }
+}

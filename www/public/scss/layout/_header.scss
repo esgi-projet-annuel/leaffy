@@ -1,0 +1,38 @@
+/**
+ * Header
+ */
+
+#header.header-front-page {
+  width: 100%;
+  background-image: url(../img/cover_main.jpg);
+  background-attachment: fixed;
+  @include background-cover;
+}
+
+
+#header .header-logo-img{
+    width: rem(35);
+}
+#menu-main{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  & a{
+    color: $white;
+    font-weight: bold;
+  }
+}
+
+#header .bottom-header {
+    width: 100%;
+    padding-top: 200px;
+    padding-bottom: 280px;
+    text-align: center;
+    & h1{
+      color: $white;
+      margin: 0 0 29px;
+      line-height: 84px;
+      font-weight: 700;
+      font-size: 80px;
+    }
+}

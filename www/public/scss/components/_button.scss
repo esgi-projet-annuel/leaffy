@@ -1,0 +1,119 @@
+.button{
+  display: inline-block;
+  text-decoration: none;
+  background-color: $dark-grey;
+  color: $light-grey;
+  padding: 1em 2em;
+  margin: 1rem;
+  &:hover{
+    background-color: lighten($dark-grey, 30%);
+  }
+}
+
+
+.button--alert{
+  background-color: $red;
+  color: $white;
+  &:hover{
+    background-color: lighten($red, 10%);
+  }
+}
+
+
+.button--sucess{
+  background-color: $green;
+  color: $white;
+  &:hover{
+    background-color: lighten($green, 10%);
+  }
+}
+
+.button{
+  width: auto;
+  margin: 0 15px;
+  display: inline-block;
+  padding: 20px 70px;
+  border-radius: 3px;
+  font-weight: 700;
+  font-size: 16px;
+  color: $white;
+  -webkit-transition: all .3s;
+  -moz-transition: all .3s;
+  -o-transition: all .3s;
+  transition: all .3s;
+  font-family: $fontLato;
+  max-width: 242px;
+  @include max-tablet {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+}
+
+.button--one {
+    background: rgba(255,255,255,.2);
+    border: 3px solid $white;
+    color: $white;
+    &:hover{
+      background-color: rgba( 0, 0, 0, .1 );
+    }
+
+}
+
+.button--two {
+    background: $color3;
+    padding: 23px 70px;
+    &:hover{
+      background-color: $white;
+      color: $color4;
+    }
+}
+
+.button--three{
+  background: $color3;
+  padding: 18px 20px;
+  &:hover{
+    background-color: $white;
+    color: $color4;
+  }
+}
+
+
+.post-button {
+  line-height: 26px;
+  padding: 0 30px;
+  font-size: 16px;
+  font-family: $fontLato;
+  color: $color4;
+  -webkit-transition: all .3s;
+  -moz-transition: all .3s;
+  -o-transition: all .3s;
+  transition: all .3s;
+  margin-left: 10px;
+}
+
+
+.submit-button{
+  width: auto;
+  height: 44px;
+  padding: 0 30px;
+  border: none;
+  border-radius: 5px;
+  display: inline-block;
+  font-weight: 700;
+  color: #fff;
+  background-color: $color4;
+  float: right;
+  -webkit-transition: all .3s;
+  -moz-transition: all .3s;
+  -o-transition: all .3s;
+  transition: all .3s;
+  outline: 0;
+  font-family: $fontLato;
+  font-size: 16px;
+  text-transform: initial;
+  cursor: pointer;
+  &:hover{
+    background-color: $white;
+    color: $color4;
+  }
+}

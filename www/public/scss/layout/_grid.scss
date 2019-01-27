@@ -1,0 +1,92 @@
+/**
+ * Grid system
+ */
+
+$columns: 12;
+@for $i from 1 through $columns {
+.col-#{$i} {
+  width: ((100 / $columns) * $i) * 1%;
+  padding: 0px 1%;
+  }
+}
+
+$columns: 12;
+@for $i from 1 through $columns {
+.col-offset-#{$i} {
+  margin-left: ((100 / $columns) * $i) * 1%;
+  }
+}
+
+.container{
+  width: 100%;
+  margin: auto;
+  overflow-x: hidden;
+  @include mobile {
+    width: $small-container-width;
+  }
+  @include tablet{
+    width: $medium-container-width;
+  }
+  @include desktop{
+    width: $large-container-width;
+  }
+}
+.row{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin: 20px -1%;
+}
+
+@media (min-width: $small) {
+  @for $i from 1 through $columns {
+  .col-sm-#{$i} {
+    width: ((100 / $columns) * $i) * 1%;
+    padding: 0px 1%;
+    }
+  }
+  @for $i from 0 through $columnsOff {
+  .col-sm-offset-#{$i} {
+    margin-left: ((100 / $columnsOff) * $i) * 1%;
+    }
+  }
+}
+
+@media (min-width: $medium) {
+  @for $i from 1 through $columns {
+  .col-md-#{$i} {
+    width: ((100 / $columns) * $i) * 1%;
+    padding: 0px 1%;
+    }
+  }
+  @for $i from 0 through $columnsOff {
+  .col-md-offset-#{$i} {
+    margin-left: ((100 / $columnsOff) * $i) * 1%;
+    }
+  }
+}
+
+@media (min-width: $large) {
+  @for $i from 1 through $columns {
+  .col-lg-#{$i} {
+    width: ((100 / $columns) * $i) * 1%;
+    padding: 0px 1%;
+    }
+  }
+  @for $i from 0 through $columnsOff {
+  .col-lg-offset-#{$i} {
+    margin-left: ((100 / $columnsOff) * $i) * 1%;
+    }
+  }
+}
+
+
+.d-flex{
+  display: flex;
+}
+
+
+.margin-auto{
+  margin: auto;
+}

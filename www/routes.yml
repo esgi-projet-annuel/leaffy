@@ -6,13 +6,17 @@
 #AUTHENTIFICATE
 "/admin/login":
   controller: Authentication
-  action: loginAdmin
+  action: viewAdminLoginForm
 
 "/admin/logAdmin":
   controller: Authentication
   action: authenticateAdmin
 
 "/login":
+  controller: Authentication
+  action: viewUserLoginForm
+
+"/logUser":
   controller: Authentication
   action: authenticateUser
 

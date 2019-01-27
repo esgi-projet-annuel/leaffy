@@ -2,9 +2,9 @@
 
 <div class="form">
     <form action="/admin/logAdmin" method="post">
-        E-mail:<br>
+        <label for="email"> E-mail:</label>
         <input type="email" name="email"><br>
-        Password:<br>
+        <label for="pwd">Password:</label>
         <input type="password" name="pwd"><br>
         <input type="submit" value="Submit">
     </form>

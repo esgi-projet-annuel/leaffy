@@ -2,7 +2,7 @@
 
 class BaseSQL{
 
-    private $id = null;
+    protected $id = null;
     private $pdo;
     private $table;
 
@@ -17,9 +17,21 @@ class BaseSQL{
         $this->table = get_called_class();
     }
 
-    protected function setId(int $id)
-    {
+    public function setId(int $id) {
         $this->id = $id;
+    }
+
+    public function getOneBy(array $where){
+
+        $sqlWhere = [];
+        foreach ($where as $key => $value) {
+            $sqlWhere[]=$key."=:".$key;
+        }
+        $sql = " SELECT * FROM ".$this->table." WHERE  ".implode(" AND ", $sqlWhere).";";
+        $query = $this->pdo->prepare($sql);
+        $query->execute( $where );
+        return $query->fetch();
+
     }
 
 
@@ -27,35 +39,31 @@ class BaseSQL{
         $reflect = new ReflectionClass($this);
         $properties = $reflect->getProperties();
 
-
-
-        //Array ( [id] => [firstname] => Yves [lastname] => SKRZYPCZYK [email] => y.skrzypczyk@gmail.com [pwd] => $2y$10$tdmxlGf.zP.3dd7K/kRtw.jzYh2CnSbFuXaUkDNl3JtDJ05zCI7AG [role] => 1 [status] => 0 [pdo] => PDO Object ( ) [table] => Users )
-        //Array ( [id] => [firstname] => Yves [lastname] => SKRZYPCZYK [email] => y.skrzypczyk@gmail.com [pwd] => $2y$10$tdmxlGf.zP.3dd7K/kRtw.jzYh2CnSbFuXaUkDNl3JtDJ05zCI7AG [role] => 1 [status] => 0)
-        $dataChild = array_diff_key($dataObject, get_class_vars(get_class()));
-        if( is_null($dataChild["id"])){
-            //INSERT
-            //array_keys($dataChild) -> [id, firstname, lastname, email]
-            $sql ="INSERT INTO ".$this->table." ( ".
-                implode(",", array_keys($dataChild) ) .") VALUES ( :".
-                implode(",:", array_keys($dataChild) ) .")";
-
-            $query = $this->pdo->prepare($sql);
-            $query->execute( $dataChild );
-
-        }else{
-            //UPDATE
-            $sqlUpdate = [];
-            foreach ($dataChild as $key => $value) {
-                if( $key != "id")
-                    $sqlUpdate[]=$key."=:".$key;
+        $propertiesValue = [];
+        foreach ($properties as $property) {
+            if($property->isPrivate() || $property->isProtected()) {
+                $property->setAccessible(true);
             }
+            $key= $property->getName();
+            $value= $property->getValue($this);
+            $propertiesValue[$key]= $value;
+        }
+        echo"<pre>";
+        print_r($propertiesValue);
+        echo"</pre>";
 
-            $sql ="UPDATE ".$this->table." SET ".implode(",", $sqlUpdate)." WHERE id=:id";
+        if($this->id == null){
+            //INSERT
+            //array_keys($properties) -> [id, firstname, lastname, email]
+            $sql ="INSERT INTO ".$this->table." ( ".
+                implode(",", array_keys($propertiesValue) ) .") VALUES ( :".
+                implode(",:", array_keys($propertiesValue) ) .")";
 
             $query = $this->pdo->prepare($sql);
-            $query->execute( $dataChild );
+            $query->execute( $propertiesValue );
 
+        } else {
+            echo "AH";
         }
-
     }
 }

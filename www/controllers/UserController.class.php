@@ -7,17 +7,18 @@ class UserController {
 
     }
 
-    public function createUser() {
-        $view = new View("createUser", "front");
+//    public function createUser() {
+//        $view = new View("createUser", "front");
 //        $user = new User();
 //        $user->setEmail("dehaut.alix@gmail.com");
 //        $user->setFirstname("Alix");
 //        $user->setLastname("De Haut");
 //        $user->setLogin("admin");
 //        $user->setPassword("udpdt");
-//        $user->setProfile(1);
+//        $user->setProfession('dev');
+//        $user->setProfile("ADMIN");
 //
 //        $user->save();
-    }
+//    }
 
 }

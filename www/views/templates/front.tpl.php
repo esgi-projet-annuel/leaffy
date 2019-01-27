@@ -18,7 +18,5 @@
             <?php include $this->view;?>
         </div>
 
-        <a href="<?php echo Routing::getSlug("Static","showHomePage");?>">back</a>
-
     </body>
 </html>
