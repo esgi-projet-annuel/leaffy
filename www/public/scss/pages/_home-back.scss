@@ -1,0 +1,128 @@
+#header-back{
+  width: 100%;
+  background-color: $color4;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  min-height: 10vh;
+  color: $white;
+  justify-content: space-between;
+}
+
+.part-1-header-back{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.part-2-header-back{
+
+}
+.part-3-header-back{
+
+}
+.logo-back{
+  margin: 3px 28px;
+}
+
+.container-back{
+  display: flex;
+  flex-direction: row;
+  min-height: 90vh;
+}
+
+
+#adminbar{
+
+  width: 15%;
+  background-color: $color2;
+    border: 1px solid $color4;
+}
+
+#content-back{
+  width: 100%;
+
+}
+
+#avatar-back{
+  height: 80%;
+  width: 80%;
+  background: $white;
+  @include max-tablet{
+    height: 80%;
+    width: 100%;
+  }
+  @include max-mobile{
+    height: 100%;
+  }
+  flex-direction: column;
+
+}
+
+.list-admin-bar{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 0;
+  margin: 0;
+
+}
+
+
+.list-item{
+  color: $color4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  font-size: 18px;
+  &:hover{
+    background-color: $color1;
+    color: $color4;
+
+  }
+  margin-bottom: 12px;
+  padding: 5px;
+}
+
+.active{
+  background-color: $color1;
+  color: $color4;
+}
+.admin-name{
+  color: $color1;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+
+
+
+#content-back .titre h2{
+  text-align: center;
+  color: $color3;
+  margin-top: 20px;
+}
+
+
+.fields-input-back{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.fields-input-back label{
+  margin-bottom: 20px;
+}
+.fields-input-back .form-text {
+    width: 100%;
+    height: 35px;
+    background-color: #fcfcfc;
+    padding: 0 20px;
+    border: 1px solid #e1e1e1;
+    font-family: "Lato", sans-serif;
+    font-size: 16px;
+    color: #5c8d89;
+    display: block;
+    font-weight: 400;
+    line-height: 25px;
+}

@@ -12,7 +12,7 @@
             <div class="row">
                 <div class="col-sm-4 col-8">
                     <a href="#">
-                        <img class="header-logo-img" src="../../public/img/logo.png" width="30">
+                        <img class="header-logo-img" src="../../public/img/logo_full.png" width="100">
                     </a>
                 </div>
                 <div class="col-sm-8 col-4">
@@ -207,14 +207,15 @@
                                     <div class="col-12 col-sm-4 col-sm-offset-1">
                                         <label> Votre Nom (requis)<br />
                                             <span class="form-control your-name">
-                            <input type="text" name="your-name" value="" size="40" class="form-control form-text" aria-required="true" aria-invalid="false" /></span>
+                                              <input type="text" name="your-name" value="" size="40" class="form-control form-text" aria-required="true" aria-invalid="false" />
+                                            </span>
                                         </label>
                                     </div>
                                     <div class="col-12 col-sm-4 col-sm-offset-1">
                                         <label> Votre Sujet<br />
                                             <span class="form-control your-subject">
-                          <input type="text" name="your-subject" value="" size="40" class="form-control form-text" aria-invalid="false" />
-                        </span>
+                                              <input type="text" name="your-subject" value="" size="40" class="form-control form-text" aria-invalid="false" />
+                                            </span>
                                         </label>
                                     </div>
                                 </div>
@@ -222,8 +223,8 @@
                                     <div class="col-12">
                                         <label> Votre Message<br />
                                             <span class="form-control your-message">
-                          <textarea name="your-message" cols="40" rows="10" class="form-control form-textarea" aria-invalid="false"></textarea>
-                        </span>
+                                              <textarea name="your-message" cols="40" rows="10" class="form-control form-textarea" aria-invalid="false"></textarea>
+                                            </span>
                                         </label>
                                     </div>
                                 </div>

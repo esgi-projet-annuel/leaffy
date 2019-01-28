@@ -90,7 +90,19 @@
   transition: all .3s;
   margin-left: 10px;
 }
-
+.connexion-button{
+  line-height: 26px;
+  padding: 0 30px;
+  font-size: 16px;
+  font-family: $fontLato;
+  color: $color4;
+  background-color: $color1;
+  cursor: pointer;
+  &:hover{
+    background-color: $color3;
+    color: $color1;
+  }
+}
 
 .submit-button{
   width: auto;
