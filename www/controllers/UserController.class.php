@@ -7,8 +7,8 @@ class UserController {
 
     }
 
-//    public function createUser() {
-//        $view = new View("createUser", "front");
+public function createUser() {
+        $view = new View("createUser", "front");
 //        $user = new User();
 //        $user->setEmail("dehaut.alix@gmail.com");
 //        $user->setFirstname("Alix");
@@ -19,6 +19,6 @@ class UserController {
 //        $user->setProfile("ADMIN");
 //
 //        $user->save();
-//    }
+    }
 
 }

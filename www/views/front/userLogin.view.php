@@ -19,7 +19,7 @@
         <input type="submit" class="form-control submit-button" value="Connexion">
       </form>
       <div class="text-center">
-        <a class="small" href="">Créer un compte</a>
+        <a class="small" href="<?php echo Routing::getSlug("User","createUser");?>">Créer un compte</a>
         <a class="small" href="">Mot de passe oublié ?</a>
       </div>
     </div>
