@@ -16,10 +16,17 @@ class AuthenticationController {
     }
 
     public function viewUserLoginForm(){
-        $view = new View('userLogin', 'front');
+      $user = new User();
+      $form = $user->getLoginForm();
+
+      $view = new View('userLogin', 'front');
+      $view->assign("form", $form);
     }
 
     public function authenticateUser(){
-        $view = new View('userLogin', 'front');
+
+
+      $view = new View('userLogin', 'front');
+
     }
 }

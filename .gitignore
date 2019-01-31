@@ -88,6 +88,4 @@ fabric.properties
 
 # End of https://www.gitignore.io/api/phpstorm
 
-.db_data/ib_logfile0
-.db_data/ibdata1
-.db_data/ibtmp1
+.db_data/

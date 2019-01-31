@@ -228,7 +228,7 @@
                                         </label>
                                     </div>
                                 </div>
-                                <div>
+                                <div class="d-flex justify-content-end">
                                     <input type="submit" value="Envoyez" class="form-control submit-button" />
                                 </div>
                             </form>

@@ -29,6 +29,20 @@ class View {
         }
     }
 
+    public function addModal($modal, $config){
+      //form.mod.php
+      $modalPath = "views/modals/".$modal.".mod.php";
+      if( file_exists($modalPath)){
+        include $modalPath;
+      }else{
+        die("Attention le fichier modal n'existe pas ".$modalPath);
+      }
+    }
+
+    public function assign($key, $value){
+		    $this->data[$key]=$value;
+	 }
+
     public function __destruct(){
         extract($this->data);
         include $this->template;
