@@ -3,8 +3,8 @@
 class BaseSQL{
 
     protected $id = null;
-    private $pdo;
     private $table;
+    private $pdo;
 
 
     public function __construct(){
@@ -13,7 +13,6 @@ class BaseSQL{
         }catch(Exception $e){
             die("Erreur SQL : ".$e->getMessage());
         }
-
         $this->table = get_called_class();
     }
 
@@ -21,19 +20,25 @@ class BaseSQL{
         $this->id = $id;
     }
 
-    public function getOneBy(array $where){
-
+    public function findOneBy(array $findByArray, $object= false){
         $sqlWhere = [];
-        foreach ($where as $key => $value) {
+        foreach ($findByArray as $key => $value) {
             $sqlWhere[]=$key."=:".$key;
         }
-        $sql = " SELECT * FROM ".$this->table." WHERE  ".implode(" AND ", $sqlWhere).";";
+
+        $sql = "SELECT * FROM ".$this->table." WHERE ".implode(" AND ", $sqlWhere).";";
         $query = $this->pdo->prepare($sql);
-        $query->execute( $where );
+
+        if($object){
+            //modifier l'objet $this avec le contenu de la bdd
+            $query->setFetchMode( PDO::FETCH_INTO, $this);
+        }else {
+            //on retourne un simple table php
+            $query->setFetchMode(PDO::FETCH_ASSOC);
+        }
+        $query->execute($findByArray);
         return $query->fetch();
-
     }
-
 
     public function save(){
         $reflect = new ReflectionClass($this);
@@ -63,7 +68,17 @@ class BaseSQL{
             $query->execute( $propertiesValue );
 
         } else {
-            echo "AH";
+            //UPDATE
+            $sqlUpdate = [];
+            foreach ($propertiesValue as $key => $value) {
+                if( $key != "id")
+                    $sqlUpdate[]=$key."=:".$key;
+            }
+
+            $sql ="UPDATE ".$this->table." SET ".implode(",", $sqlUpdate)." WHERE id=:id";
+
+            $query = $this->pdo->prepare($sql);
+            $query->execute( $propertiesValue );
         }
     }
 }

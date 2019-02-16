@@ -5,8 +5,6 @@ class Media extends BaseSQL {
     private $id= null;
     private $type;
     private $path;
-    private $created_at;
-    private $updated_at;
 
     public function __construct(){
         parent::__construct();

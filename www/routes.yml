@@ -49,9 +49,9 @@
   action: showOne
 
 #USER
-"/createUser":
+"/addUser":
   controller: User
-  action: createUser
+  action: addUser
 
 #STATIC
 "/":

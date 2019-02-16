@@ -5,8 +5,6 @@ class Comment extends BaseSQL {
     private $id = null;
     private $status;
     private $content;
-    private $created_at;
-    private $updated_at;
     private $uder_id;
     private $post_id;
 

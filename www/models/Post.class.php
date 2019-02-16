@@ -7,8 +7,6 @@ class Post extends BaseSQL{
     private $content;
     private $status;
     private $page_id;
-    private $created_at;
-    private $updated_at;
 
     public function __construct(){
         parent::__construct();

@@ -7,12 +7,9 @@ class AuthenticationController {
     }
 
     public function authenticateAdmin(){
-        var_dump($_POST);
-        $sql= "SELECT * FROM User WHERE email = :email";
-        $query = $this->pdo->prepare($sql);
-        $query->execute([':email' => $_POST['email']]);
-        $result = $query->fetchAll();
-        print_r($result);
+        $security = new Security($_POST['email']);
+        $security->login( $_POST['pwd']);
+
     }
 
     public function viewUserLoginForm(){
