@@ -15,19 +15,8 @@ class UserController {
         $view->assign("form", $form);
     }
 
-    public function addUser() {
-        print "user add ";
-        $view = new View("createUser", "front");
-//        $user->setEmail("dehaut.alix@gmail.com");
-//        $user->setFirstname("Alix");
-//        $user->setLastname("De Haut");
-//        $user->setLogin("admin");
-//        $user->setPassword("udpdt");
-//        $user->setProfession('dev');
-//        $user->setProfile("ADMIN");
-//
-//        $user->save();
-
+    public function saveUser() {
+        print "user save ";
         $user = new User();
         $form = $user->getRegisterForm();
 
@@ -35,30 +24,20 @@ class UserController {
         $method = strtoupper($form["config"]["method"]);
         $data = $GLOBALS["_".$method];
 
-
         if( $_SERVER['REQUEST_METHOD']==$method && !empty($data) ){
-
             $validator = new Validator($form,$data);
             $form["errors"] = $validator->errors;
-
             if(empty($errors)){
                 $user->setFirstname($data["firstname"]);
                 $user->setLastname($data["lastname"]);
                 $user->setEmail($data["email"]);
                 $user->setPassword($data["pwd"]);
+                $user->setProfile("CLIENT");
                 $user->save();
             }
-
-
-
         }
-
-        $v = new View("addUser", "front");
-        $v->assign("form", $form);
-    }
-
-    public function saveUser(){
-
+        $view = new View("createUser", "front");
+        $view->assign("form", $form);
     }
 
     public function editUser(){

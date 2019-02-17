@@ -14,4 +14,5 @@ class ArticleController {
     //TODO : showOne pour afficher/modifier une page (pour rappel, le contenu d'une page
     //est en fait un article dans la BDD) ou modifier/afficher un article de blog
     //TODO : Supprimer/renommer les views correspondantes
+    //TODO corriger les routes en fonction
 }

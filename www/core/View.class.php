@@ -39,6 +39,15 @@ class View {
       }
     }
 
+    public function addMenu($menu , $template){
+        $menuPath= "views/".$template."/menus/".$menu.".menu.php";
+        if( file_exists($menuPath)){
+            include $menuPath;
+        }else{
+            die("Attention le fichier modal n'existe pas ".$menuPath);
+        }
+    }
+
     public function assign($key, $value){
 		    $this->data[$key]=$value;
 	 }

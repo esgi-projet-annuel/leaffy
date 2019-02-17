@@ -20,6 +20,32 @@
         <title>Leaffy front</title>
     </head>
     <body>
+
       <?php include $this->view;?>
+
+      <footer id="footer">
+          <div class="container">
+              <div class="row">
+                  <div class="col-md-3 col-sm-6 col-12">
+                      <a class="footer-link" href=""><p>Prendre Rendez-vous</p></a>
+                  </div>
+                  <div class="col-md-3 col-sm-6 col-12">
+                      <a class="footer-link" href=""><p>Mon Compte</p></a>
+                  </div>
+                  <div class="col-md-3 col-sm-6 col-12">
+                      <a class="footer-link" href=""><p>CGU</p></a>
+                  </div>
+                  <div class="col-md-3 col-sm-6 col-12">
+                      <a class="footer-link" href=""><p>Mentions Légales</p></a>
+                  </div>
+              </div>
+          </div>
+          <div class="bottom-footer">
+              <div class="copyright d-flex">
+                  <span>Propulsé par Leaffy</span>
+                  <span class="bottom-copyright" data-customizer="copyright-credit">© Copyright 2019. Tous droits réservés.</span>
+              </div>
+          </div>
+      </footer>
     </body>
 </html>

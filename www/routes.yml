@@ -53,9 +53,9 @@
   controller: User
   action: createUser
 
-"/addUser":
+"/saveUser":
   controller: User
-  action: addUser
+  action: saveUser
 
 #STATIC
 "/":

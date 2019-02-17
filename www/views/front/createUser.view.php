@@ -1,3 +1,5 @@
+<?php $this->addMenu("front", "front")?>
+
 <div class="container">
   <div class="card card-register mx-auto mt-5">
     <div class="card-header">Créer un compte</div>

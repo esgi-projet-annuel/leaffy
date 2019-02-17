@@ -1,50 +1,5 @@
-<!--<h1>HOME FRONT PAGE</h1>-->
-<!---->
-<!--<a href="--><?php //echo Routing::getSlug("Static","showAboutPage");?><!--">About</a>-->
-<!--<a href="--><?php //echo Routing::getSlug("Static","showContactPage");?><!--">Contact</a>-->
-<!--<a href="--><?php //echo Routing::getSlug("Static","showBlogPage");?><!--">Blog</a>-->
-<!--<a href="--><?php //echo Routing::getSlug("Authentication","authenticateUser");?><!--">Login</a>-->
-<!--<a href="--><?php //echo Routing::getSlug("User","createUser");?><!--">Create account</a>-->
+<?php $this->addMenu("homeHeader", "front")?>
 
-<div id="header" class="header-front-page">
-    <div class="top-header">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-4 col-8">
-                    <a href="#">
-                        <img class="header-logo-img" src="../../public/img/logo_full.png" width="100">
-                    </a>
-                </div>
-                <div class="col-sm-8 col-4">
-                    <nav class="header-navigation">
-                        <ul id="menu-main" class="clearfix"><li id="menu-item-16" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-16"><a href="">Accueil</a></li>
-                            <li id="menu-item-17" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-17"><a href="">À Propos</a></li>
-                            <li id="menu-item-18" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-18"><a href="">Mon Approche</a></li>
-                            <li id="menu-item-19" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-19"><a href="">Mes Prestations</a></li>
-                            <li id="menu-item-20" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-20"><a href="">Blog</a></li>
-                            <li id="menu-item-22" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-22"><a href="">Contact</a></li>
-                            <li id="menu-item-23" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-23"><a href=""><img src="../../public/img/user.png" width="25"></a></li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="bottom-header front-page">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12">
-                    <h1>Lorem ipsum dolor sit amet</h1>
-                </div>
-                <div class="col-sm-8 col-sm-offset-2">
-                    <div class="section-description section-description--header">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dictum odio eget nisi hendrerit, nec imperdiet mi consectetur. Curabitur in sem ut !</div>
-                    <a href="#"  class="button--one button">Découvrir</a>
-                    <a href="#" class="button--two button">Rendez-vous</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 <main>
     <section id="about" class="front-page-section">
         <div class="section">
@@ -239,27 +194,4 @@
         </div>
     </section>
 </main>
-<footer id="footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3 col-sm-6 col-12">
-                <a class="footer-link" href=""><p>Prendre Rendez-vous</p></a>
-            </div>
-            <div class="col-md-3 col-sm-6 col-12">
-                <a class="footer-link" href=""><p>Mon Compte</p></a>
-            </div>
-            <div class="col-md-3 col-sm-6 col-12">
-                <a class="footer-link" href=""><p>CGU</p></a>
-            </div>
-            <div class="col-md-3 col-sm-6 col-12">
-                <a class="footer-link" href=""><p>Mentions Légales</p></a>
-            </div>
-        </div>
-    </div>
-    <div class="bottom-footer">
-        <div class="copyright d-flex">
-            <span>Propulsé par Leaffy</span>
-            <span class="bottom-copyright" data-customizer="copyright-credit">© Copyright 2019. Tous droits réservés.</span>
-        </div>
-    </div>
-</footer>
+
