@@ -28,7 +28,7 @@
       		<?php if($value["type"]=="password" ) unset($data[$key]); ?>
 
 
-          <label for="<?php echo $value["id"];?>" "><?php echo  $value["placeholder"];?></label>
+          <label for="<?php echo $value["id"];?>"> <?php echo $value["placeholder"];?> </label>
       		<input type="<?php echo $value["type"];?>"
     				name="<?php echo $key;?>"
     				placeholder="<?php echo  $value["placeholder"];?>"
@@ -36,7 +36,7 @@
     				id="<?php echo $value["id"];?>"
     				class="<?php echo $value["class"];?>"
     				value="<?php echo $data[$key]??''?>"
-          >
+            >
 
       	<?php endif;?>
 

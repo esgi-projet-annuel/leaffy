@@ -50,8 +50,7 @@ class Security {
 
 
     public function generateToken(){
-        $string = random_bytes(10).time().uniqid();
-        $token = sha1(substr($string, 4, 10)). "kfxcUYT87";
+        $token = md5(substr(uniqid().time(), 4, 10)."kfxcUYT87");
 
         //Chaîne aléatoire
         if($this->user){

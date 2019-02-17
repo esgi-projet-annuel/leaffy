@@ -8,12 +8,14 @@ class User extends BaseSQL {
     private $login;
     private $email;
     private $password;
-    private $profession = null ;
+    private $profession = null;
+    private $token = null;
 
     public function __construct(){
         parent::__construct();
     }
 
+    // SETTER
     public function setProfile(string $profile) {
         $this->profile = $profile;
     }
@@ -46,7 +48,7 @@ class User extends BaseSQL {
         $this->token = trim($token);
     }
 
-
+    // GETTER
     public function getProfile():string {
         return $this->profile;
     }
@@ -75,12 +77,16 @@ class User extends BaseSQL {
         return $this->profession;
     }
 
+    public function getToken():string {
+        return$this->token;
+    }
+
 
     public function getLoginForm(){
         return [
             "config"=>[
                 "method"=>"POST",
-                "action"=>"",
+                "action"=>Routing::getSlug("AuthenticationController","authenticateUser"),
                 "class"=>"",
                 "id"=>"",
                 "submit"=>"Se connecter",
@@ -105,7 +111,7 @@ class User extends BaseSQL {
         return [
             "config"=>[
                 "method"=>"POST",
-                "action"=>Routing::getSlug("User","createUser"),
+                "action"=>Routing::getSlug("User","addUser"),
                 "class"=>"",
                 "id"=>"",
                 "submit"=>"S'inscrire",
@@ -140,3 +146,4 @@ class User extends BaseSQL {
 
         ];
     }
+}

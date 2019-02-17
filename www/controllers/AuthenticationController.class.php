@@ -21,8 +21,7 @@ class AuthenticationController {
     }
 
     public function authenticateUser(){
-
-
+        print "coucou";
       $view = new View('userLogin', 'front');
 
     }

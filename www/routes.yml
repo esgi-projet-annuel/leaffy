@@ -49,6 +49,10 @@
   action: showOne
 
 #USER
+"/createUser":
+  controller: User
+  action: createUser
+
 "/addUser":
   controller: User
   action: addUser
