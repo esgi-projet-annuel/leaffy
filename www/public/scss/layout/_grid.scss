@@ -21,12 +21,6 @@ $columns: 12;
   width: 100%;
   margin: auto;
   overflow-x: hidden;
-  @include mobile {
-    width: $small-container-width;
-  }
-  @include tablet{
-    width: $medium-container-width;
-  }
   @include desktop{
     width: $large-container-width;
   }

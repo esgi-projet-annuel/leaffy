@@ -30,19 +30,19 @@
 
 .button{
   width: auto;
-  margin: 0 15px;
+  margin: 0 35px;
   display: inline-block;
-  padding: 20px 70px;
+  padding: 20px 30px;
   border-radius: 3px;
   font-weight: 700;
-  font-size: 16px;
+  font-size: 19px;
   color: $white;
   -webkit-transition: all .3s;
   -moz-transition: all .3s;
   -o-transition: all .3s;
   transition: all .3s;
   font-family: $fontLato;
-  max-width: 242px;
+  max-width: 200px;
   @include max-tablet {
     margin-top: 10px;
     margin-bottom: 10px;
@@ -61,7 +61,7 @@
 
 .button--two {
     background: $color3;
-    padding: 23px 70px;
+    padding: 23px;
     &:hover{
       background-color: $white;
       color: $color4;

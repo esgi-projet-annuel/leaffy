@@ -142,12 +142,6 @@ main section {
   width: 100%;
   margin: auto;
   overflow-x: hidden; }
-  @media (min-width: 768px) {
-    .container {
-      width: 750px; } }
-  @media (min-width: 992px) {
-    .container {
-      width: 970px; } }
   @media (min-width: 1200px) {
     .container {
       width: 1170px; } }
@@ -385,7 +379,7 @@ main section {
 
 #header-home .bottom-header {
   width: 100%;
-  padding-top: 200px;
+  padding-top: 100px;
   padding-bottom: 280px;
   text-align: center; }
   #header-home .bottom-header h1 {
@@ -394,6 +388,12 @@ main section {
     line-height: 84px;
     font-weight: 700;
     font-size: 80px; }
+  #header-home .bottom-header h2 {
+    color: #FFFFFF;
+    margin: 0 0 29px;
+    line-height: 84px;
+    font-weight: 700;
+    font-size: 48px; }
 
 #footer {
   width: 100%;
@@ -445,19 +445,19 @@ main section {
 
 .button {
   width: auto;
-  margin: 0 15px;
+  margin: 0 35px;
   display: inline-block;
-  padding: 20px 70px;
+  padding: 20px 30px;
   border-radius: 3px;
   font-weight: 700;
-  font-size: 16px;
+  font-size: 19px;
   color: #FFFFFF;
   -webkit-transition: all .3s;
   -moz-transition: all .3s;
   -o-transition: all .3s;
   transition: all .3s;
   font-family: "Lato", sans-serif;
-  max-width: 242px; }
+  max-width: 200px; }
   @media (max-width: 992px) {
     .button {
       margin-top: 10px;
@@ -472,7 +472,7 @@ main section {
 
 .button--two {
   background: #74b49b;
-  padding: 23px 70px; }
+  padding: 23px; }
   .button--two:hover {
     background-color: #FFFFFF;
     color: #5c8d89; }
@@ -575,7 +575,8 @@ main section {
   padding: 15px; }
 
 .section-description--header {
-  color: #FFFFFF; }
+  color: #FFFFFF;
+  margin-bottom: 50px; }
 
 .section-description--about {
   color: #FFFFFF; }
@@ -603,9 +604,9 @@ main section {
       height: 100%; } }
 
 #approach {
-  height: 80%;
-  width: 80%;
-  background-size: contain;
+  height: 100%;
+  width: 90%;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center; }
 

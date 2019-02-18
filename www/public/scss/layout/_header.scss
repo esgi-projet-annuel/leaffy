@@ -27,7 +27,7 @@
 
 #header-home .bottom-header {
     width: 100%;
-    padding-top: 200px;
+    padding-top: 100px;
     padding-bottom: 280px;
     text-align: center;
     & h1{
@@ -36,5 +36,12 @@
       line-height: 84px;
       font-weight: 700;
       font-size: 80px;
+    }
+    & h2{
+      color: $white;
+      margin: 0 0 29px;
+      line-height: 84px;
+      font-weight: 700;
+      font-size: 48px;
     }
 }

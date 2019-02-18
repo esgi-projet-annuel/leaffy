@@ -35,17 +35,17 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-8 col-12">
-                        <div class="section-description section-description--approach">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dictum odio eget nisi hendrerit, nec imperdiet mi consectetur. Curabitur in sem ut ex pulvinar laoreet. Phasellus ac luctus nisl. In id velit sit amet enim hendrerit luctus ut eget mi. Phasellus eget ullamcorper sapien. Nullam mi diam, aliquam et quam dignissim, congue sollicitudin ex. Fusce iaculis</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dictum odio eget nisi hendrerit, nec imperdiet mi consectetur. Curabitur in sem ut ex pulvinar laoreet. Phasellus ac luctus nisl. In id velit sit amet enim hendrerit luctus ut eget mi. Phasellus eget ullamcorper sapien. Nullam mi diam, aliquam et quam dignissim, congue sollicitudin ex. Fusce iaculis</p></br>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dictum odio eget nisi hendrerit, nec imperdiet mi consectetur. Curabitur in sem ut ex pulvinar laoreet. Phasellus ac luctus nisl. In id velit sit amet enim hendrerit luctus ut eget mi. Phasellus eget ullamcorper sapien. Nullam mi diam, aliquam et quam dignissim, congue sollicitudin ex. Fusce iaculis</p>
-                        </div>
-                    </div>
-                    <div class="col-sm-4 col-12">
-                        <div id="approach" class="" style="background-image: url(../../public/img/Approche.jpg);">
-                        </div>
-                    </div>
+                  <div class="col-sm-8 col-12">
+                      <div class="section-description section-description--approach">
+                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dictum odio eget nisi hendrerit, nec imperdiet mi consectetur. Curabitur in sem ut ex pulvinar laoreet. Phasellus ac luctus nisl. In id velit sit amet enim hendrerit luctus ut eget mi. Phasellus eget ullamcorper sapien. Nullam mi diam, aliquam et quam dignissim, congue sollicitudin ex. Fusce iaculis</p>
+                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dictum odio eget nisi hendrerit, nec imperdiet mi consectetur. Curabitur in sem ut ex pulvinar laoreet. Phasellus ac luctus nisl. In id velit sit amet enim hendrerit luctus ut eget mi. Phasellus eget ullamcorper sapien. Nullam mi diam, aliquam et quam dignissim, congue sollicitudin ex. Fusce iaculis</p></br>
+                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dictum odio eget nisi hendrerit, nec imperdiet mi consectetur. Curabitur in sem ut ex pulvinar laoreet. Phasellus ac luctus nisl. In id velit sit amet enim hendrerit luctus ut eget mi. Phasellus eget ullamcorper sapien. Nullam mi diam, aliquam et quam dignissim, congue sollicitudin ex. Fusce iaculis</p>
+                      </div>
+                  </div>
+                  <div class="col-sm-4 col-12">
+                      <div id="approach" class="" style="background-image: url(../../public/img/Approche.jpg);">
+                      </div>
+                  </div>
                 </div>
             </div>
         </div>
@@ -194,4 +194,3 @@
         </div>
     </section>
 </main>
-
