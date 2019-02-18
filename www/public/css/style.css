@@ -796,9 +796,11 @@ main section {
   flex-direction: column;
   justify-content: space-around;
   padding: 0;
-  margin: 0; }
+  margin: 0;
+  height: 90vh; }
 
 .list-item {
+  text-align: center;
   color: #5c8d89;
   display: flex;
   flex-direction: column;
@@ -845,6 +847,30 @@ main section {
   display: block;
   font-weight: 400;
   line-height: 25px; }
+
+.bloc-tab {
+  background-color: #fcfcfc;
+  margin-bottom: 15px; }
+  .bloc-tab h3 {
+    background-color: #d6d6d6;
+    color: #5c8d89;
+    padding: 10px;
+    font-size: 19px; }
+
+.acces-rapide {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around; }
+  .acces-rapide a {
+    text-decoration: none;
+    cursor: pointer;
+    color: #5c8d89;
+    padding-left: 25px;
+    font-size: 18px;
+    font-weight: bold; }
+    .acces-rapide a:hover {
+      text-decoration: underline; }
 
 .card-login {
   max-width: 25rem; }
