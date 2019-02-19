@@ -369,6 +369,9 @@ main section {
   width: 100%;
   background-color: #5c8d89; }
 
+.header-logo-img {
+  margin-left: 15px; }
+
 #menu-main {
   display: flex;
   flex-direction: row;
@@ -387,13 +390,28 @@ main section {
     margin: 0 0 29px;
     line-height: 84px;
     font-weight: 700;
-    font-size: 80px; }
+    font-size: 60px; }
   #header-home .bottom-header h2 {
     color: #FFFFFF;
     margin: 0 0 29px;
     line-height: 84px;
     font-weight: 700;
     font-size: 48px; }
+
+@media (max-width: 992px) {
+  .header-navigation {
+    display: none; } }
+
+.menu-responsive {
+  display: none; }
+
+@media (max-width: 992px) {
+  .menu-responsive {
+    display: flex;
+    justify-content: flex-end; } }
+
+.menu-responsive .burger-img {
+  margin-right: 15px; }
 
 #footer {
   width: 100%;

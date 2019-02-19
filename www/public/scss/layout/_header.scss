@@ -13,7 +13,9 @@
   width: 100%;
   background-color: $color4;
 }
-
+.header-logo-img{
+  margin-left: 15px;
+}
 
 #menu-main{
   display: flex;
@@ -35,7 +37,7 @@
       margin: 0 0 29px;
       line-height: 84px;
       font-weight: 700;
-      font-size: 80px;
+      font-size: 60px;
     }
     & h2{
       color: $white;
@@ -44,4 +46,25 @@
       font-weight: 700;
       font-size: 48px;
     }
+}
+
+.header-navigation{
+  @include max-tablet{
+    display: none;
+  }
+}
+.menu-responsive{
+  display: none;
+}
+.menu-responsive{
+  @include max-tablet{
+    display: flex;
+    justify-content: flex-end;
+  }
+  & img{
+
+  }
+  & .burger-img{
+    margin-right: 15px;
+  }
 }

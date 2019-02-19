@@ -18,6 +18,11 @@
                             <li id="menu-item-23" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-23"><a href="<?php echo Routing::getSlug("Authentication","viewUserLoginForm");?>"><img src="../../public/img/user.png" width="25"></a></li>
                         </ul>
                     </nav>
+                    <nav class="menu-responsive">
+                      <div class="burger-img">
+                        <img class="burger" src="../../public/img/burger-light.png" width="40">
+                      </div>
+                    </nav>
                 </div>
             </div>
         </div>
