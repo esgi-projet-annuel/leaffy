@@ -22,34 +22,35 @@
     <title>Leaffy Back Office </title>
 </head>
     <body>
-        <div id="header-back" class="header-back-page">
-            <div class="part-1-header-back">
-                <div class="logo-back">
-                    <a href="<?php echo Routing::getSlug("Admin","showHomeAdmin");?>">
-                        <img class="back-header-logo-img" src="../../public/img/logo_full.png" width="70">
-                    </a>
-                </div>
-                <a href="<?php echo Routing::getSlug("Static","showHomePage");?>">
-                    <div class="button button--three">
-                        Aller sur le site
-                    </div>
-                </a>
+        <header id="header-back" class="header-back-page">
+            <div class="row">
+              <div class="col-md-4 col-sm-12 part-1-header-back">
+                  <div class="logo-back">
+                      <a href="<?php echo Routing::getSlug("Admin","showHomeAdmin");?>">
+                          <img class="back-header-logo-img" src="../../public/img/logo_full.png" width="70">
+                      </a>
+                  </div>
+                  <a href="<?php echo Routing::getSlug("Static","showHomePage");?>">
+                      <div class="button button--three">
+                          Aller sur le site
+                      </div>
+                  </a>
+              </div>
+              <div class=" col-md-5 col-sm-12 part-2-header-back">
+                  <h1>Bienvenue dans l'administration de votre site</h1>
+              </div>
+              <div class="col-md-3 col-sm-12 part-3-header-back">
+              <span class="admin-name">
+                Bonjour, Admin Name
+              </span>
+                  <a href="#">
+                      <div class="button connexion-button">
+                          Déconnexion
+                      </div>
+                  </a>
+              </div>
             </div>
-            <div class="part-2-header-back">
-                <h1>Bienvenue dans l'administration de votre site</h1>
-            </div>
-            <div class="part-3-header-back">
-            <span class="admin-name">
-              Bonjour, Admin Name
-            </span>
-                <a href="#">
-                    <div class="button connexion-button">
-                        Déconnexion
-                    </div>
-                </a>
-            </div>
-
-        </div>
+        </header>
     <?php include $this->view;?>
     </body>
 </html>

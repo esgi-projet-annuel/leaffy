@@ -756,11 +756,26 @@ main section {
   min-height: 10vh;
   color: #FFFFFF;
   justify-content: space-between; }
+  #header-back .row {
+    margin: 0 auto; }
+  #header-back h1 {
+    text-align: center; }
 
 .part-1-header-back {
   display: flex;
   flex-direction: row;
-  align-items: center; }
+  align-items: center;
+  justify-content: space-between; }
+
+.part-2-header-back {
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+.part-3-header-back {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; }
 
 .logo-back {
   margin: 3px 28px; }
@@ -774,6 +789,9 @@ main section {
   width: 15%;
   background-color: #a7d7c5;
   border: 1px solid #5c8d89; }
+  @media (max-width: 992px) {
+    #adminbar {
+      display: none; } }
 
 #content-back {
   width: 100%; }
@@ -796,8 +814,7 @@ main section {
   flex-direction: column;
   justify-content: space-around;
   padding: 0;
-  margin: 0;
-  height: 90vh; }
+  margin: 0; }
 
 .list-item {
   text-align: center;

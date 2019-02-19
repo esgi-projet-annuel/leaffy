@@ -1,4 +1,4 @@
-<div id="header" class="header-front-page">
+<header id="header" class="header-front-page">
     <div class="top-header">
         <div class="container">
             <div class="row">
@@ -22,4 +22,4 @@
             </div>
         </div>
     </div>
-</div>
+</header>
