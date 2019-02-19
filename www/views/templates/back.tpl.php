@@ -27,7 +27,7 @@
               <div class="col-md-4 col-sm-12 part-1-header-back">
                   <div class="logo-back">
                       <a href="<?php echo Routing::getSlug("Admin","showHomeAdmin");?>">
-                          <img class="back-header-logo-img" src="../../public/img/logo_full.png" width="40">
+                          <img class="back-header-logo-img" src="../../public/img/logo_full.png" width="60">
                       </a>
                   </div>
                   <a href="<?php echo Routing::getSlug("Static","showHomePage");?>">
