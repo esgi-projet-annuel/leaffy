@@ -20,6 +20,10 @@
   controller: Authentication
   action: authenticateUser
 
+"/logout":
+  controller: Authentication
+  action: userLogout
+
 #SETTINGS
 "/admin/settings":
   controller: Settings

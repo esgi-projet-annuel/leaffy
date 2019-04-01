@@ -3,10 +3,10 @@
 class UserController {
 
 
-    public function login(){
-        $view = new View("userLogin", "front");
-
-    }
+//    public function login(){
+//        $view = new View("userLogin", "front");
+//
+//    }
 
     public function createUser(){
         $user = new User();
@@ -16,7 +16,6 @@ class UserController {
     }
 
     public function saveUser() {
-        print "user save ";
         $user = new User();
         $form = $user->getRegisterForm();
 
@@ -34,6 +33,7 @@ class UserController {
                 $user->setPassword($data["pwd"]);
                 $user->setProfile("CLIENT");
                 $user->save();
+                isset($_SESSION["email"])?$_SESSION["email"]:$user->email;
             }
         }
         $view = new View("createUser", "front");
@@ -45,6 +45,7 @@ class UserController {
     }
 
     public function deleteUser(){
+        // TODO confirmation de suppression
 
     }
 

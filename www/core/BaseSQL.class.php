@@ -2,7 +2,7 @@
 
 class BaseSQL{
 
-    protected $id = null;
+    public $id = null;
     private $table;
     private $pdo;
 
@@ -31,7 +31,7 @@ class BaseSQL{
 
         if($object){
             //modifier l'objet $this avec le contenu de la bdd
-            $query->setFetchMode( PDO::FETCH_INTO, $this);
+                $query->setFetchMode( PDO::FETCH_INTO, $this);
         }else {
             //on retourne un simple table php
             $query->setFetchMode(PDO::FETCH_ASSOC);
@@ -53,9 +53,6 @@ class BaseSQL{
             $value= $property->getValue($this);
             $propertiesValue[$key]= $value;
         }
-        echo"<pre>";
-        print_r($propertiesValue);
-        echo"</pre>";
 
         if($this->id == null){
             //INSERT

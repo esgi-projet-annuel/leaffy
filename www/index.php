@@ -4,10 +4,13 @@ require "conf.inc.php";
 function myAutoloader($class){
     $classPath = "core/".$class.".class.php";
     $classModel = "models/".$class.".class.php";
+    $classService = "services/".$class.".class.php";
     if(file_exists($classPath)){
         include $classPath;
     }else if(file_exists($classModel)){
         include $classModel;
+    }else if(file_exists($classService)) {
+        include $classService;
     }
 }
 

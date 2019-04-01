@@ -17,8 +17,6 @@
       method="<?php echo $config["config"]["method"];?>"
       class="<?php echo $config["config"]["class"];?>"
       id="<?php echo $config["config"]["id"];?>">
-
-
     <?php foreach ($config["data"] as $key => $value):?>
 
 		<div class="form-login">

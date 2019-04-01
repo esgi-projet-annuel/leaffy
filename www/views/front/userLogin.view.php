@@ -6,7 +6,7 @@
     <div class="card-body">
 
       <?php $this->addModal("form", $form);?>
-      
+        
       <div class="text-center">
         <a class="small" href="<?php echo Routing::getSlug("User","createUser");?>">Créer un compte</a>
         <a class="small" href="">Mot de passe oublié ?</a>

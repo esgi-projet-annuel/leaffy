@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-sm-4 col-8">
                     <a href="<?php echo Routing::getSlug("Static","showHomePage");?>">
-                        <img class="header-logo-img" src="../../public/img/logo_full.png" width="100">
+                        <img class="header-logo-img" src="../../../public/img/logo_full.png" width="100">
                     </a>
                 </div>
                 <div class="col-sm-8 col-4">
@@ -15,12 +15,18 @@
                             <li id="menu-item-19" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-19"><a href="">Mes Prestations</a></li>
                             <li id="menu-item-20" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-20"><a href="<?php echo Routing::getSlug("Static","showBlogPage");?>">Blog</a></li>
                             <li id="menu-item-22" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-22"><a href="<?php echo Routing::getSlug("Static","showContactPage");?>">Contact</a></li>
-                            <li id="menu-item-23" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-23"><a href="<?php echo Routing::getSlug("Authentication","viewUserLoginForm");?>"><img src="../../public/img/user.png" width="25"></a></li>
+                            <?php if (isset($_SESSION)):
+                                $user= new User();
+                                $user->findOneBy(['email'=>$_SESSION['email']], true); ?>
+                                <li id="menu-item-23" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-23"><a href="<?php echo Routing::getSlug("Authentication","userLogout");?>"><?php echo $user->firstname;?></a></li>
+                            <?php else:?>
+                            <li id="menu-item-23" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-23"><a href="<?php echo Routing::getSlug("Authentication","viewUserLoginForm");?>"><img src="../../../public/img/user.png" width="25"></a></li>
+                            <?php endif;?>
                         </ul>
                     </nav>
                     <nav class="menu-responsive">
                       <div class="burger-img">
-                        <img class="burger" src="../../public/img/burger-light.png" width="40">
+                        <img class="burger" src="../../../public/img/burger-light.png" width="40">
                       </div>
                     </nav>
                 </div>

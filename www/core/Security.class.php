@@ -50,9 +50,9 @@ class Security {
 
 
     public function generateToken(){
+        //Chaîne aléatoire
         $token = md5(substr(uniqid().time(), 4, 10)."kfxcUYT87");
 
-        //Chaîne aléatoire
         if($this->user){
             //insertion en bdd
             $this->user->setToken($token);
