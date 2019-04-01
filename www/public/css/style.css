@@ -413,6 +413,29 @@ main section {
 .menu-responsive .burger-img {
   margin-right: 15px; }
 
+.logo-back .burger-img {
+  display: none; }
+
+@media (max-width: 992px) {
+  .logo-back .burger-img {
+    display: flex;
+    justify-content: flex-end; } }
+
+@media (max-width: 992px) {
+  .back-header-logo-img {
+    display: none; } }
+
+.sticky {
+  background-color: rgba(0, 0, 0, 0.5); }
+
+.sticky .header-logo-img {
+  transform: scale(0.9, 0.9) translateY(-50%);
+  transform-origin: left top; }
+
+.sticky nav {
+  transform: scale(0.9, 0.9);
+  transform-origin: right center; }
+
 #footer {
   width: 100%;
   background-color: #5c8d89;

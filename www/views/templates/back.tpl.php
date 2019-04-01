@@ -29,7 +29,11 @@
                       <a href="<?php echo Routing::getSlug("Admin","showHomeAdmin");?>">
                           <img class="back-header-logo-img" src="../../public/img/logo_full.png" width="60">
                       </a>
+                      <div class="burger-img">
+                        <img class="burger" src="../../public/img/burger-light.png" width="40" height="40">
+                      </div>
                   </div>
+
                   <a href="<?php echo Routing::getSlug("Static","showHomePage");?>">
                       <div class="button button--three">
                           Aller sur le site
