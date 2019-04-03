@@ -39,7 +39,10 @@ class User extends BaseSQL {
         $this->profession = trim($profession);
     }
 
-    public function setToken(string $token) {
+    /**
+     * @param string || null $token
+     */
+    public function setToken($token) {
         $this->token = trim($token);
     }
 

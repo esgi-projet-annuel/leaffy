@@ -40,7 +40,11 @@ class AuthenticationController {
             if(empty($errors)){
                 $logged = AuthenticationService::instance()->login($data['email'], $data['pwd']);
                 if($logged) {
-                    $view = new View('home', 'front');
+                    if (AuthenticationService::instance()->isAdmin()){
+                        $view = new View('home', 'back');
+                    }else{
+                        $view = new View('home', 'front');
+                    }
                 } else {
                     $form['errors'][]= "Email ou mot de passe invalide ";
                     $view = new View('userLogin', 'front');

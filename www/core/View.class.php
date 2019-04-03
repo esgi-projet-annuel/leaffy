@@ -40,11 +40,20 @@ class View {
     }
 
     public function addMenu($menu , $template){
-        $menuPath= "views/".$template."/menus/".$menu.".menu.php";
+        $menuPath= "views/".$template."/menus/".$menu.".php";
         if( file_exists($menuPath)){
             include $menuPath;
         }else{
-            die("Attention le fichier modal n'existe pas ".$menuPath);
+            die("Attention le fichier menu n'existe pas ".$menuPath);
+        }
+    }
+
+    public function addHeader($header , $template){
+        $headerPath= "views/".$template."/header/".$header.".php";
+        if( file_exists($headerPath)){
+            include $headerPath;
+        }else{
+            die("Attention le fichier header n'existe pas ".$headerPath);
         }
     }
 

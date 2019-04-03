@@ -23,7 +23,6 @@ class Validator{
                     $this->errors[]=$info["error"];
                 }
 
-
                 //minlength  - method
                 if(isset($info["minlength"]) && !self::minLength($data[$name], $info["minlength"])){
                     $this->errors[]=$info["error"];

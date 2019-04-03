@@ -31,7 +31,7 @@ class BaseSQL{
 
         if($object){
             //modifier l'objet $this avec le contenu de la bdd
-                $query->setFetchMode( PDO::FETCH_INTO, $this);
+            $query->setFetchMode( PDO::FETCH_INTO, $this);
         }else {
             //on retourne un simple table php
             $query->setFetchMode(PDO::FETCH_ASSOC);

@@ -1,4 +1,4 @@
-<?php $this->addMenu("front", "front")?>
+<?php $this->addHeader("header", "front")?>
 
 <div class="container">
   <div class="card card-login card card-login mx-auto mt-5">

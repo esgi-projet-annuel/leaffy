@@ -1,4 +1,4 @@
-<?php $this->addMenu("homeHeader", "front")?>
+<?php $this->addHeader("homeHeader", "front")?>
 
 <main>
     <section id="about" class="front-page-section">

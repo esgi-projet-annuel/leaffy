@@ -1,5 +1,6 @@
 <?php
 require "conf.inc.php";
+session_start();
 
 function myAutoloader($class){
     $classPath = "core/".$class.".class.php";

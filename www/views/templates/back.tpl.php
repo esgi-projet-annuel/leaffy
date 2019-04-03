@@ -44,9 +44,13 @@
                   <h1>Bienvenue dans l'administration de votre site</h1>
               </div>
               <div class="col-md-3 col-sm-12 part-3-header-back">
-              <span class="admin-name">
-                Bonjour, Admin Name
-              </span>
+                  <?php if (isset($_SESSION['token'])):
+                      $user= new User();
+                      $user->findOneBy(['email'=>$_SESSION['email']], true); ?>
+                      <span class="admin-name">
+                Bonjour <?php echo $user->firstname;?>
+                      </span>
+                  <?php endif;?>
                   <a href="#">
                       <div class="button connexion-button">
                           Déconnexion
