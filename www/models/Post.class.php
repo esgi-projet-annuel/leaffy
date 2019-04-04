@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 class Post extends BaseSQL{
 
     private $id = null;

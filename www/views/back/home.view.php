@@ -1,6 +1,4 @@
-<div class="container-back">
 
-    <?php $this->addMenu("back", "back");?><!--    include menu-->
 
   <div id="content-back" class="">
     <div class="titre">

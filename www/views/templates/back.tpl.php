@@ -34,7 +34,7 @@
                       </div>
                   </div>
 
-                  <a href="<?php echo Routing::getSlug("Static","showHomePage");?>">
+                  <a href="<?php echo Routing::getSlug("Static","showFrontPage")."?page=1";?>">
                       <div class="button button--three">
                           Aller sur le site
                       </div>
@@ -46,19 +46,22 @@
               <div class="col-md-3 col-sm-12 part-3-header-back">
                   <?php if (isset($_SESSION['token'])):
                       $user= new User();
-                      $user->findOneBy(['email'=>$_SESSION['email']], true); ?>
+                      $user->findOneObjectBy(['email'=>$_SESSION['email']], true); ?>
                       <span class="admin-name">
                 Bonjour <?php echo $user->firstname;?>
                       </span>
                   <?php endif;?>
                   <a href="#">
                       <div class="button connexion-button">
-                          Déconnexion
+                          <a href="<?php echo Routing::getSlug("Authentication","userLogout");?>">Déconnexion</a>
                       </div>
                   </a>
               </div>
             </div>
         </header>
+
+        <div class="container-back">
+        <?php $this->addMenu("back", "back");?><!--    include menu-->
     <?php include $this->view;?>
     </body>
 </html>

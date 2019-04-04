@@ -1,8 +1,10 @@
 <?php
 
+declare(strict_types = 1);
+
 class AuthenticationController {
 
-    public function viewAdminLoginForm(){
+    public function viewAdminLoginForm() :void{
         $logged = new View('adminLogin', 'back');
         if($logged) {
             $view = new View('home', 'backb');
@@ -11,7 +13,7 @@ class AuthenticationController {
         }
     }
 
-    public function authenticateAdmin(){
+    public function authenticateAdmin() :void{
         //TODO créer loginAdmin Method
         $logged = AuthenticationService::instance()->loginAdmin($_POST['email'], $_POST['pwd']);
 //        $security = new Security($_POST['email']);
@@ -19,7 +21,7 @@ class AuthenticationController {
 
     }
 
-    public function viewUserLoginForm(){
+    public function viewUserLoginForm() :void{
       $user = new User();
       $form = $user->getLoginForm();
 
@@ -27,7 +29,7 @@ class AuthenticationController {
       $view->assign("form", $form);
     }
 
-    public function authenticateUser(){
+    public function authenticateUser() :void{
         $user= new User();
         $form = $user->getLoginForm();
         $method = strtoupper($form["config"]["method"]);
@@ -56,7 +58,7 @@ class AuthenticationController {
         }
     }
 
-    public function userLogout(){
-        AuthenticationService::instance()->logout('http://localhost:88/');
+    public function userLogout() :void{
+        AuthenticationService::instance()->logout('http://localhost:88/?page=1');
     }
 }

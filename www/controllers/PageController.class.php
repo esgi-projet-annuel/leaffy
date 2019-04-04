@@ -1,8 +1,10 @@
 <?php
 
+declare(strict_types = 1);
+
 class PageController {
 
-    public function showAll(){
+    public function showAll():void{
         $view = new View("pages", "back");
     }
 

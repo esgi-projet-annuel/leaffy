@@ -1,25 +1,34 @@
 <?php
 
+declare(strict_types = 1);
+
 class Page extends BaseSQL {
 
-    private $id = null;
-    private $title;
-    private $description;
+    public $title;
+    public $description;
 
     public function __construct(){
         parent::__construct();
     }
 
-    public function setId(int $id){
-        $this->id = $id;
-    }
-
-    public function setTitle(string $title){
+    public function setTitle(string $title):void{
         $this->title = $title;
     }
 
-    public function setDescription(string $description){
+    public function setDescription(string $description):void{
         $this->description = $description;
     }
+
+    public function getTitle():string
+    {
+        return $this->title;
+    }
+
+    public function getDescription():string
+    {
+        return $this->description;
+    }
+
+
 
 }

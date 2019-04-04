@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types = 1);
+
 class ArticleController {
 
-    public function showAll(){
+    public function showAll() :void{
         $view = new View("articles", "back");
     }
 
-    public function showOne(){
+    public function showOne():void{
         $view = new View("setArticle", "back");
     }
 

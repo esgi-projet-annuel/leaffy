@@ -64,16 +64,20 @@
 #STATIC
 "/":
   controller: Static
-  action: showHomePage
+  action: showFrontPage
 
 "/about":
   controller: Static
-  action: showAboutPage
+  action: showFrontPage
 
 "/contact":
   controller: Static
-  action: showContactPage
+  action: showFrontPage
 
 "/blog":
   controller: Static
-  action: showBlogPage
+  action: showFrontPage
+
+"/page":
+  controller: Static
+  action: showBackPage

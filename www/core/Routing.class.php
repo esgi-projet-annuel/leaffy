@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 class Routing {
 
     public static $routeFile = "routes.yml";

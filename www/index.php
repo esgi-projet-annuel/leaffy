@@ -6,12 +6,15 @@ function myAutoloader($class){
     $classPath = "core/".$class.".class.php";
     $classModel = "models/".$class.".class.php";
     $classService = "services/".$class.".class.php";
+    $classController = "controllers/".$class.".class.php";
     if(file_exists($classPath)){
         include $classPath;
     }else if(file_exists($classModel)){
         include $classModel;
     }else if(file_exists($classService)) {
         include $classService;
+    }else if(file_exists($classController)) {
+        include $classController;
     }
 }
 
@@ -19,7 +22,7 @@ spl_autoload_register("myAutoloader");
 
 $slug = $_SERVER["REQUEST_URI"];
 
-//pour palier les paramètres GET
+// We dont want GET parameters
 $slugExploded = explode("?", $slug);
 $slug = $slugExploded[0];
 

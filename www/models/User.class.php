@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 class User extends BaseSQL {
 
     public $profile;
@@ -39,11 +41,8 @@ class User extends BaseSQL {
         $this->profession = trim($profession);
     }
 
-    /**
-     * @param string || null $token
-     */
-    public function setToken($token) {
-        $this->token = trim($token);
+    public function setToken(?string $token) {
+        $this->token = ($token==null)?null:trim($token);
     }
 
     // GETTER
@@ -67,11 +66,11 @@ class User extends BaseSQL {
         return $this->password;
     }
 
-    public function getProfession():string{
+    public function getProfession():?string{
         return $this->profession;
     }
 
-    public function getToken():string {
+    public function getToken():?string {
         return$this->token;
     }
 

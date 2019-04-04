@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 class BaseSQL{
 
     public $id = null;
@@ -16,31 +18,45 @@ class BaseSQL{
         $this->table = get_called_class();
     }
 
-    public function setId(int $id) {
+    public function setId(int $id) :void{
         $this->id = $id;
     }
 
-    public function findOneBy(array $findByArray, $object= false){
+    private function prepareQuery(array $findBy):PDOStatement{
         $sqlWhere = [];
-        foreach ($findByArray as $key => $value) {
+        foreach ($findBy as $key => $value) {
             $sqlWhere[]=$key."=:".$key;
         }
-
         $sql = "SELECT * FROM ".$this->table." WHERE ".implode(" AND ", $sqlWhere).";";
         $query = $this->pdo->prepare($sql);
+        return $query;
+    }
 
-        if($object){
-            //modifier l'objet $this avec le contenu de la bdd
-            $query->setFetchMode( PDO::FETCH_INTO, $this);
-        }else {
-            //on retourne un simple table php
-            $query->setFetchMode(PDO::FETCH_ASSOC);
-        }
-        $query->execute($findByArray);
+    public function findOneObjectBy(array $findBy):?object {
+        $query= $this->prepareQuery($findBy);
+        //modifier l'objet $this avec le contenu de la bdd
+        $query->setFetchMode( PDO::FETCH_INTO, $this);
+
+        $query->execute($findBy);
         return $query->fetch();
     }
 
-    public function save(){
+    public function findOneArrayBy(array $findBy):?array {
+        $query= $this->prepareQuery($findBy);
+        //on retourne un simple table php
+        $query->setFetchMode(PDO::FETCH_ASSOC);
+
+        $query->execute($findBy);
+        return $query->fetch();
+    }
+
+    public function findAllBy(array $findBy):array {
+        $query= $this->prepareQuery($findBy);
+        $query->execute($findBy);
+        return $query->fetchAll(PDO::FETCH_CLASS, $this->table);
+    }
+
+    public function save() :void{
         $reflect = new ReflectionClass($this);
         $properties = $reflect->getProperties();
 

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 class DataAccess {
 
     private static $instance = null;

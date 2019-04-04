@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 class AuthenticationService
 {
 
@@ -35,7 +37,7 @@ class AuthenticationService
     public function login(string $email, string $pwd){
         if(!is_null($email) || !is_null($pwd)){
             $this->user = new User();
-            $this->user->findOneBy(['email'=>$email], true);
+            $this->user->findOneObjectBy(['email'=>$email]);
             //checkPassword
             $verified = password_verify( $pwd, $this->user->password);
             if ($verified){
@@ -53,7 +55,7 @@ class AuthenticationService
 
     public function logout($redirect = null){
         $this->user= new User();
-        $this->user->findOneBy(['email'=>$_SESSION['email']]);
+        $this->user->findOneObjectBy(['email'=>$_SESSION['email']]);
         $this->clearToken();
         unset($_SESSION['token']);
         if($redirect) header("Location: ".$redirect);

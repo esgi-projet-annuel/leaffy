@@ -1,20 +1,16 @@
 <?php
 
+declare(strict_types = 1);
+
 class StaticController {
 
-    public function showHomePage(){
-        $view = new View("home", "front");
+    public function showFrontPage():void {
+        $page = new Page();
+        $page->findOneObjectBy(['id'=>$_GET['page']]);
+        $view = new View($page->getTitle(), "front");
     }
 
-    public function showAboutPage(){
-        $view = new View("about", "front");
-    }
-
-    public function showContactPage(){
-        $view = new View("contact", "front");
-    }
-
-    public function showBlogPage(){
-        $view = new View("blog", "front");
+    public function showBackPage():void {
+        $view = new View($_GET['page'], "back");
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 class UserController {
 
 
@@ -8,14 +10,14 @@ class UserController {
 //
 //    }
 
-    public function createUser(){
+    public function createUser():void{
         $user = new User();
         $form = $user->getRegisterForm();
         $view = new View("createUser", "front");
         $view->assign("form", $form);
     }
 
-    public function saveUser() {
+    public function saveUser():void{
         $user = new User();
         $form = $user->getRegisterForm();
 
@@ -40,11 +42,11 @@ class UserController {
         $view->assign("form", $form);
     }
 
-    public function editUser(){
+    public function editUser():void{
 
     }
 
-    public function deleteUser(){
+    public function deleteUser():void{
         // TODO confirmation de suppression
 
     }

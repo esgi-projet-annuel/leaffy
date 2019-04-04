@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 class Security {
 
     private $user;
@@ -11,7 +13,7 @@ class Security {
         $this->user= new User();
         if( !is_null($email)){
             //Vérification de l'email en bdd
-            $this->user->findOneBy(['email'=>$email], true);
+            $this->user->findOneObjectBy(['email'=>$email], true);
         }
     }
 
