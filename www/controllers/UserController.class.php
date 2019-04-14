@@ -28,16 +28,31 @@ class UserController {
         if( $_SERVER['REQUEST_METHOD']==$method && !empty($data) ){
             $validator = new Validator($form,$data);
             $form["errors"] = $validator->errors;
-            if(empty($errors)){
-                $user->setFirstname($data["firstname"]);
-                $user->setLastname($data["lastname"]);
-                $user->setEmail($data["email"]);
-                $user->setPassword($data["pwd"]);
-                $user->setProfile("CLIENT");
-                $user->save();
-                isset($_SESSION["email"])?$_SESSION["email"]:$user->email;
+
+            //Est ce que l'email existe deja en BDD
+            $checkEmail= $user->findOneArrayBy(['email'=>$data['email']]);
+            if (!empty($checkEmail)){
+                $form["errors"][] = "L'adresse email renseignée existe déjà";
+            }else{
+                if(empty($form["errors"])){
+                    $user->setProfile("CLIENT");
+                    $user->setActive("0");
+                    $user->setFirstname($data["firstname"]);
+                    $user->setLastname($data["lastname"]);
+                    $user->setEmail($data["email"]);
+                    $user->setPassword($data["pwd"]);
+                    //La method save s'execute dans generateToken()
+                    AuthenticationService::instance()->generateToken($user);
+                    isset($_SESSION["email"])?$_SESSION["email"]:$user->email;
+
+                    //Envoie du mail de confirmation
+                    MailConfirmationService::instance()->sendConfirmationMail($user->email, $user->token);
+
+                    $form["errors"][] =" Inscription validée! Un email de confirmation vient de vous etre envoyé !! ";
+                }
             }
         }
+
         $view = new View("createUser", "front");
         $view->assign("form", $form);
     }

@@ -5,9 +5,11 @@ declare(strict_types = 1);
 class AuthenticationController {
 
     public function viewAdminLoginForm() :void{
+
+        //TODO what is that ???????????
         $logged = new View('adminLogin', 'back');
         if($logged) {
-            $view = new View('home', 'backb');
+            $view = new View('home', 'back');
         } else {
             $view = new View('userLogin', 'front');
         }
@@ -40,9 +42,9 @@ class AuthenticationController {
             $form["errors"] = $validator->errors;
 
             if(empty($errors)){
-                $logged = AuthenticationService::instance()->login($data['email'], $data['pwd']);
+                $logged = AuthenticationService::instance()->login($user, $data['email'], $data['pwd']);
                 if($logged) {
-                    if (AuthenticationService::instance()->isAdmin()){
+                    if (AuthenticationService::instance()->isAdmin($user)){
                         $view = new View('home', 'back');
                     }else{
                         $view = new View('home', 'front');
@@ -52,13 +54,12 @@ class AuthenticationController {
                     $view = new View('userLogin', 'front');
                     $view->assign("form", $form);
                 }
-
             }
-
         }
     }
 
     public function userLogout() :void{
-        AuthenticationService::instance()->logout('http://localhost:88/?page=1');
+        $user= new User();
+        AuthenticationService::instance()->logout($user,'http://localhost:88/?page=1');
     }
 }

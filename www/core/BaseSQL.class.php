@@ -38,7 +38,8 @@ class BaseSQL{
         $query->setFetchMode( PDO::FETCH_INTO, $this);
 
         $query->execute($findBy);
-        return $query->fetch();
+        $queryResult = $query->fetch();
+        return $queryResult;
     }
 
     public function findOneArrayBy(array $findBy):?array {
@@ -47,7 +48,8 @@ class BaseSQL{
         $query->setFetchMode(PDO::FETCH_ASSOC);
 
         $query->execute($findBy);
-        return $query->fetch();
+        $queryResult =$query->fetch();
+        return ($queryResult == false)?null:$queryResult;
     }
 
     public function findAllBy(array $findBy):array {
@@ -78,6 +80,10 @@ class BaseSQL{
                 implode(",:", array_keys($propertiesValue) ) .")";
 
             $query = $this->pdo->prepare($sql);
+            echo "<pre>";
+            var_dump($query);
+            var_dump($propertiesValue);
+            echo "</pre>";
             $query->execute( $propertiesValue );
 
         } else {

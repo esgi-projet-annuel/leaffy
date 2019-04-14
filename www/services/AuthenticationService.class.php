@@ -6,10 +6,6 @@ class AuthenticationService
 {
 
     private static $instance;
-    /**
-     * @var User
-     */
-    protected $user;
 
     public static function instance(){
         if(self::$instance == null) {
@@ -30,19 +26,19 @@ class AuthenticationService
         return false;
     }
 
-    public function isAdmin(){
-        return ($this->user->getProfile() == "ADMIN")?true:false;
+    public function isAdmin(User $user){
+        return ($user->getProfile() == "ADMIN")?true:false;
     }
 
-    public function login(string $email, string $pwd){
+    public function login(User $user, string $email, string $pwd){
         if(!is_null($email) || !is_null($pwd)){
-            $this->user = new User();
-            $this->user->findOneObjectBy(['email'=>$email]);
+            $user->findOneObjectBy(['email'=>$email]);
             //checkPassword
-            $verified = password_verify( $pwd, $this->user->password);
-            if ($verified){
-                $token= $this->generateToken();
-                $_SESSION= ['email' => $this->user->email, 'token'=> $token];
+            $verified = password_verify( $pwd, $user->password);
+            $isActive = ($user->active == 1)?true:false;
+            if ($verified && $isActive){
+                $token= $this->generateToken($user);
+                $_SESSION= ['email' => $user->email, 'token'=> $token];
                 return true;
             }else{
                 return false;
@@ -53,29 +49,28 @@ class AuthenticationService
 
     }
 
-    public function logout($redirect = null){
-        $this->user= new User();
-        $this->user->findOneObjectBy(['email'=>$_SESSION['email']]);
-        $this->clearToken();
+    public function logout(User $user, $redirect = null){
+        $user->findOneObjectBy(['email'=>$_SESSION['email']]);
+        $this->clearToken($user);
         unset($_SESSION['token']);
         if($redirect) header("Location: ".$redirect);
     }
 
-    public function generateToken(){
+    public function generateToken(User $user){
         //Chaîne aléatoire
         $token = md5(substr(uniqid().time(), 4, 10)."kfxcUYT87");
 
-        if($this->user){
+        if($user){
             //insertion en bdd
-            $this->user->setToken($token);
-            $this->user->save();
+            $user->setToken($token);
+            $user->save();
         }
         return $token;
     }
 
-    public function clearToken(){
-        $this->user->setToken(null);
-        $this->user->save();
+    public function clearToken(User $user){
+        $user->setToken(null);
+        $user->save();
     }
 
 

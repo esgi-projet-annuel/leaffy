@@ -5,6 +5,7 @@ declare(strict_types = 1);
 class User extends BaseSQL {
 
     public $profile;
+    public $active;
     public $firstname;
     public $lastname;
     public $email;
@@ -19,6 +20,10 @@ class User extends BaseSQL {
     // SETTER
     public function setProfile(string $profile) {
         $this->profile = $profile;
+    }
+
+    public function setActive(string $active) {
+        $this->active = $active;
     }
 
     public function setFirstname(string $firstname) {
@@ -71,7 +76,7 @@ class User extends BaseSQL {
     }
 
     public function getToken():?string {
-        return$this->token;
+        return $this->token;
     }
 
 
