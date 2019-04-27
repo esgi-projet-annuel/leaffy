@@ -2,6 +2,9 @@
 /************** CHAR.JS ADMIN ***************/
 /*******************************************/
 $(function(){
+
+
+  setNavigation();
   /*******************************************/
   /************** CHAR LINE ***************/
   /*******************************************/
@@ -144,19 +147,40 @@ $(function(){
           }
       },
       responsive: true
-  }
-});
-$(window).scroll(function(){
-  var window_position = $(window).scrollTop();
-  if(window_position > 0){
-      $('.top-header').addClass('sticky');
-  }else{
-      $('.top-header').removeClass('sticky');
-  }
-  var hauteurWindow = $(window).height();
-  console.log(hauteurWindow);
-});
+    }
+  });
 
 
 
-});
+  /*******************************************/
+  /************** Sticky Menu ***************/
+  /*******************************************/
+  $(window).scroll(function(){
+    var window_position = $(window).scrollTop();
+    if(window_position > 0){
+        $('.top-header').addClass('sticky');
+    }else{
+        $('.top-header').removeClass('sticky');
+    }
+    var hauteurWindow = $(window).height();
+    console.log(hauteurWindow);
+  });
+
+}); // ready
+/*******************************************/
+/************** Active Menu ***************/
+/*******************************************/
+function setNavigation() {
+    var path = window.location.pathname;
+    path = path.replace(/\/$/, "");
+    path = decodeURIComponent(path);
+
+    $(".link").each(function () {
+        var href = $(this).attr('href');
+        if (path.substring(0, href.length) === href) {
+            $(this).closest('li').addClass('active');
+        }else{
+          $(this).closest('li').removeClass('active');
+        }
+    });
+}

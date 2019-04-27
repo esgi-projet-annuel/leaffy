@@ -144,4 +144,53 @@ class User extends BaseSQL {
 
         ];
     }
+
+    public function getSettingForm(){
+        return [
+            "config"=>[
+              "method"=>"POST",
+              "action"=> /*ADD ACTION SLUG ?*/"",
+              "class"=>"",
+              "id"=>"",
+              "submit"=>"Enregistrer"],
+
+
+            "data"=>[
+              "firstname"=>[
+                "type"=>"text",
+                "placeholder"=>"Votre Prénom",
+                "required"=>true,
+                "class"=>"form-control-login",
+                "id"=>"firstname",
+                "minlength"=>2,
+                "maxlength"=>50,
+                "error"=>"Le prénom doit faire entre 2 et 50 caractères"
+              ],
+
+              "lastname"=>["type"=>"text","placeholder"=>"Votre nom", "required"=>true, "class"=>"form-control-back", "id"=>"lastname","minlength"=>2,"maxlength"=>100,
+                "error"=>"Le nom doit faire entre 2 et 100 caractères"],
+
+              "number"=>["type"=>"text","placeholder"=>"Votre numéro", "required"=>false, "class"=>"form-control-back", "id"=>"number","minlength"=>2,"maxlength"=>100,
+                "error"=>"Le numero n'est pas valide"],
+
+              "email"=>["type"=>"email","placeholder"=>"Votre email", "required"=>true, "class"=>"form-control-back", "id"=>"email",
+                  "error"=>"L'email n'est pas valide"],
+
+              "adress"=>["type"=>"text","placeholder"=>"Votre Adresse", "required"=>false, "class"=>"form-control-back", "id"=>"adress","minlength"=>2,"maxlength"=>100,
+                "error"=>"L'adresse n'est pas valide"],
+
+              "job"=>["type"=>"text","placeholder"=>"Votre Profession", "required"=>false, "class"=>"form-control-back", "id"=>"job","minlength"=>2,"maxlength"=>100,
+                "error"=>"L'adresse n'est pas valide"],
+
+              "apropos"=>["type"=>"textarea","placeholder"=>"Texte à propos", "required"=>false, "class"=>"form-control-back", "id"=>"job","minlength"=>0,"maxlength"=>500,
+                "error"=>"L'image n'est pas valide"],
+
+              "bannerImg"=>["type"=>"file","placeholder"=>"Image principale", "required"=>false, "class"=>"form-control-back", "bannerImg"=>"job","minlength"=>0,"maxlength"=>500,
+                "error"=>"Le nom doit faire moins de 500 caractères"],
+              "aProposImg"=>["type"=>"file","placeholder"=>"Image à propos", "required"=>false, "class"=>"form-control-back", "bannerImg"=>"job","minlength"=>0,"maxlength"=>500,
+                "error"=>"L'image n'est pas valide"],
+            ]
+
+        ];
+    }
 }
