@@ -104,16 +104,14 @@
   }
 }
 
-.submit-button{
-  width: auto;
-  height: 44px;
-  padding: 0 30px;
-  border: 1px solid #5c8d89;
+.button-back{
+  width: 105px;
+  line-height: 40px;
+
   border-radius: 5px;
   display: inline-block;
   font-weight: 700;
-  color: #fff;
-  background-color: $color4;
+
   -webkit-transition: all .3s;
   -moz-transition: all .3s;
   -o-transition: all .3s;
@@ -123,8 +121,42 @@
   font-size: 16px;
   text-transform: initial;
   cursor: pointer;
+  text-align: center;
+}
+
+.button-back--add{
+  border: 1px solid $color4;
+  color: #fff;
+  background-color: $color4;
   &:hover{
     background-color: $white;
     color: $color4;
+  }
+}
+.button-back--display{
+  border: 1px solid $color3;
+  color: #fff;
+  background-color: $color3;
+  &:hover{
+    background-color: $white;
+    color: $color3;
+  }
+}
+.button-back--modify{
+  border: 1px solid #7486B4;
+  color: #fff;
+  background-color: #7486B4;
+  &:hover{
+    background-color: $white;
+    color: #7486B4;
+  }
+}
+.button-back--remove{
+  border: 1px solid #B47474;
+  color: #fff;
+  background-color: #B47474;
+  &:hover{
+    background-color: $white;
+    color: #B47474;
   }
 }

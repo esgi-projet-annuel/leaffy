@@ -106,13 +106,18 @@ class User extends BaseSQL {
     }
 
     public function getRegisterForm(){
+
         return [
             "config"=>[
                 "method"=>"POST",
                 "action"=>Routing::getSlug("User","saveUser"),
                 "class"=>"",
                 "id"=>"",
-                "submit"=>"S'inscrire",
+                //if (update){
+                  "submit"=>"Mise a jour",
+                //}else{
+
+                //}
                 "reset"=>"Annuler" ],
 
 

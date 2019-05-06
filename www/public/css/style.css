@@ -552,16 +552,12 @@ main section {
     background-color: #74b49b;
     color: #f9f8eb; }
 
-.submit-button {
-  width: auto;
-  height: 44px;
-  padding: 0 30px;
-  border: 1px solid #5c8d89;
+.button-back {
+  width: 105px;
+  line-height: 40px;
   border-radius: 5px;
   display: inline-block;
   font-weight: 700;
-  color: #fff;
-  background-color: #5c8d89;
   -webkit-transition: all .3s;
   -moz-transition: all .3s;
   -o-transition: all .3s;
@@ -570,10 +566,40 @@ main section {
   font-family: "Lato", sans-serif;
   font-size: 16px;
   text-transform: initial;
-  cursor: pointer; }
-  .submit-button:hover {
+  cursor: pointer;
+  text-align: center; }
+
+.button-back--add {
+  border: 1px solid #5c8d89;
+  color: #fff;
+  background-color: #5c8d89; }
+  .button-back--add:hover {
     background-color: #FFFFFF;
     color: #5c8d89; }
+
+.button-back--display {
+  border: 1px solid #74b49b;
+  color: #fff;
+  background-color: #74b49b; }
+  .button-back--display:hover {
+    background-color: #FFFFFF;
+    color: #74b49b; }
+
+.button-back--modify {
+  border: 1px solid #7486B4;
+  color: #fff;
+  background-color: #7486B4; }
+  .button-back--modify:hover {
+    background-color: #FFFFFF;
+    color: #7486B4; }
+
+.button-back--remove {
+  border: 1px solid #B47474;
+  color: #fff;
+  background-color: #B47474; }
+  .button-back--remove:hover {
+    background-color: #FFFFFF;
+    color: #B47474; }
 
 .image-banner {
   width: 100%;
@@ -883,10 +909,14 @@ main section {
   font-weight: bold;
   font-size: 15px; }
 
-#content-back .titre h2 {
-  text-align: center;
+#content-back .titre {
   color: #74b49b;
-  margin-top: 20px; }
+  margin-top: 20px;
+  margin-left: 60px;
+  display: flex;
+  align-items: center; }
+  #content-back .titre h2 {
+    margin-right: 20px; }
 
 .fields-input-back {
   display: flex;
@@ -960,6 +990,20 @@ main section {
 
 .form-Setting {
   margin-top: 20px; }
+
+.table-head {
+  background-color: rgba(0, 0, 0, 0.1);
+  height: 50px; }
+
+.section-table {
+  margin: 15px; }
+
+.table {
+  border-collapse: collapse; }
+  .table th {
+    padding-left: 15px; }
+  .table td {
+    padding-left: 15px; }
 
 .card-login {
   max-width: 25rem; }

@@ -38,5 +38,9 @@
             <img src="../../../public/img/rating.png" width="40">
             <div>Témoignages</div>
         </li>
+        <li class="list-item">
+            <img src="../../../public/img/image-darken.png" width="40">
+            <div>Médias</div>
+        </li>
     </ul>
 </div>

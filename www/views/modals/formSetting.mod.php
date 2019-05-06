@@ -60,6 +60,6 @@
       <?php endforeach;?>
 
     <div class="d-flex form-Setting">
-      <input type="submit" class="form-control submit-button" value="<?php echo $config["config"]["submit"];?>">
+      <input type="submit" class="form-control button-back button-back--add" value="<?php echo $config["config"]["submit"];?>">
     </div>
   </form>

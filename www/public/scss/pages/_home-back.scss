@@ -116,10 +116,15 @@
 
 
 
-#content-back .titre h2{
-  text-align: center;
+#content-back .titre{
   color: $color3;
   margin-top: 20px;
+  margin-left: 60px;
+  display: flex;
+  align-items: center;
+  & h2{
+    margin-right: 20px;
+  }
 }
 
 
@@ -209,4 +214,23 @@
 
 .form-Setting{
   margin-top : 20px;
+}
+
+
+.table-head{
+  background-color: rgba( 0, 0, 0, .1 );
+  height: 50px;
+
+}
+.section-table{
+  margin: 15px;
+}
+.table{
+  border-collapse:collapse;
+  & th{
+    padding-left: 15px;
+  }
+  & td{
+    padding-left: 15px;
+  }
 }
