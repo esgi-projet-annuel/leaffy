@@ -10,7 +10,6 @@
   }
 }
 
-
 .button--alert{
   background-color: $red;
   color: $white;
@@ -18,7 +17,6 @@
     background-color: lighten($red, 10%);
   }
 }
-
 
 .button--sucess{
   background-color: $green;
@@ -77,7 +75,6 @@
   }
 }
 
-
 .post-button {
   line-height: 26px;
   padding: 0 30px;
@@ -90,6 +87,7 @@
   transition: all .3s;
   margin-left: 10px;
 }
+
 .connexion-button{
   line-height: 26px;
   padding: 0 30px;
@@ -133,6 +131,7 @@
     color: $color4;
   }
 }
+
 .button-back--display{
   border: 1px solid $color3;
   color: #fff;
@@ -142,6 +141,7 @@
     color: $color3;
   }
 }
+
 .button-back--modify{
   border: 1px solid #7486B4;
   color: #fff;
@@ -151,6 +151,7 @@
     color: #7486B4;
   }
 }
+
 .button-back--remove{
   border: 1px solid #B47474;
   color: #fff;

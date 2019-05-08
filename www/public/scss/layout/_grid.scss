@@ -75,7 +75,6 @@ $columns: 12;
   }
 }
 
-
 .d-flex{
   display: flex;
 }
@@ -95,4 +94,37 @@ $columns: 12;
 
 .mt-20{
   margin-top: 20px;
+}
+
+.ml-auto, .mx-auto {
+    margin-left: auto!important;
+}
+.mr-auto, .mx-auto {
+    margin-right: auto!important;
+}
+.mt-5, .my-5 {
+    margin-top: 3rem!important;
+}
+
+.part-1-header-back{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.part-2-header-back{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.part-3-header-back{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.container-back{
+  display: flex;
+  flex-direction: row;
+  min-height: 90vh;
 }

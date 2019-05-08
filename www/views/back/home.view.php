@@ -36,8 +36,8 @@
               <h3>Accès Rapide</h3>
             </div>
             <div class="acces-rapide">
-              <a href="#">- Ecrire un article</a>
-              <a href="#">- Ajouter une page</a>
+              <a href="<?php echo Routing::getSlug("Article","showOne");?>">- Ecrire un article</a>
+              <a href="<?php echo Routing::getSlug("Page","showOne");?>">- Ajouter une page</a>
               <a href="#">- Gérer les utilisateurs</a>
               <a href="#">- Aller sur le site</a>
             </div>
@@ -47,4 +47,3 @@
     </div>
   </div>
 </div>
-

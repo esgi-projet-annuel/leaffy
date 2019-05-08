@@ -106,6 +106,7 @@ class User extends BaseSQL {
     }
 
     public function getRegisterForm(){
+        //TODO condition pour les boutons Mise a jour != enregistrer
 
         return [
             "config"=>[
@@ -113,10 +114,11 @@ class User extends BaseSQL {
                 "action"=>Routing::getSlug("User","saveUser"),
                 "class"=>"",
                 "id"=>"",
-                //if (update){
-                  "submit"=>"Mise a jour",
-                //}else{
+                //if ($update){
+                //"submit" => "Mise à jour",
 
+                //}else{
+                "submit"=>"Enregistrer",
                 //}
                 "reset"=>"Annuler" ],
 

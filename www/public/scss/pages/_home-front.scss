@@ -2,7 +2,6 @@
 // This file contains styles that are specific to the home page.
 // -----------------------------------------------------------------------------
 
-
 #avatar{
   height: 80%;
   width: 80%;
@@ -14,7 +13,6 @@
   @include max-mobile{
     height: 100%;
   }
-
 }
 
 #approach{
@@ -74,7 +72,6 @@
     color: #8c9597;
     font-size: 16px;
 }
-
 
 .testimonial-image{
   text-align: center;
@@ -143,7 +140,6 @@
     width: 100%;
     text-align: left;
 }
-
 
 #contact-us .section-content .form .form-textarea {
     width: 100%;

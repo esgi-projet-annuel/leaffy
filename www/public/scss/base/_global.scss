@@ -7,6 +7,7 @@
 ul{
   list-style: none;
 }
+
 a{
   text-decoration: none;
   color: inherit;
@@ -14,6 +15,7 @@ a{
     text-decoration: none;
   }
 }
+
 body{
   background-color: $color1;
   color: $dark-grey;
@@ -23,7 +25,6 @@ body{
   }
   margin: 0;
 }
-
 
 main section{
   padding: rem(30);

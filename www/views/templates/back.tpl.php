@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="utf-8">
@@ -14,12 +14,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
     <script src="https://cloud.tinymce.com/5/tinymce.min.js"></script>
     <script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=2hqwamzfvt53654o5dc1ytmm8omgwnlk1dapojphxytnebbj"></script>
-    <script type="text/javascript">
-      tinyMCE.init({
-        // type de mode
-        selector:'textarea'
-      });
-    </script>
+    <script>tinymce.init({selector:'textarea'});</script>
 </head>
     <script src="../../public/js/jquery-3.3.1.min.js"></script>
     <script src="../../public/js/script.js"></script>

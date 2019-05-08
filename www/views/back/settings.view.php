@@ -9,7 +9,7 @@
         <div class="row">
           <div class="col-sm-8 col-12">
             <div class="">
-              <?php $this->addModal("formSetting", $formSetting);?>
+              <?php $this->addModal("form", $form);?>
             </div>
           </div>
         </div>

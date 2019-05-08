@@ -30,3 +30,15 @@
 .section-description--blog{
   color: $white;
 }
+.section-table{
+  margin: 15px;
+}
+.table{
+  border-collapse:collapse;
+  & th{
+    padding-left: 15px;
+  }
+  & td{
+    padding-left: 15px;
+  }
+}

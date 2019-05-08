@@ -6,8 +6,8 @@ class SettingsController {
 
     public function default():void{
         $user = new User();
-        $form = $user->getSettingForm();
+        $form = $user->getRegisterForm();
         $view = new View('settings', 'back');
-        $view->assign('formSetting', $form);
+        $view->assign('form', $form);
     }
 }
