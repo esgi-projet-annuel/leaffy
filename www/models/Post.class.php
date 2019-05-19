@@ -71,7 +71,7 @@ class Post extends BaseSQL{
                     "error"=>"La description doit faire entre 2 et 150 caractères"],
                 "Content"=>["type"=>"textarea","placeholder"=>"Contenu", "required"=>false, "class"=>"form-control-back", "id"=>"content","minlength"=>2,"maxlength"=>5000,
                     "error"=>"La description doit faire entre 2 et 5000 caractères"],
-                "bannerImg"=>["type"=>"file","placeholder"=>"Image principale", "required"=>false, "class"=>"form-control-back", "bannerImg"=>"job","minlength"=>0,"maxlength"=>500,
+                "bannerImg"=>["type"=>"file","placeholder"=>"Image principale", "required"=>false, "class"=>"form-control-back", "id"=>"bannerImg","minlength"=>0,"maxlength"=>500,
                     "error"=>"L'image n'est pas valide'"],
             ]
         ];

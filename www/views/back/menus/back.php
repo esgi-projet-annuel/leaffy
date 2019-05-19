@@ -24,10 +24,12 @@
             <div>Pages</div>
         </li>
       </a>
+      <a class="link" href="<?php echo \LeaffyMvc\Core\Routing::getSlug("Comment", "listPendings");?>">
         <li class="list-item">
             <img src="../../../public/img/blogging.png" width="40">
             <div>Commentaires</div>
         </li>
+      </a>
         <li class="list-item">
             <img src="../../../public/img/contact-darken.png" width="40">
             <div>Utilisateurs</div>

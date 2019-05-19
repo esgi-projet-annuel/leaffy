@@ -78,8 +78,8 @@ class Page extends BaseSQL {
               "Shortdescription"=>["type"=>"text","placeholder"=>"Description courte", "required"=>false, "class"=>"form-control-back", "id"=>"Shortdescription","minlength"=>2,"maxlength"=>150,
                 "error"=>"La description doit faire entre 2 et 150 caractères"],
 
-              "Content"=>["type"=>"textarea","placeholder"=>"Contenu", "required"=>false, "class"=>"form-control-back", "id"=>"content","minlength"=>2,"maxlength"=>5000,
-                "error"=>"La description doit faire entre 2 et 5000 caractères"],
+              "Content"=>["type"=>"textarea","placeholder"=>"Contenu de la page", "required"=>false, "class"=>"form-control-back", "id"=>"content","minlength"=>2,"maxlength"=>5000,
+                "error"=>"Le contenu doit faire entre 2 et 5000 caractères"],
 
             ]
 

@@ -33,5 +33,46 @@ class Comment extends BaseSQL {
         $this->post_id = $post_id;
     }
 
+    public function getCommentForm(){
+        return [
+            "config"=>[
+              "method"=>"POST",
+              "action"=> /*ADD ACTION SLUG ?*/"",
+              "class"=>"",
+              "id"=>"",
+              "submit"=>"Ajouter"],
+
+            "data"=>[
+              "firstname"=>[
+                "type"=>"text",
+                "placeholder"=>"Votre prénom",
+                "required"=>true,
+                "class"=>"form-control-login",
+                "id"=>"firstname",
+                "minlength"=>2,
+                "maxlength"=>100,
+                "error"=>"Le prénom doit faire entre 2 et 100 caractères"
+              ],
+              "data"=>[
+                "lastname"=>[
+                  "type"=>"text",
+                  "placeholder"=>"Votre prénom",
+                  "required"=>true,
+                  "class"=>"form-control-login",
+                  "id"=>"lastname",
+                  "minlength"=>2,
+                  "maxlength"=>100,
+                  "error"=>"Le nom doit faire entre 2 et 100 caractères"
+                ],
+
+
+              "Comment"=>["type"=>"textarea","placeholder"=>"Votre commentaire", "required"=>false, "class"=>"form-control-back", "id"=>"content","minlength"=>2,"maxlength"=>300,
+                "error"=>"Le commentaire doit faire entre 2 et 300 caractères"],
+
+            ]
+
+        ];
+    }
+
 
 }

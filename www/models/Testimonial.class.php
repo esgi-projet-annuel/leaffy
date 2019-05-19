@@ -28,4 +28,45 @@ class Testimonial extends BaseSQL{
         $this->user_id = $user_id;
     }
 
+    public function getTestimonialForm(){
+        return [
+            "config"=>[
+              "method"=>"POST",
+              "action"=> /*ADD ACTION SLUG ?*/"",
+              "class"=>"",
+              "id"=>"",
+              "submit"=>"Ajouter"],
+
+            "data"=>[
+              "firstname"=>[
+                "type"=>"text",
+                "placeholder"=>"Votre prénom",
+                "required"=>true,
+                "class"=>"form-control-login",
+                "id"=>"firstname",
+                "minlength"=>2,
+                "maxlength"=>100,
+                "error"=>"Le prénom doit faire entre 2 et 100 caractères"
+              ],
+              "data"=>[
+                "lastname"=>[
+                  "type"=>"text",
+                  "placeholder"=>"Votre prénom",
+                  "required"=>true,
+                  "class"=>"form-control-login",
+                  "id"=>"lastname",
+                  "minlength"=>2,
+                  "maxlength"=>100,
+                  "error"=>"Le nom doit faire entre 2 et 100 caractères"
+                ],
+
+
+              "Content"=>["type"=>"textarea","placeholder"=>"Votre témoignage", "required"=>false, "class"=>"form-control-back", "id"=>"content","minlength"=>2,"maxlength"=>800,
+                "error"=>"Le témoignage doit faire entre 2 et 800 caractères"],
+
+            ]
+
+        ];
+    }
+
 }

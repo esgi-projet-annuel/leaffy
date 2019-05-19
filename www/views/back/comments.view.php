@@ -2,7 +2,6 @@
   <div class="">
     <div class="titre">
       <h2>Gestion des commentaires</h2>
-      <a class="form-control button-back button-back--add" href="">Ajouter</a>
     </div>
   </div>
   <div class="section-table">

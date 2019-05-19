@@ -321,10 +321,10 @@ class User extends BaseSQL {
                 "error"=>"L'adresse n'est pas valide"],
 
               "job"=>["type"=>"text","placeholder"=>"Votre Profession", "required"=>false, "class"=>"form-control-back", "id"=>"job","minlength"=>2,"maxlength"=>100,
-                "error"=>"L'adresse n'est pas valide"],
+                "error"=>"La profession n'est pas valide"],
 
               "apropos"=>["type"=>"textarea","placeholder"=>"Texte à propos", "required"=>false, "class"=>"form-control-back", "id"=>"job","minlength"=>0,"maxlength"=>500,
-                "error"=>"L'image n'est pas valide"],
+                "error"=>"Le contenu n'est pas valide"],
 
               "bannerImg"=>["type"=>"file","placeholder"=>"Image principale", "required"=>false, "class"=>"form-control-back", "bannerImg"=>"job","minlength"=>0,"maxlength"=>500,
                 "error"=>"Le nom doit faire moins de 500 caractères"],
