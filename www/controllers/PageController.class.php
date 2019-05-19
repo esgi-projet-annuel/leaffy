@@ -14,6 +14,9 @@ class PageController extends AbstractController {
 
     public function showOne():void{
         $view = new View("setPage", "back");
+        $page = new Page();
+        $form = $page->getPageForm();
+        $view->assign("formPage", $form);
     }
 
     public function createPage():void {

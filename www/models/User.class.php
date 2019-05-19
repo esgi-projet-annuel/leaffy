@@ -138,11 +138,6 @@ class User extends BaseSQL {
     }
 
     public function getRegisterForm(){
-        //TODO condition pour les boutons Mise a jour != enregistrer
-        $lastnamePlaceHolder= '';
-        $firstnamePlaceHolder= '';
-        $emailPlaceHolder= '';
-
         return [
             "config"=>[
                 "method"=>"POST",
@@ -158,7 +153,7 @@ class User extends BaseSQL {
                 "firstname"=>[
                     "type"=>"text",
                     "labelName"=>"Prénom",
-                    "placeholder"=>"$firstnamePlaceHolder",
+                    "placeholder"=>"",
                     "required"=>true,
                     "class"=>"form-control-login",
                     "id"=>"firstname",
@@ -169,7 +164,7 @@ class User extends BaseSQL {
                 "lastname"=>[
                     "type"=>"text",
                     "labelName"=>"Nom",
-                    "placeholder"=>"$lastnamePlaceHolder",
+                    "placeholder"=>"",
                     "required"=>true,
                     "class"=>"form-control-login",
                     "id"=>"lastname","minlength"=>2,"maxlength"=>100,
@@ -178,7 +173,7 @@ class User extends BaseSQL {
                 "email"=>[
                     "type"=>"email",
                     "labelName"=>"Email",
-                    "placeholder"=>"$emailPlaceHolder",
+                    "placeholder"=>"",
                     "required"=>true,
                     "class"=>"form-control-login",
                     "id"=>"email",

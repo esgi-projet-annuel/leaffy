@@ -29,7 +29,6 @@ class Routing {
 
     public static function getSlug($controller, $methodAction){
         $routes = yaml_parse_file(self::$routeFile);
-
         foreach ($routes as $slug => $controllerAndAction) {
 
             if( !empty($controllerAndAction["controller"]) &&

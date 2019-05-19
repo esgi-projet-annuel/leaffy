@@ -2,7 +2,7 @@
   <div class="">
     <div class="titre">
       <h2>Gestion des articles</h2>
-      <a class="form-control button-back button-back--add" href="<?php echo \LeaffyMvc\Core\Routing::getSlug("Post","showOne");?>">Ajouter</a>
+      <a class="form-control button-back button-back--add" href="<?php echo \LeaffyMvc\Core\Routing::getSlug("Post","createPost");?>">Ajouter</a>
     </div>
   </div>
   <div class="section-table">

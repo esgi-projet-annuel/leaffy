@@ -29,6 +29,10 @@
   controller: Post
   action: showAll
 
+"/admin/createPost":
+  controller: Post
+  action: createPost
+
 "/admin/savePost":
   controller: Post
   action: savePost
@@ -50,9 +54,9 @@
   controller: Page
   action: showAll
 
-"/admin/page":
+"/admin/createPage":
   controller: Page
-  action: showOne
+  action: createPage
 
 "/admin/savePage":
   controller: Page

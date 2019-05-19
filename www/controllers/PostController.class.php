@@ -9,16 +9,14 @@ use LeaffyMvc\Models\Post;
 class PostController extends AbstractController {
 
     public function showAll() :void{
-        $view = new View("articles", "back");
-    }
-
-    public function showOne():void{
-        $view = new View("setArticle", "back");
+        $view = new View("posts", "back");
     }
 
     public function createPost():void{
-        $this->checkAdmin();
-        $post= new Post();
+        $view = new View("setPost", "back");
+        $post = new Post();
+//        $form = $post->getPostForm();
+//        $view->assign("formPost", $form);
     }
 
     public function savePost():void{
