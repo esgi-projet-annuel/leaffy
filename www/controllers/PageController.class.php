@@ -12,17 +12,11 @@ class PageController extends AbstractController {
         $view = new View("pages", "back");
     }
 
-    public function showOne():void{
+    public function createPage():void{
         $view = new View("setPage", "back");
         $page = new Page();
         $form = $page->getPageForm();
         $view->assign("formPage", $form);
-    }
-
-    public function createPage():void {
-        $this->checkAdmin();
-        $page= new Page();
-        $view = new View('setPage', 'back');
     }
 
     public function savePage():void{

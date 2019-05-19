@@ -15,8 +15,8 @@ class PostController extends AbstractController {
     public function createPost():void{
         $view = new View("setPost", "back");
         $post = new Post();
-//        $form = $post->getPostForm();
-//        $view->assign("formPost", $form);
+        $form = $post->getPostForm();
+        $view->assign("formPost", $form);
     }
 
     public function savePost():void{
