@@ -10,6 +10,9 @@ class ArticleController {
 
     public function showOne():void{
         $view = new View("setArticle", "back");
+        $post = new Post();
+        $form = $post->getPostForm();
+        $view->assign("formPost", $form);
     }
 
     //TODO : showAll uniquement pour lister les articles de blog => showAllBlogArticles()
