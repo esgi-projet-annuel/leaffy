@@ -3,10 +3,10 @@ require "conf.inc.php";
 session_start();
 
 //function myAutoloader($class){
-//    $classPath = "Core/".$class.".class.php";
-//    $classModel = "Models/".$class.".class.php";
-//    $classService = "Services/".$class.".class.php";
-//    $classController = "Controllers/".$class.".class.php";
+//    $classPath = "core/".$class.".class.php";
+//    $classModel = "models/".$class.".class.php";
+//    $classService = "services/".$class.".class.php";
+//    $classController = "controllers/".$class.".class.php";
 //    if(file_exists($classPath)){
 //        include $classPath;
 //    }else if(file_exists($classModel)){

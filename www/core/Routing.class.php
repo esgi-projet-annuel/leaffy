@@ -17,7 +17,7 @@ class Routing {
             }
             $controller = ucfirst($routes[$slug]["controller"])."Controller";
             $methodAction = $routes[$slug]["action"];
-            $controllerPath = "/Controllers/".$controller.".class.php";
+            $controllerPath = "/controllers/".$controller.".class.php";
 
         }else{
             return ["controller"=>null, "methodAction"=>null,"controllerPath"=>null ];

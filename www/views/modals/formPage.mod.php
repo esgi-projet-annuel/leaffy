@@ -21,9 +21,8 @@
 
 		<div class="form-Setting">
     	<div class="form-label-back">
-      	<?php if($value["type"]=="text" || $value["type"]=="email" || $value["type"]=="password"):?>
+      	<?php if($value["type"]=="text"):?>
 
-      		<?php if($value["type"]=="password" ) unset($data[$key]); ?>
 
 
           <label for="<?php echo $value["id"];?>"> <?php echo $value["placeholder"];?> </label>
