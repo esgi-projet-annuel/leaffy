@@ -12,7 +12,9 @@ RUN docker-php-ext-configure gd \
         --with-freetype-dir=/usr/include/freetype2 \
     && docker-php-ext-install gd
 
-
+RUN pecl install xdebug-2.6.0
+RUN docker-php-ext-enable xdebug
+RUN echo "xdebug.remote_enable=1" >> /usr/local/etc/php/php.ini
 
 # Workaround for write permission on write to MacOS X volumes
 # See https://github.com/boot2docker/boot2docker/pull/534

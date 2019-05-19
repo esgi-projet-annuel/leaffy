@@ -1,6 +1,7 @@
 <?php
-
 declare(strict_types = 1);
+
+namespace LeaffyMvc\Core;
 
 class View {
 
@@ -14,7 +15,7 @@ class View {
     }
 
     public function setView($view, $template){
-        $viewPath = "views/".$template."/".$view.".view.php";
+        $viewPath = "Views/".$template."/".$view.".view.php";
         if( file_exists($viewPath)){
             $this->view=$viewPath;
         }else{
@@ -23,7 +24,7 @@ class View {
     }
 
     public function setTemplate($template){
-        $templatePath = "views/templates/".$template.".tpl.php";
+        $templatePath = "Views/templates/".$template.".tpl.php";
         if( file_exists($templatePath)){
             $this->template=$templatePath;
         }else{
@@ -33,7 +34,7 @@ class View {
 
     public function addModal($modal, $config){
       //form.mod.php
-      $modalPath = "views/modals/".$modal.".mod.php";
+      $modalPath = "Views/modals/".$modal.".mod.php";
       if( file_exists($modalPath)){
         include $modalPath;
       }else{
@@ -42,7 +43,7 @@ class View {
     }
 
     public function addMenu($menu , $template){
-        $menuPath= "views/".$template."/menus/".$menu.".php";
+        $menuPath= "Views/".$template."/menus/".$menu.".php";
         if( file_exists($menuPath)){
             include $menuPath;
         }else{
@@ -51,7 +52,7 @@ class View {
     }
 
     public function addHeader($header , $template){
-        $headerPath= "views/".$template."/header/".$header.".php";
+        $headerPath= "Views/".$template."/header/".$header.".php";
         if( file_exists($headerPath)){
             include $headerPath;
         }else{

@@ -1,6 +1,9 @@
 <?php
-
 declare(strict_types = 1);
+
+namespace LeaffyMvc\Core;
+
+use LeaffyMvc\Models\User;
 
 class Security {
 

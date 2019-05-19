@@ -3,6 +3,7 @@ node_modules/
 
 .DS_Store/**
 .idea/workspace.xml
+./www/medias
 
 # Created by https://www.gitignore.io/api/phpstorm
 # Edit at https://www.gitignore.io/?templates=phpstorm

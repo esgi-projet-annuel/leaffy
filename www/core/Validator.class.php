@@ -1,6 +1,8 @@
 <?php
 declare(strict_types = 1);
 
+namespace LeaffyMvc\Core;
+
 class Validator{
 
     public $errors = [];

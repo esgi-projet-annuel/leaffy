@@ -1,8 +1,3 @@
-#ADMIN
-"/admin":
-  controller: Admin
-  action: showHomeAdmin
-
 #AUTHENTIFICATE
 "/admin/login":
   controller: Authentication
@@ -24,24 +19,31 @@
   controller: Authentication
   action: userLogout
 
-#SETTINGS
-"/admin/settings":
-  controller: Settings
-  action: default
-
 #MENU
 "/admin/menu":
   controller: Menu
   action: default
 
-#ARTICLES
-"/admin/articles":
-  controller: Article
+#POST
+"/admin/posts":
+  controller: Post
   action: showAll
 
-"/admin/article":
-  controller: Article
-  action: showOne
+"/admin/savePost":
+  controller: Post
+  action: savePost
+
+"/admin/deletePost":
+  controller: Post
+  action: deletePost
+
+"/admin/publishPost":
+  controller: Post
+  action: publishPost
+
+"/admin/updatePost":
+  controller: Post
+  action: updatePost
 
 #PAGES
 "/admin/pages":
@@ -52,6 +54,35 @@
   controller: Page
   action: showOne
 
+"/admin/savePage":
+  controller: Page
+  action: savePage
+
+"/admin/updatePage":
+  controller: Page
+  action: updatePage
+
+"/admin/deletePage":
+  controller: Page
+  action: deletePage
+
+#COMMENTS
+"/admin/approveComment":
+  controller: Comment
+  action: approveComment
+
+"/admin/rejectComment":
+  controller: Comment
+  action: rejectComment
+
+"/addComment":
+  controller: Comment
+  action: saveComment
+
+"/admin/listPendings":
+  controller: Comment
+  action: listPendings
+
 #USER
 "/createUser":
   controller: User
@@ -61,10 +92,31 @@
   controller: User
   action: saveUser
 
+"/updateUser":
+  controller: User
+  action: updateUser
+
+"/deleteUser":
+  controller: User
+  action: deleteUser
+
+#MEDIA
+"/admin/addMedia":
+  controller: Media
+  action: addMedia
+
 #STATIC
 "/":
   controller: Static
   action: showFrontPage
+
+"/admin":
+  controller: Static
+  action: showBackPage
+
+"/admin/settings":
+  controller: Static
+  action: showSettingsPage
 
 "/about":
   controller: Static

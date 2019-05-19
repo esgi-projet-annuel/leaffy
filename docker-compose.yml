@@ -12,6 +12,8 @@ services:
      - ./server/php.ini:/usr/local/etc/php/php.ini
     depends_on:
      - database
+    environment:
+      PHP_EXTENSION_XDEBUG: 1
 
   database:
     image: mysql:5.7
