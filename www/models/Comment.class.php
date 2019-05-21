@@ -53,7 +53,6 @@ class Comment extends BaseSQL {
                 "maxlength"=>100,
                 "error"=>"Le prénom doit faire entre 2 et 100 caractères"
               ],
-              "data"=>[
                 "lastname"=>[
                   "type"=>"text",
                   "placeholder"=>"Votre prénom",

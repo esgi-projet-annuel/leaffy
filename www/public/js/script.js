@@ -165,22 +165,17 @@ $(function(){
     var hauteurWindow = $(window).height();
     console.log(hauteurWindow);
   });
-
 }); // ready
 /*******************************************/
 /************** Active Menu ***************/
 /*******************************************/
 function setNavigation() {
-    var path = window.location.pathname;
-    path = path.replace(/\/$/, "");
-    path = decodeURIComponent(path);
-
-    $(".link").each(function () {
-        var href = $(this).attr('href');
-        if (path.substring(0, href.length) === href) {
-            $(this).closest('li').addClass('active');
-        }else{
-          $(this).closest('li').removeClass('active');
-        }
-    });
+  $(function(){
+    var path = window.location.href; // because the 'href' property of the DOM element is the absolute path
+     $('ul a').each(function() {
+      if (this.href === path) {
+       $(this).addClass('active');
+      }
+     });
+  })
 }

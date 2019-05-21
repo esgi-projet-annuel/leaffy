@@ -1,6 +1,6 @@
-<div id="adminbar" class="">
+<div id="adminbar" class="nav">
     <ul class="list-admin-bar">
-      <a class="link" href="<?php echo \LeaffyMvc\Core\Routing::getSlug("Static","showBackPage");?>">
+      <a class="link " href="<?php echo \LeaffyMvc\Core\Routing::getSlug("Static","showBackPage");?>">
         <li class="list-item">
             <img src="../../../public/img/home.png" width="40">
             <div>Tableau de bord</div>
@@ -30,18 +30,24 @@
             <div>Commentaires</div>
         </li>
       </a>
+      <a class="link" href="/user">
         <li class="list-item">
             <img src="../../../public/img/contact-darken.png" width="40">
             <div>Utilisateurs</div>
 
         </li>
+      </a>
+      <a class="link" href="/testimonial">
         <li class="list-item">
             <img src="../../../public/img/rating.png" width="40">
             <div>Témoignages</div>
         </li>
+      </a>
+      <a class="link" href="/media">
         <li class="list-item">
             <img src="../../../public/img/image-darken.png" width="40">
             <div>Médias</div>
         </li>
+      </a>
     </ul>
 </div>
