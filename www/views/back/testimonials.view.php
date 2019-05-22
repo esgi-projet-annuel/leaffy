@@ -12,16 +12,39 @@
           <th align="left">Témoignages</th>
           <th width="25%"></th>
         </tr>
-        <tr>
-          <td>Persona</td>
-          <td>Name</td>
-          <td>Blablabla</td>
-          <td>
-            <a href="" class="form-control button-back button-back--display">Valider</a>
-            <a href="" class="form-control button-back button-back--modify">Refuser</a>
-            <a href="" class="form-control button-back button-back--remove">Supprimer</a>
-          </td>
-        </tr>
+        <?php
+        $controller = new \LeaffyMvc\Controllers\TestimonialController();
+        $testimonials = $controller->listPendings();
+
+        foreach ($testimonials as $testimonial) {
+            echo '<tr>'
+                .'<td>' . $testimonial->userName . '</td>'
+                . '<td>' . $testimonial->content . '</td>'
+                . '<td>Publié le ' . $testimonial->created_at . '</td>'
+                . '<a href="" class="form-control button-back button-back--display" onclick="approve('. $testimonial->id .');">Valider</a>'
+                . '<a href="" class="form-control button-back button-back--modify" onclick="rejecte('. $testimonial->id .');">Rejeter</a>'
+                . '</td>'
+                . '</tr>';
+        }
+        ?>
     </table>
   </div>
 </div>
+
+<script type="text/javascript">
+    function approve(testimonialId) {
+        $.ajax({
+            url : '/admin/deletePage',
+            type : 'POST', // Le type de la requête HTTP, ici devenu POST
+            data : 'id=' + testimonialId,
+        });
+    }
+
+    function rejecte(pageId) {
+        $.ajax({
+            url : '/admin/deletePage',
+            type : 'POST', // Le type de la requête HTTP, ici devenu POST
+            data : 'id=' + pageId,
+        });
+    }
+</script>

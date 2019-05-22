@@ -157,19 +157,12 @@
                             </div>
                         </div>
                         <div class="section-content">
-                            <form action="" method="post" class="form" novalidate="novalidate">
+                            <form action="<?php \LeaffyMvc\Core\Routing::getSlug("Testimonial","saveTestimonial")?>" method="post" class="form" novalidate="novalidate">
                                 <div class="row">
                                     <div class="col-12 col-sm-4 col-sm-offset-1">
                                         <label> Votre Nom (requis)<br />
                                             <span class="form-control your-name">
-                                              <input type="text" name="your-name" value="" size="40" class="form-control form-text" aria-required="true" aria-invalid="false" />
-                                            </span>
-                                        </label>
-                                    </div>
-                                    <div class="col-12 col-sm-4 col-sm-offset-1">
-                                        <label> Votre Sujet<br />
-                                            <span class="form-control your-subject">
-                                              <input type="text" name="your-subject" value="" size="40" class="form-control form-text" aria-invalid="false" />
+                                              <input type="text" name="userName" value="" size="40" class="form-control form-text" aria-required="true" aria-invalid="false" />
                                             </span>
                                         </label>
                                     </div>
@@ -178,7 +171,7 @@
                                     <div class="col-12">
                                         <label> Votre Message<br />
                                             <span class="form-control your-message">
-                                              <textarea name="your-message" cols="40" rows="10" class="form-control form-textarea" aria-invalid="false"></textarea>
+                                              <textarea name="content" cols="40" rows="10" class="form-control form-textarea" aria-invalid="false"></textarea>
                                             </span>
                                         </label>
                                     </div>

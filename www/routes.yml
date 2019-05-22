@@ -83,8 +83,25 @@
   controller: Comment
   action: saveComment
 
-"/admin/listPendings":
+"/admin/listPendingsComment":
   controller: Comment
+  action: listPendings
+
+#TESTIMONIALS
+"/admin/approveTestimonial":
+  controller: Testimonial
+  action: approveTestimonial
+
+"/admin/rejectTestimonial":
+  controller: Testimonial
+  action: rejectTestimonial
+
+"/addTestimonial":
+  controller: Testimonial
+  action: saveTestimonial
+
+"/admin/listPendingsTestimonial":
+  controller: Testimonial
   action: listPendings
 
 #USER

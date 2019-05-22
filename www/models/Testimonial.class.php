@@ -7,32 +7,33 @@ use LeaffyMvc\Core\BaseSQL;
 
 class Testimonial extends BaseSQL{
 
-    private $id= null;
-    private $content;
-    private $user_id;
+    public $content;
+    public $status;
+    public $user_name;
 
     public function __construct(){
         parent::__construct();
-    }
-
-    public function setId(int $id){
-        $this->id = $id;
     }
 
     public function setContent(string $content){
         $this->content = $content;
     }
 
+    public function setStatus($status): void
+    {
+        $this->status = $status;
+    }
 
-    public function setUserId(int $user_id){
-        $this->user_id = $user_id;
+    public function setUserName($user_name): void
+    {
+        $this->$user_name = $user_name;
     }
 
     public function getTestimonialForm(){
         return [
             "config"=>[
               "method"=>"POST",
-              "action"=> /*ADD ACTION SLUG ?*/"",
+              "action"=> \LeaffyMvc\Core\Routing::getSlug("Testimonial","saveTestimonial"),
               "class"=>"",
               "id"=>"",
               "submit"=>"Ajouter"],
@@ -64,8 +65,7 @@ class Testimonial extends BaseSQL{
                 "error"=>"Le témoignage doit faire entre 2 et 800 caractères"],
 
             ]
-
-        ];
+            ];
     }
 
 }

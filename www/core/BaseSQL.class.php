@@ -71,6 +71,13 @@ namespace LeaffyMvc\Core {
             return $query->fetchAll(PDO::FETCH_CLASS, get_called_class());
         }
 
+        public function findAll(array $orderBy){
+            $sql = "SELECT * FROM ".$this->table." ORDER BY :orderBy ;";
+            $query = $this->pdo->prepare($sql);
+            $query->execute($orderBy);
+            return $query->fetchAll(PDO::FETCH_CLASS, get_called_class());
+        }
+
         public function save(): void{
             $reflect = new ReflectionClass($this);
             $properties = $reflect->getProperties();
@@ -95,8 +102,6 @@ namespace LeaffyMvc\Core {
 
                 $query = $this->pdo->prepare($sql);
                 $res = $query->execute($propertiesValue);
-                var_dump($sql);
-                var_dump($propertiesValue);
                 $this->id = $this->pdo->lastInsertId();
 
             } else {

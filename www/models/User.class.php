@@ -167,7 +167,9 @@ class User extends BaseSQL {
                     "placeholder"=>"",
                     "required"=>true,
                     "class"=>"form-control-login",
-                    "id"=>"lastname","minlength"=>2,"maxlength"=>100,
+                    "id"=>"lastname",
+                    "minlength"=>2,
+                    "maxlength"=>100,
                     "error"=>"Le nom doit faire entre 2 et 100 caractères"],
 
                 "email"=>[
@@ -206,18 +208,18 @@ class User extends BaseSQL {
 
     public function getUpdateForm(){
         //TODO condition pour les boutons Mise a jour != enregistrer
-        $lastnamePlaceHolder= '';
-        $firstnamePlaceHolder= '';
-        $emailPlaceHolder= '';
+        $lastnameValue= '';
+        $firstnameValue= '';
+        $emailValue= '';
         if (isset($_SESSION) && !empty($_SESSION)){
             $user = new User();
             $user->findOneObjectBy(['email'=>$_SESSION['email']]);
             //var_dump($user->token);
             //var_dump($_SESSION['token']);
             if ($user->token === $_SESSION['token']){
-                $lastnamePlaceHolder= $user->lastname;
-                $firstnamePlaceHolder= $user->firstname;
-                $emailPlaceHolder= $user->email;
+                $lastnameValue= $user->lastname;
+                $firstnameValue= $user->firstname;
+                $emailValue= $user->email;
             }
         }
         return [
@@ -235,7 +237,7 @@ class User extends BaseSQL {
                 "firstname"=>[
                     "type"=>"text",
                     "labelName"=>"Prénom",
-                    "placeholder"=>"$firstnamePlaceHolder",
+                    "value"=>"$firstnameValue",
                     "required"=>true,
                     "class"=>"form-control-login",
                     "id"=>"firstname",
@@ -246,7 +248,7 @@ class User extends BaseSQL {
                 "lastname"=>[
                     "type"=>"text",
                     "labelName"=>"Nom",
-                    "placeholder"=>"$lastnamePlaceHolder",
+                    "value"=>"$lastnameValue",
                     "required"=>true,
                     "class"=>"form-control-login",
                     "id"=>"lastname","minlength"=>2,"maxlength"=>100,
@@ -255,7 +257,7 @@ class User extends BaseSQL {
                 "email"=>[
                     "type"=>"email",
                     "labelName"=>"Email",
-                    "placeholder"=>"$emailPlaceHolder",
+                    "value"=>"$emailValue",
                     "required"=>true,
                     "class"=>"form-control-login",
                     "id"=>"email",
@@ -265,7 +267,7 @@ class User extends BaseSQL {
                 "pwd"=>[
                     "type"=>"password",
                     "labelName"=>"Mot de passe",
-                    "placeholder"=>"*******",
+                    "value"=>"",
                     "required"=>true,
                     "class"=>"form-control-login",
                     "id"=>"pwd",
@@ -275,7 +277,7 @@ class User extends BaseSQL {
                 "pwdConfirm"=>[
                     "type"=>"password",
                     "labelName"=>"Confirmation du mot de passe",
-                    "placeholder"=>"Confirmation",
+                    "value"=>"",
                     "required"=>true,
                     "class"=>"form-control-login",
                     "id"=>"pwdConfirm",
@@ -286,52 +288,4 @@ class User extends BaseSQL {
         ];
     }
 
-    public function getSettingForm(){
-        return [
-            "config"=>[
-              "method"=>"POST",
-              "action"=> \LeaffyMvc\Core\Routing::getSlug("User","saveUser"),
-              "class"=>"",
-              "id"=>"",
-              "submit"=>"Enregistrer"],
-
-
-            "data"=>[
-              "firstname"=>[
-                "type"=>"text",
-                "placeholder"=>"Votre Prénom",
-                "required"=>true,
-                "class"=>"form-control-login",
-                "id"=>"firstname",
-                "minlength"=>2,
-                "maxlength"=>50,
-                "error"=>"Le prénom doit faire entre 2 et 50 caractères"
-              ],
-
-              "lastname"=>["type"=>"text","placeholder"=>"Votre nom", "required"=>true, "class"=>"form-control-back", "id"=>"lastname","minlength"=>2,"maxlength"=>100,
-                "error"=>"Le nom doit faire entre 2 et 100 caractères"],
-
-              "number"=>["type"=>"text","placeholder"=>"Votre numéro", "required"=>false, "class"=>"form-control-back", "id"=>"number","minlength"=>2,"maxlength"=>100,
-                "error"=>"Le numero n'est pas valide"],
-
-              "email"=>["type"=>"email","placeholder"=>"Votre email", "required"=>true, "class"=>"form-control-back", "id"=>"email",
-                  "error"=>"L'email n'est pas valide"],
-
-              "adress"=>["type"=>"text","placeholder"=>"Votre Adresse", "required"=>false, "class"=>"form-control-back", "id"=>"address","minlength"=>2,"maxlength"=>100,
-                "error"=>"L'adresse n'est pas valide"],
-
-              "job"=>["type"=>"text","placeholder"=>"Votre Profession", "required"=>false, "class"=>"form-control-back", "id"=>"job","minlength"=>2,"maxlength"=>100,
-                "error"=>"La profession n'est pas valide"],
-
-              "apropos"=>["type"=>"textarea","placeholder"=>"Texte à propos", "required"=>false, "class"=>"form-control-back", "id"=>"job","minlength"=>0,"maxlength"=>500,
-                "error"=>"Le contenu n'est pas valide"],
-
-              "bannerImg"=>["type"=>"file","placeholder"=>"Image principale", "required"=>false, "class"=>"form-control-back", "bannerImg"=>"job","minlength"=>0,"maxlength"=>500,
-                "error"=>"Le nom doit faire moins de 500 caractères"],
-              "aProposImg"=>["type"=>"file","placeholder"=>"Image à propos", "required"=>false, "class"=>"form-control-back", "bannerImg"=>"job","minlength"=>0,"maxlength"=>500,
-                "error"=>"L'image n'est pas valide"],
-            ]
-
-        ];
-    }
 }

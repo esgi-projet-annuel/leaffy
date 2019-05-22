@@ -29,11 +29,11 @@
           <label for="<?php echo $value["id"];?>"> <?php echo $value["labelName"];?> </label>
       		<input type="<?php echo $value["type"];?>"
     				name="<?php echo $key;?>"
-    				placeholder="<?php echo  $value["placeholder"];?>"
+    				placeholder=""
     				<?php echo ($value["required"])?'required="required"':'';?>
     				id="<?php echo $value["id"];?>"
     				class="<?php echo $value["class"];?>"
-    				value="<?php echo $data[$key]??''?>"
+    				value="<?php echo $value["value"]?>"
             >
 
       	<?php endif;?>

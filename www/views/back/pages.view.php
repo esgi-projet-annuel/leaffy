@@ -21,40 +21,39 @@
                     . '<td>' . $page->getTitle() . '</td>'
                     . '<td>Publié le ' . $page->created_at . '</td>'
                     . '<td>'
-                    . '<a href="" class="form-control button-back button-back--display" onclick="showPage('. $page->id .');">Afficher</a>'
+//                    . '<a href="" class="form-control button-back button-back--display" onclick="showPage('. $page->id .');">Afficher</a>'
                     . '<a href="" class="form-control button-back button-back--modify" onclick="updatePage('. $page->id .');">Modifier</a>'
                     . '<a href="" class="form-control button-back button-back--remove" onclick="deletePage('. $page->id .');">Supprimer</a>'
                     . '</td>'
                     . '</tr>';
             }
         ?>
-
-        <script type="text/javascript">
-            function deletePage(pageId) {
-                $.ajax({
-                    url : '/admin/deletePage',
-                    type : 'POST', // Le type de la requête HTTP, ici devenu POST
-                    data : 'id=' + pageId,
-                });
-            }
-
-            function showPage(pageId) {
-                $.ajax({
-                    url : '/admin/deletePage',
-                    type : 'POST', // Le type de la requête HTTP, ici devenu POST
-                    data : 'id=' + pageId,
-                });
-            }
-
-            function updatePage(pageId) {
-                $.ajax({
-                    url : '/admin/deletePage',
-                    type : 'POST', // Le type de la requête HTTP, ici devenu POST
-                    data : 'id=' + pageId,
-                });
-            }
-        </script>
-
     </table>
   </div>
 </div>
+
+<script type="text/javascript">
+    function deletePage(pageId) {
+        $.ajax({
+            url : '/admin/deletePage',
+            type : 'POST', // Le type de la requête HTTP, ici devenu POST
+            data : 'id=' + pageId,
+        });
+    }
+
+    function showPage(pageId) {
+        $.ajax({
+            url : '/admin/deletePage',
+            type : 'POST', // Le type de la requête HTTP, ici devenu POST
+            data : 'id=' + pageId,
+        });
+    }
+
+    function updatePage(pageId) {
+        $.ajax({
+            url : '/admin/updatePage',
+            type : 'POST', // Le type de la requête HTTP, ici devenu POST
+            data : 'id=' + pageId,
+        });
+    }
+</script>

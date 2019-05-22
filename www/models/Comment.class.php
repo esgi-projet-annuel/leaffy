@@ -37,7 +37,7 @@ class Comment extends BaseSQL {
         return [
             "config"=>[
               "method"=>"POST",
-              "action"=> /*ADD ACTION SLUG ?*/"",
+              "action"=> \LeaffyMvc\Core\Routing::getSlug("Comment","saveComment"),
               "class"=>"",
               "id"=>"",
               "submit"=>"Ajouter"],
@@ -68,9 +68,9 @@ class Comment extends BaseSQL {
               "Comment"=>["type"=>"textarea","placeholder"=>"Votre commentaire", "required"=>false, "class"=>"form-control-back", "id"=>"content","minlength"=>2,"maxlength"=>300,
                 "error"=>"Le commentaire doit faire entre 2 et 300 caractères"],
 
-            ]
+                ]
 
-        ];
+            ];
     }
 
 

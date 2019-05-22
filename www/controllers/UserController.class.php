@@ -59,27 +59,39 @@ class UserController extends AbstractController {
     }
 
     public function updateUser():void {
-        $userId = intval($_POST['id']);
+        $userId = intval($_SESSION['userId']);
         $user = new User();
+        $form= $user->getUpdateForm();
         $user->findById($userId);
 
-        if(!empty($data) ){
-            $user->setFirstname($data['firstname']);
-            $user->setLastname($data['lastname']);
-            $user->setEmail($data['email']);
-            $user->setPassword($data['pwd']);
-            if ($user->profile === 'ADMIN')
-            {
-                $user->setProfession($data['profession']);
-                $user->setAddress($data['address']);
-                $user->setZipCode($data['zipCode']);
-                $user->setCity($data['city']);
-                $user->setPhoneNumber($data['phoneNumber']);
+        $method = strtoupper($form["config"]["method"]);
+        $data = $GLOBALS["_".$method];
+
+        if( $_SERVER['REQUEST_METHOD']==$method && !empty($data) ){
+            $validator = new Validator($form,$data);
+            $form["errors"] = $validator->errors;
+
+            //Est ce que l'email existe deja en BDD
+            $checkEmail= $user->findOneArrayBy(['email'=>$data['email']]);
+            if (!empty($checkEmail)){
+                $form["errors"][] = "L'adresse email renseignée existe déjà";
+            }else{
+                if(empty($form["errors"])){
+                    $user->setFirstname($data["firstname"]);
+                    $user->setLastname($data["lastname"]);
+                    $user->setEmail($data["email"]);
+                    $user->setPassword($data["pwd"]);
+                    $user->save();
+                    $_SESSION['email']= $data["email"];
+
+
+                    $form["errors"][] =" Changements de vos informations enregistrés ";
+                }
             }
-            // TODO comment gerer les images/photos??
-            $user->save();
         }
+
         $view = new View("settings", "back");
+        $view->assign("form", $form);
     }
 
     public function deleteUser():void {

@@ -10,7 +10,6 @@ class Post extends BaseSQL{
     public $title;
     public $content;
     public $description;
-    public $type;
     public $status;
     public $page_id;
 
@@ -28,21 +27,13 @@ class Post extends BaseSQL{
         $this->content = $content;
     }
 
-
-    public function setType(string $type): void
-    {
-        $this->type = $type;
-    }
-
     public function setDescription(string $description): void {
         $this->description = $description;
     }
 
-
     public function setStatus(string $status):void{
         $this->status = $status;
     }
-
 
     public function setPageId(int $page_id):void{
         $this->page_id = $page_id;
@@ -57,7 +48,7 @@ class Post extends BaseSQL{
                 "id"=>"",
                 "submit"=>"Enregistrer"],
             "data"=>[
-                "Titre"=>[
+                "title"=>[
                     "type"=>"text",
                     "placeholder"=>"Titre de l'article",
                     "required"=>true,
@@ -67,12 +58,25 @@ class Post extends BaseSQL{
                     "maxlength"=>100,
                     "error"=>"Le titre doit faire entre 2 et 100 caractères"
                 ],
-                "Shortdescription"=>["type"=>"text","placeholder"=>"Description courte", "required"=>false, "class"=>"form-control-back", "id"=>"Shortdescription","minlength"=>2,"maxlength"=>150,
+                "description"=>[
+                    "type"=>"text",
+                    "placeholder"=>"Description courte",
+                    "required"=>false, "class"=>"form-control-back",
+                    "id"=>"Shortdescription",
+                    "minlength"=>2,
+                    "maxlength"=>150,
                     "error"=>"La description doit faire entre 2 et 150 caractères"],
-                "Content"=>["type"=>"textarea","placeholder"=>"Contenu", "required"=>false, "class"=>"form-control-back", "id"=>"content","minlength"=>2,"maxlength"=>5000,
+                "content"=>[
+                    "type"=>"textarea",
+                    "placeholder"=>"Contenu",
+                    "required"=>false,
+                    "class"=>"form-control-back",
+                    "id"=>"content",
+                    "minlength"=>2,
+                    "maxlength"=>5000,
                     "error"=>"La description doit faire entre 2 et 5000 caractères"],
-                "bannerImg"=>["type"=>"file","placeholder"=>"Image principale", "required"=>false, "class"=>"form-control-back", "id"=>"bannerImg","minlength"=>0,"maxlength"=>500,
-                    "error"=>"L'image n'est pas valide'"],
+//                "bannerImg"=>["type"=>"file","placeholder"=>"Image principale", "required"=>false, "class"=>"form-control-back", "id"=>"bannerImg","minlength"=>0,"maxlength"=>500,
+//                    "error"=>"L'image n'est pas valide'"],
             ]
         ];
     }

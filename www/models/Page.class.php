@@ -10,6 +10,8 @@ class Page extends BaseSQL {
     public $title;
     public $status;
     public $meta_description;
+    public $content;
+    public $type;
     public $menu_id;
 
     public function __construct(){
@@ -34,6 +36,16 @@ class Page extends BaseSQL {
         $this->menu_id = $menu_id;
     }
 
+    public function setContent($content): void
+    {
+        $this->content = $content;
+    }
+
+    public function setType($type): void
+    {
+        $this->type = $type;
+    }
+
     public function getTitle():string
     {
         return $this->title;
@@ -54,17 +66,29 @@ class Page extends BaseSQL {
         return $this->menu_id;
     }
 
+    public function getContent(): string
+    {
+        return $this->content;
+    }
+
+    public function getType(): string
+    {
+        return $this->type;
+    }
+
+
+
     public function getPageForm(){
         return [
             "config"=>[
               "method"=>"POST",
-              "action"=> /*ADD ACTION SLUG ?*/"",
+              "action"=> \LeaffyMvc\Core\Routing::getSlug("Page","savePage"),
               "class"=>"",
               "id"=>"",
               "submit"=>"Enregistrer"],
 
             "data"=>[
-              "Titre"=>[
+              "title"=>[
                 "type"=>"text",
                 "placeholder"=>"Titre de la page",
                 "required"=>true,
@@ -75,10 +99,23 @@ class Page extends BaseSQL {
                 "error"=>"Le titre doit faire entre 2 et 100 caractères"
               ],
 
-              "Shortdescription"=>["type"=>"text","placeholder"=>"Description courte", "required"=>false, "class"=>"form-control-back", "id"=>"Shortdescription","minlength"=>2,"maxlength"=>150,
+              "description"=>[
+                  "type"=>"text","placeholder"=>"Description courte",
+                  "required"=>true,
+                  "class"=>"form-control-back",
+                  "id"=>"description",
+                  "minlength"=>2,
+                  "maxlength"=>150,
                 "error"=>"La description doit faire entre 2 et 150 caractères"],
 
-              "Content"=>["type"=>"textarea","placeholder"=>"Contenu de la page", "required"=>false, "class"=>"form-control-back", "id"=>"content","minlength"=>2,"maxlength"=>5000,
+              "content"=>[
+                  "type"=>"textarea",
+                  "placeholder"=>"Contenu de la page",
+                  "required"=>false,
+                  "class"=>"form-control-back",
+                  "id"=>"content",
+                  "minlength"=>2,
+                  "maxlength"=>5000,
                 "error"=>"Le contenu doit faire entre 2 et 5000 caractères"],
 
             ]

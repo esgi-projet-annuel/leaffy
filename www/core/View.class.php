@@ -33,7 +33,6 @@ class View {
     }
 
     public function addModal($modal, $config){
-      //form.mod.php
       $modalPath = "views/modals/".$modal.".mod.php";
       if( file_exists($modalPath)){
         include $modalPath;

@@ -48,12 +48,13 @@ class CommentController extends AbstractController
         }
     }
 
-    public function listPendings(): void {
+    public function listPendings(): array {
         //$this->checkAdmin();
-        $postId = intval($_POST['postId']);
+//        $postId = intval($_POST['postId']);
         $comment = new Comment();
-        $pendingComments = $comment->findAllBy(['status' =>  'PENDING', 'post_id' => $postId]);
+        $pendingComments = $comment->findAllBy(['status' =>  'PENDING']); //, 'post_id' => $postId
 
         var_dump($pendingComments);
+        return $pendingComments;
     }
 }

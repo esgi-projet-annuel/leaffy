@@ -20,24 +20,24 @@ class PageController extends AbstractController {
     }
 
     public function savePage():void{
+
         $this->checkAdmin();
         $page= new Page();
-        // faire l'appel du formulaire
+        $form = $page->getPageForm();
 
         //Est ce qu'il y a des données dans POST ou GET($form["config"]["method"])
-//        $method = strtoupper($form["config"]["method"]);
-//        $data = $GLOBALS["_".$method];
-
-        $data = $_POST; //TODO a supprimer et décommenter ligne de dessus
+        $method = strtoupper($form["config"]["method"]);
+        $data = $GLOBALS["_".$method];
         if(!empty($data) ){
-
             $page->setTitle($data['title']);
             $page->setDescription($data['description']);
-            $page->setStatus($data["status"]);
-            $page->setMenuId(intval($data['menuId']));
+            $page->setStatus('DRAFT');
+            $page->setType('STATIC');
+            $page->setContent($data['content']);
+//            $page->setMenuId(intval($data['menuId']));
             $page->save();
         }
-//        $view = new View("pages", "back");
+        $view = new View("pages", "back");
     }
 
     public function updatePage():void {
@@ -65,7 +65,7 @@ class PageController extends AbstractController {
 
     public function getAllPages(): array {
         $page = new Page();
-        $pages = $page->findAllBy(['status' => 'PUBLISHED']);
+        $pages = $page->findAllBy(['type' => 'STATIC']);
         return $pages;
     }
 

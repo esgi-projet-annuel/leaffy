@@ -31,7 +31,7 @@ class StaticController extends AbstractController {
 
     public function showSettingsPage(){
         $user = new User();
-        $form = $user->getRegisterForm();
+        $form = $user->getUpdateForm();
         $view = new View('settings', "back");
         $view->assign("form", $form);
     }

@@ -22,25 +22,21 @@ class PostController extends AbstractController {
     public function savePost():void{
         $this->checkAdmin();
         $post = new Post();
-        // faire l'appel du formulaire
-//        $form = $post->getRegisterForm();
+        $form = $post->getPostForm();
 
-        //Est ce qu'il y a des données dans POST ou GET($form["config"]["method"])
-//        $method = strtoupper($form["config"]["method"]);
-//        $data = $GLOBALS["_".$method];
-        $data = $_POST; //TODO a supprimer et décommenter ligne de dessus
+        $method = strtoupper($form["config"]["method"]);
+        $data = $GLOBALS["_".$method];
         if(!empty($data) ){
 
             $post->setTitle($data['title']);
             $post->setDescription($data['description']);
             $post->setContent($data['content']);
-            $post->setType($data["type"]);
-            $post->setStatus($data["status"]);
-            $post->setPageId(intval($data['pageId']));
+            $post->setStatus('DRAFT');
+            $post->setPageId(3);
             // TODO comment gerer les images/photos??
             $post->save();
         }
-        $view = new View("articles", "back");
+        $view = new View("posts", "back");
     }
 
     public function deletePost():void {
@@ -54,7 +50,7 @@ class PostController extends AbstractController {
         $postId = intval($_POST['id']);
         $post = new Post();
         $post->findById($postId);
-        $post->status('PUBLISHED');
+        $post->setStatus('PUBLISHED');
         $post->save();
     }
 
@@ -62,7 +58,7 @@ class PostController extends AbstractController {
         $postId = intval($_POST['id']);
         $post = new Post();
         $post->findById($postId);
-        $post->status('WITHDRAWN');
+        $post->setStatus('WITHDRAWN');
         $post->save();
     }
 
@@ -75,18 +71,14 @@ class PostController extends AbstractController {
             $post->setTitle($data['title']);
             $post->setContent($data['content']);
             $post->setDescription($data['description']);
-            $post->setType($data["type"]);
-            $post->setStatus($data["status"]);
-            $post->setPageId(intval($data['pageId']));
             // TODO comment gerer les images/photos??
-
             $post->save();
         }
     }
 
     public function getAllPosts(): array {
         $post = new Post();
-        $posts = $post->findAllBy(['status' => 'PUBLISHED']);
+        $posts = $post->findAll(['orderBy' => 'status']);
         return $posts;
     }
 
