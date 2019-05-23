@@ -36,7 +36,7 @@
             >
 					<?php elseif($value["type"]=="textarea"):?>
 					<label for="<?php echo $value["id"];?>"> <?php echo $value["placeholder"];?> </label>
-					<textarea name="<?php echo $key;?>"
+					<textarea rows="5" name="<?php echo $key;?>"
 
 					<?php echo ($value["required"])?'required="required"':'';?>
 					id="<?php echo $value["id"];?>"
@@ -58,7 +58,7 @@
 
       <?php endforeach;?>
 
-    <div class="d-flex form-Setting">
+    <div class="d-flex form-testimonial">
       <input type="submit" class="form-control button-back button-back--add" value="<?php echo $config["config"]["submit"];?>">
     </div>
   </form>

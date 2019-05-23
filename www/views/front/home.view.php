@@ -116,9 +116,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-10 col-sm-offset-1 no-padding">
-                        <div class="testimonials-carousel owl-carousel-enabled">
-                            <div id="testimonial-2" class="widget_testimonial">
-                                <div class="carousel-testimonial">
+                        <div class="testimonials-carousel">
+                            <div id="slider" class="widget_testimonial">
+                                <div id="slide-container-stop" class="slide showing">
                                     <div class="testimonial-image">
                                         <img src="../../public/img/avatar_testi.png" width="100">
                                     </div>
@@ -156,30 +156,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="section-content">
-                            <form action="<?php \LeaffyMvc\Core\Routing::getSlug("Testimonial","saveTestimonial")?>" method="post" class="form" novalidate="novalidate">
-                                <div class="row">
-                                    <div class="col-12 col-sm-4 col-sm-offset-1">
-                                        <label> Votre Nom (requis)<br />
-                                            <span class="form-control your-name">
-                                              <input type="text" name="userName" value="" size="40" class="form-control form-text" aria-required="true" aria-invalid="false" />
-                                            </span>
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <label> Votre Message<br />
-                                            <span class="form-control your-message">
-                                              <textarea name="content" cols="40" rows="10" class="form-control form-textarea" aria-invalid="false"></textarea>
-                                            </span>
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-end">
-                                    <input type="submit" value="Envoyez" class="form-control submit-button" />
-                                </div>
-                            </form>
+                        <div class="section-content form-testimonial-front">
+                            <?php $this->addModal("formTestimonial", $formTestimonial);?>
                         </div>
                     </div>
                 </div>

@@ -99,7 +99,7 @@
 "/addTestimonial":
   controller: Testimonial
   action: saveTestimonial
-
+  
 "/admin/listPendingsTestimonial":
   controller: Testimonial
   action: listPendings
@@ -130,6 +130,8 @@
 "/":
   controller: Static
   action: showFrontPage
+  controller: Testimonial
+  action: viewTestimonialForm
 
 "/admin":
   controller: Static

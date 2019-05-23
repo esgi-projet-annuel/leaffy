@@ -51,6 +51,9 @@ body {
 main section {
   padding: 1.875rem; }
 
+textarea {
+  font-family: "Lato", sans-serif; }
+
 /**
  * Grid system
  */
@@ -786,6 +789,34 @@ main section {
 
 .form-Setting {
   margin-top: 20px; }
+
+.form-control-testimonial {
+  display: block;
+  width: 100%;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out; }
+
+.form-label-back > label {
+  display: block;
+  width: 100%;
+  margin-bottom: 0;
+  line-height: 1.5;
+  color: #495057;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  -webkit-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out; }
+
+.form-testimonial {
+  margin-top: 20px;
+  justify-content: flex-end; }
 
 #avatar {
   height: 80%;
