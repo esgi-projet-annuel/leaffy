@@ -116,26 +116,47 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-10 col-sm-offset-1 no-padding">
-                        <div class="testimonials-carousel">
-                            <div id="slider" class="widget_testimonial">
-                                <div id="slide-container-stop" class="slide showing">
-                                    <div class="testimonial-image">
-                                        <img src="../../public/img/avatar_testi.png" width="100">
-                                    </div>
-                                    <div class="testimonial-content">
-                                        <blockquote><q>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dictum odio eget nisi hendrerit, nec imperdiet mi consectetur. Curabitur in sem ut ex pulvinar laoreet. Phasellus ac luctus nisl. In id velit sit amet enim hendrerit luctus ut eget mi. Phasellus eget ullamcorper sapien. Nullam mi diam, aliquam et quam dignissim, congue sollicitudin ex. Fusce iaculis</q></blockquote>
-                                    </div>
-                                    <div class="testimonial-meta">
-                                        <h6>Personna</h6>
-                                    </div>
+                       <div class="testimonials-carousel">
+                            <div id="slide-container" class="widget_testimonial slider">
+                                <div class="slide">
+                                  <div class="testimonial-image">
+                                      <img src="../../public/img/avatar_testi.png" width="100">
+                                  </div>
+                                  <div class="testimonial-content">
+                                      <blockquote><q>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dictum odio eget nisi hendrerit, nec imperdiet mi consectetur. Curabitur in sem ut ex pulvinar laoreet. Phasellus ac luctus nisl. In id velit sit amet enim hendrerit luctus ut eget mi. Phasellus eget ullamcorper sapien. Nullam mi diam, aliquam et quam dignissim, congue sollicitudin ex. Fusce iaculis</q></blockquote>
+                                  </div>
+                                  <div class="testimonial-meta">
+                                      <h6>Personna</h6>
+                                  </div>
                                 </div>
+                                <div class="slide">
+                                  <div class="testimonial-image">
+                                      <img src="../../public/img/avatar_testi.png" width="100">
+                                  </div>
+                                  <div class="testimonial-content">
+                                      <blockquote><q>reet. Phasellus ac luctus niLorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dictum odien. Nullam mi diam, aliquam et quam dignissim, congue sollicitudin ex. Fusce iaculis</q></blockquote>
+                                  </div>
+                                  <div class="testimonial-meta">
+                                      <h6>Personna 2</h6>
+                                  </div>
+                                </div>
+                                <div class="slide">
+                                  <div class="testimonial-image">
+                                      <img src="../../public/img/avatar_testi.png" width="100">
+                                  </div>
+                                  <div class="testimonial-content">
+                                      <blockquote><q>asellus ac luctus nisl. In id velit sit amet enim hendrerit luctus ut eget mi. Phasellus eget ullamcorper sapien. Nullam mi diam, aliquam et quam dignissim, congue sollicitudin ex. Fusce iaculisLorem ipsum dolor sit amet, consectetur adipiscing elit. hendrerit, nec imperdiet mi consectetur. Curabitur in sem ut ex pulvinar laoreet. Ph</q></blockquote>
+                                  </div>
+                                  <div class="testimonial-meta">
+                                      <h6>Personna 3</h6>
+                                  </div>
+                                </div>
+                                <div id="nav-slider">
+                                  <button class="button-slider nav-prev" data-dir="prev"><img src="../../public/img/left-arrow.png"></button>
+                                  <button class="button-slider nav-next" data-dir="next"><img src="../../public/img/right-arrow.png"></button>
                             </div>
-                        </div>
-                        <div class="dot-group">
-                            <div class="dot active"><span></span></div>
-                            <div class="dot active"><span></span></div>
-                            <div class="dot active"><span></span></div>
-                            <div class="dot active"><span></span></div>
+
+                            </div>
                         </div>
                     </div>
                 </div>
