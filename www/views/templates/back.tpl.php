@@ -33,9 +33,10 @@
                       <a href="<?php echo \LeaffyMvc\Core\Routing::getSlug("Static","showBackPage");?>">
                           <img class="back-header-logo-img" src="../../public/img/logo_full.png" width="60">
                       </a>
-                      <div class="burger-img">
+                      <!-- <div class="burger-img">
                         <img class="burger" src="../../public/img/burger-light.png" width="40" height="40">
-                      </div>
+                      </div> -->
+
                   </div>
 
                   <a href="<?php echo \LeaffyMvc\Core\Routing::getSlug("Static","showFrontPage")."?page=1";?>">
@@ -65,6 +66,12 @@
         </header>
 
         <div class="container-back">
+          <input class="hidden" type="checkbox" id="menuToggle">
+          <label class="menu-btn" for="menuToggle">
+              <div class="menu"></div>
+              <div class="menu"></div>
+              <div class="menu"></div>
+          </label>
         <?php $this->addMenu("back", "back");?><!--    include menu-->
     <?php include $this->view;?>
     </body>
