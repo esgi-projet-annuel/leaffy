@@ -37,7 +37,7 @@
 
         </li>
         </a>
-        <a class="link" href="<?php echo \LeaffyMvc\Core\Routing::getSlug("Testimonial", "listPendings");?>">
+        <a class="link" href="<?php echo \LeaffyMvc\Core\Routing::getSlug("Testimonial", "listTestimonialsByStatus");?>">
         <li class="list-item">
             <img src="../../../public/img/rating.png" width="40">
             <div>Témoignages</div>

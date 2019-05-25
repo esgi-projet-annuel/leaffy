@@ -26,7 +26,7 @@ class Testimonial extends BaseSQL{
 
     public function setUserName($user_name): void
     {
-        $this->$user_name = $user_name;
+        $this->user_name = $user_name;
     }
 
     public function getTestimonialForm(){
@@ -39,7 +39,7 @@ class Testimonial extends BaseSQL{
               "submit"=>"Ajouter"],
 
             "data"=>[
-              "firstname"=>[
+              "userName"=>[
                 "type"=>"text",
                 "placeholder"=>"Votre prénom",
                 "required"=>true,
@@ -49,16 +49,16 @@ class Testimonial extends BaseSQL{
                 "maxlength"=>100,
                 "error"=>"Le prénom doit faire entre 2 et 100 caractères"
               ],
-                "lastname"=>[
-                  "type"=>"text",
-                  "placeholder"=>"Votre prénom",
-                  "required"=>true,
-                  "class"=>"form-control-testimonial",
-                  "id"=>"lastname",
-                  "minlength"=>2,
-                  "maxlength"=>100,
-                  "error"=>"Le nom doit faire entre 2 et 100 caractères"
-                ],
+//                "lastname"=>[
+//                  "type"=>"text",
+//                  "placeholder"=>"Votre prénom",
+//                  "required"=>true,
+//                  "class"=>"form-control-testimonial",
+//                  "id"=>"lastname",
+//                  "minlength"=>2,
+//                  "maxlength"=>100,
+//                  "error"=>"Le nom doit faire entre 2 et 100 caractères"
+//                ],
 
 
               "content"=>["type"=>"textarea","placeholder"=>"Votre témoignage", "required"=>false, "class"=>"form-control-testimonial", "id"=>"content","minlength"=>2,"maxlength"=>800,

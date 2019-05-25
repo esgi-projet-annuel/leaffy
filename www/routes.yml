@@ -100,9 +100,9 @@
   controller: Testimonial
   action: saveTestimonial
   
-"/admin/listPendingsTestimonial":
+"/admin/listTestimonials":
   controller: Testimonial
-  action: listPendings
+  action: listTestimonialsByStatus
 
 #USER
 "/createUser":

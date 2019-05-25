@@ -4,7 +4,6 @@
   <div class="card card-login card card-login mx-auto mt-5">
     <div class="card-header">Connexion</div>
     <div class="card-body">
-
       <?php $this->addModal("form", $form);?>
         
       <div class="text-center">

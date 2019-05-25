@@ -19,6 +19,13 @@ class PostController extends AbstractController {
         $view->assign("formPost", $form);
     }
 
+    public function viewSetPost():void{
+        $view  =  new View('setPost', 'back');
+        $post = new Post();
+        $form= $post->getPostForm(); // TODO ALIX FAIRE FORMULAIRE UPDATE
+        $view->assign("formPost", $form);
+    }
+
     public function savePost():void{
         $this->checkAdmin();
         $post = new Post();

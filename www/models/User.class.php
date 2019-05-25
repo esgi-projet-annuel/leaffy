@@ -120,6 +120,7 @@ class User extends BaseSQL {
                     "required"=>true,
                     "class"=>"form-control-login",
                     "id"=>"email",
+                    "value"=>"",
                     "error"=>"L'email n'est pas valide"
                 ],
 
@@ -130,6 +131,7 @@ class User extends BaseSQL {
                     "required"=>true,
                     "class"=>"form-control-login",
                     "id"=>"pwd",
+                    "value"=>"",
                     "error"=>"Veuillez préciser un mot de passe"
                 ]
             ]

@@ -35,21 +35,23 @@ class AuthenticationService
 
     public function login(User $user, string $email, string $pwd){
         if(!is_null($email) || !is_null($pwd)){
-            $user->findOneObjectBy(['email'=>$email]);
-            //checkPassword
-            $verified = password_verify( $pwd, $user->password);
-            $isActive = ($user->active == 1)?true:false;
-            if ($verified && $isActive){
-                $token= $this->generateToken($user);
-                $_SESSION = ['userId' => $user->id, 'email' => $user->email, 'token'=> $token, 'profile' => $user->profile];
-                return true;
-            }else{
+            if ($user->findOneObjectBy(['email'=>$email]) != null){
+                //checkPassword
+                $verified = password_verify( $pwd, $user->password);
+                $isActive = ($user->active == 1)?true:false;
+                if ($verified && $isActive){
+                    $token= $this->generateToken($user);
+                    $_SESSION = ['userId' => $user->id, 'email' => $user->email, 'token'=> $token, 'profile' => $user->profile];
+                    return true;
+                }else{
+                    return false;
+                }
+            }else {
                 return false;
             }
         }else{
             return false;
         }
-
     }
 
     public function logout(User $user, $redirect = null):void{

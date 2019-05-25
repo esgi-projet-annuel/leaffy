@@ -118,6 +118,7 @@
                     <div class="col-sm-10 col-sm-offset-1 no-padding">
                        <div class="testimonials-carousel">
                             <div id="slide-container" class="widget_testimonial slider">
+
                                 <div class="slide">
                                   <div class="testimonial-image">
                                       <img src="../../public/img/avatar_testi.png" width="100">

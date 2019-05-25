@@ -2,8 +2,8 @@
     <nav class="header-navigation">
         <ul id="menu-main" class="clearfix">
 
-            <?php $test= new \LeaffyMvc\Controllers\MenuController();
-            echo $test->generateMenu()?>
+            <?php $menu= new \LeaffyMvc\Controllers\MenuController();
+            echo $menu->generateMenu()?>
             <?php if (isset($_SESSION['token'])):
                 $user= new \LeaffyMvc\Models\User();
                 $user->findOneObjectBy(['email'=>$_SESSION['email']]); ?>

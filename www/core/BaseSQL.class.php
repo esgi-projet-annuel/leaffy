@@ -52,7 +52,7 @@ namespace LeaffyMvc\Core {
             $query->setFetchMode( PDO::FETCH_INTO, $this);
             $query->execute($findBy);
             $queryResult = $query->fetch();
-            return $queryResult;
+            return ($queryResult==false)?null:$queryResult;
         }
 
         public function findOneArrayBy(array $findBy):?array {

@@ -14,27 +14,36 @@ class TestimonialController extends AbstractController
         $view->assign("formTestimonial", $form);
     }
 
+    public function viewTestimonialList():void {
+        $view = new View('testimonials', 'back');
+    }
+
     public function saveTestimonial()
     {
-        var_dump($_POST);
         $testimonial = new Testimonial();
-        $data = $_POST; //TODO a supprimer et décommenter ligne de dessus
+        $form = $testimonial->getTestimonialForm();
+
+        $method = strtoupper($form["config"]["method"]);
+        $data = $GLOBALS["_".$method];
         if (!empty($data)) {
             $testimonial->setContent($data['content']);
-            $testimonial->setUserName($_SESSION['userName']);
+            $testimonial->setUserName($data['userName']);
             $testimonial->setStatus('PENDING');
             $testimonial->save();
+            $form["errors"][] ="Merci pour votre avis!  ";
         }
 
-        return var_dump($_POST);
+        $view = new View("home", "front");
+        $view->assign("formTestimonial", $form);
     }
 
     public function approveTestimonial(): void
     {
         $this->checkAdmin();
-        $testimonialId = intval($_POST['testimonialId']);
+        $testimonialId = intval($_POST['id']);
         $testimonial = new Testimonial();
         $testimonial->findById($testimonialId);
+        var_dump($testimonial);
         $data = $_POST;
         if(!empty($data) ){
             $testimonial->setStatus('APPROVED');
@@ -45,21 +54,25 @@ class TestimonialController extends AbstractController
     public function rejectTestimonial(): void
     {
         $this->checkAdmin();
-        $testimonialId = intval($_POST['testimonialId']);
-        $testimonial = new Testimonial();
-        $testimonial->findById($testimonialId);
         $data = $_POST;
         if(!empty($data) ){
+        $testimonialId = intval($_POST['id']);
+        $testimonial = new Testimonial();
+        $testimonial->findById($testimonialId);
             $testimonial->setStatus('REJECTED');
             $testimonial->save();
         }
     }
 
-    public function listPendings(): array {
+    public function listTestimonialsByStatus():void {
         //$this->checkAdmin();
+        print 'ocuilles';
+        var_dump($_GET);
+        $status = isset($_GET['status'])?$_GET['status']:'PENDING';
         $testimonial = new Testimonial();
-        $pendingTestimonials = $testimonial->findAllBy(['status' => 'PENDING']);
-        var_dump($pendingTestimonials);
-        return $pendingTestimonials;
+        $testimonials = $testimonial->findAllBy(['status' => $status]);
+        $view = new View("testimonials", "back");
+        $view->assign("testimonials", $testimonials);
     }
+
 }
