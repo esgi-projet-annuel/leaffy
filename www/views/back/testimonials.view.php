@@ -20,19 +20,31 @@
           <th width="25%"></th>
         </tr>
         <?php
-//        $controller = new \LeaffyMvc\Controllers\TestimonialController();
-//        $testimonials = $controller->listTestimonialsByStatus();
         foreach ($testimonials as $testimonial) {
-            echo '<tr>'
+            $buttonStr='';
+            if (isset($_GET['status'])){
+                if ($_GET['status']== 'APPROVED'){
+                    $buttonStr.= '<a href="" class="form-control button-back button-back--modify" onclick="rejecte('. $testimonial->id .');">Rejeter</a>';
+                }else if($_GET['status']== 'REJECTED'){
+                    $buttonStr.='<a href="" class="form-control button-back button-back--display" onclick="approve('. $testimonial->id .');">Valider</a>';
+                }else if($_GET['status']== 'PENDING'){
+                    $buttonStr.= '<a href="" class="form-control button-back button-back--display" onclick="approve('. $testimonial->id .');">Valider</a>'
+                        . '<a href="" class="form-control button-back button-back--modify" onclick="rejecte('. $testimonial->id .');">Rejeter</a>';
+                }
+            }else{
+                $buttonStr.= '<a href="" class="form-control button-back button-back--display" onclick="approve('. $testimonial->id .');">Valider</a>'
+                    . '<a href="" class="form-control button-back button-back--modify" onclick="rejecte('. $testimonial->id .');">Rejeter</a>';
+            }
+
+            $str = '<tr>'
                 .'<td>' . $testimonial->user_name . '</td>'
                 . '<td>' . $testimonial->content . '</td>'
                 . '<td>Publié le ' . $testimonial->created_at . '</td>'
-                . '<td>' . $testimonial->status . '</td>'
-                . '<td>'
-                . '<a href="" class="form-control button-back button-back--display" onclick="approve('. $testimonial->id .');">Valider</a>'
-                . '<a href="" class="form-control button-back button-back--modify" onclick="rejecte('. $testimonial->id .');">Rejeter</a>'
-                . '</td>'
-                . '</tr>';
+                . '<td>' . $testimonial->geStringForHtmlFromStatus($testimonial->status) . '</td>'
+                . '<td>';
+
+            $str .= $buttonStr. '</td> </tr>';
+            echo $str;
         }
         ?>
     </table>

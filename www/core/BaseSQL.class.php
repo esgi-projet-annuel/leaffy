@@ -124,5 +124,28 @@ namespace LeaffyMvc\Core {
             $query = $this->pdo->prepare($sql);
             $query->execute(["id" => $this->id]);
         }
+
+        public function geStringForHtmlFromStatus(string $status){
+            switch ($status){
+                case 'PENDING':
+                    return 'En attente de validation';
+                    break;
+                case 'APPROVED':
+                    return 'Validé';
+                    break;
+                case 'REJECTED':
+                    return 'Rejeté';
+                case 'DRAFT':
+                    return 'Brouillon';
+                    break;
+                case 'WITHDRAWN':
+                    return 'Non publié';
+                    break;
+                case 'PUBLISHED':
+                    return 'Publié';
+                    break;
+            }
+
+        }
     }
 }

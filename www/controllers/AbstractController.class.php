@@ -5,7 +5,7 @@ namespace LeaffyMvc\Controllers;
 use LeaffyMvc\Services\AuthenticationService;
 use LeaffyMvc\Core\View;
 
-abstract class AbstractController{
+class AbstractController{
 
     protected function checkAdmin(): void {
         if(!AuthenticationService::instance()->isAdmin()) {
