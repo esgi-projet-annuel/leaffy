@@ -66,8 +66,6 @@ class TestimonialController extends AbstractController
 
     public function listTestimonialsByStatus():void {
         //$this->checkAdmin();
-        print 'ocuilles';
-        var_dump($_GET);
         $status = isset($_GET['status'])?$_GET['status']:'PENDING';
         $testimonial = new Testimonial();
         $testimonials = $testimonial->findAllBy(['status' => $status]);
