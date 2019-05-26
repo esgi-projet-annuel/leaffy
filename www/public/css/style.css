@@ -644,6 +644,22 @@ textarea {
     background-color: #FFFFFF;
     color: #B47474; }
 
+.button-back--publish {
+  border: 1px solid #74b49b;
+  color: #fff;
+  background-color: #74b49b; }
+  .button-back--publish:hover {
+    background-color: #FFFFFF;
+    color: #74b49b; }
+
+.button-back--archive {
+  border: 1px solid #5c8d89;
+  color: #fff;
+  background-color: #5c8d89; }
+  .button-back--archive:hover {
+    background-color: #FFFFFF;
+    color: #5c8d89; }
+
 .button-slider {
   background: none;
   border: none;

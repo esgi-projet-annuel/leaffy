@@ -179,7 +179,25 @@
     color: #B47474;
   }
 }
+.button-back--publish{
+  border: 1px solid $color3;
+  color: #fff;
+  background-color: $color3;
+  &:hover{
+    background-color: $white;
+    color: $color3;
+  }
+}
 
+.button-back--archive{
+  border: 1px solid $color4;
+  color: #fff;
+  background-color: $color4;
+  &:hover{
+    background-color: $white;
+    color: $color4;
+  }
+}
 
 
 .button-slider{

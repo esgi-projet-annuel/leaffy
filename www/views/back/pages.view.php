@@ -20,17 +20,18 @@
           <th align="left">Status de la page</th>
           <th width="25%"></th>
         </tr>
-<!--        TODO FABIEN Créer le drop down select pour que l'admin change le status de la page -->
         <?php
             foreach ($pages as $page) {
-                echo '<tr>'
-                    . '<td>' . $page->getTitle() . '</td>'
-                    . '<td>' . $page->created_at . '</td>'
-                    . '<td>' . $page->updated_at . '</td>'
-                    . '<td> DROP DOWN STATUS</td>'
-                    . '<td>'
+                echo '<tr class="tr">'
+                    . '<td class="td">' . $page->getTitle() . '</td>'
+                    . '<td class="td">' . $page->created_at . '</td>'
+                    . '<td class="td">' . $page->updated_at . '</td>'
+                    . '<td class="td"> DROP DOWN STATUS</td>'
+                    . '<td class="td">'
                     . '<a href="'. \LeaffyMvc\Core\Routing::getSlug("Page","getUpdateFormView").'?id='.$page->id.'" class="form-control button-back button-back--modify" onclick="updatePage('. $page->id .');">Modifier</a>'
                     . '<a href="" class="form-control button-back button-back--remove" onclick="deletePage('. $page->id .');">Supprimer</a>'
+                    . '<a href="" class="form-control button-back button-back--publish";">Publier</a>'
+                    . '<a href="" class="form-control button-back button-back--archive";">Archiver</a>'
                     . '</td>'
                     . '</tr>';
             }
