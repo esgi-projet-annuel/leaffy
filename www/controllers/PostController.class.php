@@ -22,12 +22,12 @@ class PostController extends AbstractController {
     public function viewSetPost():void{
         $view  =  new View('setPost', 'back');
         $post = new Post();
-        $form= $post->getPostForm(); // TODO ALIX FAIRE FORMULAIRE UPDATE
+        $form= $post->getUpdateForm($_GET['id']);
         $view->assign("formPost", $form);
     }
 
     public function savePost():void{
-        $this->checkAdmin();
+//        $this->checkAdmin();
         $post = new Post();
         $form = $post->getPostForm();
 
@@ -40,10 +40,9 @@ class PostController extends AbstractController {
             $post->setContent($data['content']);
             $post->setStatus('DRAFT');
             $post->setPageId(3);
-            // TODO comment gerer les images/photos??
             $post->save();
         }
-        $view = new View("posts", "back");
+        $this->getAllPostsByStatus();
     }
 
     public function deletePost():void {
@@ -78,20 +77,24 @@ class PostController extends AbstractController {
             $post->setTitle($data['title']);
             $post->setContent($data['content']);
             $post->setDescription($data['description']);
-            // TODO comment gerer les images/photos??
             $post->save();
         }
+        $this->getAllPostsByStatus();
     }
 
     public function getAllPosts(): array {
         $post = new Post();
-        $posts = $post->findAll(['orderBy' => 'status']);
+        $posts = $post->findAllByOrder(['orderBy' => 'status']);
         return $posts;
     }
 
-    //TODO : showAll uniquement pour lister les articles de blog => showAllBlogArticles()
-    //TODO : showOne pour afficher/modifier une page (pour rappel, le contenu d'une page
-    //est en fait un article dans la BDD) ou modifier/afficher un article de blog
-    //TODO : Supprimer/renommer les views correspondantes
-    //TODO corriger les routes en fonction
+    public function getAllPostsByStatus():void {
+        //$this->checkAdmin();
+        $status = isset($_GET['status'])?$_GET['status']:'DRAFT';
+        $post = new Post();
+        $posts = $post->findAllBy(['status'=>$status]);
+        $view = new View("posts", "back");
+        $view->assign("posts", $posts);
+    }
+
 }

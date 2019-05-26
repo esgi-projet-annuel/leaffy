@@ -81,7 +81,7 @@ namespace LeaffyMvc\Core {
             return $query->fetchAll(PDO::FETCH_CLASS, get_called_class());
         }
 
-        public function findAll(array $orderBy){
+        public function findAllByOrder(array $orderBy){
             $sql = "SELECT * FROM ".$this->table." ORDER BY :orderBy ;";
             $query = $this->pdo->prepare($sql);
             $query->execute($orderBy);

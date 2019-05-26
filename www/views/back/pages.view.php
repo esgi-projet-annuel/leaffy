@@ -6,9 +6,9 @@
     </div>
 <!--      TODO FABIEN faire de beaux boutons ^^-->
       <div class="group-button">
-          <a href="/admin/listPages?status=DRAFT" class="form-control button-back button-back--status">Brouillon</a>
-          <a href="/admin/listPages?status=PUBLISHED" class="form-control button-back button-back--status">Publié</a>
-          <a href="/admin/listPages?status=WITHDRAWN" class="form-control button-back button-back--status">Archivé</a>
+          <a href="/admin/listPages?status=DRAFT" class="form-control button-back button-back--status">Brouillons</a>
+          <a href="/admin/listPages?status=PUBLISHED" class="form-control button-back button-back--status">Pages publiées</a>
+          <a href="/admin/listPages?status=WITHDRAWN" class="form-control button-back button-back--status">Pages archivées</a>
       </div>
   </div>
   <div class="section-table">
@@ -21,17 +21,20 @@
           <th width="25%"></th>
         </tr>
         <?php
+//        TODO FABIEN remplacer texte des boutons par icones et le changer dans chaque vues (post/testimonials/comment/etc)
+        //TODO ALIX changer status avec boutons
+        $niec= 'WITHDRAWN';
             foreach ($pages as $page) {
                 echo '<tr class="tr">'
                     . '<td class="td">' . $page->getTitle() . '</td>'
                     . '<td class="td">' . $page->created_at . '</td>'
                     . '<td class="td">' . $page->updated_at . '</td>'
-                    . '<td class="td"> DROP DOWN STATUS</td>'
+                    . '<td class="td">' . $page->geStringForHtmlFromStatus($page->status) . '</td>'
                     . '<td class="td">'
                     . '<a href="'. \LeaffyMvc\Core\Routing::getSlug("Page","getUpdateFormView").'?id='.$page->id.'" class="form-control button-back button-back--modify" onclick="updatePage('. $page->id .');">Modifier</a>'
                     . '<a href="" class="form-control button-back button-back--remove" onclick="deletePage('. $page->id .');">Supprimer</a>'
-                    . '<a href="" class="form-control button-back button-back--publish";">Publier</a>'
-                    . '<a href="" class="form-control button-back button-back--archive";">Archiver</a>'
+                    . '<a href="" class="form-control button-back button-back--publish" onclick="changeStatus('. $page->id .');">Publier</a>'
+                    . '<a href="" class="form-control button-back button-back--archive" onclick="changeStatus('. $page->id, $niec.');">Archiver</a>'
                     . '</td>'
                     . '</tr>';
             }
@@ -46,6 +49,14 @@
             url : '/admin/deletePage',
             type : 'POST', // Le type de la requête HTTP, ici devenu POST
             data : 'id=' + pageId,
+        });
+    }
+    function changeStatus(pageId, pageStatus) {
+        $.ajax({
+            url : '/admin/changeStatus',
+            type : 'POST', // Le type de la requête HTTP, ici devenu POST
+            data : {id: pageId,
+                status: pageStatus}
         });
     }
 </script>

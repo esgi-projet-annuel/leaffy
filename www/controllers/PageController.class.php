@@ -94,4 +94,17 @@ class PageController extends AbstractController {
         $view = new View("pages", "back");
         $view->assign("pages", $pages);
     }
+
+    public function changeStatus(){
+        var_dump($_POST);
+        $this->checkAdmin();
+        $data = $_POST;
+        if(!empty($data) ){
+            $pageId = intval($_POST['id']);
+            $page = new Page();
+            $page->findById($pageId);
+            $page->setStatus($_POST['status']);
+            $page->save();
+        }
+    }
 }

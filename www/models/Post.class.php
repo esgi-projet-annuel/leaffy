@@ -81,4 +81,58 @@ class Post extends BaseSQL{
         ];
     }
 
+    public function getUpdateForm(string $idPost){
+        $post = new Post();
+        $post->findOneObjectBy(['id'=>$idPost]);
+        $titleValue= $post->title;
+        $descriptionValue= $post->description;
+        $contentValue= $post->content;
+        return [
+            "config"=>[
+                "method"=>"POST",
+                "action"=> \LeaffyMvc\Core\Routing::getSlug("Post","updatePost"),
+                "class"=>"",
+                "id"=>"",
+                "submit"=>"Enregistrer"],
+            "data"=>[
+                "id"=>[
+                    "type"=>"hidden",
+                    "value"=>$idPost
+                ],
+                "title"=>[
+                    "type"=>"text",
+                    "value"=>$titleValue,
+                    "placeholder"=>"Titre de l'article",
+                    "required"=>true,
+                    "class"=>"form-control-login",
+                    "id"=>"title",
+                    "minlength"=>2,
+                    "maxlength"=>100,
+                    "error"=>"Le titre doit faire entre 2 et 100 caractères"
+                ],
+                "description"=>[
+                    "type"=>"text",
+                    "value"=>$descriptionValue,
+                    "placeholder"=>"Description courte",
+                    "required"=>false, "class"=>"form-control-back",
+                    "id"=>"Shortdescription",
+                    "minlength"=>2,
+                    "maxlength"=>150,
+                    "error"=>"La description doit faire entre 2 et 150 caractères"],
+                "content"=>[
+                    "type"=>"textarea",
+                    "value"=>$contentValue,
+                    "placeholder"=>"Contenu",
+                    "required"=>false,
+                    "class"=>"form-control-back",
+                    "id"=>"content",
+                    "minlength"=>2,
+                    "maxlength"=>5000,
+                    "error"=>"La description doit faire entre 2 et 5000 caractères"],
+//                "bannerImg"=>["type"=>"file","placeholder"=>"Image principale", "required"=>false, "class"=>"form-control-back", "id"=>"bannerImg","minlength"=>0,"maxlength"=>500,
+//                    "error"=>"L'image n'est pas valide'"],
+            ]
+        ];
+    }
+
 }

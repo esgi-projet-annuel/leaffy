@@ -12,7 +12,7 @@
             <div>Informations personnelles</div>
         </li>
       </a>
-      <a class="link" href="<?php echo \LeaffyMvc\Core\Routing::getSlug("Post", "showAll");?>">
+      <a class="link" href="<?php echo \LeaffyMvc\Core\Routing::getSlug("Post", "getAllPostsByStatus");?>">
         <li class="list-item">
             <img src="../../../public/img/newspaper.png" width="40">
             <div>Article</div>

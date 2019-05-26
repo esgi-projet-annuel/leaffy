@@ -47,7 +47,16 @@
 
 "/admin/updatePost":
   controller: Post
+  action: viewSetPost
+
+
+"/admin/saveUpdatePost":
+  controller: Post
   action: updatePost
+
+"/admin/listPosts":
+  controller: Post
+  action: getAllPostsByStatus
 
 #PAGES
 "/":
@@ -85,6 +94,10 @@
 "/admin/listPages":
   controller: Page
   action: getAllPagesByStatus
+
+"/admin/changeStatus":
+  controller: Page
+  action: changeStatus
 
 #COMMENTS
 "/admin/approveComment":
