@@ -17,15 +17,7 @@
   margin-left: 15px;
 }
 
-#menu-main{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  & a{
-    color: $white;
-    font-weight: bold;
-  }
-}
+
 
 #header-home .bottom-header {
     width: 100%;
@@ -48,40 +40,6 @@
     }
 }
 
-.header-navigation{
-  @include max-tablet{
-    display: none;
-  }
-}
-.menu-responsive{
-  display: none;
-}
-.menu-responsive{
-  @include max-tablet{
-    display: flex;
-    justify-content: flex-end;
-  }
-  & img{
-
-  }
-  & .burger-img{
-    margin-right: 15px;
-  }
-}
-.logo-back .burger-img{
-  display: none;
-}
-.logo-back .burger-img{
-  @include max-tablet{
-    display: flex;
-    justify-content: flex-end;
-  }
-}
-.back-header-logo-img{
-  @include max-tablet{
-    display: none;
-  }
-}
 .sticky{
     background-color: rgba(0, 0, 0, 0.5);
 }

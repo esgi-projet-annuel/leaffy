@@ -13,8 +13,13 @@
   & h1{
     text-align: center;
   }
+  position: relative;
 }
-
+.back-header-logo-img{
+  @include max-tablet{
+    display: none;
+  }
+}
 .logo-back{
   margin: 3px 28px;
 }

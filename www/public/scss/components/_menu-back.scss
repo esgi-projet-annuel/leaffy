@@ -102,18 +102,18 @@
 
 	#menuToggle:checked + .menu-btn .menu:nth-child(1) {
 		transform: translate3d(0, 6px, 0) rotate(45deg);
-    background: $color4;
+    background: $color3;
 	}
 
 	#menuToggle:checked + .menu-btn .menu:nth-child(2) {
 		transform: rotate(-45deg) translate3d(-5.71429px, -6px, 0);
 		opacity: 0;
-    background: $color4;
+    background: $color3;
 	}
 
 	#menuToggle:checked + .menu-btn .menu:nth-child(3) {
 		transform: translate3d(0, -6px, 0) rotate(-45deg);
-    background: $color4;
+    background: $color3;
 	}
 
   #menuToggle:checked ~ #adminbar {
