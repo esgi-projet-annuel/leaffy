@@ -12,8 +12,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
-    <script src="https://cloud.tinymce.com/5/tinymce.min.js"></script>
+    <!--        TODO FABIEN voir pour importer tinyMCE localement et non que par cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.5.6/tinymce.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/tinymce/4.5.6/jquery.tinymce.min.js"></script>
     <script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=2hqwamzfvt53654o5dc1ytmm8omgwnlk1dapojphxytnebbj"></script>
+    <script src="https://cloud.tinymce.com/5/tinymce.min.js"></script>
     <script>tinymce.init({selector:'textarea'});</script>
 </head>
     <script src="../../public/js/jquery-3.3.1.min.js"></script>
