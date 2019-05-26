@@ -48,6 +48,7 @@
               </div>
           </div>
           <script src="../../public/js/scriptTestiSlider.js"></script>
+          <script src="../../public/js/subMenu.js"></script>
       </footer>
     </body>
 </html>

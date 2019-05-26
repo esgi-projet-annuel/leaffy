@@ -151,7 +151,8 @@ textarea {
 .container {
   width: 100%;
   margin: auto;
-  overflow-x: hidden; }
+  overflow-x: hidden;
+  overflow-y: -webkit-paged-y; }
   @media (min-width: 1200px) {
     .container {
       width: 1170px; } }
@@ -948,6 +949,26 @@ textarea {
 
 .active-front {
   border-bottom: 2px solid white; }
+
+#menu-sup {
+  position: relative;
+  cursor: pointer; }
+
+.submenu {
+  background: #a7d7c5;
+  position: absolute;
+  list-style-type: none;
+  padding: 0;
+  cursor: pointer;
+  display: none;
+  border-radius: 10px; }
+
+.submenu-item {
+  font-size: 15px;
+  padding: 15px; }
+
+.submenu-item:hover {
+  background: #5c8d89; }
 
 .fields-input-back {
   display: flex;
