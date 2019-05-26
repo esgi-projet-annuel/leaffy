@@ -4,25 +4,32 @@
       <h2>Gestion des pages</h2>
       <a class="form-control button-back button-back--add" href="<?php echo \LeaffyMvc\Core\Routing::getSlug("Page","createPage");?>">Ajouter</a>
     </div>
+<!--      TODO FABIEN faire de beaux boutons ^^-->
+      <div class="group-button">
+          <a href="/admin/listPages?status=DRAFT" class="form-control button-back button-back--status">Brouillon</a>
+          <a href="/admin/listPages?status=PUBLISHED" class="form-control button-back button-back--status">Publié</a>
+          <a href="/admin/listPages?status=WITHDRAWN" class="form-control button-back button-back--status">Archivé</a>
+      </div>
   </div>
   <div class="section-table">
     <table class="table" width="100%">
         <tr class="table-head">
           <th align="left">Nom de la page</th>
-          <th align="left">Date</th>
+          <th align="left">Crée le </th>
+          <th align="left">Modifiée le </th>
+          <th align="left">Status de la page</th>
           <th width="25%"></th>
         </tr>
+<!--        TODO FABIEN Créer le drop down select pour que l'admin change le status de la page -->
         <?php
-            $controller = new \LeaffyMvc\Controllers\PageController();
-            $pages = $controller->getAllPages();
-
             foreach ($pages as $page) {
                 echo '<tr>'
                     . '<td>' . $page->getTitle() . '</td>'
-                    . '<td>Publié le ' . $page->created_at . '</td>'
+                    . '<td>' . $page->created_at . '</td>'
+                    . '<td>' . $page->updated_at . '</td>'
+                    . '<td> DROP DOWN STATUS</td>'
                     . '<td>'
-//                    . '<a href="" class="form-control button-back button-back--display" onclick="showPage('. $page->id .');">Afficher</a>'
-                    . '<a href="" class="form-control button-back button-back--modify" onclick="updatePage('. $page->id .');">Modifier</a>'
+                    . '<a href="'. \LeaffyMvc\Core\Routing::getSlug("Page","getUpdateFormView").'?id='.$page->id.'" class="form-control button-back button-back--modify" onclick="updatePage('. $page->id .');">Modifier</a>'
                     . '<a href="" class="form-control button-back button-back--remove" onclick="deletePage('. $page->id .');">Supprimer</a>'
                     . '</td>'
                     . '</tr>';
@@ -36,22 +43,6 @@
     function deletePage(pageId) {
         $.ajax({
             url : '/admin/deletePage',
-            type : 'POST', // Le type de la requête HTTP, ici devenu POST
-            data : 'id=' + pageId,
-        });
-    }
-
-    function showPage(pageId) {
-        $.ajax({
-            url : '/admin/deletePage',
-            type : 'POST', // Le type de la requête HTTP, ici devenu POST
-            data : 'id=' + pageId,
-        });
-    }
-
-    function updatePage(pageId) {
-        $.ajax({
-            url : '/admin/updatePage',
             type : 'POST', // Le type de la requête HTTP, ici devenu POST
             data : 'id=' + pageId,
         });

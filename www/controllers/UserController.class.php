@@ -18,6 +18,13 @@ class UserController extends AbstractController {
         $view->assign("form", $form);
     }
 
+    public function showUpdateForm(){
+        $user = new User();
+        $form = $user->getUpdateForm();
+        $view = new View('settings', "back");
+        $view->assign("form", $form);
+    }
+
     public function saveUser():void{
         $user = new User();
         $form = $user->getRegisterForm();

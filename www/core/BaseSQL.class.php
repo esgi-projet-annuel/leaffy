@@ -32,6 +32,16 @@ namespace LeaffyMvc\Core {
             $this->id = $id;
         }
 
+        public function getCreatedAt():string
+        {
+            return date('d-m-Y', strtotime($this->created_at));
+        }
+
+        public function getUpdatedAt():string
+        {
+            return date('d-m-Y', strtotime($this->updated_at));
+        }
+
         private function prepareQuery(array $findBy):PDOStatement{
             $sqlWhere = [];
             foreach ($findBy as $key => $value) {
@@ -139,7 +149,7 @@ namespace LeaffyMvc\Core {
                     return 'Brouillon';
                     break;
                 case 'WITHDRAWN':
-                    return 'Non publié';
+                    return 'Archivé';
                     break;
                 case 'PUBLISHED':
                     return 'Publié';

@@ -16,7 +16,7 @@ class MenuController extends AbstractController {
         $str="";
         $listId= 1;
         $page= new Page();
-        $pageList= $page->findAllBy(['menu_id'=>0]);
+        $pageList= $page->findAllBy(['menu_id'=>0, 'status'=>'PUBLISHED']);
         foreach ($pageList as $pageForMenu=>$value) {
             $str.= <<<EOF
                <li id="menu-item-$listId" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-16">

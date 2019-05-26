@@ -209,7 +209,6 @@ class User extends BaseSQL {
     }
 
     public function getUpdateForm(){
-        //TODO condition pour les boutons Mise a jour != enregistrer
         $lastnameValue= '';
         $firstnameValue= '';
         $emailValue= '';

@@ -3,8 +3,10 @@
 <?php
 
 // Récupération de la clé correspondant au $login dans la base de données
-$user = new User();
+$user = new \LeaffyMvc\Models\User();
 $user->findOneObjectBy(['email'=>$_GET['email']]);
+
+var_dump($user);
 
 if(!empty($user)) {
     // Récupération de la clé
@@ -15,11 +17,7 @@ if(!empty($user)) {
 
 
 // On teste la valeur de la variable $actif récupéré dans la BDD
-if($active == '1'){ // Si le compte est déjà actif on prévient
-
-    echo "Votre compte est déjà actif !";
-} else { // Si ce n'est pas le cas on passe aux comparaisons
-
+if($active == '0'){ // Si le compte est déjà actif on prévient
     if($_GET['token'] == $token) // On compare nos deux clés
     {
         // Si elles correspondent on active le compte !
@@ -31,6 +29,12 @@ if($active == '1'){ // Si le compte est déjà actif on prévient
     {
         echo "Erreur ! Votre compte ne peut être activé...";
     }
+
+} else if($active == '1'){ // Si ce n'est pas le cas on passe aux comparaisons
+
+    echo "Votre compte est déjà actif !";
+}else{
+    echo "erreur 404";
 }
 
 ?>

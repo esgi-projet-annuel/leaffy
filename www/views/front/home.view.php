@@ -163,7 +163,8 @@
                             </div>
                         </div>
                         <div class="section-content form-testimonial-front">
-                            <?php $this->addModal("formTestimonial", $formTestimonial);?>
+                            <?php $testimonialController = new \LeaffyMvc\Controllers\TestimonialController();
+                            $this->addModal("formTestimonial", $testimonialController->getTestimonialForm());?>
                         </div>
                     </div>
                 </div>

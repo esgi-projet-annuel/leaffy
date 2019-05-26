@@ -33,7 +33,7 @@
     				<?php echo ($value["required"])?'required="required"':'';?>
     				id="<?php echo $value["id"];?>"
     				class="<?php echo $value["class"];?>"
-    				value="<?php echo $value["value"]?>"
+    				value="<?php echo $value["value"]??''?>"
             >
 
       	<?php endif;?>

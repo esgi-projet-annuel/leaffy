@@ -123,4 +123,62 @@ class Page extends BaseSQL {
         ];
     }
 
+    public function getUpdateForm(string $idPage){
+            $page = new Page();
+            $page->findOneObjectBy(['id'=>$idPage]);
+                $titleValue= $page->title;
+                $descriptionValue= $page->meta_description;
+                $contentValue= $page->content;
+        return [
+            "config"=>[
+                "method"=>"POST",
+                "action"=> \LeaffyMvc\Core\Routing::getSlug("Page","updatePage"),
+                "class"=>"",
+                "id"=>"",
+                "submit"=>"Enregistrer"],
+
+            "data"=>[
+                "id"=>[
+                    "type"=>"hidden",
+                    "value"=>$idPage
+                ],
+                "title"=>[
+                    "type"=>"text",
+                    "placeholder"=>"Titre de la page",
+                    "value"=>$titleValue,
+                    "required"=>true,
+                    "class"=>"form-control-login",
+                    "id"=>"title",
+                    "minlength"=>2,
+                    "maxlength"=>100,
+                    "error"=>"Le titre doit faire entre 2 et 100 caractères"
+                ],
+
+                "description"=>[
+                    "type"=>"text",
+                    "placeholder"=>"Description courte",
+                    "value"=>$descriptionValue,
+                    "required"=>true,
+                    "class"=>"form-control-back",
+                    "id"=>"description",
+                    "minlength"=>2,
+                    "maxlength"=>150,
+                    "error"=>"La description doit faire entre 2 et 150 caractères"],
+
+                "content"=>[
+                    "type"=>"textarea",
+                    "placeholder"=>"Contenu de la page",
+                    "value"=>$contentValue,
+                    "required"=>false,
+                    "class"=>"form-control-back",
+                    "id"=>"content",
+                    "minlength"=>2,
+                    "maxlength"=>5000,
+                    "error"=>"Le contenu doit faire entre 2 et 5000 caractères"],
+
+            ]
+
+        ];
+    }
+
 }

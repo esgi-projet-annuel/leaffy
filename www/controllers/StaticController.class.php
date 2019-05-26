@@ -9,30 +9,7 @@ use LeaffyMvc\Models\User;
 
 class StaticController extends AbstractController {
 
-    public function showFrontPage():void {
-        if (!$_GET){
-            $view = new View('home', "front");
-        }else{
-            $page = new Page();
-            $page->findOneObjectBy(['id'=>$_GET['page']]);
-            $view = new View($page->getTitle(), "front");
-        }
-    }
-
-    public function showBackPage():void {
-        if (!$_GET){
-            $view = new View('home', "back");
-        }else{
-            $page = new Page();
-            $page->findOneObjectBy(['id'=>$_GET['page']]);
-            $view = new View($page->getTitle(), "back");
-        }
-    }
-
-    public function showSettingsPage(){
-        $user = new User();
-        $form = $user->getUpdateForm();
-        $view = new View('settings', "back");
-        $view->assign("form", $form);
+    public function showValidationView(){
+        $view = new View('validation', 'front');
     }
 }

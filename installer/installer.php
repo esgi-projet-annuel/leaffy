@@ -4,7 +4,7 @@
 	$email = $_POST['email'];
 	$pass = $_POST['pass'];
 
-	$host="127.0.0.1"; 
+	$host="localhost";
 
 	$user="leaffy";
 	$pass="leaffyP4ss";

@@ -6,7 +6,7 @@
             <div>Tableau de bord</div>
         </li>
       </a>
-      <a class="link" href="<?php echo \LeaffyMvc\Core\Routing::getSlug("Static","showSettingsPage");?>">
+      <a class="link" href="<?php echo \LeaffyMvc\Core\Routing::getSlug("User","showUpdateForm");?>">
         <li class="list-item">
             <img src="../../../public/img/id-card-darken.png" width="40">
             <div>Informations personnelles</div>
@@ -18,7 +18,7 @@
             <div>Article</div>
         </li>
       </a>
-      <a class="link" href="<?php echo \LeaffyMvc\Core\Routing::getSlug("Page", "showAll");?>">
+      <a class="link" href="<?php echo \LeaffyMvc\Core\Routing::getSlug("Page", "getAllPagesByStatus");?>">
         <li class="list-item">
             <img src="../../../public/img/browser.png" width="40">
             <div>Pages</div>

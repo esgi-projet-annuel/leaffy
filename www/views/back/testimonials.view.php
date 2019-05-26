@@ -38,7 +38,7 @@
             $str = '<tr>'
                 .'<td>' . $testimonial->user_name . '</td>'
                 . '<td>' . $testimonial->content . '</td>'
-                . '<td>Publié le ' . $testimonial->created_at . '</td>'
+                . '<td>Publié le ' . $testimonial->created_at. '</td>'
                 . '<td>' . $testimonial->geStringForHtmlFromStatus($testimonial->status) . '</td>'
                 . '<td>';
 

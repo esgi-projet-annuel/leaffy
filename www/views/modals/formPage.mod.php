@@ -22,9 +22,6 @@
 		<div class="form-Setting">
     	<div class="form-label-back">
       	<?php if($value["type"]=="text"):?>
-
-
-
           <label for="<?php echo $value["id"];?>"> <?php echo $value["placeholder"];?> </label>
       		<input type="<?php echo $value["type"];?>"
     				name="<?php echo $key;?>"
@@ -32,16 +29,14 @@
     				<?php echo ($value["required"])?'required="required"':'';?>
     				id="<?php echo $value["id"];?>"
     				class="<?php echo $value["class"];?>"
-    				value="<?php echo $data[$key]??''?>"
-            >
+    				value="<?php echo $value["value"]??''?>">
+
 					<?php elseif($value["type"]=="textarea"):?>
 					<label for="<?php echo $value["id"];?>"> <?php echo $value["placeholder"];?> </label>
 					<textarea name="<?php echo $key;?>"
-
 					<?php echo ($value["required"])?'required="required"':'';?>
 					id="<?php echo $value["id"];?>"
-					class="<?php echo $value["class"];?>"
-					value="<?php echo $data[$key]??''?>"><?php echo $value["placeholder"];?></textarea>
+					class="<?php echo $value["class"];?>"><?php echo $value["value"]??''?></textarea>
 
 					<?php elseif($value["type"]=="file"):?>
 					<label for="<?php echo $value["id"];?>"> <?php echo $value["placeholder"];?> </label>
@@ -50,8 +45,10 @@
     				<?php echo ($value["required"])?'required="required"':'';?>
     				id="<?php echo $value["id"];?>"
     				class="<?php echo $value["class"];?>"
-    				value="<?php echo $data[$key]??''?>"
-          >
+    				value="<?php echo $value["value"]??''?>">
+
+                    <?php elseif($value["type"]=="hidden"):?>
+                    <input type="<?php echo $value["type"];?>" name="<?php echo $key;?>" value="<?php echo $value["value"]??''?>">
       	<?php endif;?>
     	 </div>
     </div>

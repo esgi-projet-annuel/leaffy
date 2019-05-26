@@ -8,8 +8,25 @@ use LeaffyMvc\Models\Page;
 
 class PageController extends AbstractController {
 
-    public function showAll():void{
-        $view = new View("pages", "back");
+    public function showFrontPage():void {
+        if (!$_GET || $_GET['page']== 1){
+            $view = new View('home', "front");
+        }else{
+            $page = new Page();
+            $page->findOneObjectBy(['id'=>$_GET['page']]);
+            if ($page->type == 'STATIC'){
+                $view = new View('pageTemplate', "front");
+                $view->assign('page', $page);
+            }elseif ($page->type == 'BLOG'){
+                $view = new View('blogTemplate', "front");
+                $view->assign('page', $page);
+            }
+
+        }
+    }
+
+    public function showHomeBack():void {
+        $view = new View('home', "back");
     }
 
     public function createPage():void{
@@ -19,9 +36,16 @@ class PageController extends AbstractController {
         $view->assign("formPage", $form);
     }
 
+    public function getUpdateFormView():void {
+        $view = new View("setPage", "back");
+        $page = new Page();
+        $form = $page->getUpdateForm($_GET['id']);
+        $view->assign("formPage", $form);
+    }
+
     public function savePage():void{
 
-        $this->checkAdmin();
+//        $this->checkAdmin();
         $page= new Page();
         $form = $page->getPageForm();
 
@@ -37,7 +61,7 @@ class PageController extends AbstractController {
 //            $page->setMenuId(intval($data['menuId']));
             $page->save();
         }
-        $view = new View("pages", "back");
+        $this->getAllPagesByStatus();
     }
 
     public function updatePage():void {
@@ -48,12 +72,11 @@ class PageController extends AbstractController {
         if(!empty($data) ){
             $page->setTitle($data['title']);
             $page->setDescription($data['description']);
-            $page->setStatus($data["status"]);
-            $page->setMenuId(intval($data['menuId']));
-            // TODO comment gerer les images/photos??
-
+            $page->setContent($data['content']);
+            $page->setStatus('DRAFT');
             $page->save();
         }
+        $this->getAllPagesByStatus();
     }
 
     public function deletePage():void {
@@ -63,14 +86,12 @@ class PageController extends AbstractController {
         $page->delete();
     }
 
-    public function getAllPages(): array {
+    public function getAllPagesByStatus():void {
+        //$this->checkAdmin();
+        $status = isset($_GET['status'])?$_GET['status']:'DRAFT';
         $page = new Page();
-        $pages = $page->findAllBy(['type' => 'STATIC']);
-        return $pages;
+        $pages = $page->findAllBy(['status'=>$status]);
+        $view = new View("pages", "back");
+        $view->assign("pages", $pages);
     }
-
-    //TODO:Une page contient un article! si on veut visualiser/modifier une page,
-    // faire appel a l'artcile concerner via ArticleController
-    //TODO corriger les routes en fonction
-
 }

@@ -7,11 +7,10 @@ use LeaffyMvc\Core\View;
 
 class TestimonialController extends AbstractController
 {
-    public function viewTestimonialForm(): void{
+    public function getTestimonialForm(): array{
         $testimonial = new Testimonial();
         $form = $testimonial->getTestimonialForm();
-        $view = new View('home', 'front');
-        $view->assign("formTestimonial", $form);
+        return $form;
     }
 
     public function viewTestimonialList():void {

@@ -50,6 +50,14 @@
   action: updatePost
 
 #PAGES
+"/":
+  controller: Page
+  action: showFrontPage
+
+"/admin":
+  controller: Page
+  action: showHomeBack
+
 "/admin/pages":
   controller: Page
   action: showAll
@@ -64,11 +72,19 @@
 
 "/admin/updatePage":
   controller: Page
+  action: getUpdateFormView
+
+"/admin/saveUpdatePage":
+  controller: Page
   action: updatePage
 
 "/admin/deletePage":
   controller: Page
   action: deletePage
+
+"/admin/listPages":
+  controller: Page
+  action: getAllPagesByStatus
 
 #COMMENTS
 "/admin/approveComment":
@@ -109,6 +125,10 @@
   controller: User
   action: createUser
 
+"/admin/settings":
+  controller: User
+  action: showUpdateForm
+
 "/saveUser":
   controller: User
   action: saveUser
@@ -127,32 +147,6 @@
   action: addMedia
 
 #STATIC
-"/":
+"/validation":
   controller: Static
-  action: showFrontPage
-  controller: Testimonial
-  action: viewTestimonialForm
-
-"/admin":
-  controller: Static
-  action: showBackPage
-
-"/admin/settings":
-  controller: Static
-  action: showSettingsPage
-
-"/about":
-  controller: Static
-  action: showFrontPage
-
-"/contact":
-  controller: Static
-  action: showFrontPage
-
-"/blog":
-  controller: Static
-  action: showFrontPage
-
-"/page":
-  controller: Static
-  action: showBackPage
+  action: showValidationView
