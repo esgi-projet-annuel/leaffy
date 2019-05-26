@@ -64,7 +64,7 @@
                 </div>
             </div>
         </div>
-        <a href="h" title="See blog" class="button button--three"><i class="fa fa-chevron-circle-right"></i>Voir le Blog </a>
+        <a href="/?page=3" title="See blog" class="button button--three"><i class="fa fa-chevron-circle-right"></i>Voir le Blog </a>
         <div class="section-content">
             <div class="container">
                 <div class="row">

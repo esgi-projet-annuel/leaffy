@@ -8,6 +8,11 @@ use LeaffyMvc\Models\Comment;
 
 class CommentController extends AbstractController
 {
+    public function getCommentForm(): array{
+        $comment = new Comment();
+        $form = $comment->getCommentForm();
+        return $form;
+    }
 
     public function saveComment(): void
     {
