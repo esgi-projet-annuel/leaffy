@@ -119,7 +119,6 @@
                        <div class="testimonials-carousel">
                             <div id="slide-container" class="widget_testimonial slider">
 
-<!--TODO FABIEN adapter la taille selon le contenu si possible, le contenu du message deborde quand il est trop long -->
                 <?php $testimonialModel = new \LeaffyMvc\Models\Testimonial();
                     $testimonials = $testimonialModel->findAllBy(['status'=>'APPROVED']);
                     $str='';

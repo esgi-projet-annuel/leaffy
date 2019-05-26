@@ -3,12 +3,11 @@
     <div class="titre">
       <h2>Gestion des témoignages</h2>
     </div>
-
-<!--      TODO FABIEN visuel des boutons/liens/ce que tu veux xD-->
-      <a href="/admin/listTestimonials?status=PENDING" class="form-control button-back button-back--modify">Témoignages en attente de validation</a>
-      <a href="/admin/listTestimonials?status=APPROVED" class="form-control button-back button-back--modify">Témoignages validés</a>
-      <a href="/admin/listTestimonials?status=REJECTED" class="form-control button-back button-back--modify">Témoignages rejetés</a>
-
+      <div class="group-button">
+        <a href="/admin/listTestimonials?status=PENDING" class="form-control button-back button-back--status">Témoignages en attente de validation</a>
+        <a href="/admin/listTestimonials?status=APPROVED" class="form-control button-back button-back--status">Témoignages validés</a>
+        <a href="/admin/listTestimonials?status=REJECTED" class="form-control button-back button-back--status">Témoignages rejetés</a>
+    </div>
   </div>
   <div class="section-table">
     <table class="table" width="100%">

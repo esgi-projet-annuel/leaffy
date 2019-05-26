@@ -152,6 +152,24 @@
   }
 }
 
+.group-button{
+  margin-top: 15px;
+}
+
+.button-back--status{
+  border: 1px solid $color4;
+  color: #fff;
+  background-color: $color4;
+  width: 15rem;
+  min-height: 2rem;
+  font-size: 14px;
+  margin-left: 15px;
+  &:hover{
+    background-color: $white;
+    color: #7486B4;
+  }
+}
+
 .button-back--remove{
   border: 1px solid #B47474;
   color: #fff;
