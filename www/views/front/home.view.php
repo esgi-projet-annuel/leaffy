@@ -1,6 +1,7 @@
 <?php $this->addHeader("homeHeader", "front")?>
 
 <main>
+    <div id="discover-anchor"></div>
     <section id="about" class="front-page-section">
         <div class="section">
             <div class="container">

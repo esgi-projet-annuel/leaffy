@@ -22,7 +22,7 @@
                         </div>
                         <div class="col-sm-8 col-sm-offset-2">
                             <div class="section-description section-description--header">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dictum odio eget nisi hendrerit, nec imperdiet mi consectetur. Curabitur in sem ut !</div>
-                            <a href="#"  class="button--one button">Découvrir</a>
+                            <a href="#discover-anchor"  class="button--one button">Découvrir</a>
                             <a href="#" class="button--two button">Rendez-vous</a>
                         </div>
                     </div>

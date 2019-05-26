@@ -7,21 +7,24 @@
   background-image: url(../img/cover_main.jpg);
   background-attachment: fixed;
   @include background-cover;
+  padding-top: 100px;
 }
 
 #header.header-front-page {
   width: 100%;
   background-color: $color4;
+  height: 8rem;
 }
 .header-logo-img{
   margin-left: 15px;
+  transition-duration: 0.6s;
 }
 
 
 
 #header-home .bottom-header {
     width: 100%;
-    padding-top: 100px;
+    padding-top: 11rem;
     padding-bottom: 280px;
     text-align: center;
     & h1{
@@ -40,15 +43,29 @@
     }
 }
 
+.top-header{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 4;
+  transition-duration: 0.6s;
+}
+
 .sticky{
-    background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.6);
+  max-height: 100px;
 }
 
 .sticky .header-logo-img{
-  transform: scale(0.9,0.9) translateY(-50%);
+  transform: scale(0.7,0.7) translateY(-10%);
   transform-origin: left top;
+  transition-duration: 0.4s;
 }
 .sticky nav{
   transform: scale(0.9,0.9);
   transform-origin: right center;
+  transition-duration: 0.4s;
+  @include max-tablet {
+    transform: none;
+  }
 }

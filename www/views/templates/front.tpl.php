@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
         <script src="../../public/js/jquery-3.3.1.min.js"></script>
         <script src="../../public/js/script.js"></script>
+        <script src="../../public/js/scrollEvent.js"></script>
         <title></title>
 <!--        TODO importer description du professionnel-->
         <meta name="description" content="">
