@@ -25,18 +25,31 @@
         //TODO ALIX changer status avec boutons
         $niec= 'WITHDRAWN';
             foreach ($pages as $page) {
-                echo '<tr class="tr">'
-                    . '<td class="td">' . $page->getTitle() . '</td>'
-                    . '<td class="td">' . $page->created_at . '</td>'
-                    . '<td class="td">' . $page->updated_at . '</td>'
-                    . '<td class="td">' . $page->geStringForHtmlFromStatus($page->status) . '</td>'
-                    . '<td class="td">'
-                    . '<a href="'. \LeaffyMvc\Core\Routing::getSlug("Page","getUpdateFormView").'?id='.$page->id.'" class="form-control button-back button-back--modify" onclick="updatePage('. $page->id .');">Modifier</a>'
-                    . '<a href="" class="form-control button-back button-back--remove" onclick="deletePage('. $page->id .');">Supprimer</a>'
-                    . '<a href="" class="form-control button-back button-back--publish" onclick="changeStatus('. $page->id .');">Publier</a>'
-                    . '<a href="" class="form-control button-back button-back--archive" onclick="changeStatus('. $page->id, $niec.');">Archiver</a>'
-                    . '</td>'
-                    . '</tr>';
+                $buttonStr='';
+                if (isset($_GET['status'])){
+                    if ($_GET['status']== 'PUBLISHED'){
+                        $buttonStr.= '<a href="" class="form-control button-back button-back--archive" onclick="changeStatus('. $page->id.',\'WITHDRAWN\');">Archiver</a>';
+                    }else if($_GET['status']== 'WITHDRAWN'){
+                        $buttonStr.='<a href="" class="form-control button-back button-back--publish" onclick="changeStatus('. $page->id.',\'PUBLISHED\');">Publier</a>';
+                    }else if($_GET['status']== 'DRAFT'){
+                        $buttonStr.= '<a href="" class="form-control button-back button-back--publish" onclick="changeStatus('. $page->id.',\'PUBLISHED\');">Publier</a>'
+                            . '<a href="" class="form-control button-back button-back--archive" onclick="changeStatus('. $page->id.',\'WITHDRAWN\');">Archiver</a>';
+                    }
+                }else{
+                    $buttonStr.= '<a href="" class="form-control button-back button-back--publish" onclick="changeStatus('. $page->id.',\'PUBLISHED\');">Publier</a>'
+                        . '<a href="" class="form-control button-back button-back--archive" onclick="changeStatus('. $page->id.',\'WITHDRAWN\');">Archiver</a>';
+                }
+
+                $str = '<tr class="tr">';
+                $str .= '<td class="td">' . $page->getTitle() . '</td>';
+                $str .= '<td class="td">' . $page->created_at . '</td>';
+                $str .= '<td class="td">' . $page->updated_at . '</td>';
+                $str .= '<td class="td">' . $page->geStringForHtmlFromStatus($page->status) . '</td>';
+                $str .= '<td class="td">';
+                $str .= '<a href="'. \LeaffyMvc\Core\Routing::getSlug("Page","getUpdateFormView").'?id='.$page->id.'" class="form-control button-back button-back--modify" onclick="updatePage('. $page->id .');">Modifier</a>';
+                $str .= '<a href="" class="form-control button-back button-back--remove" onclick="deletePage('. $page->id .');">Supprimer</a>';
+                $str .= $buttonStr. '</td> </tr>';
+                echo $str;
             }
         ?>
     </table>

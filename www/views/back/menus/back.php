@@ -1,6 +1,6 @@
 <div id="adminbar" class="">
     <ul class="list-admin-bar">
-      <a class="link" href="<?php echo \LeaffyMvc\Core\Routing::getSlug("Static","showBackPage");?>">
+      <a class="link" href="<?php echo \LeaffyMvc\Core\Routing::getSlug("Page","showHomeBack");?>">
         <li class="list-item">
             <img src="../../../public/img/home.png" width="40">
             <div>Tableau de bord</div>

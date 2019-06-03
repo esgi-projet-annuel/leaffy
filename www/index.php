@@ -66,5 +66,9 @@ if(file_exists($controllerPath) ){
         die("La class controller ".$controller." n'existe pas");
     }
 }else{
-    die("Le fichier controller ".$controller." n'existe pas");
+    if (isset($_GET['page'])){
+        var_dump($_GET['page']);
+    }else{
+        die("Le fichier controller ".$controller." n'existe pas");
+    }
 }
