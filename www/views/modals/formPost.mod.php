@@ -39,7 +39,7 @@
 					<textarea name="<?php echo $key;?>"
 					<?php echo ($value["required"])?'required="required"':'';?>
 					id="<?php echo $value["id"];?>"
-					class="<?php echo $value["class"];?>"><?php echo $value["value"]??'';?></textarea>
+					class="<?php echo $value["class"];?>" placeholder="<?php echo $value["placeholder"];?>"><?php echo $value["value"]??'';?></textarea>
 
 					<?php elseif($value["type"]=="file"):?>
 					<label for="<?php echo $value["id"];?>"> <?php echo $value["placeholder"];?> </label>

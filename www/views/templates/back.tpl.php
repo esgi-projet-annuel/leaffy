@@ -7,21 +7,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="../../public/css/style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../../public/DataTables/datatables.min.css"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
-    <!--        TODO FABIEN voir pour importer tinyMCE localement et non que par cdn -->
-<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.5.6/tinymce.min.js"></script>-->
-<!--    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>-->
-<!--    <script src="http://cdnjs.cloudflare.com/ajax/libs/tinymce/4.5.6/jquery.tinymce.min.js"></script>-->
-    <script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=2hqwamzfvt53654o5dc1ytmm8omgwnlk1dapojphxytnebbj"></script>
-    <script src="https://cloud.tinymce.com/5/tinymce.min.js"></script>
-    <script>tinymce.init({selector:'textarea'});</script>
-</head>
     <script src="../../public/js/jquery-3.3.1.min.js"></script>
     <script src="../../public/js/script.js"></script>
+    <script src="../../public/js/ckeditor5-build-classic/ckeditor.js"></script>
+    <script src="../../public/DataTables/datatables.min.js"></script>
+
+
+
+
     <!--        TODO importer description du professionnel-->
     <meta name="description" content="">
     <!--        TODO importer nom du pro-->
@@ -60,11 +59,9 @@
                 Bonjour <?php echo $user->firstname;?>
                       </span>
                   <?php endif;?>
-                  <a href="#">
                       <div class="button connexion-button">
                           <a href="<?php echo \LeaffyMvc\Core\Routing::getSlug("Authentication","userLogout");?>">Déconnexion</a>
                       </div>
-                  </a>
               </div>
             </div>
         </header>
@@ -78,5 +75,10 @@
           </label>
         <?php $this->addMenu("back", "back");?><!--    include menu-->
     <?php include $this->view;?>
+    <script>
+    ClassicEditor.create( document.querySelector( '#editor' ) ).catch( error => {
+            console.error( error );
+        } );
+    </script>
     </body>
 </html>

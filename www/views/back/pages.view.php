@@ -12,7 +12,8 @@
       </div>
   </div>
   <div class="section-table">
-    <table class="table" width="100%">
+    <table class="table display" width="100%" id="pages-table">
+      <thead>
         <tr class="table-head">
           <th align="left">Nom de la page</th>
           <th align="left">Crée le </th>
@@ -20,6 +21,7 @@
           <th align="left">Status de la page</th>
           <th width="25%"></th>
         </tr>
+      </thead>
         <?php
 //        TODO FABIEN remplacer texte des boutons par icones et le changer dans chaque vues (post/testimonials/comment/etc)
         //TODO ALIX changer status avec boutons
@@ -40,7 +42,7 @@
                         . '<a href="" class="form-control button-back button-back--archive" onclick="changeStatus('. $page->id.',\'WITHDRAWN\');">Archiver</a>';
                 }
 
-                $str = '<tr class="tr">';
+                $str = '<tbody><tr class="tr">';
                 $str .= '<td class="td">' . $page->getTitle() . '</td>';
                 $str .= '<td class="td">' . $page->created_at . '</td>';
                 $str .= '<td class="td">' . $page->updated_at . '</td>';
@@ -48,7 +50,7 @@
                 $str .= '<td class="td">';
                 $str .= '<a href="'. \LeaffyMvc\Core\Routing::getSlug("Page","getUpdateFormView").'?id='.$page->id.'" class="form-control button-back button-back--modify" onclick="updatePage('. $page->id .');">Modifier</a>';
                 $str .= '<a href="" class="form-control button-back button-back--remove" onclick="deletePage('. $page->id .');">Supprimer</a>';
-                $str .= $buttonStr. '</td> </tr>';
+                $str .= $buttonStr. '</td> </tr></tbody>';
                 echo $str;
             }
         ?>
@@ -57,6 +59,9 @@
 </div>
 
 <script type="text/javascript">
+    $(document).ready( function () {
+        $('#pages-table').DataTable();
+    } );
     function deletePage(pageId) {
         $.ajax({
             url : '/admin/deletePage',
