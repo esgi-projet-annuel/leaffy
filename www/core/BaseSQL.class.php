@@ -98,7 +98,7 @@ namespace LeaffyMvc\Core {
                         $property->setAccessible(true);
                     }
                     $key= $property->getName();
-                    $value= $property->getValue($this);
+                    $value= htmlentities($property->getValue($this));
                     $propertiesValue[$key]= $value;
                 }
             }
