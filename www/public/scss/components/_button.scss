@@ -143,6 +143,8 @@
 }
 
 .button-back--modify{
+  width: 45px;
+  margin-right: 2px;
   border: 1px solid #7486B4;
   color: #fff;
   background-color: #7486B4;
@@ -171,6 +173,8 @@
 }
 
 .button-back--remove{
+  width: 45px;
+  margin-right: 2px;
   border: 1px solid #B47474;
   color: #fff;
   background-color: #B47474;
@@ -180,6 +184,8 @@
   }
 }
 .button-back--publish{
+  width: 45px;
+  margin-right: 2px;
   border: 1px solid $color3;
   color: #fff;
   background-color: $color3;
@@ -190,6 +196,8 @@
 }
 
 .button-back--archive{
+  width: 45px;
+  margin-right: 2px;
   border: 1px solid $color4;
   color: #fff;
   background-color: $color4;

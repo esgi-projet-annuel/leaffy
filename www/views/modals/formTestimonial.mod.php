@@ -41,7 +41,7 @@
 					<?php echo ($value["required"])?'required="required"':'';?>
 					id="<?php echo $value["id"];?>"
 					class="<?php echo $value["class"];?>"
-					value="<?php echo $data[$key]??''?>"><?php echo $value["placeholder"];?></textarea>
+					value="<?php echo $data[$key]??''?>" placeholder="<?php echo $value["placeholder"];?>"></textarea>
 
 					<?php elseif($value["type"]=="file"):?>
 					<label for="<?php echo $value["id"];?>"> <?php echo $value["placeholder"];?> </label>

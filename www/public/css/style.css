@@ -615,6 +615,8 @@ textarea {
     color: #74b49b; }
 
 .button-back--modify {
+  width: 45px;
+  margin-right: 2px;
   border: 1px solid #7486B4;
   color: #fff;
   background-color: #7486B4; }
@@ -638,6 +640,8 @@ textarea {
     color: #7486B4; }
 
 .button-back--remove {
+  width: 45px;
+  margin-right: 2px;
   border: 1px solid #B47474;
   color: #fff;
   background-color: #B47474; }
@@ -646,6 +650,8 @@ textarea {
     color: #B47474; }
 
 .button-back--publish {
+  width: 45px;
+  margin-right: 2px;
   border: 1px solid #74b49b;
   color: #fff;
   background-color: #74b49b; }
@@ -654,6 +660,8 @@ textarea {
     color: #74b49b; }
 
 .button-back--archive {
+  width: 45px;
+  margin-right: 2px;
   border: 1px solid #5c8d89;
   color: #fff;
   background-color: #5c8d89; }
