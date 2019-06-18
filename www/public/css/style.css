@@ -607,6 +607,8 @@ textarea {
     color: #5c8d89; }
 
 .button-back--display {
+  width: 45px;
+  margin-right: 2px;
   border: 1px solid #74b49b;
   color: #fff;
   background-color: #74b49b; }
@@ -969,14 +971,18 @@ textarea {
   padding: 0;
   cursor: pointer;
   display: none;
-  border-radius: 10px; }
+  border-radius: 5px; }
 
 .submenu-item {
   font-size: 15px;
-  padding: 15px; }
+  padding: 5px 15px; }
 
 .submenu-item:hover {
-  background: #5c8d89; }
+  background: #5c8d89;
+  border-radius: 5px; }
+
+.has-submenu {
+  width: 50px; }
 
 .fields-input-back {
   display: flex;

@@ -23,16 +23,16 @@
             $buttonStr='';
             if (isset($_GET['status'])){
                 if ($_GET['status']== 'APPROVED'){
-                    $buttonStr.= '<a href="" class="form-control button-back button-back--modify" onclick="rejecte('. $testimonial->id .');">Rejeter</a>';
+                    $buttonStr.= '<a href="" class="form-control button-back button-back--modify" onclick="rejecte('. $testimonial->id .');"><i class="far fa-times-circle"></a>';
                 }else if($_GET['status']== 'REJECTED'){
-                    $buttonStr.='<a href="" class="form-control button-back button-back--display" onclick="approve('. $testimonial->id .');">Valider</a>';
+                    $buttonStr.='<a href="" class="form-control button-back button-back--display" onclick="approve('. $testimonial->id .');"><i class="fas fa-check-circle"></i></a>';
                 }else if($_GET['status']== 'PENDING'){
-                    $buttonStr.= '<a href="" class="form-control button-back button-back--display" onclick="approve('. $testimonial->id .');">Valider</a>'
-                        . '<a href="" class="form-control button-back button-back--modify" onclick="rejecte('. $testimonial->id .');">Rejeter</a>';
+                    $buttonStr.= '<a href="" class="form-control button-back button-back--display" onclick="approve('. $testimonial->id .');"><i class="fas fa-check-circle"></i></a>'
+                        . '<a href="" class="form-control button-back button-back--modify" onclick="rejecte('. $testimonial->id .');"><i class="far fa-times-circle"></i></a>';
                 }
             }else{
-                $buttonStr.= '<a href="" class="form-control button-back button-back--display" onclick="approve('. $testimonial->id .');">Valider</a>'
-                    . '<a href="" class="form-control button-back button-back--modify" onclick="rejecte('. $testimonial->id .');">Rejeter</a>';
+                $buttonStr.= '<a href="" class="form-control button-back button-back--display" onclick="approve('. $testimonial->id .');"><i class="fas fa-check-circle"></i></a>'
+                    . '<a href="" class="form-control button-back button-back--modify" onclick="rejecte('. $testimonial->id .');"><i class="far fa-times-circle"></i></a>';
             }
 
             $str = '<tr>'

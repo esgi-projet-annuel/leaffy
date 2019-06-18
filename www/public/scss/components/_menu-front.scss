@@ -152,14 +152,19 @@
 	padding: 0;
 	cursor: pointer;
   display:none;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 .submenu-item {
   font-size: 15px;
-  padding: 15px;
+  padding: 5px 15px;
 }
 .submenu-item:hover {
 	background: $color4;
+  border-radius: 5px;
+}
+
+.has-submenu{
+  width: 50px;
 }
 
 
