@@ -10,16 +10,31 @@
     </div>
   </div>
   <div class="section-table">
-    <table class="table" width="100%">
+    <table class="table display" width="100%" id="testimonials-table">
+      <thead>
         <tr class="table-head">
           <th align="left">Pseudo</th>
           <th align="left">Témoignage</th>
           <th align="left">date de création</th>
           <th align="left">Status</th>
-          <th width="25%"></th>
+          <th align="left">ID</th>
+          <th></th>
         </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td align="left"></td>
+          <td align="left"></td>
+          <td align="left"></td>
+          <td align="left"></td>
+          <td></td>
+      </tr>
+      </tbody>
+    </table>
         <?php
         foreach ($testimonials as $testimonial) {
+            $testimonial->status = $testimonial->geStringForHtmlFromStatus($testimonial->status) ;
+            $testimonial->created_at = $testimonial->getCreatedAt() ;
             $buttonStr='';
             if (isset($_GET['status'])){
                 if ($_GET['status']== 'APPROVED'){
@@ -35,22 +50,77 @@
                     . '<a href="" class="form-control button-back button-back--modify" onclick="rejecte('. $testimonial->id .');"><i class="far fa-times-circle"></i></a>';
             }
 
-            $str = '<tr>'
-                .'<td>' . $testimonial->user_name . '</td>'
-                . '<td>' . $testimonial->content . '</td>'
-                . '<td>Publié le ' . $testimonial->getCreatedAt() . '</td>'
-                . '<td>' . $testimonial->geStringForHtmlFromStatus($testimonial->status) . '</td>'
-                . '<td>';
-
-            $str .= $buttonStr. '</td> </tr>';
-            echo $str;
         }
         ?>
-    </table>
   </div>
 </div>
+<?php// var_dump($testimonials) ?>
 
 <script type="text/javascript">
+
+let datas = <?php echo json_encode($testimonials); ?>;
+let buttonModify = <?php echo json_encode($buttonModify); ?>;
+let buttons = <?php echo json_encode($buttonStr); ?>;
+    $(document).ready( function () {
+        $('#testimonials-table').DataTable({
+          language: {
+            "sProcessing":     "Traitement en cours...",
+            "sSearch":         "Rechercher&nbsp;:",
+            "sLengthMenu":     "Afficher _MENU_ &eacute;l&eacute;ments",
+            "sInfo":           "Affichage de l'&eacute;l&eacute;ment _START_ &agrave; _END_ sur _TOTAL_ &eacute;l&eacute;ments",
+            "sInfoEmpty":      "Affichage de l'&eacute;l&eacute;ment 0 &agrave; 0 sur 0 &eacute;l&eacute;ment",
+            "sInfoFiltered":   "(filtr&eacute; de _MAX_ &eacute;l&eacute;ments au total)",
+            "sInfoPostFix":    "",
+            "sLoadingRecords": "Chargement en cours...",
+            "sZeroRecords":    "Aucun &eacute;l&eacute;ment &agrave; afficher",
+            "sEmptyTable":     "Aucune donn&eacute;e disponible dans le tableau",
+            "oPaginate": {
+              "sFirst":      "Premier",
+              "sPrevious":   "Pr&eacute;c&eacute;dent",
+              "sNext":       "Suivant",
+              "sLast":       "Dernier"
+            },
+            "oAria": {
+              "sSortAscending":  ": activer pour trier la colonne par ordre croissant",
+              "sSortDescending": ": activer pour trier la colonne par ordre d&eacute;croissant"
+            },
+            "select": {
+              "rows": {
+                  _: "%d lignes séléctionnées",
+                  0: "Aucune ligne séléctionnée",
+                  1: "1 ligne séléctionnée"
+              }
+            }
+          },
+          data: datas,
+          columns: [
+              { data: 'user_name' },
+              { data: 'content' },
+              { data: 'created_at'},
+              { data: 'status'},
+              { data: 'id' },
+              {
+                data: null,
+                render: function ( datas, type, row ) {
+                    let id = datas["id"];
+                    if (!String.prototype.format) {
+                        String.prototype.format = function() {
+                            var args = arguments;
+                            return this.replace(/{(\d+)}/g, function(match, number) {
+                                return typeof args[number] != 'undefined'
+                                    ? args[number]
+                                    : match
+                                    ;
+                            });
+                        };
+                    }
+                    return buttonModify.format(id) + buttons.format(id);
+                }
+              }
+          ]
+        });
+    } );
+
     function approve(testimonialId) {
         $.ajax({
             url : '/admin/approveTestimonial',
