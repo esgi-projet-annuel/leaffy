@@ -19,7 +19,7 @@ class PostController extends AbstractController {
         $view->assign("formPost", $form);
     }
 
-    public function viewSetPost():void{
+    public function getUpdateFormView():void{
         $view  =  new View('setPost', 'back');
         $post = new Post();
         $form= $post->getUpdateForm($_GET['id']);
@@ -52,22 +52,6 @@ class PostController extends AbstractController {
         $post->delete();
     }
 
-    public function publishPost(): void {
-        $postId = intval($_POST['id']);
-        $post = new Post();
-        $post->findById($postId);
-        $post->setStatus('PUBLISHED');
-        $post->save();
-    }
-
-    public function unpublishPost(): void {
-        $postId = intval($_POST['id']);
-        $post = new Post();
-        $post->findById($postId);
-        $post->setStatus('WITHDRAWN');
-        $post->save();
-    }
-
     public function updatePost():void {
         $postId = intval($_POST['id']);
         $post = new Post();
@@ -95,6 +79,18 @@ class PostController extends AbstractController {
         $posts = $post->findAllBy(['status'=>$status]);
         $view = new View("posts", "back");
         $view->assign("posts", $posts);
+    }
+
+    public function changeStatus(){
+        $this->checkAdmin();
+        $data = $_POST;
+        if(!empty($data) ){
+            $postId = intval($_POST['id']);
+            $post = new Post();
+            $post->findById($postId);
+            $post->setStatus($_POST['status']);
+            $post->save();
+        }
     }
 
 }

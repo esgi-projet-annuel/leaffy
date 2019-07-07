@@ -47,8 +47,7 @@
 
 "/admin/updatePost":
   controller: Post
-  action: viewSetPost
-
+  action: getUpdateFormView
 
 "/admin/saveUpdatePost":
   controller: Post
@@ -57,6 +56,10 @@
 "/admin/listPosts":
   controller: Post
   action: getAllPostsByStatus
+
+"/admin/changePostStatus":
+  controller: Post
+  action: changeStatus
 
 #PAGES
 "/":
@@ -95,7 +98,7 @@
   controller: Page
   action: getAllPagesByStatus
 
-"/admin/changeStatus":
+"/admin/changePageStatus":
   controller: Page
   action: changeStatus
 

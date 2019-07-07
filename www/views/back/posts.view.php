@@ -32,20 +32,34 @@
       </tbody>
     </table>
         <?php
-        $button_modify_part1 = '<a href="'.\LeaffyMvc\Core\Routing::getSlug("Post","viewSetPost").'?id=';
-        $button_modify_part2 = '" class="form-control button-back button-back--modify"><i class="fas fa-edit"></i></a>';
-        $button_delete_part1 = '<a href="" class="form-control button-back button-back--remove" onclick="deletePost(';
-        $button_delete_part2 =');"><i class="fas fa-trash-alt"></i></a>';
+        $buttonModify = '<a href="'.\LeaffyMvc\Core\Routing::getSlug("Post","getUpdateFormView").'?id= {0} " class="form-control button-back button-back--modify"><i class="fas fa-edit"></i></a>';
+
+        foreach ($posts as $post) {
+            $post->status = $post->geStringForHtmlFromStatus($post->status);
+            $post->created_at = $post->getCreatedAt();
+            $buttonStr='';
+            if (isset($_GET['status'])){
+                if ($_GET['status']== 'PUBLISHED'){
+                    $buttonStr.= '<a href="" class="form-control button-back button-back--archive" onclick="changeStatus(\'{0}\',\'WITHDRAWN\');"><i class="fas fa-archive"></i></a>';
+                }else if($_GET['status']== 'WITHDRAWN'){
+                    $buttonStr.='<a href="" class="form-control button-back button-back--publish" onclick="changeStatus(\'{0}\',\'PUBLISHED\');"><i class="fas fa-check-square"></i></a>';
+                }else if($_GET['status']== 'DRAFT'){
+                    $buttonStr.= '<a href="" class="form-control button-back button-back--publish" onclick="changeStatus(\'{0}\',\'PUBLISHED\');"><i class="fas fa-check-square"></i></a>'
+                        . '<a href="" class="form-control button-back button-back--archive" onclick="changeStatus(\'{0}\',\'WITHDRAWN\');"><i class="fas fa-archive"></i></a>';
+                }
+            }else{
+                $buttonStr.= '<a href="" class="form-control button-back button-back--publish" onclick="changeStatus(\'{0}\',\'PUBLISHED\');"><i class="fas fa-check-square"></i></a>'
+                    . '<a href="" class="form-control button-back button-back--archive" onclick="changeStatus(\'{0}\',\'WITHDRAWN\');"><i class="fas fa-archive"></i></a>';
+            }
+        }
         ?>
   </div>
 </div>
 
 <script type="text/javascript">
-var data = <?php echo json_encode($posts); ?>;
-var button_modify_part1 = <?php echo json_encode($button_modify_part1); ?>;
-var button_modify_part2 = <?php echo json_encode($button_modify_part2); ?>;
-var button_delete_part1 = <?php echo json_encode($button_delete_part1); ?>;
-var button_delete_part2 = <?php echo json_encode($button_delete_part2); ?>;
+let datas = <?php echo json_encode($posts); ?>;
+let buttonModify = <?php echo json_encode($buttonModify); ?>;
+let buttons = <?php echo json_encode($buttonStr); ?>;
     $(document).ready( function () {
         $('#posts-table').DataTable({
           language: {
@@ -77,34 +91,47 @@ var button_delete_part2 = <?php echo json_encode($button_delete_part2); ?>;
               }
             }
           },
-          data: data,
+          data: datas,
           columns: [
               { data: 'title' },
               { data: 'created_at'},
               { data: 'status'},
-              { data: "id" },
+              { data: 'id' },
               {
                 data: null,
-                render: function ( data, type, row ) {
-                  return button_modify_part1+data["id"]+button_modify_part2+button_delete_part1+data["id"]+button_delete_part2;
+                render: function ( datas, type, row ) {
+                    let id = datas["id"];
+                    if (!String.prototype.format) {
+                        String.prototype.format = function() {
+                            var args = arguments;
+                            return this.replace(/{(\d+)}/g, function(match, number) {
+                                return typeof args[number] != 'undefined'
+                                    ? args[number]
+                                    : match
+                                    ;
+                            });
+                        };
+                    }
+                    return buttonModify.format(id) + buttons.format(id);
                 }
               }
           ]
         });
     } );
-    function deletePost(postId) {
-        $.ajax({
-            url : '/admin/deletePost',
-            type : 'POST', // Le type de la requête HTTP, ici devenu POST
-            data : 'id=' + postId,
-        });
-    }
 
     function updatePost(postId) {
         $.ajax({
             url : '/admin/updatePost',
             type : 'POST', // Le type de la requête HTTP, ici devenu POST
             data : 'id=' + postId,
+        });
+    }
+    function changeStatus(postId, postStatus) {
+        $.ajax({
+            url : '/admin/changePostStatus',
+            type : 'POST', // Le type de la requête HTTP, ici devenu POST
+            data : {id: postId,
+                status: postStatus}
         });
     }
 </script>

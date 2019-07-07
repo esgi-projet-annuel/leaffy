@@ -96,7 +96,6 @@ class PageController extends AbstractController {
     }
 
     public function changeStatus(){
-        var_dump($_POST);
         $this->checkAdmin();
         $data = $_POST;
         if(!empty($data) ){

@@ -60,7 +60,7 @@ class MailConfirmationService {
         $mail->isHTML(true);
         $mail->Subject = "Bienvenue!";
         //TODO ecrire l'url dynamiquement
-        $mail->Body = "<i>Bienvenue sur VotreSite, <br>
+        $mail->Body = "<i>Bienvenue sur Leaffy, <br>
                 Pour activer votre compte, veuillez cliquer sur le lien ci dessous<br>
                 ou copier/coller dans votre navigateur internet.<br>
                  
@@ -69,7 +69,7 @@ class MailConfirmationService {
                  
                 ---------------<br>
                 Ceci est un mail automatique, Merci de ne pas y répondre.</i>";
-        $mail->AltBody = "Bienvenue sur VotreSite,
+        $mail->AltBody = "Bienvenue sur Leaffy,
  
                 Pour activer votre compte, veuillez cliquer sur le lien ci dessous
                 ou copier/coller dans votre navigateur internet.
