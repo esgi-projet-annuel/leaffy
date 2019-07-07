@@ -6,8 +6,6 @@
 $user = new \LeaffyMvc\Models\User();
 $user->findOneObjectBy(['email'=>$_GET['email']]);
 
-var_dump($user);
-
 if(!empty($user)) {
     // Récupération de la clé
     $token =$user->token;

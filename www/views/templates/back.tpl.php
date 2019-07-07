@@ -35,7 +35,7 @@
             <div class="row">
               <div class="col-md-4 col-sm-12 part-1-header-back">
                   <div class="logo-back">
-                      <a href="<?php echo \LeaffyMvc\Core\Routing::getSlug("Static","showBackPage");?>">
+                      <a href="<?php echo \LeaffyMvc\Core\Routing::getSlug("Page","showHomeBack");?>">
                           <img class="back-header-logo-img" src="../../public/img/logo_full.png" width="60">
                       </a>
                       <!-- <div class="burger-img">
@@ -44,7 +44,7 @@
 
                   </div>
 
-                  <a href="<?php echo \LeaffyMvc\Core\Routing::getSlug("Static","showFrontPage")."?page=1";?>">
+                  <a href="<?php echo \LeaffyMvc\Core\Routing::getSlug("Page","showFrontPage")."?page=1";?>">
                       <div class="button button--three">
                           Aller sur le site
                       </div>

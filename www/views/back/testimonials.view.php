@@ -15,9 +15,8 @@
         <tr class="table-head">
           <th align="left">Pseudo</th>
           <th align="left">Témoignage</th>
-          <th align="left">date de création</th>
+          <th align="left">date</th>
           <th align="left">Status</th>
-          <th align="left">ID</th>
           <th></th>
         </tr>
       </thead>
@@ -33,33 +32,31 @@
     </table>
         <?php
         foreach ($testimonials as $testimonial) {
-            $testimonial->status = $testimonial->geStringForHtmlFromStatus($testimonial->status) ;
+            $testimonial->status = $testimonial->getStringForHtmlFromDB($testimonial->status);
             $testimonial->created_at = $testimonial->getCreatedAt() ;
             $buttonStr='';
             if (isset($_GET['status'])){
                 if ($_GET['status']== 'APPROVED'){
-                    $buttonStr.= '<a href="" class="form-control button-back button-back--modify" onclick="rejecte('. $testimonial->id .');"><i class="far fa-times-circle"></a>';
+                    $buttonStr.= '<a href="" class="form-control button-back button-back--modify" onclick="rejecte({0});"><i class="far fa-times-circle"></a>';
                 }else if($_GET['status']== 'REJECTED'){
-                    $buttonStr.='<a href="" class="form-control button-back button-back--display" onclick="approve('. $testimonial->id .');"><i class="fas fa-check-circle"></i></a>';
+                    $buttonStr.='<a href="" class="form-control button-back button-back--display" onclick="approve({0});"><i class="fas fa-check-circle"></i></a>';
                 }else if($_GET['status']== 'PENDING'){
-                    $buttonStr.= '<a href="" class="form-control button-back button-back--display" onclick="approve('. $testimonial->id .');"><i class="fas fa-check-circle"></i></a>'
-                        . '<a href="" class="form-control button-back button-back--modify" onclick="rejecte('. $testimonial->id .');"><i class="far fa-times-circle"></i></a>';
+                    $buttonStr.= '<a href="" class="form-control button-back button-back--display" onclick="approve({0});"><i class="fas fa-check-circle"></i></a>'
+                        . '<a href="" class="form-control button-back button-back--modify" onclick="rejecte({0});"><i class="far fa-times-circle"></i></a>';
                 }
             }else{
-                $buttonStr.= '<a href="" class="form-control button-back button-back--display" onclick="approve('. $testimonial->id .');"><i class="fas fa-check-circle"></i></a>'
-                    . '<a href="" class="form-control button-back button-back--modify" onclick="rejecte('. $testimonial->id .');"><i class="far fa-times-circle"></i></a>';
+                $buttonStr.= '<a href="" class="form-control button-back button-back--display" onclick="approve({0});"><i class="fas fa-check-circle"></i></a>'
+                    . '<a href="" class="form-control button-back button-back--modify" onclick="rejecte({0});"><i class="far fa-times-circle"></i></a>';
             }
 
         }
         ?>
   </div>
 </div>
-<?php// var_dump($testimonials) ?>
 
 <script type="text/javascript">
 
 let datas = <?php echo json_encode($testimonials); ?>;
-let buttonModify = <?php echo json_encode($buttonModify); ?>;
 let buttons = <?php echo json_encode($buttonStr); ?>;
     $(document).ready( function () {
         $('#testimonials-table').DataTable({
@@ -98,7 +95,6 @@ let buttons = <?php echo json_encode($buttonStr); ?>;
               { data: 'content' },
               { data: 'created_at'},
               { data: 'status'},
-              { data: 'id' },
               {
                 data: null,
                 render: function ( datas, type, row ) {
@@ -114,7 +110,7 @@ let buttons = <?php echo json_encode($buttonStr); ?>;
                             });
                         };
                     }
-                    return buttonModify.format(id) + buttons.format(id);
+                    return buttons.format(id);
                 }
               }
           ]
@@ -129,18 +125,11 @@ let buttons = <?php echo json_encode($buttonStr); ?>;
         });
     }
 
-    function rejecte(pageId) {
+    function rejecte(testimonialId) {
         $.ajax({
             url : '/admin/rejectTestimonial',
             type : 'POST', // Le type de la requête HTTP, ici devenu POST
-            data : 'id=' + pageId,
-        });
-    }
-
-    function listTestimonialsByStatus(status) {
-        $.ajax({
-            url : '/admin/listTestimonials?status=' + status,
-            type : 'GET' // Le type de la requête HTTP, ici devenu POST
+            data : 'id=' + testimonialId,
         });
     }
 </script>

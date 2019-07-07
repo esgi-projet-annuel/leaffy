@@ -115,9 +115,9 @@
   controller: Comment
   action: saveComment
 
-"/admin/listPendingsComment":
+"/admin/listComments":
   controller: Comment
-  action: listPendings
+  action: listCommentsByStatus
 
 #TESTIMONIALS
 "/admin/approveTestimonial":

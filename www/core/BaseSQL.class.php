@@ -111,7 +111,7 @@ namespace LeaffyMvc\Core {
                     implode(",:", array_keys($propertiesValue) ) .")";
 
                 $query = $this->pdo->prepare($sql);
-                $res = $query->execute($propertiesValue);
+                $query->execute($propertiesValue);
                 $this->id = $this->pdo->lastInsertId();
 
             } else {
@@ -135,7 +135,7 @@ namespace LeaffyMvc\Core {
             $query->execute(["id" => $this->id]);
         }
 
-        public function geStringForHtmlFromDB(string $status){
+        public function getStringForHtmlFromDB(string $status){
             switch ($status){
                 case 'PENDING':
                     return 'En attente de validation';

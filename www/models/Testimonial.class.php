@@ -49,17 +49,6 @@ class Testimonial extends BaseSQL{
                 "maxlength"=>100,
                 "error"=>"Le prénom doit faire entre 2 et 100 caractères"
               ],
-//                "lastname"=>[
-//                  "type"=>"text",
-//                  "placeholder"=>"Votre prénom",
-//                  "required"=>true,
-//                  "class"=>"form-control-testimonial",
-//                  "id"=>"lastname",
-//                  "minlength"=>2,
-//                  "maxlength"=>100,
-//                  "error"=>"Le nom doit faire entre 2 et 100 caractères"
-//                ],
-
 
               "content"=>["type"=>"textarea","placeholder"=>"Votre témoignage", "required"=>false, "class"=>"form-control-testimonial", "id"=>"content","minlength"=>2,"maxlength"=>800,
                 "error"=>"Le témoignage doit faire entre 2 et 800 caractères"],

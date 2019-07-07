@@ -13,9 +13,9 @@ class TestimonialController extends AbstractController
         return $form;
     }
 
-    public function viewTestimonialList():void {
-        $view = new View('testimonials', 'back');
-    }
+//    public function viewTestimonialList():void {
+//        $view = new View('testimonials', 'back');
+//    }
 
     public function saveTestimonial()
     {
@@ -38,13 +38,11 @@ class TestimonialController extends AbstractController
 
     public function approveTestimonial(): void
     {
-        $this->checkAdmin();
-        $testimonialId = intval($_POST['id']);
-        $testimonial = new Testimonial();
-        $testimonial->findById($testimonialId);
-        var_dump($testimonial);
         $data = $_POST;
         if(!empty($data) ){
+            $testimonialId = intval($_POST['id']);
+            $testimonial = new Testimonial();
+            $testimonial->findById($testimonialId);
             $testimonial->setStatus('APPROVED');
             $testimonial->save();
         }
@@ -52,7 +50,6 @@ class TestimonialController extends AbstractController
 
     public function rejectTestimonial(): void
     {
-        $this->checkAdmin();
         $data = $_POST;
         if(!empty($data) ){
         $testimonialId = intval($_POST['id']);

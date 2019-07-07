@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-4 col-8">
-                    <a href="<?php echo \LeaffyMvc\Core\Routing::getSlug("Static","showFrontPage")."?page=1";?>">
+                    <a href="<?php echo \LeaffyMvc\Core\Routing::getSlug("Page","showFrontPage")."?page=1";?>">
                         <img class="header-logo-img" src="../../public/img/logo_full.png" width="100">
                     </a>
                 </div>

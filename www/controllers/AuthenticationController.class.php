@@ -9,23 +9,23 @@ use LeaffyMvc\Core\Validator;
 
 class AuthenticationController extends AbstractController {
 
-    public function viewAdminLoginForm() :void{
-        //TODO what is that ???????????
-        $logged = new View('adminLogin', 'back');
-        if($logged) {
-            $view = new View('home', 'back');
-        } else {
-            $view = new View('userLogin', 'front');
-        }
-    }
+//    public function viewAdminLoginForm() :void{
+//        //TODO what is that ???????????
+//        $logged = new View('adminLogin', 'back');
+//        if($logged) {
+//            $view = new View('home', 'back');
+//        } else {
+//            $view = new View('userLogin', 'front');
+//        }
+//    }
 
-    public function authenticateAdmin() :void{
-        //TODO créer loginAdmin Method
-        $logged = AuthenticationService::instance()->loginAdmin($_POST['email'], $_POST['pwd']);
-//        $security = new Security($_POST['email']);
-//        $security->login($_POST['pwd']);
-
-    }
+//    public function authenticateAdmin() :void{
+//        //TODO créer loginAdmin Method
+//        $logged = AuthenticationService::instance()->loginAdmin($_POST['email'], $_POST['pwd']);
+////        $security = new Security($_POST['email']);
+////        $security->login($_POST['pwd']);
+//
+//    }
 
     public function viewUserLoginForm() :void{
       $user = new User();

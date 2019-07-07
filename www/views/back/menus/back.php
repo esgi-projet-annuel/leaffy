@@ -24,7 +24,7 @@
             <div>Pages</div>
         </li>
       </a>
-      <a class="link" href="<?php echo \LeaffyMvc\Core\Routing::getSlug("Comment", "listPendings");?>">
+      <a class="link" href="<?php echo \LeaffyMvc\Core\Routing::getSlug("Comment", "listCommentsByStatus");?>">
         <li class="list-item">
             <img src="../../../public/img/blogging.png" width="40">
             <div>Commentaires</div>

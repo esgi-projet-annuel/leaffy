@@ -17,13 +17,11 @@
           <th align="left">Titre</th>
           <th align="left">Date</th>
           <th align="left">Status</th>
-          <th align="left">ID</th>
           <th></th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td align="left"></td>
           <td align="left"></td>
           <td align="left"></td>
           <td align="left"></td>
@@ -35,7 +33,7 @@
         $buttonModify = '<a href="'.\LeaffyMvc\Core\Routing::getSlug("Post","getUpdateFormView").'?id= {0} " class="form-control button-back button-back--modify"><i class="fas fa-edit"></i></a>';
 
         foreach ($posts as $post) {
-            $post->status = $post->geStringForHtmlFromStatus($post->status);
+            $post->status = $post->getStringForHtmlFromDB($post->status);
             $post->created_at = $post->getCreatedAt();
             $buttonStr='';
             if (isset($_GET['status'])){
@@ -96,7 +94,6 @@ let buttons = <?php echo json_encode($buttonStr); ?>;
               { data: 'title' },
               { data: 'created_at'},
               { data: 'status'},
-              { data: 'id' },
               {
                 data: null,
                 render: function ( datas, type, row ) {

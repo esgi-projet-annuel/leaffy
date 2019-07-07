@@ -32,7 +32,7 @@
         </table>
         <?php
         foreach ($users as $user) {
-            $user->profile = $user->geStringForHtmlFromDB($user->profile);
+            $user->profile = $user->getStringForHtmlFromDB($user->profile);
             $user->created_at = $user->getCreatedAt();
         }
         $selectButton = <<<EOF

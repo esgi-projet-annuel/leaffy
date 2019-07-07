@@ -14,8 +14,10 @@ class Validator{
             die("Tentative : faille XSS");
         }
 
+        foreach ($data as $dataKey => $dataValue) {
+            $data[$dataKey] = htmlentities($dataValue);
+        }
         foreach ($config["data"] as $name => $info) {
-
             //Isset
             if( !isset($data[$name] )){
                 die("Tentative : faille XSS");

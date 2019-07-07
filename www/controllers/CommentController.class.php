@@ -29,12 +29,12 @@ class CommentController extends AbstractController
 
     public function approveComment(): void
     {
-        $this->checkAdmin();
-        $commentId = intval($_POST['commentId']);
-        $comment = new Comment();
-        $comment->findById($commentId);
+        var_dump($_POST);
         $data = $_POST;
         if(!empty($data) ){
+            $commentId = intval($_POST['id']);
+            $comment = new Comment();
+            $comment->findById($commentId);
             $comment->setStatus('APPROVED');
             $comment->save();
         }
@@ -42,24 +42,22 @@ class CommentController extends AbstractController
 
     public function rejectComment(): void
     {
-        $this->checkAdmin();
-        $commentId = intval($_POST['commentId']);
-        $comment = new Comment();
-        $comment->findById($commentId);
+        var_dump($_POST);
         $data = $_POST;
         if(!empty($data) ){
+            $commentId = intval($_POST['id']);
+            $comment = new Comment();
+            $comment->findById($commentId);
             $comment->setStatus('REJECTED');
             $comment->save();
         }
     }
 
-    public function listPendings(): array {
-        //$this->checkAdmin();
-//        $postId = intval($_POST['postId']);
+    public function listCommentsByStatus():void {
+        $status = isset($_GET['status'])?$_GET['status']:'PENDING';
         $comment = new Comment();
-        $pendingComments = $comment->findAllBy(['status' =>  'PENDING']); //, 'post_id' => $postId
-
-        var_dump($pendingComments);
-        return $pendingComments;
+        $comments = $comment->findAllBy(['status' => $status]);
+        $view = new View("comments", "back");
+        $view->assign("comments", $comments);
     }
 }

@@ -3,37 +3,57 @@
     <div class="titre">
       <h2>Gestion des commentaires</h2>
     </div>
-      <!--      TODO FABIEN visuel des boutons/liens/ce que tu veux xD-->
-      <a href="/admin/listTestimonials?status=PENDING" class="form-control button-back button-back--modify">Témoignages en attente de validation</a>
-      <a href="/admin/listTestimonials?status=APPROVED" class="form-control button-back button-back--modify">Témoignages validés</a>
-      <a href="/admin/listTestimonials?status=REJECTED" class="form-control button-back button-back--modify">Témoignages rejetés</a>
-
+      <div class="group-button">
+          <a href="/admin/listComments?status=PENDING" class="form-control button-back button-back--modify">Commentaires en attente de validation</a>
+          <a href="/admin/listComments?status=APPROVED" class="form-control button-back button-back--modify">Commentaires validés</a>
+          <a href="/admin/listComments?status=REJECTED" class="form-control button-back button-back--modify">Commentaires rejetés</a>
+      </div>
   </div>
   <div class="section-table">
-    <table class="table" width="100%" id="comments-table">
+    <table class="table display" width="100%" id="comments-table">
+        <thead>
         <tr class="table-head">
-          <th align="left">Auteur</th>
+          <th align="left">Abonné</th>
           <th align="left">Commentaire</th>
-          <th align="left">En réponse à</th>
           <th align="left">Date</th>
           <th width="25%"></th>
         </tr>
+        </thead>
+        <tbody>
         <tr>
-          <td align="left"></td>
           <td align="left"></td>
           <td align="left"></td>
           <td align="left"></td>
           <td></td>
         </tr>
+        </tbody>
     </table>
-    <a href="" class="form-control button-back button-back--display">Valider</a>
-    <a href="" class="form-control button-back button-back--modify">Refuser</a>
-    <a href="" class="form-control button-back button-back--remove">Supprimer</a>
+      <?php
+      foreach ($comments as $comment) {
+          $comment->status = $comment->getStringForHtmlFromDB($comment->status);
+          $comment->created_at = $comment->getCreatedAt() ;
+          $buttonStr='';
+          if (isset($_GET['status'])){
+              if ($_GET['status']== 'APPROVED'){
+                  $buttonStr.= '<a href="" class="form-control button-back button-back--modify" onclick="rejecte({0});"><i class="far fa-times-circle"></a>';
+              }else if($_GET['status']== 'REJECTED'){
+                  $buttonStr.='<a href="" class="form-control button-back button-back--display" onclick="approve({0});"><i class="fas fa-check-circle"></i></a>';
+              }else if($_GET['status']== 'PENDING'){
+                  $buttonStr.= '<a href="" class="form-control button-back button-back--display" onclick="approve({0});"><i class="fas fa-check-circle"></i></a>'
+                      . '<a href="" class="form-control button-back button-back--modify" onclick="rejecte({0});"><i class="far fa-times-circle"></i></a>';
+              }
+          }else{
+              $buttonStr.= '<a href="" class="form-control button-back button-back--display" onclick="approve({0});"><i class="fas fa-check-circle"></i></a>'
+                  . '<a href="" class="form-control button-back button-back--modify" onclick="rejecte({0});"><i class="far fa-times-circle"></i></a>';
+          }
+
+      }
+      ?>
   </div>
 </div>
 <script>
 let datas = <?php echo json_encode($comments); ?>;
-let selectButton = <?php echo json_encode($selectButton); ?>;
+let buttonStr = <?php echo json_encode($buttonStr); ?>;
 $(document).ready( function () {
     $('#comments-table').DataTable({
         language: {
@@ -67,9 +87,8 @@ $(document).ready( function () {
         },
         data: datas,
         columns: [
-            { data: 'author' },
+            { data: 'user_id' },
             { data: 'content'},
-            { data: 'post_id'},
             { data: 'created_at' },
             {
                 data: null,
@@ -86,10 +105,28 @@ $(document).ready( function () {
                             });
                         };
                     }
-                    return selectButton.format(id);
+                    return buttonStr.format(id);
                 }
             }
         ]
     });
 } );
+
+function approve(commentId) {
+    console.log(commentId);
+    $.ajax({
+        url : '/admin/approveComment',
+        type : 'POST', // Le type de la requête HTTP, ici devenu POST
+        data : 'id=' + commentId,
+    });
+}
+
+function rejecte(commentId) {
+    console.log(commentId);
+    $.ajax({
+        url : '/admin/rejectComment',
+        type : 'POST', // Le type de la requête HTTP, ici devenu POST
+        data : 'id=' + commentId,
+    });
+}
 </script>

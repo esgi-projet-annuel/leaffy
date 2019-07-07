@@ -18,13 +18,11 @@
               <th align="left">Titre</th>
               <th align="left">Date</th>
               <th align="left">Status</th>
-              <th align="left">ID</th>
               <th></th>
           </tr>
           </thead>
           <tbody>
           <tr>
-              <td align="left"></td>
               <td align="left"></td>
               <td align="left"></td>
               <td align="left"></td>
@@ -36,7 +34,7 @@
 //        TODO FABIEN remplacer texte des boutons par icones et le changer dans chaque vues (post/testimonials/comment/etc)
         //TODO ALIX changer status avec boutons
             foreach ($pages as $page) {
-                $page->status = $page->geStringForHtmlFromStatus($page->status);
+                $page->status = $page->getStringForHtmlFromDB($page->status);
                 $page->created_at = $page->getCreatedAt();
                 $buttonStr='';
                 if (isset($_GET['status'])){
@@ -100,7 +98,6 @@
                 { data: 'title' },
                 { data: 'created_at'},
                 { data: 'status'},
-                { data: 'id' },
                 {
                     data: null,
                     render: function ( datas, type, row ) {
