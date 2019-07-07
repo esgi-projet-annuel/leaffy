@@ -157,6 +157,14 @@
   controller: User
   action: deleteUser
 
+"/admin/listUsers":
+  controller: User
+  action: getAllUsersByProfile
+
+"/admin/changeUserProfile":
+  controller: User
+  action: changeProfile
+
 #MEDIA
 "/admin/addMedia":
   controller: Media

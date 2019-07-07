@@ -30,7 +30,7 @@
             <div>Commentaires</div>
         </li>
       </a>
-        <a class="link" href="<?php echo \LeaffyMvc\Core\Routing::getSlug("User", "");?>">
+        <a class="link" href="<?php echo \LeaffyMvc\Core\Routing::getSlug("User", "getAllUsersByProfile");?>">
         <li class="list-item">
             <img src="../../../public/img/contact-darken.png" width="40">
             <div>Utilisateurs</div>

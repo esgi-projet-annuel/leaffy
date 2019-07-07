@@ -108,4 +108,25 @@ class UserController extends AbstractController {
         $user->delete();
     }
 
+
+    public function getAllUsersByProfile(){
+        $profile = isset($_GET['profile'])?$_GET['profile']:'CLIENT';
+        $user = new User();
+        $users = $user->findAllBy(['profile'=>$profile]);
+        $view = new View("users", "back");
+        $view->assign("users", $users);
+    }
+
+    public function changeProfile(){
+        var_dump($_POST);
+        $data = $_POST;
+        if(!empty($data) ){
+            $userId = intval($_POST['id']);
+            $user = new User();
+            $user->findById($userId);
+            $user->setProfile($_POST['profile']);
+            $user->save();
+        }
+    }
+
 }

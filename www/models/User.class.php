@@ -44,30 +44,6 @@ class User extends BaseSQL {
         $this->password = password_hash($password, PASSWORD_DEFAULT);
     }
 
-    public function setProfession(string $profession) {
-        $this->profession = trim($profession);
-    }
-
-    public function setAddress(string $address): void
-    {
-        $this->address = $address;
-    }
-
-    public function setZipCode(string $zipCode): void
-    {
-        $this->zipCode = $zipCode;
-    }
-
-    public function setCity(string $city): void
-    {
-        $this->city = $city;
-    }
-
-    public function setPhoneNumber(string $phoneNumber): void
-    {
-        $this->phoneNumber = $phoneNumber;
-    }
-
     public function setToken(?string $token) {
         $this->token = ($token==null)?null:trim($token);
     }
@@ -91,10 +67,6 @@ class User extends BaseSQL {
 
     public function getPassword():string{
         return $this->password;
-    }
-
-    public function getProfession():?string{
-        return $this->profession;
     }
 
     public function getToken():?string {

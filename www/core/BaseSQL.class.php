@@ -135,7 +135,7 @@ namespace LeaffyMvc\Core {
             $query->execute(["id" => $this->id]);
         }
 
-        public function geStringForHtmlFromStatus(string $status){
+        public function geStringForHtmlFromDB(string $status){
             switch ($status){
                 case 'PENDING':
                     return 'En attente de validation';
@@ -145,6 +145,7 @@ namespace LeaffyMvc\Core {
                     break;
                 case 'REJECTED':
                     return 'Rejeté';
+                    break;
                 case 'DRAFT':
                     return 'Brouillon';
                     break;
@@ -154,6 +155,23 @@ namespace LeaffyMvc\Core {
                 case 'PUBLISHED':
                     return 'Publié';
                     break;
+                case 'CLIENT':
+                    return 'Abonné';
+                    break;
+                case 'EDITOR':
+                    return 'Editeur';
+                    break;
+                case 'ADMIN':
+                    return 'Administrateur';
+                    break;
+            }
+
+        }
+
+        public function geStringForHtmlFromProfile(string $profile){
+            switch ($profile){
+
+
             }
 
         }
