@@ -40,9 +40,8 @@ body {
   color: #444;
   font-family: "Lato", sans-serif;
   margin: 0 auto;
-  height: 100%;
-  display: flex;
-  flex-direction: column; }
+  min-height: 100%;
+  position: relative; }
   body h1, body h2 {
     font-family: "Lato", sans-serif; }
 
@@ -473,7 +472,9 @@ textarea {
   padding: 20px 0 0 0;
   text-align: center;
   color: #FFFFFF;
-  margin-top: auto; }
+  margin-top: auto;
+  position: absolute;
+  bottom: 0; }
 
 #footer p {
   margin-top: 0px; }
@@ -1146,6 +1147,40 @@ textarea {
   position: relative;
   bottom: 6rem; }
 
+.post-blog {
+  width: 100%;
+  background-color: #fff;
+  padding-bottom: 40px;
+  text-align: left;
+  min-height: 200px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  padding: 15px; }
+
+.main-blog, .main-article {
+  margin-bottom: 16rem; }
+
+.blog-description {
+  text-align: justify;
+  color: #5c8d89; }
+
+.more {
+  text-align: right; }
+
+.content-post {
+  width: 100%;
+  background-color: #fff;
+  padding: 40px;
+  text-align: left;
+  min-height: 200px; }
+
+.comment-post {
+  width: 100%;
+  background-color: #C4C4C4;
+  min-height: 100px;
+  margin-top: 15px; }
+
 #avatar {
   height: 80%;
   width: 80%;
@@ -1220,7 +1255,8 @@ textarea {
     padding: 10px; } }
 
 #contact-us .section-contact {
-  background-color: #a7d7c5; }
+  background-color: #a7d7c5;
+  margin-bottom: 13rem; }
 
 #contact-us label {
   width: 100%; }

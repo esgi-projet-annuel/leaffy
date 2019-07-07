@@ -111,7 +111,7 @@ foreach ($testimonialsApproved as $testimonialApproved) {
       responsive: true
   }
   });
-  
+
   var ctx = document.getElementById("myChart2").getContext('2d');
   var myChart = new Chart(ctx, {
   type: 'bar',

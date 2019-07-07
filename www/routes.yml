@@ -25,6 +25,11 @@
   action: default
 
 #POST
+"/post":
+  controller: Post
+  action: showOnePost
+
+
 "/admin/posts":
   controller: Post
   action: showAll
@@ -115,9 +120,9 @@
   controller: Comment
   action: saveComment
 
-"/admin/listComments":
+"/admin/listPendingsComment":
   controller: Comment
-  action: listCommentsByStatus
+  action: listPendings
 
 #TESTIMONIALS
 "/admin/approveTestimonial":
@@ -131,7 +136,7 @@
 "/addTestimonial":
   controller: Testimonial
   action: saveTestimonial
-  
+
 "/admin/listTestimonials":
   controller: Testimonial
   action: listTestimonialsByStatus
@@ -156,14 +161,6 @@
 "/deleteUser":
   controller: User
   action: deleteUser
-
-"/admin/listUsers":
-  controller: User
-  action: getAllUsersByProfile
-
-"/admin/changeUserProfile":
-  controller: User
-  action: changeProfile
 
 #MEDIA
 "/admin/addMedia":

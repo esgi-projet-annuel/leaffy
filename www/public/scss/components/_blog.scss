@@ -1,0 +1,39 @@
+.post-blog{
+  width: 100%;
+  background-color: #fff;
+  padding-bottom: 40px;
+  text-align: left;
+  min-height: 200px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  padding: 15px;
+}
+
+.main-blog,.main-article{
+  margin-bottom: 16rem;
+}
+
+.blog-description{
+  text-align: justify;
+  color: $color4;
+}
+
+.more{
+  text-align: right;
+}
+
+.content-post{
+  width: 100%;
+  background-color: #fff;
+  padding: 40px;
+  text-align: left;
+  min-height: 200px;
+}
+
+.comment-post{
+  width: 100%;
+  background-color: #C4C4C4;
+  min-height: 100px;
+  margin-top: 15px;
+}

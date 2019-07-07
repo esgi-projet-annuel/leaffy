@@ -4,9 +4,9 @@
       <h2>Gestion des commentaires</h2>
     </div>
       <div class="group-button">
-          <a href="/admin/listComments?status=PENDING" class="form-control button-back button-back--modify">Commentaires en attente de validation</a>
-          <a href="/admin/listComments?status=APPROVED" class="form-control button-back button-back--modify">Commentaires validés</a>
-          <a href="/admin/listComments?status=REJECTED" class="form-control button-back button-back--modify">Commentaires rejetés</a>
+          <a href="/admin/listComments?status=PENDING" class="form-control button-back button-back--status">Commentaires en attente de validation</a>
+          <a href="/admin/listComments?status=APPROVED" class="form-control button-back button-back--status">Commentaires validés</a>
+          <a href="/admin/listComments?status=REJECTED" class="form-control button-back button-back--status">Commentaires rejetés</a>
       </div>
   </div>
   <div class="section-table">

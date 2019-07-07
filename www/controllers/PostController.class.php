@@ -12,6 +12,10 @@ class PostController extends AbstractController {
         $view = new View("posts", "back");
     }
 
+    public function showOnePost() :void{
+        $view = new View("ShowOnePost", "front");
+    }
+
     public function createPost():void{
         $view = new View("setPost", "back");
         $post = new Post();
