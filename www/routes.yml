@@ -29,7 +29,6 @@
   controller: Post
   action: showOnePost
 
-
 "/admin/posts":
   controller: Post
   action: showAll

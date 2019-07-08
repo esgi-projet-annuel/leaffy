@@ -35,7 +35,7 @@
         //TODO ALIX changer status avec boutons
             foreach ($pages as $page) {
                 $page->status = $page->getStringForHtmlFromDB($page->status);
-                $page->created_at = $page->getCreatedAt();
+                $page->created_at = $page->getFrDate($page->created_at);
                 $buttonStr='';
                 if (isset($_GET['status'])){
                     if ($_GET['status']== 'PUBLISHED'){

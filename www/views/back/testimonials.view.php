@@ -33,7 +33,7 @@
         <?php
         foreach ($testimonials as $testimonial) {
             $testimonial->status = $testimonial->getStringForHtmlFromDB($testimonial->status);
-            $testimonial->created_at = $testimonial->getCreatedAt() ;
+            $testimonial->created_at = $testimonial->getFrDate($testimonial->created_at);
             $buttonStr='';
             if (isset($_GET['status'])){
                 if ($_GET['status']== 'APPROVED'){

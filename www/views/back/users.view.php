@@ -33,7 +33,7 @@
         <?php
         foreach ($users as $user) {
             $user->profile = $user->getStringForHtmlFromDB($user->profile);
-            $user->created_at = $user->getCreatedAt();
+            $user->created_at = $user->getFrDate($user->created_at);
         }
         $selectButton = <<<EOF
             <select id="profileSelect" onchange="changeProfile('{0}');">

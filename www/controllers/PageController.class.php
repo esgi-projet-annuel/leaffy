@@ -5,6 +5,7 @@ namespace LeaffyMvc\Controllers;
 
 use LeaffyMvc\Core\View;
 use LeaffyMvc\Models\Page;
+use LeaffyMvc\Models\Post;
 
 class PageController extends AbstractController {
 
@@ -18,8 +19,10 @@ class PageController extends AbstractController {
                 $view = new View('pageTemplate', "front");
                 $view->assign('page', $page);
             }elseif ($page->type == 'BLOG'){
+                $post= new Post();
+                $posts = $post->findAllBy(['status'=>'PUBLISHED']);
                 $view = new View('blogTemplate', "front");
-                $view->assign('page', $page);
+                $view->assign('posts', $posts);
             }
 
         }

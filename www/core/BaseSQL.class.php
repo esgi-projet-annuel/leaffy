@@ -32,14 +32,9 @@ namespace LeaffyMvc\Core {
             $this->id = $id;
         }
 
-        public function getCreatedAt():string
+        public function getFrDate($date):string
         {
-            return date('d-m-Y', strtotime($this->created_at));
-        }
-
-        public function getUpdatedAt():string
-        {
-            return date('d-m-Y', strtotime($this->updated_at));
+            return date('d-m-Y', strtotime($date));
         }
 
         private function prepareQuery(array $findBy):PDOStatement{

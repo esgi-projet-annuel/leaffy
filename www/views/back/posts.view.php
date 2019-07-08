@@ -34,7 +34,7 @@
 
         foreach ($posts as $post) {
             $post->status = $post->getStringForHtmlFromDB($post->status);
-            $post->created_at = $post->getCreatedAt();
+            $post->created_at = $post->getFrDate($post->created_at);
             $buttonStr='';
             if (isset($_GET['status'])){
                 if ($_GET['status']== 'PUBLISHED'){
