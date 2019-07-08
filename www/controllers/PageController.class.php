@@ -6,6 +6,7 @@ namespace LeaffyMvc\Controllers;
 use LeaffyMvc\Core\View;
 use LeaffyMvc\Models\Page;
 use LeaffyMvc\Models\Post;
+use LeaffyMvc\Core\Validator;
 
 class PageController extends AbstractController {
 
@@ -24,7 +25,6 @@ class PageController extends AbstractController {
                 $view = new View('blogTemplate', "front");
                 $view->assign('posts', $posts);
             }
-
         }
     }
 
@@ -47,39 +47,57 @@ class PageController extends AbstractController {
     }
 
     public function savePage():void{
-
-//        $this->checkAdmin();
         $page= new Page();
         $form = $page->getPageForm();
 
         //Est ce qu'il y a des données dans POST ou GET($form["config"]["method"])
         $method = strtoupper($form["config"]["method"]);
         $data = $GLOBALS["_".$method];
-        if(!empty($data) ){
-            $page->setTitle($data['title']);
-            $page->setDescription($data['description']);
-            $page->setStatus('DRAFT');
-            $page->setType('STATIC');
-            $page->setContent($data['content']);
+        if( $_SERVER['REQUEST_METHOD']==$method && !empty($data) ) {
+            $validator = new Validator($form, $data);
+            $form["errors"] = $validator->errors;
+
+            if(empty($form["errors"])){
+                $page->setTitle($data['title']);
+                $page->setDescription($data['description']);
+                $page->setStatus('DRAFT');
+                $page->setType('STATIC');
+                $page->setContent($data['content']);
 //            $page->setMenuId(intval($data['menuId']));
-            $page->save();
+                $page->save();
+                $this->getAllPagesByStatus();
+            }else{
+                $view = new View('setPage', 'back');
+                $view->assign('formPage', $form);
+            }
         }
-        $this->getAllPagesByStatus();
+
     }
 
     public function updatePage():void {
-        $pageId = intval($_POST['id']);
         $page = new Page();
-        $page->findById($pageId);
-        $data = $_POST;
-        if(!empty($data) ){
-            $page->setTitle($data['title']);
-            $page->setDescription($data['description']);
-            $page->setContent($data['content']);
-            $page->setStatus('DRAFT');
-            $page->save();
+        $form = $page->getUpdateForm($_POST['id']);
+
+        $method = strtoupper($form["config"]["method"]);
+        $data = $GLOBALS["_".$method];
+        if( $_SERVER['REQUEST_METHOD']==$method && !empty($data) ) {
+            $validator = new Validator($form, $data);
+            $form["errors"] = $validator->errors;
+
+            if(empty($form["errors"])){
+                $pageId = intval($data['id']);
+                $page->findById($pageId);
+                $page->setTitle($data['title']);
+                $page->setDescription($data['description']);
+                $page->setContent($data['content']);
+                $page->setStatus('DRAFT');
+                $page->save();
+                $this->getAllPagesByStatus();
+            }else{
+                $view = new View('setPage', 'back');
+                $view->assign('formPage', $form);
+            }
         }
-        $this->getAllPagesByStatus();
     }
 
     public function deletePage():void {
@@ -98,7 +116,7 @@ class PageController extends AbstractController {
         $view->assign("pages", $pages);
     }
 
-    public function changeStatus(){
+    public function changeStatus():void{
         $this->checkAdmin();
         $data = $_POST;
         if(!empty($data) ){

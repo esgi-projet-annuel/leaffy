@@ -5,6 +5,7 @@ namespace LeaffyMvc\Controllers;
 
 use LeaffyMvc\Core\View;
 use LeaffyMvc\Models\Comment;
+use LeaffyMvc\Core\Validator;
 
 class CommentController extends AbstractController
 {
@@ -14,16 +15,23 @@ class CommentController extends AbstractController
         return $form;
     }
 
-    public function saveComment(): void
-    {
+    public function saveComment(): void {
         $comment = new Comment();
-        $data = $_POST; //TODO a supprimer et décommenter ligne de dessus
-        if (!empty($data)) {
-            $comment->setContent($data['content']);
-            $comment->setUserId($_SESSION['userId']);
-            $comment->setPostId(intval($_POST['postId']));
-            $comment->setStatus('PENDING');
-            $comment->save();
+        $form = $comment->getCommentForm();
+
+        $method = strtoupper($form["config"]["method"]);
+        $data = $GLOBALS["_".$method];
+        if( $_SERVER['REQUEST_METHOD']==$method && !empty($data) ) {
+            $validator = new Validator($form, $data);
+            $form["errors"] = $validator->errors;
+
+            if(empty($form["errors"])){
+                $comment->setContent($data['content']);
+                $comment->setUserId($_SESSION['userId']);
+                $comment->setPostId(intval($_POST['postId']));
+                $comment->setStatus('PENDING');
+                $comment->save();
+            }
         }
     }
 

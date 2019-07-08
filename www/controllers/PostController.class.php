@@ -5,6 +5,7 @@ namespace LeaffyMvc\Controllers;
 
 use LeaffyMvc\Core\View;
 use LeaffyMvc\Models\Post;
+use LeaffyMvc\Core\Validator;
 
 class PostController extends AbstractController {
 
@@ -39,16 +40,48 @@ class PostController extends AbstractController {
 
         $method = strtoupper($form["config"]["method"]);
         $data = $GLOBALS["_".$method];
-        if(!empty($data) ){
+        if( $_SERVER['REQUEST_METHOD']==$method && !empty($data) ) {
+            $validator = new Validator($form, $data);
+            $form["errors"] = $validator->errors;
 
-            $post->setTitle($data['title']);
-            $post->setDescription($data['description']);
-            $post->setContent($data['content']);
-            $post->setStatus('DRAFT');
-            $post->setPageId(3);
-            $post->save();
+            if(empty($form["errors"])){
+                $post->setTitle($data['title']);
+                $post->setDescription($data['description']);
+                $post->setContent($data['content']);
+                $post->setStatus('DRAFT');
+                $post->setPageId(3);
+                $post->save();
+                $this->getAllPostsByStatus();
+            }else{
+                $view = new View("setPost", "back");
+                $view->assign("formPost", $form);
+            }
         }
-        $this->getAllPostsByStatus();
+    }
+
+    public function updatePost():void {
+        $post = new Post();
+        $form= $post->getUpdateForm($_POST['id']);
+
+        $method = strtoupper($form["config"]["method"]);
+        $data = $GLOBALS["_".$method];
+        if( $_SERVER['REQUEST_METHOD']==$method && !empty($data) ) {
+            $validator = new Validator($form, $data);
+            $form["errors"] = $validator->errors;
+
+            if(empty($form["errors"])){
+                $postId = intval($data['id']);
+                $post->findById($postId);
+                $post->setTitle($data['title']);
+                $post->setContent($data['content']);
+                $post->setDescription($data['description']);
+                $post->save();
+                $this->getAllPostsByStatus();
+            }else{
+                $view = new View("setPost", "back");
+                $view->assign("formPost", $form);
+            }
+        }
     }
 
     public function deletePost():void {
@@ -56,20 +89,6 @@ class PostController extends AbstractController {
         $post = new Post();
         $post->findById($postId);
         $post->delete();
-    }
-
-    public function updatePost():void {
-        $postId = intval($_POST['id']);
-        $post = new Post();
-        $post->findById($postId);
-        $data = $_POST;
-        if(!empty($data) ){
-            $post->setTitle($data['title']);
-            $post->setContent($data['content']);
-            $post->setDescription($data['description']);
-            $post->save();
-        }
-        $this->getAllPostsByStatus();
     }
 
     public function getAllPosts(): array {
@@ -87,7 +106,7 @@ class PostController extends AbstractController {
         $view->assign("posts", $posts);
     }
 
-    public function changeStatus(){
+    public function changeStatus():void{
         $this->checkAdmin();
         $data = $_POST;
         if(!empty($data) ){

@@ -4,6 +4,7 @@ namespace LeaffyMvc\Controllers;
 
 use LeaffyMvc\Models\Testimonial ;
 use LeaffyMvc\Core\View;
+use LeaffyMvc\Core\Validator;
 
 class TestimonialController extends AbstractController
 {
@@ -17,30 +18,33 @@ class TestimonialController extends AbstractController
 //        $view = new View('testimonials', 'back');
 //    }
 
-    public function saveTestimonial()
-    {
+    public function saveTestimonial():void{
         $testimonial = new Testimonial();
         $form = $testimonial->getTestimonialForm();
 
         $method = strtoupper($form["config"]["method"]);
         $data = $GLOBALS["_".$method];
-        if (!empty($data)) {
-            $testimonial->setContent($data['content']);
-            $testimonial->setUserName($data['userName']);
-            $testimonial->setStatus('PENDING');
-            $testimonial->save();
-            $form["errors"][] ="Merci pour votre avis!  ";
-        }
+        if( $_SERVER['REQUEST_METHOD']==$method && !empty($data) ) {
+            $validator = new Validator($form, $data);
+            $form["errors"] = $validator->errors;
 
-        $view = new View("home", "front");
-        $view->assign("formTestimonial", $form);
+            if(empty($form["errors"])){
+                $testimonial->setContent($data['content']);
+                $testimonial->setUserName($data['userName']);
+                $testimonial->setStatus('PENDING');
+                $testimonial->save();
+                $form["errors"][] ="Merci pour votre avis!  ";
+            }
+            $view = new View("home", "front");
+            $view->assign("formTestimonial", $form);
+        }
     }
 
     public function approveTestimonial(): void
     {
         $data = $_POST;
         if(!empty($data) ){
-            $testimonialId = intval($_POST['id']);
+            $testimonialId = intval($data['id']);
             $testimonial = new Testimonial();
             $testimonial->findById($testimonialId);
             $testimonial->setStatus('APPROVED');
@@ -52,7 +56,7 @@ class TestimonialController extends AbstractController
     {
         $data = $_POST;
         if(!empty($data) ){
-        $testimonialId = intval($_POST['id']);
+        $testimonialId = intval($data['id']);
         $testimonial = new Testimonial();
         $testimonial->findById($testimonialId);
             $testimonial->setStatus('REJECTED');

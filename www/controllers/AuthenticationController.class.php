@@ -6,6 +6,7 @@ use LeaffyMvc\Core\View;
 use LeaffyMvc\Services\AuthenticationService;
 use LeaffyMvc\Models\User;
 use LeaffyMvc\Core\Validator;
+use LeaffyMvc\Core\Routing;
 
 class AuthenticationController extends AbstractController {
 
@@ -45,7 +46,7 @@ class AuthenticationController extends AbstractController {
             $validator = new Validator($form,$data);
             $form["errors"] = $validator->errors;
 
-            if(empty($errors)){
+            if(empty($form["errors"])){
                 $logged = AuthenticationService::instance()->login($user, $data['email'], $data['pwd']);
                 if($logged) {
                     if (AuthenticationService::instance()->isAdmin()){
@@ -53,17 +54,17 @@ class AuthenticationController extends AbstractController {
                     }else{
                         $view = new View('home', 'front');
                     }
-                } else {
-                    $form['errors'][]= "Email ou mot de passe invalide ";
-                    $view = new View('userLogin', 'front');
-                    $view->assign("form", $form);
                 }
+            }else {
+                $form['errors'][]= "Email ou mot de passe invalide ";
+                $view = new View('userLogin', 'front');
+                $view->assign("form", $form);
             }
         }
     }
 
     public function userLogout() :void{
         $user= new User();
-        AuthenticationService::instance()->logout($user,'http://localhost:88/?page=1');
+        AuthenticationService::instance()->logout($user, Routing::getSlug('Page', 'showFrontPage'));
     }
 }
