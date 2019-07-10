@@ -16,12 +16,7 @@ class TestimonialController extends AbstractController
         if( $_SERVER['REQUEST_METHOD']==$method && !empty($data) ) {
             $validator = new Validator($form, $data);
             $form["errors"] = $validator->errors;
-
             if(empty($form["errors"])){
-                $testimonial->setContent($data['content']);
-                $testimonial->setUserName($data['userName']);
-                $testimonial->setStatus('PENDING');
-                $testimonial->save();
                 $form["errors"][] ="Merci pour votre avis!  ";
             }
         }
