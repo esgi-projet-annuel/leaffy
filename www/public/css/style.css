@@ -45,6 +45,10 @@ body {
   body h1, body h2 {
     font-family: "Lato", sans-serif; }
 
+main {
+  position: relative;
+  padding-bottom: 16rem; }
+
 ul {
   list-style: none; }
 
@@ -150,8 +154,7 @@ textarea {
 .container {
   width: 100%;
   margin: auto;
-  overflow-x: hidden;
-  overflow-y: -webkit-paged-y; }
+  overflow-x: hidden; }
   @media (min-width: 1200px) {
     .container {
       width: 1170px; } }
@@ -1292,8 +1295,7 @@ textarea {
     padding: 10px; } }
 
 #contact-us .section-contact {
-  background-color: #a7d7c5;
-  margin-bottom: 13rem; }
+  background-color: #a7d7c5; }
 
 #contact-us label {
   width: 100%; }

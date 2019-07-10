@@ -11,6 +11,20 @@ class TestimonialController extends AbstractController
     public function getTestimonialForm(): array{
         $testimonial = new Testimonial();
         $form = $testimonial->getTestimonialForm();
+        $method = strtoupper($form["config"]["method"]);
+        $data = $GLOBALS["_".$method];
+        if( $_SERVER['REQUEST_METHOD']==$method && !empty($data) ) {
+            $validator = new Validator($form, $data);
+            $form["errors"] = $validator->errors;
+
+            if(empty($form["errors"])){
+                $testimonial->setContent($data['content']);
+                $testimonial->setUserName($data['userName']);
+                $testimonial->setStatus('PENDING');
+                $testimonial->save();
+                $form["errors"][] ="Merci pour votre avis!  ";
+            }
+        }
         return $form;
     }
 
