@@ -33,7 +33,50 @@
 
 .comment-post{
   width: 100%;
-  background-color: #C4C4C4;
-  min-height: 100px;
+  background-color: rgba(116, 180, 155, 0.3);
   margin-top: 15px;
+  margin-bottom: 15px;
+  min-height: 200px;
+  padding: 15px;
+}
+
+.comment-form .form-button-submit{
+  justify-content: flex-end;
+
+}
+
+.comment-form form{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.comment-form .form-Setting:nth-child(1){
+  margin-right: 15px;
+}
+.comment-form .form-Setting:nth-child(3){
+  width: 100%;
+}
+
+.comment-block{
+  display: flex;
+  align-items: center;
+}
+.comment-part-1{
+  text-align: center;
+}
+
+.author-comment, .date-comment{
+  font-size: 13px;
+}
+.comment{
+  font-size: 17px;
+  color: $color4;
+  font-weight: bold;
+  text-align: justify;
+}
+
+.comment-form-part{
+  background-color: #a7d7c5;
+  margin-top: 10px;
+  padding: 10px;
 }

@@ -20,11 +20,8 @@
     <?php foreach ($config["data"] as $key => $value):?>
 
 		<div class="form-Setting">
-    	<div class="form-label-back">
+    	<div class="form-label-comment">
       	<?php if($value["type"]=="text"):?>
-
-
-
           <label for="<?php echo $value["id"];?>"> <?php echo $value["placeholder"];?> </label>
       		<input type="<?php echo $value["type"];?>"
     				name="<?php echo $key;?>"
@@ -41,7 +38,7 @@
 					<?php echo ($value["required"])?'required="required"':'';?>
 					id="<?php echo $value["id"];?>"
 					class="<?php echo $value["class"];?>"
-					value="<?php echo $data[$key]??''?>"><?php echo $value["placeholder"];?></textarea>
+					value="<?php echo $data[$key]??''?>" placeholder="<?php  echo $value["placeholder"]; ?>"></textarea>
 
 					<?php elseif($value["type"]=="file"):?>
 					<label for="<?php echo $value["id"];?>"> <?php echo $value["placeholder"];?> </label>
@@ -58,7 +55,7 @@
 
       <?php endforeach;?>
 
-    <div class="d-flex form-Setting">
+    <div class="d-flex form-Setting form-button-submit">
       <input type="submit" class="form-control button-back button-back--add" value="<?php echo $config["config"]["submit"];?>">
     </div>
   </form>
