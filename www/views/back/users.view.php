@@ -110,6 +110,7 @@ EOF;
     } );
     function changeProfile(userId) {
         var selectValue = document.getElementById("profileSelect").value;
+        console.log(selectValue);
         $.ajax({
             url : '/admin/changeUserProfile',
             type : 'POST', // Le type de la requête HTTP, ici devenu POST

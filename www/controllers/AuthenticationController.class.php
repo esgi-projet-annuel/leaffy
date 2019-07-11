@@ -45,7 +45,6 @@ class AuthenticationController extends AbstractController {
 
             $validator = new Validator($form,$data);
             $form["errors"] = $validator->errors;
-
             if(empty($form["errors"])){
                 $logged = AuthenticationService::instance()->login($user, $data['email'], $data['pwd']);
                 if($logged) {
@@ -54,6 +53,10 @@ class AuthenticationController extends AbstractController {
                     }else{
                         $view = new View('home', 'front');
                     }
+                }else{
+                    $form['errors'][]= "Ce compte n'est pas activé ou le mot de passe est incorrect ";
+                    $view = new View('userLogin', 'front');
+                    $view->assign("form", $form);
                 }
             }else {
                 $form['errors'][]= "Email ou mot de passe invalide ";

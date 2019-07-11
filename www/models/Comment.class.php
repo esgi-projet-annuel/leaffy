@@ -4,10 +4,10 @@ declare(strict_types = 1);
 namespace LeaffyMvc\Models;
 
 use LeaffyMvc\Core\BaseSQL;
+use LeaffyMvc\Core\Routing;
 
 class Comment extends BaseSQL {
 
-    public $id = null;
     public $status;
     public $content;
     public $user_id;
@@ -33,43 +33,30 @@ class Comment extends BaseSQL {
         $this->post_id = $post_id;
     }
 
-    public function getCommentForm(){
+    public function getCommentForm(string $postId = null){
         return [
             "config"=>[
               "method"=>"POST",
-              "action"=> \LeaffyMvc\Core\Routing::getSlug("Comment","saveComment"),
+              "action"=> Routing::getSlug("Comment","saveComment"),
               "class"=>"",
               "id"=>"",
               "submit"=>"Ajouter"],
 
             "data"=>[
-              "firstname"=>[
-                "type"=>"text",
-                "placeholder"=>"Votre prénom",
-                "required"=>true,
-                "class"=>"form-control-comment",
-                "id"=>"firstname",
-                "minlength"=>2,
-                "maxlength"=>100,
-                "error"=>"Le prénom doit faire entre 2 et 100 caractères"
-              ],
-                "lastname"=>[
-                  "type"=>"text",
-                  "placeholder"=>"Votre nom",
-                  "required"=>true,
-                  "class"=>"form-control-comment",
-                  "id"=>"lastname",
-                  "minlength"=>2,
-                  "maxlength"=>100,
-                  "error"=>"Le nom doit faire entre 2 et 100 caractères"
+                "post_id"=>[
+                    "type"=>"hidden",
+                    "value"=>$postId
                 ],
-
-
-              "Comment"=>["type"=>"textarea","placeholder"=>"Votre commentaire", "required"=>false, "class"=>"form-control-back", "id"=>"content","minlength"=>2,"maxlength"=>300,
-                "error"=>"Le commentaire doit faire entre 2 et 300 caractères"],
-
+                "content"=>["type"=>"textarea",
+                    "placeholder"=>"Votre commentaire",
+                    "required"=>false,
+                    "class"=>"form-control-back",
+                    "id"=>"content",
+                    "minlength"=>2,
+                    "maxlength"=>300,
+                    "error"=>"Le commentaire doit faire entre 2 et 300 caractères"
+                    ],
                 ]
-
             ];
     }
 

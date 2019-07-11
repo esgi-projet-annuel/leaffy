@@ -37,12 +37,16 @@ namespace LeaffyMvc\Core {
             return date('d-m-Y', strtotime($date));
         }
 
-        private function prepareQuery(array $findBy):PDOStatement{
+        private function prepareQuery(array $findBy, array $leftjoin=null):PDOStatement{
             $sqlWhere = [];
             foreach ($findBy as $key => $value) {
                 $sqlWhere[]=$key."=:".$key;
             }
-            $sql = "SELECT * FROM ".$this->table." WHERE ".implode(" AND ", $sqlWhere).";";
+            $sql = "SELECT * FROM ".$this->table;
+            if ($leftjoin!= null){
+                $sql .= " LEFT JOIN " .$leftjoin['table']." on ". $leftjoin['table'].".id = ".$this->table.".".$leftjoin['field'];
+            }
+            $sql .=" WHERE ".implode(" AND ", $sqlWhere).";";
             $query = $this->pdo->prepare($sql);
             return $query;
         }
@@ -70,8 +74,12 @@ namespace LeaffyMvc\Core {
             return ($queryResult == false)?null:$queryResult;
         }
 
-        public function findAllBy(array $findBy):array {
-            $query= $this->prepareQuery($findBy);
+        public function findAllBy(array $findBy, array $leftjoin= null):array {
+            if($leftjoin != null){
+                $query= $this->prepareQuery($findBy, $leftjoin);
+            }else{
+                $query= $this->prepareQuery($findBy);
+            }
             $query->execute($findBy);
             return $query->fetchAll(PDO::FETCH_CLASS, get_called_class());
         }

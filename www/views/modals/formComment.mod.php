@@ -1,4 +1,3 @@
-
 <?php $data = ($config["config"]["method"]=="POST")?$_POST:$_GET; ?>
 
 	<?php if( !empty($config["errors"])):?>
@@ -29,8 +28,8 @@
     				<?php echo ($value["required"])?'required="required"':'';?>
     				id="<?php echo $value["id"];?>"
     				class="<?php echo $value["class"];?>"
-    				value="<?php echo $data[$key]??''?>"
-            >
+    				value="<?php echo $data[$key]??''?>">
+
 					<?php elseif($value["type"]=="textarea"):?>
 					<label for="<?php echo $value["id"];?>"> <?php echo $value["placeholder"];?> </label>
 					<textarea name="<?php echo $key;?>"
@@ -47,8 +46,10 @@
     				<?php echo ($value["required"])?'required="required"':'';?>
     				id="<?php echo $value["id"];?>"
     				class="<?php echo $value["class"];?>"
-    				value="<?php echo $data[$key]??''?>"
-          >
+    				value="<?php echo $data[$key]??''?>">
+
+                    <?php elseif($value["type"]=="hidden"):?>
+                    <input type="<?php echo $value["type"];?>" name="<?php echo $key;?>" value="<?php echo $value["value"]??''?>">
       	<?php endif;?>
     	 </div>
     </div>

@@ -31,7 +31,6 @@
       <?php
       foreach ($comments as $comment) {
           $comment->status = $comment->getStringForHtmlFromDB($comment->status);
-          $comment->created_at = $comment->getFrDate($comment->created_at) ;
           $buttonStr='';
           if (isset($_GET['status'])){
               if ($_GET['status']== 'APPROVED'){

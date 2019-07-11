@@ -1,4 +1,6 @@
-<?php $this->addHeader("header", "front")?>
+<?php
+use LeaffyMvc\Controllers\CommentController;
+$this->addHeader("header", "front")?>
 
 <div class="container">
   <div class="main-article">
@@ -10,49 +12,58 @@
           <div> <?= $post->content ?></div>
         </div>
         <div class="comment-part">
-          <!-- TODO ALix faire la boucle pour reccuperer les commentaires -->
-          <div  class="comment-post">
-            <div class="container">
-              <div class="row">
-                <div class="col-12">
-                  <div class="comment-block">
-                    <div class="container">
-                      <div class="row">
-                        <div class="col-md-2 col-sm-6 col-12">
-                          <div class="comment-part-1">
-                            <div class="avatar-comment">
-                              <img src="../../public/img/avatar_testi.png" width="100">
+            <?php
+            $commentController= new CommentController();
+            $comments= $commentController->listApprovedCommentsByPost($post->id);
+            $str='';
+            foreach ($comments as $comment){
+                $commentUser =$comment->user_id;
+                $str .=<<<EOF
+                <div  class="comment-post">
+                            <div class="container">
+                              <div class="row">
+                                <div class="col-12">
+                                  <div class="comment-block">
+                                    <div class="container">
+                                      <div class="row">
+                                        <div class="col-md-2 col-sm-6 col-12">
+                                          <div class="comment-part-1">
+                                            <div class="avatar-comment">
+                                              <img src="../../public/img/avatar_testi.png" width="100">
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="col-md-10 col-sm-6 col-12">
+                                          <div class="comment-part-2">
+                                            <div class="author-comment">
+                                              <p>$commentUser->firstname</p>
+                                            </div>
+                                            <div class="date-comment">
+                                              <p>Publié le $comment->created_at</p>
+                                            </div>
+                                            <div class="comment">
+                                              <p>$comment->content</p>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                        <div class="col-md-10 col-sm-6 col-12">
-                          <div class="comment-part-2">
-                            <div class="author-comment">
-                              <p>Name Author</p>
-                            </div>
-                            <div class="date-comment">
-                              <p>Publié le ...</p>
-                            </div>
-                            <div class="comment">
-                              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- END -->
+EOF;
+            }
+            print $str;
+            ?>
           <h3 class="h2">
             Rédiger un commentaire sur l'article !
-          </h4>
+          </h3>
           <div class="comment-form-part">
             <div class="comment-form">
               <?php $commentController = new \LeaffyMvc\Controllers\CommentController();
-              $this->addModal("formComment", $commentController->getCommentForm());?>
+              $this->addModal("formComment", $commentController->getCommentForm($post->id));?>
             </div>
           </div>
         </div>

@@ -119,9 +119,9 @@
   controller: Comment
   action: saveComment
 
-"/admin/listPendingsComment":
+"/admin/listComments":
   controller: Comment
-  action: listPendings
+  action: listCommentsByStatus
 
 #TESTIMONIALS
 "/admin/approveTestimonial":
@@ -160,6 +160,14 @@
 "/deleteUser":
   controller: User
   action: deleteUser
+
+"/admin/listUsers":
+  controller: User
+  action: getAllUsersByProfile
+
+"/admin/changeUserProfile":
+  controller: User
+  action: changeProfile
 
 #MEDIA
 "/admin/addMedia":
