@@ -21,8 +21,6 @@
     <script src="../../public/DataTables/datatables.min.js"></script>
 
 
-
-
     <!--        TODO importer description du professionnel-->
     <meta name="description" content="">
     <!--        TODO importer nom du pro-->

@@ -8,7 +8,7 @@
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
   crossorigin="anonymous"></script>
 </head>
-<body>	
+<body>
 	<div class="container py-3">
 		<div class="row">
 			<div class="mx-auto col-sm-8">
@@ -56,14 +56,14 @@
 	</div>
 
 	<script type="text/javascript">
-	
+
 	</script>
 </body>
 </html>
 
 
 
-<?php 
+<?php
 
 
 

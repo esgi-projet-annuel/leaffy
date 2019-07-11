@@ -18,7 +18,7 @@ $(function(){
   /*******************************************/
   var ctx = document.getElementById("myChart3").getContext('2d');
   var myChart = new Chart(ctx, {
-  type: 'pie',
+  type: 'bar',
   data: {
       labels: ["Ancien visiteur", "Nouveau visiteur"],
       datasets: [{

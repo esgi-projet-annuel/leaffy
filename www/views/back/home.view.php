@@ -1,24 +1,29 @@
 <?php
 use LeaffyMvc\Models\Testimonial ;
-
+use LeaffyMvc\Models\User ;
 
 $testimonial = new Testimonial();
 $testimonialsApproved = $testimonial->findAllBy(['status'=>'APPROVED']);
 $testimonialsPending = $testimonial->findAllBy(['status'=>'PENDING']);
 $testimonialsRejected = $testimonial->findAllBy(['status'=>'REJECTED']);
-// echo '<pre>';
-// var_dump($testimonialsApproved);
-// var_dump($testimonialsPending);
-// echo '</pre>';
 $testimonialCountApproved = count($testimonialsApproved);
 $testimonialCountPending = count($testimonialsPending);
 $testimonialCountRejected = count($testimonialsRejected);
 
-
-foreach ($testimonialsApproved as $testimonialApproved) {
-  $dateTestimonialApproved = $testimonialApproved->created_at;
-  $dateTestimonialApproved = date("d/m/Y", strtotime($dateTestimonialApproved));
+$users = new User();
+$UsersActive = $users->findAllBy(['profile'=>'CLIENT','active'=>'1']);
+$userTable = [];
+$userCount = [];
+foreach ($UsersActive as $UserActive) {
+  $UserDate = $UserActive->created_at;
+  $UserDate = date("d/m/Y", strtotime($UserDate));
+  if(!in_array($UserDate, $userTable, true)){
+       array_push($userTable, $UserDate);
+   }
+   array_push($userCount, $UserDate);
 }
+$userCountValue = array_values(array_count_values($userCount));
+
  ?>
 
   <div id="content-back" class="">
@@ -38,29 +43,21 @@ foreach ($testimonialsApproved as $testimonialApproved) {
         <div class="col-md-6 col-12">
           <div class="bloc-tab chart">
             <div class="title">
-              <h3>Nombre d'utilisateurs</h3>
+              <h3>Nombre d'inscriptions validés</h3>
             </div>
             <canvas id="myChart2" width="400" height="300"></canvas>
           </div>
         </div>
-        <div class="col-md-6 col-12">
-          <div class="bloc-tab chart">
-            <div class="title">
-              <h3>Acquisition / fidélité</h3>
-            </div>
-            <canvas id="myChart3" width="400" height="300"></canvas>
-          </div>
-        </div>
-        <div class="col-md-6 col-12">
+        <div class="col-md-offset-3 col-md-6 col-12">
           <div class="acces-rapide bloc-tab">
             <div class="title">
               <h3>Accès Rapide</h3>
             </div>
             <div class="acces-rapide">
-              <a href="<?php echo \LeaffyMvc\Core\Routing::getSlug("Article","showOne");?>">- Ecrire un article</a>
-              <a href="<?php echo \LeaffyMvc\Core\Routing::getSlug("Page","showOne");?>">- Ajouter une page</a>
-              <a href="#">- Gérer les utilisateurs</a>
-              <a href="#">- Aller sur le site</a>
+              <a href="<?php echo \LeaffyMvc\Core\Routing::getSlug("Post","createPost");?>">- Ecrire un article</a>
+              <a href="<?php echo \LeaffyMvc\Core\Routing::getSlug("Page","createPage");?>">- Ajouter une page</a>
+              <a href="<?php  echo \LeaffyMvc\Core\Routing::getSlug("User", "getAllUsersByProfile");?>">- Gérer les utilisateurs</a>
+              <a href="<?php echo \LeaffyMvc\Core\Routing::getSlug("Page","showFrontPage")."?page=1";?>">- Aller sur le site</a>
             </div>
           </div>
         </div>
@@ -69,7 +66,6 @@ foreach ($testimonialsApproved as $testimonialApproved) {
   </div>
 </div>
 <script type="text/javascript">
-  var datatime = <?php echo json_encode($dateTestimonialApproved); ?>;
   var dataCountApproved = <?php echo json_encode($testimonialCountApproved); ?>;
   var dataCountPending = <?php echo json_encode($testimonialCountPending); ?>;
   var dataCountRejected = <?php echo json_encode($testimonialCountRejected); ?>;
@@ -111,23 +107,19 @@ foreach ($testimonialsApproved as $testimonialApproved) {
       responsive: true
   }
   });
-
+  var userDate = <?php echo json_encode($userTable); ?>;
+  var userCount = <?php echo json_encode($userCountValue); ?>;
   var ctx = document.getElementById("myChart2").getContext('2d');
   var myChart = new Chart(ctx, {
-  type: 'bar',
+  type: 'line',
   data: {
-      labels: date,
+      labels: userDate,
       datasets: [{
           label: 'Nombre d\'inscriptions',
-          data: [2, 4, 12, 6, 7, 5],
-          backgroundColor: [
-           'rgba(54, 162, 235, 0.5)',
-          ],
-          borderColor: [
-              'rgba(54, 162, 235, 1)',
-
-          ],
-          borderWidth: 1
+          backgroundColor : 'rgba(116, 134, 180, 0.8)',
+          borderColor : "black",
+          borderWidth: 1,
+          data: userCount
       }]
   },
   options: {

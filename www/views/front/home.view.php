@@ -71,7 +71,7 @@
                     <div class="leaffy-blog-post col-md-4 col-sm-6 col-12">
                         <div class="post" style="">
                             <div class="post-image" style="background-image: url('../../public/img/blog1.jpg');"></div>
-                            <h5><a href="#" title="We Have Made Illdy Theme SEO Friendly" class="post-title">Lorem ipsum dolor sit amet</a></h5>
+                            <h5><a href="#" class="post-title">Lorem ipsum dolor sit amet</a></h5>
                             <div class="post-entry">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dictum odio eget nisi hendrerit, nec imperdiet mi consectetur.  </div>
                             <a href="#" title="Read more" class="post-button"><i class="fa fa-chevron-circle-right"></i>Lire plus </a>
@@ -81,7 +81,7 @@
                         <div class="post" style="">
                             <div class="post-image" style="background-image: url('../../public/img/blog2.jpg');">
                             </div>
-                            <h5><a href="#" title="Stunning One Page WordPress Theme For Masses" class="post-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></h5>
+                            <h5><a href="#" class="post-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></h5>
                             <div class="post-entry">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dictum odio eget nisi hendrerit, nec imperdiet mi consectetur.
                             </div>
@@ -92,7 +92,7 @@
                         <div class="post" style="">
                             <div class="post-image" style="background-image: url('../../public/img/blog3.jpg');">
                             </div>
-                            <h5><a href="#" title="Hello world!" class="post-title">Lorem ipsum dolor sit amet, consectetur.</a></h5>
+                            <h5><a href="#" class="post-title">Lorem ipsum dolor sit amet, consectetur.</a></h5>
                             <div class="post-entry">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dictum odio eget nisi hendrerit, nec imperdiet mi consectetur.
                             </div>
