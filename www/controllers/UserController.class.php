@@ -11,7 +11,7 @@ use LeaffyMvc\Services\AuthenticationService;
 
 class UserController extends AbstractController {
 
-    public function createUser():void{
+    public function showRegisterForm():void{
         $user = new User();
         $form = $user->getRegisterForm();
         $view = new View("createUser", "front");
@@ -23,6 +23,47 @@ class UserController extends AbstractController {
         $form = $user->getUpdateForm();
         $view = new View('settings', "back");
         $view->assign("form", $form);
+    }
+
+    public function showForgottenPasswordForm(){
+//        $user = new User();
+//        $form = $user->getForgottenPasswordForm();
+        $view = new View('forgottenPassword', "front");
+//        $view->assign("form", $form);
+    }
+
+    public function showResetPasswordForm(){
+//        $user = new User();
+//        $form = $user->getForgottenPasswordForm();
+        $view = new View('resetPassword', "front");
+//        $view->assign("form", $form);
+    }
+
+    public function sendMailToResetPassword(){
+        $user = new User();
+//        $form = $user->getRegisterForm();
+//
+//        $method = strtoupper($form["config"]["method"]);
+//        $data = $GLOBALS["_".$method];
+            $data = $_POST;
+
+//        if( $_SERVER['REQUEST_METHOD']==$method && !empty($data) ){
+//            $validator = new Validator($form,$data);
+//            $form["errors"] = $validator->errors;
+
+            //Est ce que l'email existe bien en BDD
+            $checkEmail= $user->findOneObjectBy(['email'=>$data['email']]);
+            if (!empty($checkEmail) && $user->active == 1){
+                //Envoie du mail de confirmation
+                MailConfirmationService::instance()->sendMail('Mot de passe oublié!', 'forgottenPassword', $user);
+                $message= 'mail envoyé';
+            }else{
+                $message = "le compte n'existe pas ou n'est pas encore activé";
+            }
+//        }
+
+        $view = new View("forgottenPassword", "front");
+        $view->assign("message", $message);
     }
 
     public function saveUser():void{
@@ -54,7 +95,8 @@ class UserController extends AbstractController {
                     isset($_SESSION["email"])?$_SESSION["email"]:$user->email;
 
                     //Envoie du mail de confirmation
-                    MailConfirmationService::instance()->sendConfirmationMail($user->email, $user->token);
+
+                    MailConfirmationService::instance()->sendMail('Bienvenue!', 'register', $user);
 
                     $form["errors"][] =" Inscription validée! Un email de confirmation vient de vous etre envoyé !! ";
                 }
@@ -66,24 +108,27 @@ class UserController extends AbstractController {
     }
 
     public function updateUser():void {
-        $userId = intval($_SESSION['userId']);
         $user = new User();
         $form= $user->getUpdateForm();
-        $user->findById($userId);
 
         $method = strtoupper($form["config"]["method"]);
         $data = $GLOBALS["_".$method];
+        if (isset($_SESSION['userId'])){
+            $userId = intval($_SESSION['userId']);
+        }else{
+            $userId = intval($data['userId']);
+        }
 
         if( $_SERVER['REQUEST_METHOD']==$method && !empty($data) ){
             $validator = new Validator($form,$data);
             $form["errors"] = $validator->errors;
-
             //Est ce que l'email existe deja en BDD
             $checkEmail= $user->findOneArrayBy(['email'=>$data['email']]);
             if (!empty($checkEmail)){
                 $form["errors"][] = "L'adresse email renseignée existe déjà";
             }else{
                 if(empty($form["errors"])){
+                    $user->findById($userId);
                     $user->setFirstname($data["firstname"]);
                     $user->setLastname($data["lastname"]);
                     $user->setEmail($data["email"]);
@@ -108,7 +153,6 @@ class UserController extends AbstractController {
         $user->delete();
     }
 
-
     public function getAllUsersByProfile(){
         $profile = isset($_GET['profile'])?$_GET['profile']:'CLIENT';
         $user = new User();
@@ -128,5 +172,4 @@ class UserController extends AbstractController {
             $user->save();
         }
     }
-
 }

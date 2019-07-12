@@ -7,8 +7,8 @@
         <?php $this->addModal("form", $form);?>
 
         <div class="text-center">
-          <a class="small" href="<?php echo \LeaffyMvc\Core\Routing::getSlug("User","createUser");?>">Créer un compte</a>
-          <a class="small" href="">Mot de passe oublié ?</a>
+          <a class="small" href="<?php echo \LeaffyMvc\Core\Routing::getSlug("User","showRegisterForm");?>">Créer un compte</a>
+          <a class="small" href="<?php echo \LeaffyMvc\Core\Routing::getSlug("User","showForgottenPasswordForm");?>">Mot de passe oublié ?</a>
         </div>
       </div>
     </div>

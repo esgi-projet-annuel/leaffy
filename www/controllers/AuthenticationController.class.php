@@ -43,9 +43,9 @@ class AuthenticationController extends AbstractController {
         $data = $GLOBALS["_".$method];
         if( $_SERVER['REQUEST_METHOD']==$method && !empty($data) ){
 
-            $validator = new Validator($form,$data);
-            $form["errors"] = $validator->errors;
-            if(empty($form["errors"])){
+            $validator = new Validator($form ,$data ,false);
+//            $form["errors"] = $validator->errors;
+//            if(empty($form["errors"])){
                 $logged = AuthenticationService::instance()->login($user, $data['email'], $data['pwd']);
                 if($logged) {
                     if (AuthenticationService::instance()->isAdmin()){
@@ -58,12 +58,13 @@ class AuthenticationController extends AbstractController {
                     $view = new View('userLogin', 'front');
                     $view->assign("form", $form);
                 }
-            }else {
-                $form['errors'][]= "Email ou mot de passe invalide ";
-                $view = new View('userLogin', 'front');
-                $view->assign("form", $form);
             }
-        }
+//        else {
+//                $form['errors'][]= "Email ou mot de passe invalide ";
+//                $view = new View('userLogin', 'front');
+//                $view->assign("form", $form);
+//            }
+//        }
     }
 
     public function userLogout() :void{

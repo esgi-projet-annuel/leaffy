@@ -5,6 +5,7 @@ namespace LeaffyMvc\Controllers;
 use LeaffyMvc\Models\Testimonial ;
 use LeaffyMvc\Core\View;
 use LeaffyMvc\Core\Validator;
+use LeaffyMvc\Services\MailConfirmationService;
 
 class TestimonialController extends AbstractController
 {
@@ -42,7 +43,9 @@ class TestimonialController extends AbstractController
                 $testimonial->setUserName($data['userName']);
                 $testimonial->setStatus('PENDING');
                 $testimonial->save();
-                $form["errors"][] ="Merci pour votre avis!  ";
+                $form["errors"][] ="Merci pour votre avis!";
+                MailConfirmationService::instance()->sendMail('Nouvel avis!', 'testimonial');
+
             }
             $view = new View("home", "front");
             $view->assign("formTestimonial", $form);

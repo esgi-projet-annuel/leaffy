@@ -8,6 +8,7 @@ use LeaffyMvc\Models\Comment;
 use LeaffyMvc\Core\Validator;
 use LeaffyMvc\Models\User;
 use LeaffyMvc\Services\AuthenticationService;
+use LeaffyMvc\Services\MailConfirmationService;
 
 class CommentController extends AbstractController
 {
@@ -34,9 +35,13 @@ class CommentController extends AbstractController
                     $comment->setStatus('PENDING');
                     $comment->save();
                     $form["errors"][] ="Votre commentaire à bien été envoyé";
+                    MailConfirmationService::instance()->sendMail('Nouveau commentaire!', 'comment');
+
                 }
-                $view = new View("showOnePost", "front");
-                $view->assign("formComment", $form);
+
+                $postController = new PostController();
+                $_GET['id'] = intval($data['post_id']);
+                $postController->showOnePost($form["errors"]);
             }
         }else{
             die('Vous devez etre connecté pour saisir un commentaire! ');

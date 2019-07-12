@@ -13,11 +13,12 @@ class PostController extends AbstractController {
         $view = new View("posts", "back");
     }
 
-    public function showOnePost() :void{
+    public function showOnePost($errors = null) :void{
         $postModel= new Post();
         $post = $postModel->findById(intval($_GET['id']));
         $view = new View("ShowOnePost", "front");
         $view->assign('post', $post);
+        $view->assign('errors', $errors);
     }
 
     public function createPost():void{

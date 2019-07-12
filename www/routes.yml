@@ -143,7 +143,19 @@
 #USER
 "/createUser":
   controller: User
-  action: createUser
+  action: showRegisterForm
+
+"/forgottenPassword":
+  controller: User
+  action: showForgottenPasswordForm
+
+"/resetPassword":
+  controller: User
+  action: showResetPasswordForm
+
+"/mailSended":
+  controller: User
+  action: sendMailToResetPassword
 
 "/admin/settings":
   controller: User

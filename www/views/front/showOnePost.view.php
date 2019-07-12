@@ -62,6 +62,15 @@ EOF;
           </h3>
           <div class="comment-form-part">
             <div class="comment-form">
+                <?php if( !empty($errors)):?>
+                    <div class="">
+                        <ul>
+                            <?php foreach ($errors as $error):?>
+                            <li><?php echo $error;?>
+                                <?php endforeach; ?>
+                        </ul>
+                    </div>
+                <?php endif; ?>
               <?php $commentController = new \LeaffyMvc\Controllers\CommentController();
               $this->addModal("formComment", $commentController->getCommentForm($post->id));?>
             </div>

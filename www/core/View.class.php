@@ -33,12 +33,22 @@ class View {
     }
 
     public function addModal($modal, $config){
+      // $config is in view because of include scope
       $modalPath = "views/modals/".$modal.".mod.php";
       if( file_exists($modalPath)){
         include $modalPath;
       }else{
         die("Attention le fichier modal n'existe pas ".$modalPath);
       }
+    }
+
+    public function addMailView($mailView, $config){
+        $mailView = "views/mails/".$mailView.".view.php";
+        if( file_exists($mailView)){
+            include $mailView;
+        }else{
+            die("Attention le fichier modal n'existe pas ".$mailView);
+        }
     }
 
     public function addMenu($menu , $template){

@@ -4,6 +4,7 @@ declare(strict_types = 1);
 namespace LeaffyMvc\Models;
 
 use LeaffyMvc\Core\BaseSQL;
+use LeaffyMvc\Core\Routing;
 
 class User extends BaseSQL {
 
@@ -78,7 +79,7 @@ class User extends BaseSQL {
         return [
             "config"=>[
                 "method"=>"POST",
-                "action"=>\LeaffyMvc\Core\Routing::getSlug("Authentication","authenticateUser"),
+                "action"=>Routing::getSlug("Authentication","authenticateUser"),
                 "class"=>"",
                 "id"=>"",
                 "submit"=>"Se connecter",
