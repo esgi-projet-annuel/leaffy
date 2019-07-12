@@ -30,7 +30,7 @@
       </tbody>
     </table>
         <?php
-        $buttonModify = '<a href="'.\LeaffyMvc\Core\Routing::getSlug("Post","getUpdateFormView").'?id= {0} " class="form-control button-back button-back--modify"><i class="fas fa-edit"></i></a>';
+        $buttonModify = '<a title="Modifier" href="'.\LeaffyMvc\Core\Routing::getSlug("Post","getUpdateFormView").'?id= {0} " class="form-control button-back button-back--modify"><i class="fas fa-edit"></i></a>';
 
         foreach ($posts as $post) {
             $post->status = $post->getStringForHtmlFromDB($post->status);
@@ -38,16 +38,16 @@
             $buttonStr='';
             if (isset($_GET['status'])){
                 if ($_GET['status']== 'PUBLISHED'){
-                    $buttonStr.= '<a href="" class="form-control button-back button-back--archive" onclick="changeStatus(\'{0}\',\'WITHDRAWN\');"><i class="fas fa-archive"></i></a>';
+                    $buttonStr.= '<a href="" title="Archiver" class="form-control button-back button-back--archive" onclick="changeStatus(\'{0}\',\'WITHDRAWN\');"><i class="fas fa-archive"></i></a>';
                 }else if($_GET['status']== 'WITHDRAWN'){
-                    $buttonStr.='<a href="" class="form-control button-back button-back--publish" onclick="changeStatus(\'{0}\',\'PUBLISHED\');"><i class="fas fa-check-square"></i></a>';
+                    $buttonStr.='<a href="" title="Publier" class="form-control button-back button-back--publish" onclick="changeStatus(\'{0}\',\'PUBLISHED\');"><i class="fas fa-check-square"></i></a>';
                 }else if($_GET['status']== 'DRAFT'){
-                    $buttonStr.= '<a href="" class="form-control button-back button-back--publish" onclick="changeStatus(\'{0}\',\'PUBLISHED\');"><i class="fas fa-check-square"></i></a>'
-                        . '<a href="" class="form-control button-back button-back--archive" onclick="changeStatus(\'{0}\',\'WITHDRAWN\');"><i class="fas fa-archive"></i></a>';
+                    $buttonStr.= '<a href="" title="Publier" class="form-control button-back button-back--publish" onclick="changeStatus(\'{0}\',\'PUBLISHED\');"><i class="fas fa-check-square"></i></a>'
+                        . '<a href="" title="Archiver" class="form-control button-back button-back--archive" onclick="changeStatus(\'{0}\',\'WITHDRAWN\');"><i class="fas fa-archive"></i></a>';
                 }
             }else{
-                $buttonStr.= '<a href="" class="form-control button-back button-back--publish" onclick="changeStatus(\'{0}\',\'PUBLISHED\');"><i class="fas fa-check-square"></i></a>'
-                    . '<a href="" class="form-control button-back button-back--archive" onclick="changeStatus(\'{0}\',\'WITHDRAWN\');"><i class="fas fa-archive"></i></a>';
+                $buttonStr.= '<a href="" title="Publier" class="form-control button-back button-back--publish" onclick="changeStatus(\'{0}\',\'PUBLISHED\');"><i class="fas fa-check-square"></i></a>'
+                    . '<a href="" title="Archiver" class="form-control button-back button-back--archive" onclick="changeStatus(\'{0}\',\'WITHDRAWN\');"><i class="fas fa-archive"></i></a>';
             }
         }
         ?>

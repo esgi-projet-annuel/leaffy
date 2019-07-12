@@ -34,16 +34,16 @@
           $buttonStr='';
           if (isset($_GET['status'])){
               if ($_GET['status']== 'APPROVED'){
-                  $buttonStr.= '<a href="" class="form-control button-back button-back--modify" onclick="rejecte({0});"><i class="far fa-times-circle"></a>';
+                  $buttonStr.= '<a href="" title="Rejeter" class="form-control button-back button-back--modify" onclick="rejecte({0});"><i class="far fa-times-circle"></a>';
               }else if($_GET['status']== 'REJECTED'){
-                  $buttonStr.='<a href="" class="form-control button-back button-back--display" onclick="approve({0});"><i class="fas fa-check-circle"></i></a>';
+                  $buttonStr.='<a href="" title="Approuver" class="form-control button-back button-back--display" onclick="approve({0});"><i class="fas fa-check-circle"></i></a>';
               }else if($_GET['status']== 'PENDING'){
-                  $buttonStr.= '<a href="" class="form-control button-back button-back--display" onclick="approve({0});"><i class="fas fa-check-circle"></i></a>'
-                      . '<a href="" class="form-control button-back button-back--modify" onclick="rejecte({0});"><i class="far fa-times-circle"></i></a>';
+                  $buttonStr.= '<a href="" title="Approuver" class="form-control button-back button-back--display" onclick="approve({0});"><i class="fas fa-check-circle"></i></a>'
+                      . '<a href="" title="Rejeter" class="form-control button-back button-back--modify" onclick="rejecte({0});"><i class="far fa-times-circle"></i></a>';
               }
           }else{
-              $buttonStr.= '<a href="" class="form-control button-back button-back--display" onclick="approve({0});"><i class="fas fa-check-circle"></i></a>'
-                  . '<a href="" class="form-control button-back button-back--modify" onclick="rejecte({0});"><i class="far fa-times-circle"></i></a>';
+              $buttonStr.= '<a href="" title="Approuver" class="form-control button-back button-back--display" onclick="approve({0});"><i class="fas fa-check-circle"></i></a>'
+                  . '<a href="" title="Rejeter" class="form-control button-back button-back--modify" onclick="rejecte({0});"><i class="far fa-times-circle"></i></a>';
           }
 
       }

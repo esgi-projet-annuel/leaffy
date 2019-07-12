@@ -88,7 +88,7 @@
                             <a href="#" title="Read more" class="post-button"><i class="fa fa-chevron-circle-right"></i>Lire plus </a>
                         </div>
                     </div>
-                    <div class="leaffy-blog-post col-md-4 col-sm-6 col-12">
+                    <div class="leaffy-blog-post col-md-4 col-md-offset-0 col-sm-6 col-sm-offset-3 col-12">
                         <div class="post" style="">
                             <div class="post-image" style="background-image: url('../../public/img/blog3.jpg');">
                             </div>
@@ -116,7 +116,7 @@
         <div class="section-content">
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-10 col-sm-offset-1 no-padding">
+                    <div class="col-md-10 col-md-offset-1 col-12 no-padding">
                        <div class="testimonials-carousel">
                             <div id="slide-container" class="widget_testimonial slider">
 

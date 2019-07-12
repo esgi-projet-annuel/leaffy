@@ -637,7 +637,7 @@ textarea {
   border: 1px solid #5c8d89;
   color: #fff;
   background-color: #5c8d89;
-  width: 15rem;
+  width: 16rem;
   min-height: 2rem;
   font-size: 14px;
   margin-left: 15px; }
@@ -952,7 +952,8 @@ textarea {
   #menuToggle-front:checked ~ .nav-container {
     z-index: 1;
     display: flex;
-    animation: menu-slide-left 0.3s ease; }
+    animation: menu-slide-left 0.3s ease;
+    background-color: #a7d7c5; }
   @keyframes menu-slide-left {
     0% {
       transform: translateX(200px); }
@@ -975,18 +976,36 @@ textarea {
   padding: 0;
   cursor: pointer;
   display: none;
-  border-radius: 5px; }
+  border-radius: 5px;
+  display: none; }
 
 .submenu-item {
   font-size: 15px;
-  padding: 5px 15px; }
+  padding: 5px 15px;
+  width: 135px; }
 
 .submenu-item:hover {
-  background: #5c8d89;
+  background: #f9f8eb;
   border-radius: 5px; }
+
+.submenu .menu-item:hover a {
+  color: black !important; }
+
+.submenu .menu-item:hover {
+  color: black !important; }
 
 .has-submenu {
   width: 50px; }
+
+#menu-sup:hover .submenu {
+  display: block; }
+
+@media (max-width: 992px) {
+  .submenu {
+    display: block;
+    background-color: transparent !important; }
+  #menu-sup {
+    color: #5c8d89; } }
 
 .fields-input-back {
   display: flex;
@@ -1189,15 +1208,10 @@ textarea {
 .comment-form .form-button-submit {
   justify-content: flex-end; }
 
-.comment-form form {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap; }
-
 .comment-form .form-Setting:nth-child(1) {
   margin-right: 15px; }
 
-.comment-form .form-Setting:nth-child(3) {
+.comment-form .form-Setting:nth-child(2) {
   width: 100%; }
 
 .comment-block {
@@ -1414,6 +1428,10 @@ textarea {
 .table-head {
   background-color: rgba(0, 0, 0, 0.1);
   height: 50px; }
+
+.active-button {
+  background-color: #FFFFFF;
+  color: #7486B4; }
 
 .card-login {
   max-width: 25rem; }

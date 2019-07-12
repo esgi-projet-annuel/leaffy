@@ -124,6 +124,7 @@
 		z-index: 1;
 		display: flex;
 		animation: menu-slide-left 0.3s ease;
+    background-color: $color2;
 	}
 	@keyframes menu-slide-left {
 		0% {
@@ -153,22 +154,40 @@
 	cursor: pointer;
   display:none;
   border-radius: 5px;
+  display:none;
 }
 .submenu-item {
   font-size: 15px;
   padding: 5px 15px;
+  width: 135px;
 }
 .submenu-item:hover {
-	background: $color4;
+	background: #f9f8eb;
   border-radius: 5px;
 }
-
+.submenu .menu-item:hover a{
+  color: black !important;
+}
+.submenu .menu-item:hover{
+  color: black !important;
+}
 .has-submenu{
   width: 50px;
 }
 
+#menu-sup:hover .submenu{
+    display:block;
+}
 
-
+@include max-tablet {
+  .submenu{
+    display:block;
+    background-color: transparent !important;
+  }
+  #menu-sup{
+    color: $color4;
+  }
+}
 // .menu-responsive{
 //   @include max-tablet{
 //     display: flex;

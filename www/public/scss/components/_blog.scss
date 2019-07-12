@@ -46,14 +46,14 @@
 }
 
 .comment-form form{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  // display: flex;
+  // flex-direction: row;
+  // flex-wrap: wrap;
 }
 .comment-form .form-Setting:nth-child(1){
   margin-right: 15px;
 }
-.comment-form .form-Setting:nth-child(3){
+.comment-form .form-Setting:nth-child(2){
   width: 100%;
 }
 

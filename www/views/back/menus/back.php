@@ -30,24 +30,24 @@
             <div>Commentaires</div>
         </li>
       </a>
-        <a class="link" href="<?php echo \LeaffyMvc\Core\Routing::getSlug("User", "getAllUsersByProfile");?>">
+      <a class="link" href="<?php echo \LeaffyMvc\Core\Routing::getSlug("User", "getAllUsersByProfile");?>">
         <li class="list-item">
             <img src="../../../public/img/contact-darken.png" width="40">
             <div>Utilisateurs</div>
 
         </li>
-        </a>
-        <a class="link" href="<?php echo \LeaffyMvc\Core\Routing::getSlug("Testimonial", "listTestimonialsByStatus");?>">
+      </a>
+      <a class="link" href="<?php echo \LeaffyMvc\Core\Routing::getSlug("Testimonial", "listTestimonialsByStatus");?>">
         <li class="list-item">
             <img src="../../../public/img/rating.png" width="40">
             <div>Témoignages</div>
         </li>
-        </a>
-        <a class="link" href="<?php echo \LeaffyMvc\Core\Routing::getSlug("Media", "");?>">
+      </a>
+      <a class="link" href="<?php echo \LeaffyMvc\Core\Routing::getSlug("Media", "");?>">
         <li class="list-item">
             <img src="../../../public/img/image-darken.png" width="40">
             <div>Médias</div>
         </li>
-        </a>
+      </a>
     </ul>
 </div>
