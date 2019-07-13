@@ -9,6 +9,7 @@ $resetForm =<<<EOF
       <div class="card-header">Mot de passe oublié ?</div>
       <div class="card-body">
         <p>Veuillez saisir votre nouveau mot de passe</p>
+
         <form method="post" action="">
           <div class="form-login">
               <label for="pass">Password:</label>
@@ -35,7 +36,8 @@ if(!empty($user)) {
     $token =$user->token;
 }
     if($_GET['token'] == $token) {
-        echo $resetForm;
+        //echo $resetForm;
+        $this->addModal("formResetPassword", $formResetPassword);
     }
     else {
         echo "
