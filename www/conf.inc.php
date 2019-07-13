@@ -1,10 +1,10 @@
 <?php
 define("DBDRIVER", "mysql");
-define("DBHOST", "localhost");
+define("DBHOST", "database");
 define("DBPORT", "3036");
 define("DBNAME", "mvcleaf");
-define("DBUSER", "leaffy");
-define("DBPWD", "leaffyP4ss");
+define("DBUSER", "root");
+define("DBPWD", "password");
 define("SMTP_SERVER", "smtp.ionos.fr");
 define("SMTP_USER", "m91014035-138437401");
 define("SMTP_PASSWORD", "8w3VtRz[X9)");
