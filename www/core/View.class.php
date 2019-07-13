@@ -16,7 +16,7 @@ class View {
 
     public function setView($view, $template){
         $viewPath = "views/".$template."/".$view.".view.php";
-        if( file_exists($viewPath)){
+        if(file_exists($viewPath)){
             $this->view=$viewPath;
         }else{
             die("Attention le fichier view n'existe pas ".$viewPath);
@@ -36,19 +36,10 @@ class View {
       // $config is in view because of include scope
       $modalPath = "views/modals/".$modal.".mod.php";
       if( file_exists($modalPath)){
-        include $modalPath;
+          include $modalPath;
       }else{
-        die("Attention le fichier modal n'existe pas ".$modalPath);
+          die("Attention le fichier modal n'existe pas ".$modalPath);
       }
-    }
-
-    public function addMailView($mailView, $config){
-        $mailView = "views/mails/".$mailView.".view.php";
-        if( file_exists($mailView)){
-            include $mailView;
-        }else{
-            die("Attention le fichier modal n'existe pas ".$mailView);
-        }
     }
 
     public function addMenu($menu , $template){
@@ -70,7 +61,7 @@ class View {
     }
 
     public function assign($key, $value){
-		    $this->data[$key]=$value;
+        $this->data[$key]=$value;
 	 }
 
     public function __destruct(){

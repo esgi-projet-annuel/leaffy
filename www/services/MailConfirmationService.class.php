@@ -5,6 +5,7 @@ namespace LeaffyMvc\Services;
 
 require './vendor/autoload.php';
 
+use LeaffyMvc\Core\View;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 use LeaffyMvc\Models\User;
@@ -22,7 +23,7 @@ class MailConfirmationService {
         return self::$instance;
     }
 
-    private function intiPHPMailer(): PHPMailer{
+    private function initPHPMailer(): PHPMailer{
         $mail= new PHPMailer();
 //        $mail->SMTPDebug = 1;
         //Enable SMTP debugging.
@@ -56,7 +57,7 @@ class MailConfirmationService {
     }
 
     public static function sendMail(string $subject, string $bodyType, User $user= null){
-        $mail = self::$instance->intiPHPMailer();
+        $mail = self::$instance->initPHPMailer();
         if ($user != null){
             $mail->addAddress($user->email);
         }else{

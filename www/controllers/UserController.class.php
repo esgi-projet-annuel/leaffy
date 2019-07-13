@@ -107,6 +107,26 @@ class UserController extends AbstractController {
         $view->assign("form", $form);
     }
 
+    public function updateUserBy(){
+        $user = new User();
+        $data = $_POST;
+        var_dump($data);
+        $user->findById(intval($data['userId']));
+        var_dump($user);
+        if ($data['password'] == $data['confirmation']){
+            $newPassword = password_hash($data['password'], PASSWORD_DEFAULT);
+            $user->updateBy(['password'=>$newPassword]);
+            $message = 'Mot de passe modifié';
+        }else{
+            $message= 'confirmation invalide';
+        }
+        $view = new View("resetPassword", "front");
+        $_GET['email'] = $user->email;
+        $_GET['token'] = $user->token;
+        $view->assign("message", $message);
+
+    }
+
     public function updateUser():void {
         $user = new User();
         $form= $user->getUpdateForm();

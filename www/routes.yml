@@ -153,6 +153,10 @@
   controller: User
   action: showResetPasswordForm
 
+"/updatePassword":
+  controller: User
+  action: updateUserBy
+
 "/mailSended":
   controller: User
   action: sendMailToResetPassword

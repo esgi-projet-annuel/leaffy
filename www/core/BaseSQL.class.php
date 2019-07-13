@@ -131,6 +131,19 @@ namespace LeaffyMvc\Core {
             }
         }
 
+        public function updateBy(array $newData):void{
+            //UPDATE
+            $sqlUpdate = [];
+            foreach ($newData as $key => $value) {
+                if( $key != "id")
+                    $sqlUpdate[]=$key."=:".$key;
+            }
+            $sql ="UPDATE ".$this->table." SET ".implode(",", $sqlUpdate)." WHERE id=:id";
+            $query = $this->pdo->prepare($sql);
+            $newData['id'] = $this->id;
+            $query->execute($newData);
+        }
+
         public function delete():void{
             $sql = "DELETE FROM ".$this->table.
                 " WHERE id=:id;";
@@ -171,12 +184,6 @@ namespace LeaffyMvc\Core {
 
         }
 
-        public function geStringForHtmlFromProfile(string $profile){
-            switch ($profile){
 
-
-            }
-
-        }
     }
 }
