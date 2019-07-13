@@ -47,6 +47,7 @@ $routes = Routing::getRoute($slug);
 extract($routes);
 
 $controllerPath = __DIR__ . $controllerPath;
+
 //vérifier l'existence du fichier et de la class controller
 if(file_exists($controllerPath) ){
     include $controllerPath;

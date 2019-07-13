@@ -30,19 +30,19 @@ class MailConfirmationService {
         //Set PHPMailer to use SMTP.
         $mail->isSMTP();
         //Set SMTP host name
-        $mail->Host = "smtp.ionos.fr";
+        $mail->Host = SMTP_SERVER;
         //Set this to true if SMTP host requires authentication to send email
         $mail->SMTPAuth = true;
         //Provide username and password
-        $mail->Username = "m91014035-138437401";
-        $mail->Password = "8w3VtRz[X9)";
+        $mail->Username = SMTP_USER;
+        $mail->Password = SMTP_PASSWORD;
         //If SMTP requires TLS encryption then set it
         $mail->SMTPSecure = "tls";
         //Set TCP port to connect to
-        $mail->Port = 587;
+        $mail->Port = SMTP_PORT;
 
-        $mail->From = "contact@leaffy.fr";
-        $mail->FromName = "leaffy admin";
+        $mail->From = SMTP_FROM;
+        $mail->FromName = "Leaffy";
 
         $mail->smtpConnect(
             array(

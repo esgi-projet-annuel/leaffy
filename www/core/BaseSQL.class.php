@@ -19,7 +19,7 @@ namespace LeaffyMvc\Core {
 
         public function __construct(){
             try{
-                $this->pdo = new PDO(DBDRIVER.":host=".DBHOST.";dbname=".DBNAME,DBUSER,DBPWD);
+                $this->pdo = new PDO(DBDRIVER.":host=".DBHOST.";dbname=".DBNAME.";port=".DBPORT,DBUSER,DBPWD);
             }catch(Exception $e){
                 die("Erreur SQL : ".$e->getMessage());
             }
