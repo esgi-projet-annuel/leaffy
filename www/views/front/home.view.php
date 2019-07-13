@@ -103,6 +103,11 @@
             </div>
         </div>
     </section>
+    <?php
+    $testimonialModel = new \LeaffyMvc\Models\Testimonial();
+    $testimonials = $testimonialModel->findAllBy(['status'=>'APPROVED']);
+    $str='';
+     if(!empty($testimonials)) : ?>
     <section id="testimonials" class="front-page-section" style="">
         <div class="section-header">
             <div class="container">
@@ -120,9 +125,7 @@
                        <div class="testimonials-carousel">
                             <div id="slide-container" class="widget_testimonial slider">
 
-                <?php $testimonialModel = new \LeaffyMvc\Models\Testimonial();
-                    $testimonials = $testimonialModel->findAllBy(['status'=>'APPROVED']);
-                    $str='';
+                    <?php
                     foreach ($testimonials as $testimonial){
                         $str.= '<div class="slide">'
                                   .'<div class="testimonial-image">'
@@ -149,6 +152,7 @@
             </div>
         </div>
     </section>
+    <?php endif; ?>
     <section id="contact-us" class="front-page-section">
         <div class="section-contact">
             <div class="container">

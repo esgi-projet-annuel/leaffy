@@ -1235,6 +1235,11 @@ textarea {
   margin-top: 10px;
   padding: 10px; }
 
+.validation {
+  font-size: 40px;
+  text-align: center;
+  color: #74b49b; }
+
 #avatar {
   height: 80%;
   width: 80%;
