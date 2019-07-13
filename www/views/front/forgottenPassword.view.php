@@ -11,17 +11,7 @@
             echo "<p>".$message. "</p>";
         }
         ?>
-        <div>
-            <form method="POST" action="<?php echo \LeaffyMvc\Core\Routing::getSlug('User','sendMailToResetPassword')?>">
-              <div class="form-login">
-                <label for="email">Email:</label>
-                <input class="form-control-login" type="text" id="email" name="email">
-              </div>
-              <div class="d-flex justify-content-around">
-                <input class="form-control button-back button-back--add" type="submit" value="Envoyer">
-              </div>
-            </form>
-        </div>
+        <?php $this->addModal("formForgottenPassword", $formForgottenPassword);?>
       </div>
     </div>
   </div>

@@ -26,17 +26,17 @@ class UserController extends AbstractController {
     }
 
     public function showForgottenPasswordForm(){
-//        $user = new User();
-//        $form = $user->getForgottenPasswordForm();
+        $user = new User();
+        $form = $user->getForgottenPasswordForm();
         $view = new View('forgottenPassword', "front");
-//        $view->assign("form", $form);
+        $view->assign("formForgottenPassword", $form);
     }
 
     public function showResetPasswordForm(){
-//        $user = new User();
-//        $form = $user->getForgottenPasswordForm();
-        $view = new View('resetPassword', "front");
-//        $view->assign("form", $form);
+       $user = new User();
+       $form = $user->getResetPasswordForm();
+       $view = new View('resetPassword', "front");
+       $view->assign("formResetPassword", $form);
     }
 
     public function sendMailToResetPassword(){

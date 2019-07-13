@@ -74,7 +74,64 @@ class User extends BaseSQL {
         return $this->token;
     }
 
+    public function getResetPasswordForm(){
+      return [
+          "config"=>[
+              "method"=>"POST",
+              "action"=>Routing::getSlug('User','sendMailToResetPassword'),
+              "class"=>"",
+              "id"=>"",
+              "submit"=>"Envoyer",
+              "reset"=>"" ],
 
+          "pwd"=>[
+              "type"=>"password",
+              "labelName"=>"Mot de passe",
+              "placeholder"=>"*******",
+              "required"=>true,
+              "class"=>"form-control-login",
+              "id"=>"pwd",
+              "minlength"=>6,
+              "error"=>"Le mot de passe doit faire au minimum 6 caractères avec des minuscules, majuscules et chiffres"],
+
+          "pwdConfirm"=>[
+              "type"=>"password",
+              "labelName"=>"Confirmation du mot de passe",
+              "placeholder"=>"Confirmation",
+              "required"=>true,
+              "class"=>"form-control-login",
+              "id"=>"pwdConfirm",
+              "confirm"=>"pwd",
+              "error"=>"Les mots de passe ne correspondent pas"
+          ]
+      ];
+    }
+
+    public function getForgottenPasswordForm(){
+      return [
+          "config"=>[
+              "method"=>"POST",
+              "action"=>"",
+              "class"=>"",
+              "id"=>"",
+              "submit"=>"Envoyer",
+              "reset"=>"" ],
+
+          "data"=>[
+              "email"=>[
+                  "type"=>"email",
+                  "labelName"=>"Email :",
+                  "placeholder"=>"Votre email",
+                  "required"=>true,
+                  "class"=>"form-control-login",
+                  "id"=>"email",
+                  "value"=>"",
+                  "error"=>"L'email n'est pas valide"
+              ],
+          ]
+
+      ];
+    }
     public function getLoginForm(){
         return [
             "config"=>[
