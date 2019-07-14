@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 
 <html lang="fr">
+<?php
+use LeaffyMvc\Models\User;
+$user = new User();
+$user->findOneObjectBy(['profile'=>'ADMIN']);
+
+?>
 
     <head>
         <meta charset="utf-8">
@@ -14,10 +20,8 @@
         <script src="../../public/js/scrollEvent.js"></script>
 <!--        TODO importer description du professionnel-->
         <meta name="description" content="">
-<!--        TODO importer nom du pro-->
-        <meta name="author" content="">
-<!--        TODO importer nom du pro + profession-->
-        <title>Leaffy front</title>
+        <meta name="author" content="<?php echo $user->firstname .' '. $user->lastname ?>">
+        <title><?php echo $user->firstname .' '. $user->lastname ?> - Leaffy</title>
     </head>
     <body>
 

@@ -61,7 +61,7 @@ class AuthenticationService
         if($redirect) header("Location: ".$redirect);
     }
 
-    public function generateToken(User $user):string{
+    public static function generateToken(User $user):string{
         //Chaîne aléatoire
         $token = md5(substr(uniqid().time(), 4, 10)."kfxcUYT87");
 

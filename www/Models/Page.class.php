@@ -12,7 +12,6 @@ class Page extends BaseSQL {
     public $meta_description;
     public $content;
     public $type;
-    public $menu_id;
     public $menu_position;
 
     public function __construct(){
@@ -34,11 +33,6 @@ class Page extends BaseSQL {
 
     public function setDescription(string $description):void{
         $this->meta_description = $description;
-    }
-
-    public function setMenuId(int $menu_id): void
-    {
-        $this->menu_id = $menu_id;
     }
 
     public function setMenuPosition(int $menu_position): void
@@ -69,11 +63,6 @@ class Page extends BaseSQL {
     public function getDescription():string
     {
         return $this->meta_description;
-    }
-
-    public function getMenuId():int
-    {
-        return $this->menu_id;
     }
 
     public function getContent(): string

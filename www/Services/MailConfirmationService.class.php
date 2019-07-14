@@ -81,14 +81,10 @@ class MailConfirmationService {
         }
 
 
-        if(!$mail->send())
-        {
+        if(!$mail->send()) {
             echo "Mailer Error: " . $mail->ErrorInfo;
         }
-        else
-        {
-            echo "Message has been sent successfully";
-        }
+        
     }
 
     private function getConfirmationMail(User $user): string {

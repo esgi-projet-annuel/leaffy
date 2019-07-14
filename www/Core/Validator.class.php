@@ -8,7 +8,6 @@ class Validator{
     public $errors = [];
 
     public function __construct( array $config, array $data, bool $insertInDb= true){
-
         //1er vérification : le nb de champs
         if(count($data) != count($config["data"])){
             die("Tentative : faille XSS");

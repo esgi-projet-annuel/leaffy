@@ -25,7 +25,7 @@ class MenuController extends AbstractController {
         $str="";
         $listId= 1;
         $page= new Page();
-        $pageList= $page->findAllBy(['menu_id'=>0, 'status'=>'PUBLISHED']);
+        $pageList= $page->findAllBy(['status'=>'PUBLISHED']);
 
         usort($pageList, function($first,$second){
             return $first->menu_position > $second->menu_position;

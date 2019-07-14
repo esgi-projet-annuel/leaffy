@@ -35,8 +35,6 @@
           </tbody>
       </table>
         <?php
-//        TODO FABIEN remplacer texte des boutons par icones et le changer dans chaque vues (post/testimonials/comment/etc)
-        //TODO ALIX changer status avec boutons
             foreach ($pages as $page) {
                 $page->status = $page->getStringForHtmlFromDB($page->status);
                 $page->created_at = $page->getFrDate($page->created_at);

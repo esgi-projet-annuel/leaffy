@@ -21,8 +21,10 @@ class UserController extends AbstractController {
     public function showUpdateForm(){
         $user = new User();
         $form = $user->getUpdateForm();
+        $formPwd= $user->getChangePasswordForm();
         $view = new View('settings', "back");
         $view->assign("form", $form);
+        $view->assign("formPwd",$formPwd );
     }
 
     public function showForgottenPasswordForm(){
@@ -53,6 +55,7 @@ class UserController extends AbstractController {
                 //Est ce que l'email existe bien en BDD
                 $checkEmail= $user->findOneObjectBy(['email'=>$data['email']]);
                 if (!empty($checkEmail) && $user->active == 1){
+                    AuthenticationService::generateToken($user);
                     //Envoie du mail de confirmation
                     MailConfirmationService::instance()->sendMail('Mot de passe oublié!', 'forgottenPassword', $user);
                     $form['errors'][]= 'mail envoyé';
@@ -107,29 +110,64 @@ class UserController extends AbstractController {
         $view->assign("form", $form);
     }
 
-    public function updateUserBy(){
-        $user = new User();
-        $form = $user->getResetPasswordForm();
+    public function updateUserBy(User $user, array $form):array{
         $method = strtoupper($form["config"]["method"]);
         $data = $GLOBALS["_".$method];
-        var_dump($data);
+        if (isset($_SESSION['userId'])){
+            $userId = intval($_SESSION['userId']);
+        }else{
+            $userId = intval($data['userId']);
+        }
 
         if( $_SERVER['REQUEST_METHOD']==$method && !empty($data) ){
             $validator = new Validator($form,$data);
             $form["errors"] = $validator->errors;
             if(empty($form["errors"])){
-                $user->findById(intval($data['userId']));
-                var_dump($user);
-                $newPassword = password_hash($data['pwd'], PASSWORD_DEFAULT);
-                $user->updateBy(['password'=>$newPassword]);
+                $user->findById($userId);
+                if (isset($data['pwd'])){
+                    $data['password'] = password_hash($data['pwd'], PASSWORD_DEFAULT);
+                }
+                $updateByArray =[];
+                foreach ($data as $key => $value){
+                    if ($key != 'userId' && $key != 'pwdConfirm' && $key != 'pwd'){
+                        $updateByArray[$key] = $value;
+                    }
+                }
+                $user->updateBy($updateByArray);
                 $form["errors"][] = 'Mot de passe modifié';
             }
         }
+        return $form;
+    }
+
+    public function changeUserInfo(){
+        $user = new User();
+        $formPwd= $user->getChangePasswordForm();
+        $form = $user->getUpdateForm();
+        $returnForm = $this->updateUserBy($user, $form);
+        $view = new View('settings', "back");
+        $view->assign("form", $returnForm);
+        $view->assign("formPwd",$formPwd);
+    }
+
+    public function changePwd(){
+        $user = new User();
+        $formPwd= $user->getChangePasswordForm();
+        $returnForm = $this->updateUserBy($user, $formPwd);
+        $form = $user->getUpdateForm();
+        $view = new View('settings', "back");
+        $view->assign("form", $form);
+        $view->assign("formPwd",$returnForm);
+    }
+
+    public function resetPwd(){
+        $user = new User();
+        $form = $user->getResetPasswordForm();
+        $returnForm = $this->updateUserBy($user, $form);
         $view = new View("resetPassword", "front");
         $_GET['email'] = $user->email;
         $_GET['token'] = $user->token;
-        $view->assign("formResetPassword", $form);
-
+        $view->assign("formResetPassword", $returnForm);
     }
 
     public function updateUser():void {
@@ -157,7 +195,7 @@ class UserController extends AbstractController {
                     $user->setFirstname($data["firstname"]);
                     $user->setLastname($data["lastname"]);
                     $user->setEmail($data["email"]);
-                    $user->setPassword($data["pwd"]);
+//                    $user->setPassword($data["pwd"]);
                     $user->save();
                     $_SESSION['email']= $data["email"];
 

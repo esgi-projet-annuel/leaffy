@@ -159,7 +159,11 @@
 
 "/updatePassword":
   controller: User
-  action: updateUserBy
+  action: resetPwd
+
+"/changePassword":
+  controller: User
+  action: changePwd
 
 "/mailSended":
   controller: User
@@ -175,7 +179,7 @@
 
 "/updateUser":
   controller: User
-  action: updateUser
+  action: changeUserInfo
 
 "/deleteUser":
   controller: User

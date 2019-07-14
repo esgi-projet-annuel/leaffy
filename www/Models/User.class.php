@@ -78,7 +78,7 @@ class User extends BaseSQL {
       return [
           "config"=>[
               "method"=>"POST",
-              "action"=>Routing::getSlug('User','updateUserBy'),
+              "action"=>Routing::getSlug('User','resetPwd'),
               "class"=>"",
               "id"=>"",
               "submit"=>"Envoyer",
@@ -251,8 +251,6 @@ class User extends BaseSQL {
         if (isset($_SESSION) && !empty($_SESSION)){
             $user = new User();
             $user->findOneObjectBy(['email'=>$_SESSION['email']]);
-            //var_dump($user->token);
-            //var_dump($_SESSION['token']);
             if ($user->token === $_SESSION['token']){
                 $lastnameValue= $user->lastname;
                 $firstnameValue= $user->firstname;
@@ -262,7 +260,7 @@ class User extends BaseSQL {
         return [
             "config"=>[
                 "method"=>"POST",
-                "action"=>\LeaffyMvc\Core\Routing::getSlug("User","updateUser"),
+                "action"=>\LeaffyMvc\Core\Routing::getSlug("User","changeUserInfo"),
                 "class"=>"",
                 "id"=>"",
 
@@ -300,11 +298,24 @@ class User extends BaseSQL {
                     "id"=>"email",
                     "maxlength"=>250,
                     "error"=>"L'email n'est pas valide ou il dépasse les 250 caractères"],
+            ]
+        ];
+    }
 
+    public function getChangePasswordForm(){
+        return [
+            "config"=>[
+                "method"=>"POST",
+                "action"=>Routing::getSlug('User','changePwd'),
+                "class"=>"",
+                "id"=>"",
+                "submit"=>"Envoyer",
+                "reset"=>"" ],
+            "data"=>[
                 "pwd"=>[
                     "type"=>"password",
                     "labelName"=>"Mot de passe",
-                    "value"=>"",
+                    "placeholder"=>"*******",
                     "required"=>true,
                     "class"=>"form-control-login",
                     "id"=>"pwd",
@@ -314,12 +325,17 @@ class User extends BaseSQL {
                 "pwdConfirm"=>[
                     "type"=>"password",
                     "labelName"=>"Confirmation du mot de passe",
-                    "value"=>"",
+                    "placeholder"=>"Confirmation",
                     "required"=>true,
                     "class"=>"form-control-login",
                     "id"=>"pwdConfirm",
                     "confirm"=>"pwd",
                     "error"=>"Les mots de passe ne correspondent pas"
+                ],
+                "userId"=>[
+                    "type"=>"hidden",
+                    "id"=>"userId",
+                    "value"=>""
                 ]
             ]
         ];

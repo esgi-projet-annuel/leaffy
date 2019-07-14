@@ -64,7 +64,6 @@ class PageController extends AbstractController {
                 $page->setStatus('DRAFT');
                 $page->setType('STATIC');
                 $page->setContent($data['content']);
-                $page->setMenuId(0);
                 $page->setMenuPosition(0);
                 $page->save();
                 SitemapGenerator::generate();
@@ -122,7 +121,6 @@ class PageController extends AbstractController {
     }
 
     public function changeStatus():void{
-        $this->checkAdmin();
         $data = $_POST;
         if(!empty($data) ){
             $pageId = intval($_POST['id']);
