@@ -16,7 +16,7 @@ class PostController extends AbstractController {
     public function showOnePost($errors = null) :void{
         $postModel= new Post();
         $post = $postModel->findById(intval($_GET['id']));
-        $view = new View("ShowOnePost", "front");
+        $view = new View("showOnePost", "front");
         $view->assign('post', $post);
         $view->assign('errors', $errors);
     }

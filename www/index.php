@@ -35,7 +35,7 @@ spl_autoload_register(function ($class) {
 });
 
 use LeaffyMvc\Core\Routing;
-
+//print password_hash("admin", PASSWORD_DEFAULT);
 
 $slug = $_SERVER["REQUEST_URI"];
 
