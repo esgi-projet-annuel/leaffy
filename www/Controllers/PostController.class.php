@@ -9,11 +9,11 @@ use LeaffyMvc\Core\Validator;
 
 class PostController extends AbstractController {
 
-    public function showAll() :void{
+    public function showAll() :void {
         $view = new View("posts", "back");
     }
 
-    public function showOnePost($errors = null) :void{
+    public function showOnePost($errors = null) :void {
         $postModel= new Post();
         $post = $postModel->findById(intval($_GET['id']));
         $view = new View("showOnePost", "front");
@@ -21,21 +21,24 @@ class PostController extends AbstractController {
         $view->assign('errors', $errors);
     }
 
-    public function createPost():void{
+    public function createPost():void {
+        $this->checkAdminOrEditor();
         $view = new View("setPost", "back");
         $post = new Post();
         $form = $post->getPostForm();
         $view->assign("formPost", $form);
     }
 
-    public function getUpdateFormView():void{
+    public function getUpdateFormView():void {
+        $this->checkAdminOrEditor();
         $view  =  new View('setPost', 'back');
         $post = new Post();
         $form= $post->getUpdateForm($_GET['id']);
         $view->assign("formPost", $form);
     }
 
-    public function savePost():void{
+    public function savePost():void {
+        $this->checkAdminOrEditor();
         $post = new Post();
         $form = $post->getPostForm();
 
@@ -61,6 +64,7 @@ class PostController extends AbstractController {
     }
 
     public function updatePost():void {
+        $this->checkAdminOrEditor();
         $post = new Post();
         $form= $post->getUpdateForm($_POST['id']);
 
@@ -86,6 +90,7 @@ class PostController extends AbstractController {
     }
 
     public function deletePost():void {
+        $this->checkAdminOrEditor();
         $postId = intval($_POST['id']);
         $post = new Post();
         $post->findById($postId);
@@ -108,7 +113,7 @@ class PostController extends AbstractController {
     }
 
     public function changeStatus():void{
-        $this->checkAdmin();
+        $this->checkAdminOrEditor();
         $data = $_POST;
         if(!empty($data) ){
             $postId = intval($_POST['id']);

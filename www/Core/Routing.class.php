@@ -3,6 +3,7 @@ declare(strict_types = 1);
 
 namespace LeaffyMvc\Core;
 
+use LeaffyMvc\Services\AuthenticationService;
 use PDO;
 
 class Routing {
@@ -12,6 +13,18 @@ class Routing {
     public static function getRoute($slug){
         //récuperer toutes les routes dans le fichier yml
         $routes = yaml_parse_file(self::$routeFile);
+
+        if($slug)
+
+        if (strpos($slug, 'admin') !== false
+            && !AuthenticationService::instance()->isEditor()
+            && !AuthenticationService::instance()->isAdmin()
+        ) {
+            $view = new View("401", "errors");
+            die();
+        }
+
+
         if( isset($routes[$slug])){
             if(empty($routes[$slug]["controller"]) || empty($routes[$slug]["action"])){
                 die("Il y methodAction une erreur dans le fichier routes.yml");
