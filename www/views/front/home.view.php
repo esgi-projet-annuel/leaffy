@@ -1,4 +1,7 @@
-<?php $this->addHeader("homeHeader", "front")?>
+<?php
+use LeaffyMvc\Core\Routing;
+$this->addHeader("homeHeader", "front")
+?>
 
 <main>
     <div id="discover-anchor"></div>
@@ -13,7 +16,7 @@
                 <div class="row">
                     <div class="col-sm-4 col-12 d-flex">
                         <div id="avatar" class="margin-auto d-flex">
-                            <img class="margin-auto" src="../../public/img/avatar.jpg" alt="">
+                            <img class="margin-auto" src="../../public/img/avatar.jpg" alt="logo-leaffy">
                         </div>
                     </div>
                     <div class="col-sm-8 col-12">
@@ -51,15 +54,16 @@
             </div>
         </div>
     </section>
+    <?php $postModel = new \LeaffyMvc\Models\Post();
+    //TODO ALix faire une mathode pour reccupere les 3 Derniers article LIMIT 3
+    $posts = $postModel->findAllBy(['status'=>'PUBLISHED']);
+    if(!empty($posts)) : ?>
     <section id="latest-news" class="front-page-section">
         <div class="section-header">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
                         <h3 class="h3--white h3">Derniers articles</h3>
-                    </div>
-                    <div class="col-sm-10 col-sm-offset-1">
-                        <div class="section-description section-description--blog">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dictum odio eget nisi hendrerit, nec imperdiet mi consectetur.</div>
                     </div>
                 </div>
             </div>
@@ -68,41 +72,24 @@
         <div class="section-content">
             <div class="container">
                 <div class="row">
-                    <div class="leaffy-blog-post col-md-4 col-sm-6 col-12">
-                        <div class="post" style="">
-                            <div class="post-image" style="background-image: url('../../public/img/blog1.jpg');"></div>
-                            <h5><a href="#" class="post-title">Lorem ipsum dolor sit amet</a></h5>
-                            <div class="post-entry">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dictum odio eget nisi hendrerit, nec imperdiet mi consectetur.  </div>
-                            <a href="#" title="Read more" class="post-button"><i class="fa fa-chevron-circle-right"></i>Lire plus </a>
-                        </div>
-                    </div>
-                    <div class="leaffy-blog-post col-md-4 col-sm-6 col-12">
-                        <div class="post" style="">
-                            <div class="post-image" style="background-image: url('../../public/img/blog2.jpg');">
-                            </div>
-                            <h5><a href="#" class="post-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></h5>
-                            <div class="post-entry">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dictum odio eget nisi hendrerit, nec imperdiet mi consectetur.
-                            </div>
-                            <a href="#" title="Read more" class="post-button"><i class="fa fa-chevron-circle-right"></i>Lire plus </a>
-                        </div>
-                    </div>
+                    <?php foreach ($posts as $post): ?>
                     <div class="leaffy-blog-post col-md-4 col-md-offset-0 col-sm-6 col-sm-offset-3 col-12">
                         <div class="post" style="">
                             <div class="post-image" style="background-image: url('../../public/img/blog3.jpg');">
                             </div>
-                            <h5><a href="#" class="post-title">Lorem ipsum dolor sit amet, consectetur.</a></h5>
+                            <h5><a href="#" class="post-title"><?= $post->title ?></a></h5>
                             <div class="post-entry">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dictum odio eget nisi hendrerit, nec imperdiet mi consectetur.
+                                <?= $post->description ?>
                             </div>
-                            <a href="#" title="Read more" class="post-button"><i class="fa fa-chevron-circle-right"></i>Lire plus </a>
+                            <a href="<?php echo Routing::getSlug("Post", "showOnePost").'?id='.$post->id ?>" title="Read more" class="post-button"><i class="fa fa-chevron-circle-right"></i>Lire plus </a>
                         </div>
                     </div>
+                  <?php endforeach; ?>
                 </div>
             </div>
         </div>
     </section>
+    <?php endif; ?>
     <?php
     $testimonialModel = new \LeaffyMvc\Models\Testimonial();
     $testimonials = $testimonialModel->findAllBy(['status'=>'APPROVED']);
@@ -129,7 +116,7 @@
                     foreach ($testimonials as $testimonial){
                         $str.= '<div class="slide">'
                                   .'<div class="testimonial-image">'
-                                      .'<img src="../../public/img/avatar_testi.png" width="100">'
+                                      .'<img src="../../public/img/avatar_testi.png" width="100" alt="avatar-testimonial">'
                                   .'</div>'
                                 .'<div class="testimonial-content">'
                                     .'<blockquote><q>'. $testimonial->content.' </q></blockquote>'
@@ -141,8 +128,8 @@
                         }
                         echo $str   ?>
                                 <div id="nav-slider">
-                                  <button class="button-slider nav-prev" data-dir="prev"><img src="../../public/img/left-arrow.png"></button>
-                                  <button class="button-slider nav-next" data-dir="next"><img src="../../public/img/right-arrow.png"></button>
+                                  <button class="button-slider nav-prev" data-dir="prev"><img src="../../public/img/left-arrow.png" alt="left-arrow"></button>
+                                  <button class="button-slider nav-next" data-dir="next"><img src="../../public/img/right-arrow.png" alt="right-arrow"></button>
                                 </div>
 
                             </div>

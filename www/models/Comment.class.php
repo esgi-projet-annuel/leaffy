@@ -50,7 +50,7 @@ class Comment extends BaseSQL {
                 "content"=>["type"=>"textarea",
                     "placeholder"=>"Votre commentaire",
                     "required"=>false,
-                    "class"=>"form-control-back",
+                    "class"=>"form-control-back-comment",
                     "id"=>"content",
                     "minlength"=>2,
                     "maxlength"=>300,

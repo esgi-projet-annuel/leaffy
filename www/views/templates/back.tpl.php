@@ -69,9 +69,9 @@
         <div class="container-back">
           <input class="hidden" type="checkbox" id="menuToggle">
           <label class="menu-btn" for="menuToggle">
-              <div class="menu"></div>
-              <div class="menu"></div>
-              <div class="menu"></div>
+              <span class="menu"></span>
+              <span class="menu"></span>
+              <span class="menu"></span>
           </label>
         <?php $this->addMenu("back", "back");?><!--    include menu-->
     <?php include $this->view;?>

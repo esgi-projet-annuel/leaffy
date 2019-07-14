@@ -5,7 +5,6 @@ namespace LeaffyMvc\Services;
 
 require './vendor/autoload.php';
 
-use LeaffyMvc\Core\View;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 use LeaffyMvc\Models\User;
@@ -23,26 +22,26 @@ class MailConfirmationService {
         return self::$instance;
     }
 
-    private function initPHPMailer(): PHPMailer{
+    private function intiPHPMailer(): PHPMailer{
         $mail= new PHPMailer();
 //        $mail->SMTPDebug = 1;
         //Enable SMTP debugging.
         //Set PHPMailer to use SMTP.
         $mail->isSMTP();
         //Set SMTP host name
-        $mail->Host = SMTP_SERVER;
+        $mail->Host = "smtp.ionos.fr";
         //Set this to true if SMTP host requires authentication to send email
         $mail->SMTPAuth = true;
         //Provide username and password
-        $mail->Username = SMTP_USER;
-        $mail->Password = SMTP_PASSWORD;
+        $mail->Username = "m91014035-138437401";
+        $mail->Password = "8w3VtRz[X9)";
         //If SMTP requires TLS encryption then set it
         $mail->SMTPSecure = "tls";
         //Set TCP port to connect to
-        $mail->Port = SMTP_PORT;
+        $mail->Port = 587;
 
-        $mail->From = SMTP_FROM;
-        $mail->FromName = "Leaffy";
+        $mail->From = "contact@leaffy.fr";
+        $mail->FromName = "leaffy admin";
 
         $mail->smtpConnect(
             array(
@@ -57,7 +56,7 @@ class MailConfirmationService {
     }
 
     public static function sendMail(string $subject, string $bodyType, User $user= null){
-        $mail = self::$instance->initPHPMailer();
+        $mail = self::$instance->intiPHPMailer();
         if ($user != null){
             $mail->addAddress($user->email);
         }else{
@@ -93,32 +92,57 @@ class MailConfirmationService {
     }
 
     private function getConfirmationMail(User $user): string {
-        return "<i>Bienvenue sur Leaffy, <br>
-    Pour activer votre compte, veuillez cliquer sur le lien ci dessous<br>
-    ou copier/coller dans votre navigateur internet.<br>
+        return "<body align='center' border='0' cellpadding='0' cellspacing='0' width='600' style='border-collapse: collapse;'>
+                  <table border='0' cellpadding='0' cellspacing='0' width='100%' bgcolor='#f9f8eb'>
+                    <tr>
+                      <td align='center' bgcolor='#5c8d89' style='padding: 40px 0 30px 0; font-size:30px; color:white;'>
+                          Bienvenue sur Leaffy !
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align='center' style='padding: 40px 30px 40px 30px; font-size:20px;'>Pour activer votre compte, veuillez cliquer sur le lien ci dessous ou le copier/coller dans votre navigateur internet.</td>
+                    </tr>
+                    <tr>
+                      <td align='center' style='padding: 40px 30px 40px 30px; font-size:20px;'>http://localhost:88/validation?email=".urlencode($user->email)."&token=".urlencode($user->token)."</td>
+                    </tr>
+                    <tr>
+                      <td align='center'>Ceci est un mail automatique, Merci de ne pas y répondre.</td>
+                    </tr>
+                  </table>
 
-    http://localhost:88/validation?email=".urlencode($user->email)."&token=".urlencode($user->token)."<br>
-
-
-    ---------------<br>
-    Ceci est un mail automatique, Merci de ne pas y répondre.</i>";
+                </body>";
     }
 
     private function getCommentsAlertMail(){
-        $htmlMail = "<p> De nouveaux commentaires ont été déposés! </p>";
-        $htmlMail .= "<p> Rendez vous vite sur votre interface administrateur. </p>";
+        $htmlMail = "<body align='center' border='0' cellpadding='0' cellspacing='0' width='600' style='border-collapse: collapse;'>";
+        $htmlMail .= "<table border='0' cellpadding='0' cellspacing='0' width='100%' bgcolor='#f9f8eb'>";
+        $htmlMail .= "<tr><td align='center' bgcolor='#5c8d89' style='padding: 40px 0 30px 0; font-size:30px; color:white;'>De nouveaux commentaires ont été déposés !</td></tr>";
+        $htmlMail .= "<tr><td align='center' style='padding: 40px 30px 40px 30px; font-size:20px;'>Rendez vous vite sur votre interface administrateur. </td></tr>";
+        $htmlMail .= "<tr><td align='center'>Ceci est un mail automatique, Merci de ne pas y répondre.</td></tr>";
+        $htmlMail .= "</table>";
+        $htmlMail .= "</body>";
         return utf8_decode($htmlMail);
     }
 
     private function getTestimonialsAlertMail(){
-        $htmlMail = "<p> De nouveaux avis ont été déposés! </p>";
-        $htmlMail .= "<p> Rendez vous vite sur votre interface administrateur. </p>";
-        return utf8_decode($htmlMail);
+      $htmlMail = "<body align='center' border='0' cellpadding='0' cellspacing='0' width='600' style='border-collapse: collapse;'>";
+      $htmlMail .= "<table border='0' cellpadding='0' cellspacing='0' width='100%' bgcolor='#f9f8eb'>";
+      $htmlMail .= "<tr><td align='center' bgcolor='#5c8d89' style='padding: 40px 0 30px 0; font-size:30px; color:white;'>De nouveaux avis ont été déposés !</td></tr>";
+      $htmlMail .= "<tr><td align='center' style='padding: 40px 30px 40px 30px; font-size:20px;'>Rendez vous vite sur votre interface administrateur. </td></tr>";
+      $htmlMail .= "<tr><td align='center'>Ceci est un mail automatique, Merci de ne pas y répondre.</td></tr>";
+      $htmlMail .= "</table>";
+      $htmlMail .= "</body>";
+      return utf8_decode($htmlMail);
     }
 
     private function getForgottenPasswordMail(User $user){
-        $htmlMail = "<p> Rendez vous sur le lien suivant afin de réinitialiser votre mot de passe </p>";
-        $htmlMail .= "<p> http://localhost:88/resetPassword?email=".urlencode($user->email)."&token=".urlencode($user->token)." </p>";
+        $htmlMail = "<body align='center' border='0' cellpadding='0' cellspacing='0' width='600' style='border-collapse: collapse;'>";
+        $htmlMail .= "<table border='0' cellpadding='0' cellspacing='0' width='100%' bgcolor='#f9f8eb'>";
+        $htmlMail .= "<tr><td align='center' bgcolor='#5c8d89' style='padding: 40px 0 30px 0; font-size:30px; color:white;'>Rendez vous sur le lien suivant afin de réinitialiser votre mot de passe </td></tr>";
+        $htmlMail .= "<tr><td align='center' style='padding: 40px 30px 40px 30px; font-size:20px;'>http://localhost:88/resetPassword?email=".urlencode($user->email)."&token=".urlencode($user->token)."</td></tr>";
+        $htmlMail .= "<tr><td align='center'>Ceci est un mail automatique, Merci de ne pas y répondre.</td></tr>";
+        $htmlMail .= "</table>";
+        $htmlMail .= "</body>";
         return utf8_decode($htmlMail);
     }
 }

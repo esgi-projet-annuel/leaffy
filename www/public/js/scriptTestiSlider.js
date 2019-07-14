@@ -4,7 +4,7 @@
 var current = 0,
   elem  	= $('.slider .slide'),
   slides  = $('.slider .slide').length,
-  speed   = 3000,
+  speed   = 10000,
   transSpeed = 1000;
 
 function autoSlide(){

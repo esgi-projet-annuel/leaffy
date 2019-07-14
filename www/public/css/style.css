@@ -1051,6 +1051,19 @@ textarea {
   border-radius: .25rem;
   transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out; }
 
+.form-control-back-comment {
+  display: block;
+  width: 100%;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out; }
+
 .form-label-back > label {
   display: block;
   width: 100%;
@@ -1137,9 +1150,10 @@ textarea {
   width: 100%;
   background-color: #FFFFFF;
   margin-bottom: 30px;
-  padding: 50px 35px 25px;
+  padding: 25px 55px 25px;
   position: relative;
-  min-height: 16rem; }
+  min-height: 16rem;
+  display: flex; }
   .testimonial-content::after {
     content: "";
     width: 0;
@@ -1153,6 +1167,8 @@ textarea {
     right: 0;
     bottom: -19px;
     left: 0; }
+  .testimonial-content blockquote {
+    margin: auto; }
 
 .testimonial-meta {
   text-align: center;
@@ -1313,7 +1329,8 @@ textarea {
   padding: 0 30px;
   line-height: 26px;
   color: #8c9597;
-  font-size: 16px; }
+  font-size: 16px;
+  min-height: 110px; }
 
 .dot-group {
   text-align: center; }
@@ -1538,3 +1555,9 @@ textarea {
 
 .card-register {
   max-width: 40rem; }
+
+.page404 {
+  font-size: 32px;
+  text-align: center;
+  color: #74b49b;
+  margin-top: 30px; }

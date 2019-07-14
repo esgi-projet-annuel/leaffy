@@ -7,7 +7,7 @@
   <div class="section">
     <div class="container">
       <div class="row">
-        <div class="col-sm-8 col-12">
+        <div class="col-md-8 col-12">
           <div class="">
             <?php $this->addModal("formPage", $formPage);?>
           </div>

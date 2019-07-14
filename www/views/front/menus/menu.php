@@ -2,15 +2,15 @@
   <div class="nav-wrapper">
     <input class="hidden-front" type="checkbox" id="menuToggle-front">
     <label class="menu-btn-front" for="menuToggle-front">
-      <div class="menu-front"></div>
-      <div class="menu-front"></div>
-      <div class="menu-front"></div>
+      <span class="menu-front"></span>
+      <span class="menu-front"></span>
+      <span class="menu-front"></span>
     </label>
     <nav class="nav-container">
       <ul id="menu-main" class="nav-tabs">
         <?php $menu= new \LeaffyMvc\Controllers\MenuController();
         echo $menu->generateMenu()?>
-        <li id="menu-sup" class="menu-item menu-item-home has-submenu"><img src="../../../public/img/user.png" width="25"></a>
+        <li id="menu-sup" class="menu-item menu-item-home has-submenu"><img src="../../../public/img/user.png" width="25" alt="user-logo"></a>
           <ul class="submenu">
             <?php if (isset($_SESSION['token'])):
                 $user= new \LeaffyMvc\Models\User();

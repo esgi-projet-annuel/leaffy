@@ -12,7 +12,6 @@
         <script src="../../public/js/jquery-3.3.1.min.js"></script>
         <script src="../../public/js/script.js"></script>
         <script src="../../public/js/scrollEvent.js"></script>
-        <title></title>
 <!--        TODO importer description du professionnel-->
         <meta name="description" content="">
 <!--        TODO importer nom du pro-->

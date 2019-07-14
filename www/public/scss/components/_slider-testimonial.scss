@@ -52,9 +52,10 @@
     width: 100%;
     background-color: $white;
     margin-bottom: 30px;
-    padding: 50px 35px 25px;
+    padding: 25px 55px 25px;
     position: relative;
     min-height: 16rem;
+    display: flex;
     &::after{
       content: "";
       width: 0;
@@ -68,6 +69,9 @@
       right: 0;
       bottom: -19px;
       left: 0;
+    }
+    & blockquote{
+      margin: auto;
     }
 }
 
