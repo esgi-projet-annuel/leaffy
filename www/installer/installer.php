@@ -3,6 +3,7 @@
 
 try {
     $installer = new Installer(
+        $_POST['domain'],
         $_POST['mysqlHost'],
         $_POST['mysqlPort'],
         $_POST['mysqlUserName'],
@@ -16,6 +17,7 @@ try {
         $_POST['lastName'],
         $_POST['email']
     );
+
     $installer->run();
 } catch (Exception $e) {
     print("Une erreur est survenue lors de l'installation : " . $e->getMessage());
@@ -23,6 +25,7 @@ try {
 
 class Installer
 {
+    private $domain;
     private $mysqlHost;
     private $mysqlPort;
     private $mysqlUserName;
@@ -41,6 +44,7 @@ class Installer
     private $dbpass = "leaffyP4ss";
 
     public function __construct(
+        $domain,
         $mysqlHost,
         $mysqlPort,
         $mysqlUserName,
@@ -54,6 +58,7 @@ class Installer
         $lastName,
         $email)
     {
+        $this->domain = $domain;
         $this->mysqlHost = $mysqlHost;
         $this->mysqlPort = $mysqlPort;
         $this->mysqlUserName = $mysqlUserName;
@@ -136,6 +141,7 @@ class Installer
         $content .= "define(\"SMTP_USER\", \"$this->smtpUser\");\n";
         $content .= "define(\"SMTP_PASSWORD\", \"$this->smtpPassword\");\n";
         $content .= "define(\"SMTP_PORT\", $this->smtpPort);\n";
+        $content .= "define(\"DOMAIN\", \"$this->domain\");\n";
 
         fwrite($configFile, $content);
         fclose($configFile);

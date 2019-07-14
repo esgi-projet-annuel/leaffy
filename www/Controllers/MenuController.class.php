@@ -17,6 +17,10 @@ class MenuController extends AbstractController {
         return $a['menu_position'] - $b['menu_position'];
     }
 
+    public function generatePageSlug($pageTitle): string {
+        return str_replace(" ", "_", $pageTitle);
+    }
+
     public function generateMenu():string {
         $str="";
         $listId= 1;
@@ -28,9 +32,10 @@ class MenuController extends AbstractController {
         });
         
         foreach ($pageList as $pageForMenu=>$value) {
+            $slug = $this->generatePageSlug($value->title);
             $str.= <<<EOF
                <li id="menu-item-$listId" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-16">
-                   <a href="/?page=$value->id"> $value->title</a>
+                   <a href="/$slug"> $value->title</a>
                </li> 
 EOF;
          ++$listId;

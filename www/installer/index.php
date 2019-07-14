@@ -21,6 +21,15 @@
                 <div class="card-body">
                     <form id="installer_form" class="form" role="form" autocomplete="off" action="installer.php"
                           method="post">
+
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Nom de domaine du site</label>
+                            <div class="col-lg-9">
+                                <input id="domain" name="domain" class="form-control" type="text"
+                                       placeholder="http://demo.leaffy.fr">
+                            </div>
+                        </div>
+
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">Hôte MySQL</label>
                             <div class="col-lg-9">
