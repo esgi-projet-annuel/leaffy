@@ -1,16 +1,14 @@
 <?php $this->addHeader("header", "front");
+global $user;
 $user = new \LeaffyMvc\Models\User();
 $user->findOneObjectBy(['email'=>$_GET['email']]);
-
 if(!empty($user)) {
     // Récupération de la clé
     $token =$user->token;
 }
     if($_GET['token'] == $token) {
-        //echo $resetForm;
         $this->addModal("formResetPassword", $formResetPassword);
-    }
-    else {
+    }else {
         echo "
         <main>
           <div class='container'>

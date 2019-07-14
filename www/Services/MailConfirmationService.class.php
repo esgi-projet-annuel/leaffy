@@ -103,7 +103,7 @@ class MailConfirmationService {
                       <td align='center' style='padding: 40px 30px 40px 30px; font-size:20px;'>Pour activer votre compte, veuillez cliquer sur le lien ci dessous ou le copier/coller dans votre navigateur internet.</td>
                     </tr>
                     <tr>
-                      <td align='center' style='padding: 40px 30px 40px 30px; font-size:20px;'>http://localhost:88/validation?email=".urlencode($user->email)."&token=".urlencode($user->token)."</td>
+                      <td align='center' style='padding: 40px 30px 40px 30px; font-size:20px;'>http://".$_SERVER['HTTP_HOST']."/validation?email=".urlencode($user->email)."&token=".urlencode($user->token)."</td>
                     </tr>
                     <tr>
                       <td align='center'>Ceci est un mail automatique, Merci de ne pas y répondre.</td>
@@ -139,7 +139,7 @@ class MailConfirmationService {
         $htmlMail = "<body align='center' border='0' cellpadding='0' cellspacing='0' width='600' style='border-collapse: collapse;'>";
         $htmlMail .= "<table border='0' cellpadding='0' cellspacing='0' width='100%' bgcolor='#f9f8eb'>";
         $htmlMail .= "<tr><td align='center' bgcolor='#5c8d89' style='padding: 40px 0 30px 0; font-size:30px; color:white;'>Rendez vous sur le lien suivant afin de réinitialiser votre mot de passe </td></tr>";
-        $htmlMail .= "<tr><td align='center' style='padding: 40px 30px 40px 30px; font-size:20px;'>http://localhost:88/resetPassword?email=".urlencode($user->email)."&token=".urlencode($user->token)."</td></tr>";
+        $htmlMail .= "<tr><td align='center' style='padding: 40px 30px 40px 30px; font-size:20px;'>http://".$_SERVER['HTTP_HOST']."/resetPassword?email=".urlencode($user->email)."&token=".urlencode($user->token)."</td></tr>";
         $htmlMail .= "<tr><td align='center'>Ceci est un mail automatique, Merci de ne pas y répondre.</td></tr>";
         $htmlMail .= "</table>";
         $htmlMail .= "</body>";

@@ -1,5 +1,6 @@
 <?php $data = ($config["config"]["method"]=="POST")?$_POST:$_GET; ?>
 
+
 	<?php
     if( !empty($config["errors"])):?>
 		<div class="">
@@ -33,10 +34,8 @@
     				<?php echo ($value["required"])?'required="required"':'';?>
     				id="<?php echo $value["id"];?>"
     				class="<?php echo $value["class"];?>"
-    				value="<?php echo $value["value"]??''?>">
-
-        <?php elseif($value["type"]=="hidden"):?>
-            <input type="<?php echo $value["type"];?>" name="<?php echo $key;?>" value="<?php echo $user->id ??''?>">
+    				value="<?php echo $value["value"]??''?>"
+            >
 
       	<?php endif;?>
 

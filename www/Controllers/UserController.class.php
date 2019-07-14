@@ -112,12 +112,14 @@ class UserController extends AbstractController {
         $form = $user->getResetPasswordForm();
         $method = strtoupper($form["config"]["method"]);
         $data = $GLOBALS["_".$method];
+        var_dump($data);
 
         if( $_SERVER['REQUEST_METHOD']==$method && !empty($data) ){
             $validator = new Validator($form,$data);
             $form["errors"] = $validator->errors;
             if(empty($form["errors"])){
                 $user->findById(intval($data['userId']));
+                var_dump($user);
                 $newPassword = password_hash($data['pwd'], PASSWORD_DEFAULT);
                 $user->updateBy(['password'=>$newPassword]);
                 $form["errors"][] = 'Mot de passe modifié';

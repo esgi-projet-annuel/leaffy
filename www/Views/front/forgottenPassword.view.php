@@ -1,4 +1,4 @@
-<?php $this->addHeader("header", "front")?>
+<?php $this->addHeader("header", "front"); ?>
 <main>
   <div class="container">
     <div class="card card-login card card-login mx-auto mt-5">
