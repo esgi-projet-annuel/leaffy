@@ -83,7 +83,7 @@ class Installer
         // Create database
         $dbh->exec("CREATE DATABASE IF NOT EXISTS `" . $this->dbname . "`;
                 CREATE USER '" . $this->dbuser . "'@'localhost' IDENTIFIED BY '" . $this->dbpass . "';
-                GRANT ALL ON `" . $this->dbname . ".* TO '" . $this->dbuser . "'@'localhost';
+                GRANT ALL PRIVILEGES ON `" . $this->dbname . ".* TO '" . $this->dbuser . "'@'localhost';
                 FLUSH PRIVILEGES;")
         or die();
     }
@@ -123,7 +123,7 @@ class Installer
 
     private function prepareConfigFile()
     {
-        $configFile = fopen($_SERVER['DOCUMENT_ROOT'] . "/config.inc.test.php", "w") or die("Unable to open file!");
+        $configFile = fopen($_SERVER['DOCUMENT_ROOT'] . "/conf.inc.php", "w") or die("Unable to open file!");
         $content = "<?php \n";
         $content .= "define(\"DBDRIVER\", \"mysql\");\n";
         $content .= "define(\"DBHOST\", \"$this->mysqlHost\");\n";

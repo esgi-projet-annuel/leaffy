@@ -78,31 +78,37 @@ class User extends BaseSQL {
       return [
           "config"=>[
               "method"=>"POST",
-              "action"=>Routing::getSlug('User','sendMailToResetPassword'),
+              "action"=>Routing::getSlug('User','updateUserBy'),
               "class"=>"",
               "id"=>"",
               "submit"=>"Envoyer",
               "reset"=>"" ],
+          "data"=>[
+              "pwd"=>[
+                  "type"=>"password",
+                  "labelName"=>"Mot de passe",
+                  "placeholder"=>"*******",
+                  "required"=>true,
+                  "class"=>"form-control-login",
+                  "id"=>"pwd",
+                  "minlength"=>6,
+                  "error"=>"Le mot de passe doit faire au minimum 6 caractères avec des minuscules, majuscules et chiffres"],
 
-          "pwd"=>[
-              "type"=>"password",
-              "labelName"=>"Mot de passe",
-              "placeholder"=>"*******",
-              "required"=>true,
-              "class"=>"form-control-login",
-              "id"=>"pwd",
-              "minlength"=>6,
-              "error"=>"Le mot de passe doit faire au minimum 6 caractères avec des minuscules, majuscules et chiffres"],
-
-          "pwdConfirm"=>[
-              "type"=>"password",
-              "labelName"=>"Confirmation du mot de passe",
-              "placeholder"=>"Confirmation",
-              "required"=>true,
-              "class"=>"form-control-login",
-              "id"=>"pwdConfirm",
-              "confirm"=>"pwd",
-              "error"=>"Les mots de passe ne correspondent pas"
+              "pwdConfirm"=>[
+                  "type"=>"password",
+                  "labelName"=>"Confirmation du mot de passe",
+                  "placeholder"=>"Confirmation",
+                  "required"=>true,
+                  "class"=>"form-control-login",
+                  "id"=>"pwdConfirm",
+                  "confirm"=>"pwd",
+                  "error"=>"Les mots de passe ne correspondent pas"
+              ],
+              "userId"=>[
+                  "type"=>"hidden",
+                  "id"=>"pwdConfirm",
+                  "value"=>""
+              ]
           ]
       ];
     }
@@ -111,7 +117,7 @@ class User extends BaseSQL {
       return [
           "config"=>[
               "method"=>"POST",
-              "action"=>"",
+              "action"=>Routing::getSlug('User','sendMailToResetPassword'),
               "class"=>"",
               "id"=>"",
               "submit"=>"Envoyer",

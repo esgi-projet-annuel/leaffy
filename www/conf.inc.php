@@ -1,7 +1,7 @@
 <?php
 define("DBDRIVER", "mysql");
 define("DBHOST", "database");
-define("DBPORT", "3036");
+define("DBPORT", "3306");
 define("DBNAME", "mvcleaf");
 define("DBUSER", "root");
 define("DBPWD", "password");

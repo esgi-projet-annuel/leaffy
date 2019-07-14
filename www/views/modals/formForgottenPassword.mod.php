@@ -1,6 +1,9 @@
 <?php $data = ($config["config"]["method"]=="POST")?$_POST:$_GET; ?>
 
-	<?php if( !empty($config["errors"])):?>
+
+	<?php
+    var_dump($config["errors"]);
+    if( !empty($config["errors"])):?>
 		<div class="">
 			<ul>
 			<?php foreach ($config["errors"] as $errors):?>

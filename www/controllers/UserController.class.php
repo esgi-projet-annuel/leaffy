@@ -41,29 +41,29 @@ class UserController extends AbstractController {
 
     public function sendMailToResetPassword(){
         $user = new User();
-//        $form = $user->getRegisterForm();
-//
-//        $method = strtoupper($form["config"]["method"]);
-//        $data = $GLOBALS["_".$method];
-            $data = $_POST;
+        $form = $user->getForgottenPasswordForm();
 
-//        if( $_SERVER['REQUEST_METHOD']==$method && !empty($data) ){
-//            $validator = new Validator($form,$data);
-//            $form["errors"] = $validator->errors;
+        $method = strtoupper($form["config"]["method"]);
+        $data = $GLOBALS["_".$method];
 
-            //Est ce que l'email existe bien en BDD
-            $checkEmail= $user->findOneObjectBy(['email'=>$data['email']]);
-            if (!empty($checkEmail) && $user->active == 1){
-                //Envoie du mail de confirmation
-                MailConfirmationService::instance()->sendMail('Mot de passe oublié!', 'forgottenPassword', $user);
-                $message= 'mail envoyé';
-            }else{
-                $message = "le compte n'existe pas ou n'est pas encore activé";
+        if( $_SERVER['REQUEST_METHOD']==$method && !empty($data) ){
+            $validator = new Validator($form,$data, false);
+            $form["errors"] = $validator->errors;
+            if (empty($form['errors'])){
+                //Est ce que l'email existe bien en BDD
+                $checkEmail= $user->findOneObjectBy(['email'=>$data['email']]);
+                if (!empty($checkEmail) && $user->active == 1){
+                    //Envoie du mail de confirmation
+                    MailConfirmationService::instance()->sendMail('Mot de passe oublié!', 'forgottenPassword', $user);
+                    $form['errors'][]= 'mail envoyé';
+                }else{
+                    $form['errors'][] = "le compte n'existe pas ou n'est pas encore activé";
+                }
             }
-//        }
+        }
 
         $view = new View("forgottenPassword", "front");
-        $view->assign("message", $message);
+        $view->assign("formForgottenPassword", $form);
     }
 
     public function saveUser():void{
@@ -109,21 +109,24 @@ class UserController extends AbstractController {
 
     public function updateUserBy(){
         $user = new User();
-        $data = $_POST;
-        var_dump($data);
-        $user->findById(intval($data['userId']));
-        var_dump($user);
-        if ($data['password'] == $data['confirmation']){
-            $newPassword = password_hash($data['password'], PASSWORD_DEFAULT);
-            $user->updateBy(['password'=>$newPassword]);
-            $message = 'Mot de passe modifié';
-        }else{
-            $message= 'confirmation invalide';
+        $form = $user->getResetPasswordForm();
+        $method = strtoupper($form["config"]["method"]);
+        $data = $GLOBALS["_".$method];
+
+        if( $_SERVER['REQUEST_METHOD']==$method && !empty($data) ){
+            $validator = new Validator($form,$data);
+            $form["errors"] = $validator->errors;
+            if(empty($form["errors"])){
+                $user->findById(intval($data['userId']));
+                $newPassword = password_hash($data['pwd'], PASSWORD_DEFAULT);
+                $user->updateBy(['password'=>$newPassword]);
+                $form["errors"][] = 'Mot de passe modifié';
+            }
         }
         $view = new View("resetPassword", "front");
         $_GET['email'] = $user->email;
         $_GET['token'] = $user->token;
-        $view->assign("message", $message);
+        $view->assign("formResetPassword", $form);
 
     }
 
