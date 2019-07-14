@@ -10,7 +10,6 @@ class Routing {
     public static $routeFile = "routes.yml";
 
     public static function getRoute($slug){
-
         //récuperer toutes les routes dans le fichier yml
         $routes = yaml_parse_file(self::$routeFile);
         if( isset($routes[$slug])){

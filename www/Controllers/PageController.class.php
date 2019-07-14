@@ -3,6 +3,7 @@ declare(strict_types = 1);
 
 namespace LeaffyMvc\Controllers;
 
+use LeaffyMvc\Core\SitemapGenerator;
 use LeaffyMvc\Core\View;
 use LeaffyMvc\Models\Page;
 use LeaffyMvc\Models\Post;
@@ -66,6 +67,7 @@ class PageController extends AbstractController {
                 $page->setMenuId(0);
                 $page->setMenuPosition(0);
                 $page->save();
+                SitemapGenerator::generate();
                 $this->getAllPagesByStatus();
             }else{
                 $view = new View('setPage', 'back');
@@ -93,6 +95,7 @@ class PageController extends AbstractController {
                 $page->setContent($data['content']);
                 $page->setStatus('DRAFT');
                 $page->save();
+                SitemapGenerator::generate();
                 $this->getAllPagesByStatus();
             }else{
                 $view = new View('setPage', 'back');
@@ -106,6 +109,7 @@ class PageController extends AbstractController {
         $page = new Page();
         $page->findById($pageId);
         $page->delete();
+        SitemapGenerator::generate();
     }
 
     public function getAllPagesByStatus():void {
@@ -130,6 +134,7 @@ class PageController extends AbstractController {
                 $page->setInitialMenuPosition();
             }
             $page->save();
+            SitemapGenerator::generate();
         }
     }
 
