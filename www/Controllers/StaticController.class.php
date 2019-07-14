@@ -12,4 +12,10 @@ class StaticController extends AbstractController {
     public function showValidationView(){
         $view = new View('validation', 'front');
     }
+    public function showMentionView(){
+        $view = new View('mention', 'front');
+    }
+    public function showCGUView(){
+        $view = new View('cgu', 'front');
+    }
 }

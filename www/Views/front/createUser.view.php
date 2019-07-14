@@ -8,8 +8,7 @@
         <?php $this->addModal("form", $form);?>
 
         <div class="text-center">
-          <a class="d-block small mt-3" href="">Page de connexion</a>
-          <a class="d-block small" href="">Mot de passe oublié ?</a>
+          <a class="d-block small mt-3" href="<?php echo \LeaffyMvc\Core\Routing::getSlug("Authentication","viewUserLoginForm");?>">Page de connexion</a>
         </div>
       </div>
     </div>

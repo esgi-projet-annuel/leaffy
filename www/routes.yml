@@ -211,3 +211,11 @@
 "/validation":
   controller: Static
   action: showValidationView
+
+"/mentions-legales":
+  controller: Static
+  action: showMentionView
+
+"/cgu":
+  controller: Static
+  action: showCGUView

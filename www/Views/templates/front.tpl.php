@@ -37,10 +37,10 @@ $user->findOneObjectBy(['profile'=>'ADMIN']);
                       <a class="footer-link" href=""><p>Mon Compte</p></a>
                   </div>
                   <div class="col-md-3 col-sm-6 col-12">
-                      <a class="footer-link" href=""><p>CGU</p></a>
+                      <a class="footer-link" href="<?php echo \LeaffyMvc\Core\Routing::getSlug("Static","showCGUView");?>"><p>CGU</p></a>
                   </div>
                   <div class="col-md-3 col-sm-6 col-12">
-                      <a class="footer-link" href=""><p>Mentions Légales</p></a>
+                      <a class="footer-link" href="<?php echo \LeaffyMvc\Core\Routing::getSlug("Static","showMentionView");?>"><p>Mentions Légales</p></a>
                   </div>
               </div>
           </div>

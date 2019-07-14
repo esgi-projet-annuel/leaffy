@@ -13,13 +13,13 @@
             </url>
             
             <url> 
-                <loc>http://demo.leaffy.fr/Me_contacter</loc>
+                <loc>http://demo.leaffy.fr/titre_page_3</loc>
                 <changefreq>daily</changefreq>
                 <priority>1</priority>            
             </url>
             
             <url> 
-                <loc>http://demo.leaffy.fr/Tarifs</loc>
+                <loc>http://demo.leaffy.fr/Page_1</loc>
                 <changefreq>daily</changefreq>
                 <priority>1</priority>            
             </url>
