@@ -36,7 +36,7 @@
             $user->created_at = $user->getFrDate($user->created_at);
         }
         $selectButton = <<<EOF
-            <select id="profileSelect" onchange="changeProfile('{0}');">
+            <select id="profileSelect{0}" onchange="changeProfile('{0}');">
                 <option value="">Mettre à jour le rôle de l'utilisateur</option>
                 <option value="CLIENT">Abonné</option>
                 <option value="EDITOR">Editeur</option>
@@ -83,8 +83,7 @@ EOF;
         });
     } );
     function changeProfile(userId) {
-        var selectValue = document.getElementById("profileSelect").value;
-        console.log(selectValue);
+        let selectValue = document.getElementById("profileSelect"+userId).value;
         $.ajax({
             url : '/admin/changeUserProfile',
             type : 'POST', // Le type de la requête HTTP, ici devenu POST

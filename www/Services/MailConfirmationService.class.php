@@ -84,7 +84,7 @@ class MailConfirmationService {
         if(!$mail->send()) {
             echo "Mailer Error: " . $mail->ErrorInfo;
         }
-        
+
     }
 
     private function getConfirmationMail(User $user): string {

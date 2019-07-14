@@ -17,11 +17,13 @@
           <th align="left">Titre</th>
           <th align="left">Date</th>
           <th align="left">Status</th>
+          <th align="left">Catégorie</th>
           <th></th>
         </tr>
       </thead>
       <tbody>
         <tr>
+          <td align="left"></td>
           <td align="left"></td>
           <td align="left"></td>
           <td align="left"></td>
@@ -50,6 +52,14 @@
                     . '<a href="" title="Archiver" class="form-control button-back button-back--archive" onclick="changeStatus(\'{0}\',\'WITHDRAWN\');"><i class="fas fa-archive"></i></a>';
             }
         }
+        $category = new \LeaffyMvc\Models\Category();
+        $categories = $category->findAllByOrder(['orderBy'=>'name']);
+        $selectButton ="<select id=\"categorySelect{0}\" onchange=\"changeCategory('{0}');\">";
+        $selectButton .="<option value=\"\">Selectionner une categorie</option>";
+        foreach ($categories as $category){
+            $selectButton .="<option value=\"".$category->id."\">".$category->name."</option>";
+        }
+        $selectButton .="</select>";
         ?>
   </div>
 </div>
@@ -58,6 +68,7 @@
 let datas = <?php echo json_encode($posts); ?>;
 let buttonModify = <?php echo json_encode($buttonModify); ?>;
 let buttons = <?php echo json_encode($buttonStr); ?>;
+let selectButton = <?php echo json_encode($selectButton); ?>;
     $(document).ready( function () {
         $('#posts-table').DataTable({
           language: {
@@ -68,6 +79,7 @@ let buttons = <?php echo json_encode($buttonStr); ?>;
               { data: 'title' },
               { data: 'created_at'},
               { data: 'status'},
+              { data: 'name'},
               {
                 data: null,
                 render: function ( datas, type, row ) {
@@ -83,7 +95,7 @@ let buttons = <?php echo json_encode($buttonStr); ?>;
                             });
                         };
                     }
-                    return buttonModify.format(id) + buttons.format(id);
+                    return buttonModify.format(id) + buttons.format(id) + selectButton.format(id);
                 }
               }
           ]
@@ -103,6 +115,15 @@ let buttons = <?php echo json_encode($buttonStr); ?>;
             type : 'POST', // Le type de la requête HTTP, ici devenu POST
             data : {id: postId,
                 status: postStatus}
+        });
+    }
+    function changeCategory(postId) {
+        let selectValue = document.getElementById("categorySelect"+postId).value;
+        $.ajax({
+            url : '/admin/changePostCategory',
+            type : 'POST', // Le type de la requête HTTP, ici devenu POST
+            data : {id: postId,
+                category: selectValue}
         });
     }
 </script>

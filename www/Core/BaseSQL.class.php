@@ -48,9 +48,11 @@ namespace LeaffyMvc\Core {
             foreach ($findBy as $key => $value) {
                 $sqlWhere[]=$key."=:".$key;
             }
-            $sql = "SELECT * FROM ".$this->table;
             if ($leftjoin!= null){
-                $sql .= " LEFT JOIN " .$leftjoin['table']." on ". $leftjoin['table'].".id = ".$this->table.".".$leftjoin['field'];
+            $sql = "SELECT ".$this->table.".* , ".$leftjoin['table'].".".$leftjoin['fieldWanted']."  FROM ".$this->table;
+            $sql .= " LEFT JOIN " .$leftjoin['table']." on ". $leftjoin['table'].".id = ".$this->table.".".$leftjoin['field'];
+            }else{
+                $sql = "SELECT * FROM ".$this->table;
             }
             $sql .=" WHERE ".implode(" AND ", $sqlWhere).";";
             $query = $this->pdo->prepare($sql);
@@ -134,6 +136,7 @@ namespace LeaffyMvc\Core {
                 $query = $this->pdo->prepare($sql);
                 $propertiesValue['id'] = $this->id;
                 $query->execute($propertiesValue);
+
             }
         }
 

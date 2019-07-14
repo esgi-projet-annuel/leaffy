@@ -10,9 +10,8 @@ use LeaffyMvc\Core\Validator;
 class CategoryController extends AbstractController {
 
   public function getAllCategory():void {
-      $status = isset($_GET['status'])?$_GET['status']:'DRAFT';
       $category = new Category();
-      $categories = $category->findAllBy(['status'=>$status]); // ????? quelle methode
+      $categories = $category->findAllByOrder(['orderBy'=>'name']);
       $view = new View("categories", "back");
       $view->assign("categories", $categories);
       $form = $category->getCategoryForm();
@@ -28,7 +27,6 @@ class CategoryController extends AbstractController {
       if( $_SERVER['REQUEST_METHOD']==$method && !empty($data) ) {
           $validator = new Validator($form, $data);
           $form["errors"] = $validator->errors;
-
           if(empty($form["errors"])){
               $category->setName($data['name']);
               $category->save();
@@ -38,6 +36,13 @@ class CategoryController extends AbstractController {
               $view->assign("formCategory", $form);
           }
       }
+  }
+
+  public function deleteCategory(){
+      $categoryId = intval($_POST['id']);
+      $category = new Category();
+      $category->findById($categoryId);
+      $category->delete();
   }
 
 }

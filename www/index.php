@@ -2,24 +2,6 @@
 require "conf.inc.php";
 session_start();
 
-//function myAutoloader($class){
-//    $classPath = "Core/".$class.".class.php";
-//    $classModel = "Models/".$class.".class.php";
-//    $classService = "services/".$class.".class.php";
-//    $classController = "Controllers/".$class.".class.php";
-//    if(file_exists($classPath)){
-//        include $classPath;
-//    }else if(file_exists($classModel)){
-//        include $classModel;
-//    }else if(file_exists($classService)) {
-//        include $classService;
-//    }else if(file_exists($classController)) {
-//        include $classController;
-//    }
-//}
-//
-//spl_autoload_register("myAutoloader");
-
 spl_autoload_register(function ($class) {
     $prefix = 'LeaffyMvc\\';
     $base_dir = __DIR__ . '/';
@@ -35,7 +17,6 @@ spl_autoload_register(function ($class) {
 });
 
 use LeaffyMvc\Core\Routing;
-//print password_hash("admin", PASSWORD_DEFAULT);
 
 $slug = $_SERVER["REQUEST_URI"];
 

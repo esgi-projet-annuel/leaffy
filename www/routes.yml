@@ -65,6 +65,10 @@
   controller: Post
   action: changeStatus
 
+"/admin/changePostCategory":
+  controller: Post
+  action: changeCategory
+
 #PAGES
 "/":
   controller: Page
@@ -206,6 +210,10 @@
 "/admin/saveCategory":
   controller: Category
   action: saveCategory
+
+"/admin/deleteCategory":
+  controller: Category
+  action: deleteCategory
 
 #STATIC
 "/validation":

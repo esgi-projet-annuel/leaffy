@@ -11,12 +11,12 @@ class Post extends BaseSQL{
     public $content;
     public $description;
     public $status;
+    public $category_id;
     public $page_id;
 
     public function __construct(){
         parent::__construct();
     }
-
 
     public function setTitle(string $title):void{
         $this->title = $title;
@@ -33,6 +33,10 @@ class Post extends BaseSQL{
 
     public function setStatus(string $status):void{
         $this->status = $status;
+    }
+
+    public function setCategoryId(int $category_id):void{
+        $this->category_id= $category_id;
     }
 
     public function setPageId(int $page_id):void{
@@ -75,13 +79,6 @@ class Post extends BaseSQL{
                     "minlength"=>2,
                     "maxlength"=>5000,
                     "error"=>"La description doit faire entre 2 et 5000 caractères"],
-                "category"=>[
-                    "type"=>"select",
-                    "placeholder"=>"Choisissez la catégorie de l'article",
-                    "required"=>false,
-                    "class"=>"form-control-back",
-                    "id"=>"category-select",
-                    "error"=>"Veuillez choisir une catégorie"],
 //                "bannerImg"=>["type"=>"file","placeholder"=>"Image principale", "required"=>false, "class"=>"form-control-back", "id"=>"bannerImg","minlength"=>0,"maxlength"=>500,
 //                    "error"=>"L'image n'est pas valide'"],
             ]

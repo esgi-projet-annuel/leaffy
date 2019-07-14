@@ -8,7 +8,6 @@ use LeaffyMvc\Core\BaseSQL;
 class Category extends BaseSQL{
 
   public $name;
-  //public $post_id;
 
   public function __construct(){
       parent::__construct();
@@ -18,10 +17,6 @@ class Category extends BaseSQL{
   public function setName(string $name) {
       $this->name = $name;
   }
-
-  // public function setPostId(int $post_id) {
-  //     $this->post_id = $post_id;
-  // }
 
   public function getCategoryForm(){
       return [
@@ -33,11 +28,7 @@ class Category extends BaseSQL{
             "submit"=>"Ajouter"],
 
           "data"=>[
-              // "post_id"=>[
-              //     "type"=>"hidden",
-              //     "value"=>$postId
-              // ],
-              "category"=>[
+              "name"=>[
                   "type"=>"text",
                   "placeholder"=>"Nom de la catégorie",
                   "labelName"=>"Nom de la catégorie",

@@ -21,36 +21,32 @@
     </div>
   </div>
   <div class="section-table">
-    <table class="table display" width="100%" id="posts-table">
+    <table class="table display" width="100%" id="categories-table">
       <thead>
         <tr class="table-head">
           <th align="left">Nom de la catégorie</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td align="left"></td>
+          <td></td>
       </tr>
       </tbody>
     </table>
         <?php
-        $buttonModify = '<a title="Modifier" href="'.\LeaffyMvc\Core\Routing::getSlug("Post","????").'?id= {0} " class="form-control button-back button-back--modify"><i class="fas fa-edit"></i></a>';
-
-        foreach ($categories as $categorie) {
-            $buttonStr='';
-            // add bouton Supprimer ?
-        }
-
+            $buttonStr= '<a href="" title="delete" class="form-control button-back button-back--archive" onclick="deleteCategory(\'{0}\');"><i class="fas fa-trash"></i></a>';
         ?>
   </div>
 </div>
 
   <script type="text/javascript">
   let datas = <?php echo json_encode($categories); ?>;
-  let buttonModify = <?php echo json_encode($buttonModify); ?>;
-  // let buttons = <?php // echo json_encode($buttonStr); ?>;
+  let buttonStr = <?php echo json_encode($buttonStr); ?>;
+
     $(document).ready( function () {
-        $('#posts-table').DataTable({
+        $('#categories-table').DataTable({
           language: {
             url: "../../../public/DataTables/language/French.json"
           },
@@ -72,26 +68,18 @@
                             });
                         };
                     }
-                    return buttonModify.format(id) + buttons.format(id);
+                    return buttonStr.format(id);
                 }
               }
           ]
         });
     } );
 
-    function updatePost(postId) {
+    function deleteCategory(categoryId) {
         $.ajax({
-            url : '/admin/updateCategory',
-            type : 'POST', // Le type de la requête HTTP, ici devenu POST
+            url : '/admin/deleteCategory',
+            type : 'POST',
             data : 'id=' + categoryId,
-        });
-    }
-    function changeStatus(postId, postStatus) {
-        $.ajax({
-            url : '/admin/changeCategoryStatus',
-            type : 'POST', // Le type de la requête HTTP, ici devenu POST
-            data : {id: categoryId,
-                status: categoryStatus}
         });
     }
   </script>

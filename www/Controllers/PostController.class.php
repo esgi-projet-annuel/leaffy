@@ -107,7 +107,7 @@ class PostController extends AbstractController {
         //$this->checkAdmin();
         $status = isset($_GET['status'])?$_GET['status']:'DRAFT';
         $post = new Post();
-        $posts = $post->findAllBy(['status'=>$status]);
+        $posts = $post->findAllBy(['status'=>$status],['table'=>'Category', 'field'=>'category_id','fieldWanted'=>'name']);
         $view = new View("posts", "back");
         $view->assign("posts", $posts);
     }
@@ -120,6 +120,19 @@ class PostController extends AbstractController {
             $post = new Post();
             $post->findById($postId);
             $post->setStatus($_POST['status']);
+            $post->save();
+        }
+    }
+
+    public function changeCategory():void{
+        $this->checkAdminOrEditor();
+        $data = $_POST;
+        print(intval($_POST['category']));
+        if(!empty($data) ){
+            $postId = intval($_POST['id']);
+            $post = new Post();
+            $post->findById($postId);
+            $post->setCategoryId(intval($_POST['category']));
             $post->save();
         }
     }
