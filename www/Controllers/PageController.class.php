@@ -34,6 +34,7 @@ class PageController extends AbstractController {
     }
 
     public function createPage():void{
+        $this->checkAdmin();
         $view = new View("setPage", "back");
         $page = new Page();
         $form = $page->getPageForm();
@@ -41,6 +42,7 @@ class PageController extends AbstractController {
     }
 
     public function getUpdateFormView():void {
+        $this->checkAdmin();
         $view = new View("setPage", "back");
         $page = new Page();
         $form = $page->getUpdateForm($_GET['id']);
@@ -48,6 +50,7 @@ class PageController extends AbstractController {
     }
 
     public function savePage():void{
+        $this->checkAdmin();
         $page= new Page();
         $form = $page->getPageForm();
 
@@ -77,6 +80,7 @@ class PageController extends AbstractController {
     }
 
     public function updatePage():void {
+        $this->checkAdmin();
         $page = new Page();
         $form = $page->getUpdateForm($_POST['id']);
 
@@ -104,6 +108,7 @@ class PageController extends AbstractController {
     }
 
     public function deletePage():void {
+        $this->checkAdmin();
         $pageId = intval($_POST['id']);
         $page = new Page();
         $page->findById($pageId);
@@ -112,6 +117,7 @@ class PageController extends AbstractController {
     }
 
     public function getAllPagesByStatus():void {
+        $this->checkAdmin();
         //$this->checkAdmin();
         $status = isset($_GET['status'])?$_GET['status']:'DRAFT';
         $page = new Page();
@@ -121,6 +127,7 @@ class PageController extends AbstractController {
     }
 
     public function changeStatus():void{
+        $this->checkAdmin();
         $data = $_POST;
         if(!empty($data) ){
             $pageId = intval($_POST['id']);
@@ -136,7 +143,8 @@ class PageController extends AbstractController {
         }
     }
 
-    public function changeMenuPosition():void{
+    public function changeMenuPosition():void {
+        $this->checkAdmin();
         $this->checkAdmin();
         $data = $_POST;
         if(!empty($data) ){

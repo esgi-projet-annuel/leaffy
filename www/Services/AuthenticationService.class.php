@@ -33,6 +33,10 @@ class AuthenticationService
         return isset($_SESSION['email']) && $_SESSION['profile'] == "ADMIN";
     }
 
+    public function isEditor():bool {
+        return isset($_SESSION['email']) && $_SESSION['profile'] == "EDITOR";
+    }
+
     public function login(User $user, string $email, string $pwd){
         if(!is_null($email) || !is_null($pwd)){
             if ($user->findOneObjectBy(['email'=>$email]) != null){
