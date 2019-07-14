@@ -194,6 +194,15 @@
   controller: Media
   action: addMedia
 
+#Category
+"/admin/listCategory":
+  controller: Category
+  action: getAllCategory
+
+"/admin/saveCategory":
+  controller: Category
+  action: saveCategory
+
 #STATIC
 "/validation":
   controller: Static

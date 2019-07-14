@@ -52,7 +52,13 @@
 
         <?php elseif($value["type"]=="hidden"):?>
             <input type="<?php echo $value["type"];?>" name="<?php echo $key;?>" value="<?php echo $value["value"]??''?>">
-
+				<?php elseif($value["type"]=="select" ): ?>
+					<label for="<?php echo $value["id"];?>"> <?php echo $value["placeholder"];?> </label>
+					<select id="<?php echo $value["id"];?>"> 
+						<?php // foreach ($variable): ?>
+							<option value="<?php echo $value["value"]??''?>">Categories</option>
+						<?php //endforeach; ?>
+					</select>
       	<?php endif;?>
     	 </div>
     </div>

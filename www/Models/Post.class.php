@@ -75,6 +75,13 @@ class Post extends BaseSQL{
                     "minlength"=>2,
                     "maxlength"=>5000,
                     "error"=>"La description doit faire entre 2 et 5000 caractères"],
+                "category"=>[
+                    "type"=>"select",
+                    "placeholder"=>"Choisissez la catégorie de l'article",
+                    "required"=>false,
+                    "class"=>"form-control-back",
+                    "id"=>"category-select",
+                    "error"=>"Veuillez choisir une catégorie"],
 //                "bannerImg"=>["type"=>"file","placeholder"=>"Image principale", "required"=>false, "class"=>"form-control-back", "id"=>"bannerImg","minlength"=>0,"maxlength"=>500,
 //                    "error"=>"L'image n'est pas valide'"],
             ]

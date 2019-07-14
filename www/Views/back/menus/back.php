@@ -18,6 +18,12 @@
             <div>Article</div>
         </li>
       </a>
+      <a class="link" href="<?php echo \LeaffyMvc\Core\Routing::getSlug("Category", "getAllCategory");?>">
+        <li class="list-item">
+            <img src="../../../public/img/list-category.png" width="40">
+            <div>Catégories</div>
+        </li>
+      </a>
       <a class="link" href="<?php echo \LeaffyMvc\Core\Routing::getSlug("Page", "getAllPagesByStatus");?>">
         <li class="list-item">
             <img src="../../../public/img/browser.png" width="40">
