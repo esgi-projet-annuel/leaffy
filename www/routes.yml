@@ -106,6 +106,10 @@
   controller: Page
   action: changeStatus
 
+"/admin/changePageMenuPosition":
+  controller: Page
+  action: changeMenuPosition
+
 #COMMENTS
 "/admin/approveComment":
   controller: Comment

@@ -32,6 +32,12 @@ namespace LeaffyMvc\Core {
             $this->id = $id;
         }
 
+        public function getMaxMenuPosition() {
+            $stmt = $this->pdo->query("SELECT MAX(menu_position) FROM ".$this->table." WHERE status = 'PUBLISHED'");
+            $maxId = $stmt->fetch();
+            return $maxId;
+        }
+
         public function getFrDate($date):string
         {
             return date('d-m-Y', strtotime($date));

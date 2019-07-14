@@ -15,6 +15,8 @@
       <table class="table display" width="100%" id="pages-table">
           <thead>
           <tr class="table-head">
+              <th align="left">Position</th>
+              <th align="left">ID</th>
               <th align="left">Titre</th>
               <th align="left">Date</th>
               <th align="left">Status</th>
@@ -23,6 +25,8 @@
           </thead>
           <tbody>
           <tr>
+              <td align="left"></td>
+              <td align="left"></td>
               <td align="left"></td>
               <td align="left"></td>
               <td align="left"></td>
@@ -62,13 +66,16 @@
     let datas = <?php echo json_encode($pages); ?>;
     let buttonModify = <?php echo json_encode($buttonModify); ?>;
     let buttons = <?php echo json_encode($buttonStr); ?>;
+
     $(document).ready( function () {
-        $('#pages-table').DataTable({
+        let table = $('#pages-table').DataTable({
             language: {
               url: "../../../public/DataTables/language/French.json"
             },
             data: datas,
             columns: [
+                { data: 'menu_position' },
+                { data: 'id' },
                 { data: 'title' },
                 { data: 'created_at'},
                 { data: 'status'},
@@ -90,9 +97,37 @@
                         return buttonModify.format(id) + buttons.format(id);
                     }
                 }
-            ]
+            ],
+            rowReorder: true
+        });
+
+        table.on( 'row-reorder', function ( e, diff, edit) {
+            for (let i=0, ien=diff.length ; i<ien ; i++) {
+                let rowData = table.row( diff[i].node ).data();
+                let pageId = rowData['id'];
+
+                let page = datas.find((page) => {
+                    return page.id == pageId;
+                });
+
+
+                page.menu_position = diff[i].newPosition;
+
+
+                $.ajax({
+                    url : '/admin/changePageMenuPosition',
+                    type : 'POST',
+                    data : {
+                        id: pageId,
+                        menu_position: page.menu_position
+                    }
+                });
+                table.row( diff[i].node ).data(page);
+
+            }
         });
     } );
+
     function changeStatus(pageId, pageStatus) {
         $.ajax({
             url : '/admin/changePageStatus',

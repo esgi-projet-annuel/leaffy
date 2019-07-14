@@ -19,6 +19,7 @@
     <script src="../../public/js/script.js"></script>
     <script src="../../public/js/ckeditor5-build-classic/ckeditor.js"></script>
     <script src="../../public/DataTables/datatables.min.js"></script>
+    <script src="../../public/DataTables/dataTables.rowReorder.min.js"></script>
 
 
     <!--        TODO importer description du professionnel-->

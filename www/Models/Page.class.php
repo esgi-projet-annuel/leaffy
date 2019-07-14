@@ -13,9 +13,14 @@ class Page extends BaseSQL {
     public $content;
     public $type;
     public $menu_id;
+    public $menu_position;
 
     public function __construct(){
         parent::__construct();
+    }
+
+    public function setInitialMenuPosition() {
+        $this->setMenuPosition(intval($this->getMaxMenuPosition()[0]) + 1);
     }
 
     public function setTitle(string $title):void{
@@ -34,6 +39,11 @@ class Page extends BaseSQL {
     public function setMenuId(int $menu_id): void
     {
         $this->menu_id = $menu_id;
+    }
+
+    public function setMenuPosition(int $menu_position): void
+    {
+        $this->menu_position = $menu_position;
     }
 
     public function setContent($content): void

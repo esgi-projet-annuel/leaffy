@@ -63,7 +63,8 @@ class PageController extends AbstractController {
                 $page->setStatus('DRAFT');
                 $page->setType('STATIC');
                 $page->setContent($data['content']);
-//            $page->setMenuId(intval($data['menuId']));
+                $page->setMenuId(0);
+                $page->setMenuPosition(0);
                 $page->save();
                 $this->getAllPagesByStatus();
             }else{
@@ -124,7 +125,24 @@ class PageController extends AbstractController {
             $page = new Page();
             $page->findById($pageId);
             $page->setStatus($_POST['status']);
+
+            if($_POST['status'] == 'PUBLISHED') {
+                $page->setInitialMenuPosition();
+            }
             $page->save();
         }
     }
+
+    public function changeMenuPosition():void{
+        $this->checkAdmin();
+        $data = $_POST;
+        if(!empty($data) ){
+            $pageId = intval($_POST['id']);
+            $page = new Page();
+            $page->findById($pageId);
+            $page->setMenuPosition(intval($_POST['menu_position']));
+            $page->save();
+        }
+    }
+
 }
