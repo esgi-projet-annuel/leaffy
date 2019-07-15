@@ -145,7 +145,6 @@ class PageController extends AbstractController {
 
     public function changeMenuPosition():void {
         $this->checkAdmin();
-        $this->checkAdmin();
         $data = $_POST;
         if(!empty($data) ){
             $pageId = intval($_POST['id']);

@@ -165,17 +165,27 @@ namespace LeaffyMvc\Core {
             }
         }
 
-        public function updateBy(array $newData):void{
+        public function updateBy(array $newData, array $where=null):void{
             //UPDATE
             $sqlUpdate = [];
             foreach ($newData as $key => $value) {
                 if( $key != "id")
                     $sqlUpdate[]=$key."=:".$key;
             }
-            $sql ="UPDATE ".$this->table." SET ".implode(",", $sqlUpdate)." WHERE id=:id";
+            if ($where == null){
+                $sql ="UPDATE ".$this->table." SET ".implode(",", $sqlUpdate)." WHERE id=:id";
+                $newData['id'] = $this->id;
+                $finalData= $newData;
+            }else{
+                foreach ($where as $key => $value) {
+                    if( $key != "id")
+                        $sqlwhere[]=$key."=:".$key;
+                }
+                $sql ="UPDATE ".$this->table." SET ".implode(",", $sqlUpdate)." WHERE ".implode(",", $sqlwhere);
+                $finalData= array_merge($newData,$where );
+            }
             $query = $this->pdo->prepare($sql);
-            $newData['id'] = $this->id;
-            $query->execute($newData);
+            $query->execute($finalData);
         }
 
         public function delete():void{

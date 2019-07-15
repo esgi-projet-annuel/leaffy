@@ -210,6 +210,7 @@ class UserController extends AbstractController {
     }
 
     public function deleteUser():void {
+        $this->checkAdmin();
         $userId = intval($_POST['id']);
         $user = new User();
         $user->findById($userId);
@@ -217,6 +218,7 @@ class UserController extends AbstractController {
     }
 
     public function getAllUsersByProfile(){
+        $this->checkAdmin();
         $profile = isset($_GET['profile'])?$_GET['profile']:'CLIENT';
         $user = new User();
         $users = $user->findAllBy(['profile'=>$profile]);
@@ -225,6 +227,7 @@ class UserController extends AbstractController {
     }
 
     public function changeProfile(){
+        $this->checkAdmin();
         var_dump($_POST);
         $data = $_POST;
         if(!empty($data) ){

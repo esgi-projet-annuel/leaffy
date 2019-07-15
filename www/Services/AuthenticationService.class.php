@@ -21,10 +21,6 @@ class AuthenticationService
     public static function isConnected():bool {
         if (isset($_SESSION['email'])){
             return true;
-            //Est ce qu'il y a une session
-        //Vérification de l'email et du token
-        //génération d'un nouveau token
-        //return bool;
         }
         return false;
     }

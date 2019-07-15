@@ -6,6 +6,7 @@ namespace LeaffyMvc\Controllers;
 use LeaffyMvc\Core\View;
 use LeaffyMvc\Models\Category;
 use LeaffyMvc\Core\Validator;
+use LeaffyMvc\Models\Post;
 
 class CategoryController extends AbstractController {
 
@@ -43,6 +44,8 @@ class CategoryController extends AbstractController {
       $category = new Category();
       $category->findById($categoryId);
       $category->delete();
+      $post = new Post();
+      $post->updateBy(['category_id'=> null], ['category_id'=>$categoryId]);
   }
 
 }
