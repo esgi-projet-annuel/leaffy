@@ -54,7 +54,26 @@ namespace LeaffyMvc\Core {
             }else{
                 $sql = "SELECT * FROM ".$this->table;
             }
+
             $sql .=" WHERE ".implode(" AND ", $sqlWhere).";";
+            $query = $this->pdo->prepare($sql);
+            return $query;
+        }
+        private function prepareQueryLimit(array $findBy,array $orderBy, int $limit=null):PDOStatement{
+            $sqlWhere = [];
+            foreach ($findBy as $key => $value) {
+                $sqlWhere[]=$key."=:".$key;
+            }
+            $sql = "SELECT * FROM ".$this->table;
+
+
+            $sql .=" WHERE ".implode(" AND ", $sqlWhere);
+
+            $sql .= " ORDER BY :orderBy DESC ";
+
+            if ($limit!= null){
+                $sql .= " LIMIT " .$limit.";";
+            }
             $query = $this->pdo->prepare($sql);
             return $query;
         }
@@ -89,6 +108,12 @@ namespace LeaffyMvc\Core {
                 $query= $this->prepareQuery($findBy);
             }
             $query->execute($findBy);
+            return $query->fetchAll(PDO::FETCH_CLASS, get_called_class());
+        }
+
+        public function findAllByLimitOrderBy(array $findBy, array $orderBy, int $limit=null):array {
+            $query= $this->prepareQueryLimit($findBy, $orderBy,$limit);
+            $query->execute( array('status' => $findBy['status'], 'orderBy' => $orderBy['orderBy']));
             return $query->fetchAll(PDO::FETCH_CLASS, get_called_class());
         }
 

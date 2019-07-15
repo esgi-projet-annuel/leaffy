@@ -4,15 +4,11 @@
       <h2>Gestion des catégories</h2>
     </div>
   </div>
-  <div class="section-sous-titre">
-    <div class="sous-titre-category">
-      <h3>Créer une catégorie</h3>
-    </div>
-  </div>
   <div class="section-form-category">
     <div class="container">
       <div class="row">
         <div class="col-md-8 col-12">
+          <h3>Créer une catégorie</h3>
           <div class="">
             <?php $this->addModal("formCategory", $formCategory);?>
           </div>

@@ -47,7 +47,7 @@ $this->addHeader("homeHeader", "front")
                       </div>
                   </div>
                   <div class="col-sm-4 col-12">
-                      <div id="approach" class="" style="background-image: url(../../public/img/Approche.jpg);">
+                      <div id="approach" class="" style="background-image: url(../../public/img/approche.jpg);">
                       </div>
                   </div>
                 </div>
@@ -55,8 +55,7 @@ $this->addHeader("homeHeader", "front")
         </div>
     </section>
     <?php $postModel = new \LeaffyMvc\Models\Post();
-    //TODO ALix faire une mathode pour reccupere les 3 Derniers article LIMIT 3
-    $posts = $postModel->findAllBy(['status'=>'PUBLISHED']);
+    $posts = $postModel->findAllByLimitOrderBy(['status'=>'PUBLISHED'], ['orderBy' =>'created_at'], 3);
     if(!empty($posts)) : ?>
     <section id="latest-news" class="front-page-section">
         <div class="section-header">

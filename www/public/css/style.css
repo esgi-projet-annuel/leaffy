@@ -1438,7 +1438,8 @@ textarea {
 .admin-name {
   color: #f9f8eb;
   font-weight: bold;
-  font-size: 15px; }
+  font-size: 15px;
+  margin-left: 40px; }
 
 #content-back .titre {
   color: #74b49b;

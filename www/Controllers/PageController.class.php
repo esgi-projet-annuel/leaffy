@@ -22,7 +22,7 @@ class PageController extends AbstractController {
                 $view->assign('page', $page);
             }elseif ($page->type == 'BLOG'){
                 $post= new Post();
-                $posts = $post->findAllBy(['status'=>'PUBLISHED']);
+                $posts = $post->findAllByLimitOrderBy(['status'=>'PUBLISHED'], ['orderBy' =>'created_at']);
                 $view = new View('blogTemplate', "front");
                 $view->assign('posts', $posts);
             }
