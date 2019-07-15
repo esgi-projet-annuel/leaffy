@@ -4,7 +4,6 @@
       <h2>Gestion des pages</h2>
       <a class="form-control button-back button-back--add" href="<?php echo \LeaffyMvc\Core\Routing::getSlug("Page","createPage");?>">Ajouter</a>
     </div>
-<!--      TODO FABIEN faire de beaux boutons ^^-->
       <div class="group-button">
           <a href="/admin/listPages?status=DRAFT" class="form-control button-back button-back--status">Brouillons</a>
           <a href="/admin/listPages?status=PUBLISHED" class="form-control button-back button-back--status">Pages publiées</a>

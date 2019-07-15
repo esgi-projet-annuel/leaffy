@@ -4,56 +4,6 @@ $this->addHeader("homeHeader", "front")
 ?>
 
 <main>
-    <div id="discover-anchor"></div>
-    <section id="about" class="front-page-section">
-        <div class="section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <h3 class="h3">À propos</h3>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-4 col-12 d-flex">
-                        <div id="avatar" class="margin-auto d-flex">
-                            <img class="margin-auto" src="../../public/img/avatar.jpg" alt="logo-leaffy">
-                        </div>
-                    </div>
-                    <div class="col-sm-8 col-12">
-                        <div class="section-description section-description--about">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dictum odio eget nisi hendrerit, nec imperdiet mi consectetur. Curabitur in sem ut ex pulvinar laoreet. Phasellus ac luctus nisl. In id velit sit amet enim hendrerit luctus ut eget mi. Phasellus eget ullamcorper sapien. Nullam mi diam, aliquam et quam dignissim, congue sollicitudin ex. Fusce iaculis</p>
-                            </br>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dictum odio eget nisi hendrerit, nec imperdiet mi consectetur. Curabitur in sem ut ex pulvinar laoreet. Phasellus ac luctus nisl. In id velit sit amet enim hendrerit luctus ut eget mi. Phasellus eget ullamcorper sapien. Nullam mi diam, aliquam et quam dignissim, congue sollicitudin ex. Fusce iaculis</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section id="approche" class="front-page-section">
-        <div class="section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <h3 class="h3">Mon approche</h3>
-                    </div>
-                </div>
-                <div class="row">
-                  <div class="col-sm-8 col-12">
-                      <div class="section-description section-description--approach">
-                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dictum odio eget nisi hendrerit, nec imperdiet mi consectetur. Curabitur in sem ut ex pulvinar laoreet. Phasellus ac luctus nisl. In id velit sit amet enim hendrerit luctus ut eget mi. Phasellus eget ullamcorper sapien. Nullam mi diam, aliquam et quam dignissim, congue sollicitudin ex. Fusce iaculis</p>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dictum odio eget nisi hendrerit, nec imperdiet mi consectetur. Curabitur in sem ut ex pulvinar laoreet. Phasellus ac luctus nisl. In id velit sit amet enim hendrerit luctus ut eget mi. Phasellus eget ullamcorper sapien. Nullam mi diam, aliquam et quam dignissim, congue sollicitudin ex. Fusce iaculis</p></br>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dictum odio eget nisi hendrerit, nec imperdiet mi consectetur. Curabitur in sem ut ex pulvinar laoreet. Phasellus ac luctus nisl. In id velit sit amet enim hendrerit luctus ut eget mi. Phasellus eget ullamcorper sapien. Nullam mi diam, aliquam et quam dignissim, congue sollicitudin ex. Fusce iaculis</p>
-                      </div>
-                  </div>
-                  <div class="col-sm-4 col-12">
-                      <div id="approach" class="" style="background-image: url(../../public/img/approche.jpg);">
-                      </div>
-                  </div>
-                </div>
-            </div>
-        </div>
-    </section>
     <?php $postModel = new \LeaffyMvc\Models\Post();
     $posts = $postModel->findAllByLimitOrderBy(['status'=>'PUBLISHED'], ['orderBy' =>'created_at'], 3);
     if(!empty($posts)) : ?>

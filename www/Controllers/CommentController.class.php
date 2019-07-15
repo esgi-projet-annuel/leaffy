@@ -27,7 +27,7 @@ class CommentController extends AbstractController
             if( $_SERVER['REQUEST_METHOD']==$method && !empty($data) ) {
                 $validator = new Validator($form, $data);
                 $form["errors"] = $validator->errors;
-
+var_dump($_SESSION);
                 if(empty($form["errors"])){
                     $comment->setContent($data['content']);
                     $comment->setUserId(intval($_SESSION['userId']));

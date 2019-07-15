@@ -7,7 +7,25 @@
             </url>
         
             <url> 
+                <loc>http://demo.leaffy.fr/A_propos_!</loc>
+                <changefreq>daily</changefreq>
+                <priority>1</priority>            
+            </url>
+            
+            <url> 
                 <loc>http://demo.leaffy.fr/blog</loc>
+                <changefreq>daily</changefreq>
+                <priority>1</priority>            
+            </url>
+            
+            <url> 
+                <loc>http://demo.leaffy.fr/Me_contacter</loc>
+                <changefreq>daily</changefreq>
+                <priority>1</priority>            
+            </url>
+            
+            <url> 
+                <loc>http://demo.leaffy.fr/Tarifs</loc>
                 <changefreq>daily</changefreq>
                 <priority>1</priority>            
             </url>

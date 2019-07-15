@@ -58,7 +58,9 @@ EOF;
             print $str;
             ?>
           <div class='align-center mt-20'><a href='\?page=3' title='Retour' class=' button button--three'><i class='fa fa-chevron-circle-right'></i> Retour</a></div>
-          <h3 class="h2">
+
+          <?php if (isset($_SESSION)&& isset($_SESSION['userId'])):?>
+            <h3 class="h2">
             Rédiger un commentaire sur l'article !
           </h3>
           <div class="comment-form-part">
@@ -72,8 +74,11 @@ EOF;
                         </ul>
                     </div>
                 <?php endif; ?>
-              <?php $commentController = new \LeaffyMvc\Controllers\CommentController();
-              $this->addModal("formComment", $commentController->getCommentForm($post->id));?>
+              <?php
+                  $commentController = new \LeaffyMvc\Controllers\CommentController();
+                  $this->addModal("formComment", $commentController->getCommentForm($post->id));
+              ?>
+                <?php endif; ?>
             </div>
           </div>
         </div>

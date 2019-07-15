@@ -2,7 +2,6 @@
 use LeaffyMvc\Core\Routing;
 $this->addHeader("header", "front")
 ?>
-<!--TODO FABIEN Mettre en forme l'affichage des articles -->
 <div class="col-12">
     <h1 class="h3">Blog</h1>
 </div>

@@ -58,6 +58,7 @@ class AuthenticationService
         $user->findOneObjectBy(['email'=>$_SESSION['email']]);
         $this->clearToken($user);
         unset($_SESSION['token']);
+        session_destroy();
         if($redirect) header("Location: ".$redirect);
     }
 

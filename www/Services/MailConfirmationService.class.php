@@ -64,7 +64,6 @@ class MailConfirmationService {
         }
         $mail->isHTML(true);
         $mail->Subject = utf8_decode($subject);
-        //TODO ecrire l'url dynamiquement
         switch ($bodyType){
             case 'register':
                 $mail->Body = self::$instance->getConfirmationMail($user);
