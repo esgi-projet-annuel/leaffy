@@ -127,7 +127,6 @@ class PostController extends AbstractController {
     public function changeCategory():void{
         $this->checkAdminOrEditor();
         $data = $_POST;
-        print(intval($_POST['category']));
         if(!empty($data) ){
             $postId = intval($_POST['id']);
             $post = new Post();

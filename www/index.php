@@ -17,6 +17,7 @@ spl_autoload_register(function ($class) {
 });
 
 use LeaffyMvc\Core\Routing;
+use LeaffyMvc\Core\View;
 
 $slug = $_SERVER["REQUEST_URI"];
 
@@ -41,16 +42,19 @@ if(file_exists($controllerPath) ){
             //appel dynamique de la méthode
             $controllerObject->$methodAction();
         }else{
-            die("La methode ".$methodAction." n'existe pas");
+            $view= new View('404', 'errors');
+//            die("La methode ".$methodAction." n'existe pas");
         }
 
     }else{
-        die("La class controller ".$controller." n'existe pas");
+        $view= new View('404', 'errors');
+//        die("La class controller ".$controller." n'existe pas");
     }
 }else{
     if (isset($_GET['page'])){
         var_dump($_GET['page']);
     }else{
-        die("Le fichier controller ".$controller." n'existe pas");
+        $view= new View('404', 'errors');
+//        die("Le fichier controller ".$controller." n'existe pas");
     }
 }

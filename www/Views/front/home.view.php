@@ -4,6 +4,7 @@ $this->addHeader("homeHeader", "front")
 ?>
 
 <main>
+    <div id="discover-anchor"></div>
     <?php $postModel = new \LeaffyMvc\Models\Post();
     $posts = $postModel->findAllByLimitOrderBy(['status'=>'PUBLISHED'], ['orderBy' =>'created_at'], 3);
     if(!empty($posts)) : ?>

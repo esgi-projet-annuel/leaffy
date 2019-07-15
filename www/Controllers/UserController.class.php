@@ -228,7 +228,6 @@ class UserController extends AbstractController {
 
     public function changeProfile(){
         $this->checkAdmin();
-        var_dump($_POST);
         $data = $_POST;
         if(!empty($data) ){
             $userId = intval($_POST['id']);

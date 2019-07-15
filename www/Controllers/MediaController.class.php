@@ -13,9 +13,6 @@ class MediaController
     }
 
     public function addMedia(): void {
-        var_dump($_POST);
-        var_dump($_FILES);
-
         $path_parts = pathinfo($_FILES['files']['name'][0]);
         $fileName = uniqid() . '.' .  $path_parts['extension'];
         $filePath = '/var/www/html/medias/' . $fileName;
