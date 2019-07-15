@@ -1,3 +1,9 @@
+<?php
+use LeaffyMvc\Models\User;
+$user = new User();
+$user->findOneObjectBy(['profile'=>'ADMIN']);
+
+?>
 <header id="header-home" class="header-front-page">
     <div class="top-header">
         <div class="container">
@@ -15,15 +21,20 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
-                            <h1>Lorem ipsum dolor sit amet</h1>
+                            <?php if($user->firstname && $user->lastname): ?>
+                            <h1><?php echo $user->firstname .' '. $user->lastname ?></h1>
+                            <?php else: ?>
+                            <h1>Bienvenue sur mon site !</h1>
+                            <?php endif; ?>
                         </div>
                         <div class="col-12">
-                            <h2>Lorem ipsum dolor</h2>
+                          <?php if($user->firstname && $user->lastname): ?>
+                            <h2>Bienvenue sur mon site</h2>
+                          <?php endif; ?>
                         </div>
                         <div class="col-sm-8 col-sm-offset-2">
-                            <div class="section-description section-description--header">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dictum odio eget nisi hendrerit, nec imperdiet mi consectetur. Curabitur in sem ut !</div>
+                            <div class="section-description section-description--header"></div>
                             <a href="#discover-anchor"  class="button--one button">Découvrir</a>
-                            <a href="#" class="button--two button">Rendez-vous</a>
                         </div>
                     </div>
                 </div>

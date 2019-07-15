@@ -54,7 +54,7 @@
         }
         $category = new \LeaffyMvc\Models\Category();
         $categories = $category->findAllByOrder(['orderBy'=>'name']);
-        $selectButton ="<select id=\"categorySelect{0}\" onchange=\"changeCategory('{0}');\">";
+        $selectButton ="<select class=\"profileSelect\" id=\"categorySelect{0}\" onchange=\"changeCategory('{0}');\">";
         $selectButton .="<option value=\"\">Selectionner une categorie</option>";
         foreach ($categories as $category){
             $selectButton .="<option value=\"".$category->id."\">".$category->name."</option>";

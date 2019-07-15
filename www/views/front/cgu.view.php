@@ -128,8 +128,8 @@
         <h3>4. Droit applicable et attribution de juridiction.</h3>
 
         <p>Tout litige en relation avec l’utilisation du site https://leaffy.fr est soumis au droit français. En dehors des cas où la loi ne le permet pas, il est fait attribution exclusive de juridiction aux tribunaux compétents de Alix Jacobé de Haut et Fabien Culot</p>
-        </div>
         <div class='align-center mt-20'><a href='<?php echo \LeaffyMvc\Core\Routing::getSlug("Page","showFrontPage")."?page=1";?>' title='Retour' class=' button button--three'><i class='fa fa-chevron-circle-right'></i> Retour</a></div>
+        </div>
       </div>
     </div>
   </div>
